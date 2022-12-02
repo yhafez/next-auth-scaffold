@@ -5,5 +5,5 @@
 		"moduleResolution": "Node",
 		"allowSyntheticDefaultImports": true
 	},
-	"include": ["vite.config.ts"]
+	"include": ["api/index.js", "config/jest/__mocks__/book.js"]
 }
