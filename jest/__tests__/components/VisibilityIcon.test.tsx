@@ -1,22 +1,32 @@
 // Path: ./jest/__tests__/components/VisibilityIcon.test.tsx
-import { render, findByText } from '@testing-library/react'
+import { render, findByText, act, screen, waitFor } from '@testing-library/react'
 import { axe } from 'jest-axe'
 
 import VisibilityIcon from '../../../components/VisibilityIcon'
 
 describe('VisibilityIcon', () => {
 	it('Should have no accessibility violations', async () => {
-		const { container } = render(
-			<VisibilityIcon name="test" showPassword={false} hover={false} isConfirmPassword={false} />,
+		act(() =>
+			render(
+				<main>
+					<VisibilityIcon
+						name="test"
+						showPassword={false}
+						hover={false}
+						isConfirmPassword={false}
+					/>
+				</main>,
+			),
 		)
 
-		const results = await axe(container)
-		expect(results).toHaveNoViolations()
+		await waitFor(async () => expect(await axe(screen.getByRole('main'))).toHaveNoViolations())
 	})
 
 	it('Should have a Box element with id "test-password-box"', async () => {
 		const { container } = render(
-			<VisibilityIcon name="test" showPassword={false} hover={false} isConfirmPassword={false} />,
+			<main>
+				<VisibilityIcon name="test" showPassword={false} hover={false} isConfirmPassword={false} />
+			</main>,
 		)
 
 		const test = container.querySelector('#test-password-box')
@@ -25,7 +35,9 @@ describe('VisibilityIcon', () => {
 
 	it('Should have a VisbilityOffIcon element with id "test-password-input-visibility-off-icon"', async () => {
 		const { container } = render(
-			<VisibilityIcon name="test" showPassword={false} hover={false} isConfirmPassword={false} />,
+			<main>
+				<VisibilityIcon name="test" showPassword={false} hover={false} isConfirmPassword={false} />
+			</main>,
 		)
 
 		const test = container.querySelector('#test-password-input-visibility-off-icon')
@@ -34,7 +46,9 @@ describe('VisibilityIcon', () => {
 
 	it('Should have a Typography element with id "test-password-input-show-password-text"', async () => {
 		const { container } = render(
-			<VisibilityIcon name="test" showPassword={false} hover={false} isConfirmPassword={false} />,
+			<main>
+				<VisibilityIcon name="test" showPassword={false} hover={false} isConfirmPassword={false} />
+			</main>,
 		)
 
 		const test = container.querySelector('#test-password-input-visibility-off-icon')
@@ -43,7 +57,9 @@ describe('VisibilityIcon', () => {
 
 	it('Should have a Typography element with text "Show"', async () => {
 		const { container } = render(
-			<VisibilityIcon name="test" showPassword={false} hover={false} isConfirmPassword={false} />,
+			<main>
+				<VisibilityIcon name="test" showPassword={false} hover={false} isConfirmPassword={false} />
+			</main>,
 		)
 
 		const test = await findByText(container, 'Show')
@@ -52,7 +68,9 @@ describe('VisibilityIcon', () => {
 
 	it('Should have a Box element with id "test-confirm-password-box"', async () => {
 		const { container } = render(
-			<VisibilityIcon name="test" showPassword={false} hover={false} isConfirmPassword={true} />,
+			<main>
+				<VisibilityIcon name="test" showPassword={false} hover={false} isConfirmPassword={true} />
+			</main>,
 		)
 
 		const test = container.querySelector('#test-confirm-password-box')
@@ -61,7 +79,9 @@ describe('VisibilityIcon', () => {
 
 	it('Should have a VisbilityOffIcon element with id "test-confirm-password-input-visibility-off-icon"', async () => {
 		const { container } = render(
-			<VisibilityIcon name="test" showPassword={false} hover={false} isConfirmPassword={true} />,
+			<main>
+				<VisibilityIcon name="test" showPassword={false} hover={false} isConfirmPassword={true} />
+			</main>,
 		)
 
 		const test = container.querySelector('#test-confirm-password-input-visibility-off-icon')
@@ -70,7 +90,9 @@ describe('VisibilityIcon', () => {
 
 	it('Should have a Typography element with id "test-confirm-password-input-show-password-text"', async () => {
 		const { container } = render(
-			<VisibilityIcon name="test" showPassword={false} hover={false} isConfirmPassword={true} />,
+			<main>
+				<VisibilityIcon name="test" showPassword={false} hover={false} isConfirmPassword={true} />
+			</main>,
 		)
 
 		const test = container.querySelector('#test-confirm-password-input-visibility-off-icon')
@@ -79,7 +101,9 @@ describe('VisibilityIcon', () => {
 
 	it('Should have a Typography element with text "Show"', async () => {
 		const { container } = render(
-			<VisibilityIcon name="test" showPassword={false} hover={false} isConfirmPassword={true} />,
+			<main>
+				<VisibilityIcon name="test" showPassword={false} hover={false} isConfirmPassword={true} />
+			</main>,
 		)
 
 		const test = await findByText(container, 'Show')
@@ -88,7 +112,9 @@ describe('VisibilityIcon', () => {
 
 	it('Should have a VisbilityIcon element with id "test-password-input-visibility-on-icon"', async () => {
 		const { container } = render(
-			<VisibilityIcon name="test" showPassword={true} hover={false} isConfirmPassword={false} />,
+			<main>
+				<VisibilityIcon name="test" showPassword={true} hover={false} isConfirmPassword={false} />
+			</main>,
 		)
 
 		const test = container.querySelector('#test-password-input-visibility-on-icon')
@@ -97,7 +123,9 @@ describe('VisibilityIcon', () => {
 
 	it('Should have a Typography element with id "test-password-input-hide-password-text"', async () => {
 		const { container } = render(
-			<VisibilityIcon name="test" showPassword={true} hover={false} isConfirmPassword={false} />,
+			<main>
+				<VisibilityIcon name="test" showPassword={true} hover={false} isConfirmPassword={false} />
+			</main>,
 		)
 
 		const test = container.querySelector('#test-password-input-hide-password-text')
@@ -106,7 +134,9 @@ describe('VisibilityIcon', () => {
 
 	it('Should have a Typography element with text "Hide"', async () => {
 		const { container } = render(
-			<VisibilityIcon name="test" showPassword={true} hover={false} isConfirmPassword={false} />,
+			<main>
+				<VisibilityIcon name="test" showPassword={true} hover={false} isConfirmPassword={false} />
+			</main>,
 		)
 
 		const test = await findByText(container, 'Hide')
@@ -115,7 +145,9 @@ describe('VisibilityIcon', () => {
 
 	it('Should match snapshot', () => {
 		const { container } = render(
-			<VisibilityIcon name="test" showPassword={false} hover={false} isConfirmPassword={false} />,
+			<main>
+				<VisibilityIcon name="test" showPassword={false} hover={false} isConfirmPassword={false} />
+			</main>,
 		)
 
 		expect(container).toMatchSnapshot()

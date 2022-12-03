@@ -1,5 +1,5 @@
 // Path: ./jest/__tests__/pages/login.test.tsx
-import { render } from '@testing-library/react'
+import { render, act, screen, waitFor } from '@testing-library/react'
 import { axe } from 'jest-axe'
 import { ThemeProvider } from '@mui/material/styles'
 
@@ -9,15 +9,19 @@ import { theme } from '../../../theme'
 
 describe('Login', () => {
 	it('Should have no accessibility violations', async () => {
-		const { container } = render(
-			<ThemeProvider theme={theme}>
-				<Layout>
-					<Login />
-				</Layout>
-			</ThemeProvider>,
+		act(() =>
+			render(
+				<ThemeProvider theme={theme}>
+					<Layout>
+						<main>
+							<Login />
+						</main>
+					</Layout>
+				</ThemeProvider>,
+			),
 		)
-		const results = await axe(container)
-		expect(results).toHaveNoViolations()
+
+		await waitFor(async () => expect(await axe(screen.getByRole('main'))).toHaveNoViolations())
 	})
 
 	it('Should match snapshot', () => {
@@ -28,6 +32,7 @@ describe('Login', () => {
 				</Layout>
 			</ThemeProvider>,
 		)
+
 		expect(container).toMatchSnapshot()
 	})
 })

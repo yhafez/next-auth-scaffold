@@ -2,16 +2,18 @@
 
 exports[`NavigationButton Should match snapshot 1`] = `
 <div>
-  <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-snptrd-MuiButtonBase-root-MuiButton-root"
-    id="test-navigation-button"
-    tabindex="0"
-    type="button"
-  >
-    test
-    <span
-      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-    />
-  </button>
+  <main>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-snptrd-MuiButtonBase-root-MuiButton-root"
+      id="test-navigation-button"
+      tabindex="0"
+      type="button"
+    >
+      test
+      <span
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      />
+    </button>
+  </main>
 </div>
 `;

@@ -2,21 +2,23 @@
 
 exports[`SubmitButton Should match snapshot 1`] = `
 <div>
-  <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-snptrd-MuiButtonBase-root-MuiButton-root"
-    id="test-submit-button"
-    tabindex="0"
-    type="button"
-  >
-    <span
-      class="MuiTypography-root MuiTypography-button css-7roew5-MuiTypography-root"
-      id="test-submit-button-text"
+  <main>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-snptrd-MuiButtonBase-root-MuiButton-root"
+      id="test-submit-button"
+      tabindex="0"
+      type="button"
     >
-      test
-    </span>
-    <span
-      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-    />
-  </button>
+      <span
+        class="MuiTypography-root MuiTypography-button css-7roew5-MuiTypography-root"
+        id="test-submit-button-text"
+      >
+        test
+      </span>
+      <span
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      />
+    </button>
+  </main>
 </div>
 `;

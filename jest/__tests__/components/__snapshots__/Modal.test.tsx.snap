@@ -2,28 +2,30 @@
 
 exports[`Modal Should match snapshot 1`] = `
 <div>
-  <div
-    class="MuiBox-root css-jytot0"
-    id="test-test-modal-container"
-  >
-    <h3
-      class="MuiTypography-root MuiTypography-h3 css-1jefm3n-MuiTypography-root"
-      id="test-test-modal-title"
-    >
-      Test Test
-    </h3>
+  <main>
     <div
-      class="MuiBox-root css-q1d2cl"
-      id="test-test-modal-notification-container"
-    />
-    <div
-      class="MuiBox-root css-1knh30t"
-      id="test-test-modal-form"
+      class="MuiBox-root css-jytot0"
+      id="test-test-modal-container"
     >
-      <div>
-        Children
+      <h3
+        class="MuiTypography-root MuiTypography-h3 css-1jefm3n-MuiTypography-root"
+        id="test-test-modal-title"
+      >
+        Test Test
+      </h3>
+      <div
+        class="MuiBox-root css-q1d2cl"
+        id="test-test-modal-notification-container"
+      />
+      <div
+        class="MuiBox-root css-1knh30t"
+        id="test-test-modal-form"
+      >
+        <div>
+          Children
+        </div>
       </div>
     </div>
-  </div>
+  </main>
 </div>
 `;

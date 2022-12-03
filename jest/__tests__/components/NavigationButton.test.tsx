@@ -1,22 +1,27 @@
 // Path: ./jest/__tests__/components/NavigationButton.test.tsx
-import { render, findByText } from '@testing-library/react'
+import { render, findByText, act, screen, waitFor } from '@testing-library/react'
 import { axe } from 'jest-axe'
 
 import NavigationButton from '../../../components/NavigationButton'
 
 describe('NavigationButton', () => {
 	it('Should have no accessibility violations', async () => {
-		const { container } = render(
-			<NavigationButton name="test" label="test" handleClick={jest.fn()} />,
+		act(() =>
+			render(
+				<main>
+					<NavigationButton name="test" label="test" handleClick={jest.fn()} />
+				</main>,
+			),
 		)
 
-		const results = await axe(container)
-		expect(results).toHaveNoViolations()
+		await waitFor(async () => expect(await axe(screen.getByRole('main'))).toHaveNoViolations())
 	})
 
 	it('Should have a Button element with id "test-navigation-button"', async () => {
 		const { container } = render(
-			<NavigationButton name="test" label="test" handleClick={jest.fn()} />,
+			<main>
+				<NavigationButton name="test" label="test" handleClick={jest.fn()} />
+			</main>,
 		)
 
 		const test = container.querySelector('#test-navigation-button')
@@ -25,7 +30,9 @@ describe('NavigationButton', () => {
 
 	it('Should have a Button element with text "test"', async () => {
 		const { container } = render(
-			<NavigationButton name="test" label="test" handleClick={jest.fn()} />,
+			<main>
+				<NavigationButton name="test" label="test" handleClick={jest.fn()} />
+			</main>,
 		)
 
 		const test = await findByText(container, 'test')
@@ -34,7 +41,9 @@ describe('NavigationButton', () => {
 
 	it('Should have an enabled Button element', async () => {
 		const { container } = render(
-			<NavigationButton name="test" label="test" handleClick={jest.fn()} />,
+			<main>
+				<NavigationButton name="test" label="test" handleClick={jest.fn()} />
+			</main>,
 		)
 
 		const test = container.querySelector('#test-navigation-button')
@@ -43,7 +52,9 @@ describe('NavigationButton', () => {
 
 	it('Should match snapshot', () => {
 		const { container } = render(
-			<NavigationButton name="test" label="test" handleClick={jest.fn()} />,
+			<main>
+				<NavigationButton name="test" label="test" handleClick={jest.fn()} />
+			</main>,
 		)
 
 		expect(container).toMatchSnapshot()

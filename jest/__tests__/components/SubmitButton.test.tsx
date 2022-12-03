@@ -1,21 +1,26 @@
 // Path: ./jest/__tests__/components/SubmitButton.test.tsx
-import { render, findByText } from '@testing-library/react'
+import { render, findByText, act, screen, waitFor } from '@testing-library/react'
 import { axe } from 'jest-axe'
 import SubmitButton from '../../../components/SubmitButton'
 
 describe('SubmitButton', () => {
 	it('Should have no accessibility violations', async () => {
-		const { container } = render(
-			<SubmitButton name="test" label="test" loading={false} handleSubmit={jest.fn()} />,
+		act(() =>
+			render(
+				<main>
+					<SubmitButton name="test" label="test" loading={false} handleSubmit={jest.fn()} />
+				</main>,
+			),
 		)
 
-		const results = await axe(container)
-		expect(results).toHaveNoViolations()
+		await waitFor(async () => expect(await axe(screen.getByRole('main'))).toHaveNoViolations())
 	})
 
 	it('Should have a Button element with id "test-submit-button"', async () => {
 		const { container } = render(
-			<SubmitButton name="test" label="test" loading={false} handleSubmit={jest.fn()} />,
+			<main>
+				<SubmitButton name="test" label="test" loading={false} handleSubmit={jest.fn()} />
+			</main>,
 		)
 
 		const test = container.querySelector('#test-submit-button')
@@ -24,7 +29,9 @@ describe('SubmitButton', () => {
 
 	it('Should have a Button element with text "test"', async () => {
 		const { container } = render(
-			<SubmitButton name="test" label="test" loading={false} handleSubmit={jest.fn()} />,
+			<main>
+				<SubmitButton name="test" label="test" loading={false} handleSubmit={jest.fn()} />
+			</main>,
 		)
 
 		const test = await findByText(container, 'test')
@@ -33,7 +40,9 @@ describe('SubmitButton', () => {
 
 	it('Should have an enabled Button element', async () => {
 		const { container } = render(
-			<SubmitButton name="test" label="test" loading={false} handleSubmit={jest.fn()} />,
+			<main>
+				<SubmitButton name="test" label="test" loading={false} handleSubmit={jest.fn()} />
+			</main>,
 		)
 
 		const test = container.querySelector('#test-submit-button')
@@ -42,7 +51,9 @@ describe('SubmitButton', () => {
 
 	it('Should have a Button element with id "test-submit-button"', async () => {
 		const { container } = render(
-			<SubmitButton name="test" label="test" loading={true} handleSubmit={jest.fn()} />,
+			<main>
+				<SubmitButton name="test" label="test" loading={true} handleSubmit={jest.fn()} />
+			</main>,
 		)
 
 		const test = container.querySelector('#test-submit-button')
@@ -51,7 +62,9 @@ describe('SubmitButton', () => {
 
 	it('Should have a disabled Button element', async () => {
 		const { container } = render(
-			<SubmitButton name="test" label="test" loading={true} handleSubmit={jest.fn()} />,
+			<main>
+				<SubmitButton name="test" label="test" loading={true} handleSubmit={jest.fn()} />
+			</main>,
 		)
 
 		const test = container.querySelector('#test-submit-button')
@@ -60,7 +73,9 @@ describe('SubmitButton', () => {
 
 	it('Should have a CircularProgress element with id "test-submit-button-loading"', async () => {
 		const { container } = render(
-			<SubmitButton name="test" label="test" loading={true} handleSubmit={jest.fn()} />,
+			<main>
+				<SubmitButton name="test" label="test" loading={true} handleSubmit={jest.fn()} />
+			</main>,
 		)
 
 		const test = container.querySelector('#test-submit-button-loading')
@@ -69,7 +84,9 @@ describe('SubmitButton', () => {
 
 	it('Should match snapshot', () => {
 		const { container } = render(
-			<SubmitButton name="test" label="test" loading={false} handleSubmit={jest.fn()} />,
+			<main>
+				<SubmitButton name="test" label="test" loading={false} handleSubmit={jest.fn()} />
+			</main>,
 		)
 
 		expect(container).toMatchSnapshot()

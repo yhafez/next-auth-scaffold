@@ -1,22 +1,27 @@
 // Path: ./jest/__tests__/components/EmailInput.test.tsx
-import { render } from '@testing-library/react'
+import { render, act, screen, waitFor } from '@testing-library/react'
 import { axe } from 'jest-axe'
 
 import EmailInput from '../../../components/EmailInput'
 
 describe('EmailInput', () => {
 	it('Should have an enabled TextField element', async () => {
-		const { container } = render(
-			<EmailInput name="test" value="test" setValue={jest.fn()} disabled={false} />,
+		act(() =>
+			render(
+				<main>
+					<EmailInput name="test" value="test" setValue={jest.fn()} disabled={false} />
+				</main>,
+			),
 		)
 
-		const test = container.querySelector('#test-email-input')
-		expect(test).toHaveProperty('disabled', false)
+		await waitFor(async () => expect(await axe(screen.getByRole('main'))).toHaveNoViolations())
 	})
 
 	it('Should have no accessibility violations', async () => {
 		const { container } = render(
-			<EmailInput name="test" value="test" setValue={jest.fn()} disabled={false} />,
+			<main>
+				<EmailInput name="test" value="test" setValue={jest.fn()} disabled={false} />
+			</main>,
 		)
 
 		const results = await axe(container)
@@ -25,7 +30,9 @@ describe('EmailInput', () => {
 
 	it('Should have a TextField element with id "test-email-input"', async () => {
 		const { container } = render(
-			<EmailInput name="test" value="test" setValue={jest.fn()} disabled={false} />,
+			<main>
+				<EmailInput name="test" value="test" setValue={jest.fn()} disabled={false} />
+			</main>,
 		)
 
 		const test = container.querySelector('#test-email-input')
@@ -34,7 +41,9 @@ describe('EmailInput', () => {
 
 	it('Should have a TextField element with text "test"', async () => {
 		const { container } = render(
-			<EmailInput name="test" value="test" setValue={jest.fn()} disabled={false} />,
+			<main>
+				<EmailInput name="test" value="test" setValue={jest.fn()} disabled={false} />
+			</main>,
 		)
 
 		const test = container.querySelector('#test-email-input')
@@ -43,7 +52,9 @@ describe('EmailInput', () => {
 
 	it('Should have a disabled TextField element', async () => {
 		const { container } = render(
-			<EmailInput name="test" value="test" setValue={jest.fn()} disabled={true} />,
+			<main>
+				<EmailInput name="test" value="test" setValue={jest.fn()} disabled={true} />
+			</main>,
 		)
 
 		const test = container.querySelector('#test-email-input')
@@ -52,7 +63,9 @@ describe('EmailInput', () => {
 
 	it('Should match snapshot', async () => {
 		const { container } = render(
-			<EmailInput name="test" value="test" setValue={jest.fn()} disabled={false} />,
+			<main>
+				<EmailInput name="test" value="test" setValue={jest.fn()} disabled={false} />
+			</main>,
 		)
 
 		expect(container).toMatchSnapshot()
