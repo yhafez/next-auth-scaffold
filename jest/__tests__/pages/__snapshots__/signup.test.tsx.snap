@@ -14,7 +14,7 @@ exports[`Signup Should match snapshot 1`] = `
     >
       <div
         aria-label="title"
-        class="MuiTypography-root MuiTypography-h6 css-1juivf6-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-h1 css-nlhhuf-MuiTypography-root"
         id="layout-title"
       >
         Next Auth Scaffold
@@ -66,15 +66,15 @@ exports[`Signup Should match snapshot 1`] = `
     </div>
   </header>
   <div
-    class="MuiBox-root css-1gy9kbr"
+    class="MuiBox-root css-1jajoos"
     id="signup-modal-container"
   >
-    <h3
-      class="MuiTypography-root MuiTypography-h3 css-1jefm3n-MuiTypography-root"
+    <h2
+      class="MuiTypography-root MuiTypography-h2 css-1gvm0k9-MuiTypography-root"
       id="signup-modal-title"
     >
       Signup
-    </h3>
+    </h2>
     <div
       class="MuiBox-root css-q1d2cl"
       id="signup-modal-notification-container"

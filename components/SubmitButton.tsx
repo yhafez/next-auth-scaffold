@@ -9,6 +9,7 @@ export interface SubmitButtonProps {
 	loading: boolean
 	handleSubmit: () => void
 	width?: string
+	disabled?: boolean
 }
 
 export default function SubmitButton({
@@ -17,6 +18,7 @@ export default function SubmitButton({
 	loading,
 	handleSubmit,
 	width,
+	disabled
 }: SubmitButtonProps) {
 	const {
 		settings: { darkMode },
@@ -27,7 +29,7 @@ export default function SubmitButton({
 			id={`${name}-submit-button`}
 			variant="contained"
 			onClick={handleSubmit}
-			disabled={loading}
+			disabled={disabled ? true : loading}
 			sx={{
 				color: darkMode ? 'white' : 'black',
 				width: width ? width : '40%',

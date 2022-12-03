@@ -96,6 +96,12 @@ export default function ResetPassword({
 		}
 	}, [router.query])
 
+	useEffect(() => {
+		if (!email) {
+			setError('Invalid token')
+		}
+	}, [email])
+
 	return (
 		<Modal name="reset password" loading={loading} error={error} small>
 			<ConfirmPasswordInput
@@ -104,7 +110,7 @@ export default function ResetPassword({
 				setPassword={setPassword}
 				confirmPassword={confirmPassword}
 				setConfirmPassword={setConfirmPassword}
-				disabled={loading}
+				disabled={loading || !email}
 			/>
 
 			<ActionButtonsContainer name="reset-password">
@@ -113,6 +119,7 @@ export default function ResetPassword({
 					handleSubmit={handleResetPassword}
 					loading={loading}
 					label="reset"
+					disabled={!email}
 				/>
 			</ActionButtonsContainer>
 		</Modal>

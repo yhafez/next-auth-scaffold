@@ -34,6 +34,7 @@ const Modal = ({ children, name, loading = false, error = '', small = false }: M
 				flexDirection: 'column',
 				justifyContent: 'center',
 				alignItems: 'center',
+				textAlign: 'center',
 				margin: 'auto',
 				gap: 2,
 				backgroundColor: darkMode ? 'primary.dark' : 'primary.light',
@@ -43,20 +44,20 @@ const Modal = ({ children, name, loading = false, error = '', small = false }: M
 				width: isMobile
 					? '100%'
 					: isTablet
-					? '50%'
-					: isDesktop
-					? '30%'
-					: isLargeDesktop
-					? '20%'
-					: isExtraLargeDesktop
-					? '10%'
-					: '100%',
+						? '50%'
+						: isDesktop
+							? '30%'
+							: isLargeDesktop
+								? '20%'
+								: isExtraLargeDesktop
+									? '10%'
+									: '100%',
 				offset: 1,
 			}}
 		>
 			<Typography
 				id={`${formattedName}-modal-title`}
-				variant="h3"
+				variant="h2"
 				sx={{
 					color: darkMode ? '#fff' : '#000',
 					fontWeight: 600,
@@ -89,8 +90,11 @@ const Modal = ({ children, name, loading = false, error = '', small = false }: M
 					error && (
 						<Typography
 							id={`${formattedName}-modal-error`}
-							variant="h6"
-							sx={{ color: 'error.dark' }}
+							variant="body1"
+							sx={{
+								color: 'error.dark',
+								fontSize: '1.5rem'
+							}}
 						>
 							{error}
 						</Typography>
@@ -110,7 +114,7 @@ const Modal = ({ children, name, loading = false, error = '', small = false }: M
 			>
 				{children}
 			</Box>
-		</Box>
+		</Box >
 	)
 }
 

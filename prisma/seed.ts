@@ -17,7 +17,6 @@ async function main() {
 			role: 'ADMIN',
 		},
 	})
-	console.log(`Created user with id: ${user.id}`)
 }
 
 main()

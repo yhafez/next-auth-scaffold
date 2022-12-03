@@ -43,7 +43,7 @@ export function Layout({ children }: LayoutProps) {
 				>
 					<Typography
 						id="layout-title"
-						variant="h6"
+						variant="h1"
 						component="div"
 						sx={{ flexGrow: 1 }}
 						aria-label="title"

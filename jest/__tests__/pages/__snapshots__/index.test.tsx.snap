@@ -14,7 +14,7 @@ exports[`Dashboard Should match snapshot 1`] = `
     >
       <div
         aria-label="title"
-        class="MuiTypography-root MuiTypography-h6 css-1juivf6-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-h1 css-nlhhuf-MuiTypography-root"
         id="layout-title"
       >
         Next Auth Scaffold

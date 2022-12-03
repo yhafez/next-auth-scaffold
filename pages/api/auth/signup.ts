@@ -19,8 +19,6 @@ export default async function signup(req: NextApiRequest, res: NextApiResponse) 
 		const { email, password } = req.body
 
 		try {
-			console.log('email', email)
-
 			const user = await prisma.user.findUnique({
 				where: {
 					email: email,

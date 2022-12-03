@@ -50,8 +50,6 @@ export default function Signup({
 
 			const data = await res.json()
 
-			console.log('data', data)
-
 			if (data.error) {
 				setError(data.error)
 			} else {
