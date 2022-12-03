@@ -55,12 +55,12 @@ export default function DarkModeSwitch() {
 				icon={<WbSunnyIcon id="dark-mode-icon" />}
 			/>
 			<Typography
-				id="layout-dark-mode-switch-label"
+				id="dark-mode-switch-label"
 				variant="body2"
 				sx={{ fontWeight: 500, mb: 1, color: darkMode ? 'white' : 'black' }}
 				aria-label="dark mode switch label"
 			>
-				{darkMode ? 'Dark' : 'Light'} Mode
+				{darkMode ? 'Dark Mode' : 'Light Mode'}
 			</Typography>
 		</Box>
 	)

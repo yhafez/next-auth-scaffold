@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModalNote Should match snapshot 1`] = `
+<div>
+  <div
+    class="MuiBox-root css-1tsywmc"
+    id="test-modal-note-container"
+  >
+    <a
+      href="/test"
+      id="test-modal-note-link"
+    >
+      <p
+        class="MuiTypography-root MuiTypography-body1 css-1mxr1vn-MuiTypography-root"
+        id="test-modal-note-link-text"
+      >
+        test
+      </p>
+    </a>
+  </div>
+</div>
+`;

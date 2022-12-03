@@ -18,7 +18,7 @@ export default function ModalNote({ name, label, href }: ModalNoteProps) {
 
 	return (
 		<Box
-			id={`${name}-link-container`}
+			id={`${name}-modal-note-container`}
 			sx={{
 				display: 'flex',
 				flexDirection: 'column',
@@ -27,9 +27,9 @@ export default function ModalNote({ name, label, href }: ModalNoteProps) {
 				gap: 2,
 			}}
 		>
-			<Link href={href} id={`${name}-link`}>
+			<Link href={href} id={`${name}-modal-note-link`}>
 				<Typography
-					id={`${name}-text`}
+					id={`${name}-modal-note-link-text`}
 					variant="body1"
 					sx={{
 						color: darkMode ? 'white' : 'black',

@@ -23,7 +23,7 @@ export default function NavigationButton({
 
 	return (
 		<Button
-			id={`${name}-button`}
+			id={`${name}-navigation-button`}
 			variant="contained"
 			onClick={handleClick}
 			sx={{

@@ -33,7 +33,7 @@ export default function PasswordInput({
 
 	return (
 		<TextField
-			id={`${formattedName}-password-input`}
+			id={`${formattedName}${isConfirmPassword ? '-confirm' : ''}-password-input`}
 			label={isConfirmPassword ? 'Confirm Password' : 'Password'}
 			variant="outlined"
 			type={showPassword ? 'text' : 'password'}
@@ -80,7 +80,7 @@ export default function PasswordInput({
 						onMouseLeave={() => setHover(false)}
 					>
 						<VisibilityIcon
-							name={formattedName}
+							name={`${formattedName}`}
 							showPassword={showPassword}
 							hover={hover}
 							isConfirmPassword={isConfirmPassword}

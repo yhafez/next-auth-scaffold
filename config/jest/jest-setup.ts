@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom'
+import { toHaveNoViolations } from 'jest-axe'
 
 window.matchMedia = query => ({
 	matches: false,
@@ -15,3 +16,27 @@ Object.defineProperty(URL, 'createObjectURL', {
 	writable: true,
 	value: jest.fn(),
 })
+
+// Mock next router and router.push
+jest.mock('next/router', () => ({
+	useRouter() {
+		return {
+			route: '/',
+			pathname: '',
+			query: '',
+			asPath: '',
+			push: jest.fn(),
+		}
+	},
+}))
+
+// Mock notistack
+jest.mock('notistack', () => ({
+	useSnackbar() {
+		return {
+			enqueueSnackbar: jest.fn(),
+		}
+	},
+}))
+
+expect.extend(toHaveNoViolations)

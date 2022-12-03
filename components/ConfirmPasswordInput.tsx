@@ -23,7 +23,7 @@ export default function ConfirmPasswordInput({
 		<>
 			<PasswordInput name={name} value={password} setValue={setPassword} disabled={disabled} />
 			<PasswordInput
-				name={`${name}-confirm`}
+				name={`${name}`}
 				value={confirmPassword}
 				setValue={setConfirmPassword}
 				disabled={disabled}

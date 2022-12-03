@@ -20,7 +20,7 @@ const customJestConfig = {
 		'/out/',
 		'/config/',
 		'/.vscode/',
-		'/tests/',
+		'/tests_playwright/',
 	],
 }
 

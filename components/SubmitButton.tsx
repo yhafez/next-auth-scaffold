@@ -36,7 +36,7 @@ export default function SubmitButton({
 		>
 			{loading ? (
 				<CircularProgress
-					id={`${name}-submit-button-progress`}
+					id={`${name}-submit-button-loading`}
 					size={20}
 					sx={{
 						color: darkMode ? 'white' : 'black',

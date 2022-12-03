@@ -10,7 +10,7 @@ export interface ActionButtonsContainerProps {
 export default function ActionButtonsContainer({ name, children }: ActionButtonsContainerProps) {
 	return (
 		<Box
-			id={`${name}-buttons`}
+			id={`${name}-buttons-container`}
 			sx={{
 				display: 'flex',
 				flexDirection: 'row',

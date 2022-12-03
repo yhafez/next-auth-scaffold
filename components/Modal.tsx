@@ -28,7 +28,7 @@ const Modal = ({ children, name, loading = false, error = '', small = false }: M
 
 	return (
 		<Box
-			id={`${formattedName}-container`}
+			id={`${formattedName}-modal-container`}
 			sx={{
 				display: 'flex',
 				flexDirection: 'column',
@@ -55,7 +55,7 @@ const Modal = ({ children, name, loading = false, error = '', small = false }: M
 			}}
 		>
 			<Typography
-				id={`${formattedName}-title`}
+				id={`${formattedName}-modal-title`}
 				variant="h3"
 				sx={{
 					color: darkMode ? '#fff' : '#000',
@@ -66,7 +66,7 @@ const Modal = ({ children, name, loading = false, error = '', small = false }: M
 				{toTitleCase(name)}
 			</Typography>
 			<Box
-				id={`${formattedName}-notification-container`}
+				id={`${formattedName}-modal-notification-container`}
 				sx={{
 					display: 'flex',
 					flexDirection: 'column',
@@ -80,21 +80,25 @@ const Modal = ({ children, name, loading = false, error = '', small = false }: M
 			>
 				{loading ? (
 					<CircularProgress
-						id={`${formattedName}-loading`}
+						id={`${formattedName}-modal-loading`}
 						sx={{
 							color: darkMode ? 'primary.light' : 'primary.dark',
 						}}
 					/>
 				) : (
 					error && (
-						<Typography id={`${formattedName}-error`} variant="h6" sx={{ color: 'error.dark' }}>
+						<Typography
+							id={`${formattedName}-modal-error`}
+							variant="h6"
+							sx={{ color: 'error.dark' }}
+						>
 							{error}
 						</Typography>
 					)
 				)}
 			</Box>
 			<Box
-				id={`${formattedName}-form`}
+				id={`${formattedName}-modal-form`}
 				sx={{
 					display: 'flex',
 					flexDirection: 'column',

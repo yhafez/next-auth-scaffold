@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ActionButtonsContainer Should match snapshot 1`] = `
+<div>
+  <div
+    class="MuiBox-root css-1vug9qk"
+    id="test-buttons-container"
+  >
+    <div>
+      Test
+    </div>
+  </div>
+</div>
+`;
