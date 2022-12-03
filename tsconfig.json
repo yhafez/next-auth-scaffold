@@ -25,7 +25,8 @@
 		"jest.config.ts",
 		"api/index.js",
 		"config/jest/__mocks__/book.js",
-		"next.config.ts"
+		"next.config.ts",
+		"playwright.config.js"
 	],
 	"exclude": ["node_modules", "config"],
 	"references": [

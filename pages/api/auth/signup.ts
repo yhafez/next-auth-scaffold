@@ -1,22 +1,17 @@
 // Path: ./pages/api/auth/signup.ts
 
 import { NextApiRequest, NextApiResponse } from 'next'
-import { getSession } from 'next-auth/react'
 import prisma from '../../../lib/prisma'
 import crypto from 'crypto'
 import { sign } from 'jsonwebtoken'
 
 export default async function signup(req: NextApiRequest, res: NextApiResponse) {
-	const session = await getSession({ req })
-
-	if (session) {
-		res.json({
-			error: 'You are already signed in',
-		})
-	}
-
 	if (req.method === 'POST') {
 		const { email, password } = req.body
+
+		if (!email || !password) {
+			return res.status(400).json({ error: 'Missing email or password' })
+		}
 
 		try {
 			const user = await prisma.user.findUnique({
@@ -26,37 +21,45 @@ export default async function signup(req: NextApiRequest, res: NextApiResponse) 
 			})
 
 			if (user) {
-				res.json({
+				res.status(400).json({
 					error: 'User already exists',
 				})
 			} else {
 				const salt = crypto.randomBytes(16).toString('hex')
 				const hash = crypto.pbkdf2Sync(password, salt, 1000, 64, 'sha512').toString('hex')
 
-				const newUser = await prisma.user.create({
-					data: {
-						email: email,
-						password: hash,
-						salt: salt,
-					},
-				})
+				try {
+					const newUser = await prisma.user.create({
+						data: {
+							email: email,
+							password: hash,
+							salt: salt,
+						},
+					})
 
-				const token = sign({ id: newUser.id }, process.env.JWT_SECRET!, {
-					expiresIn: '1d',
-				})
+					const token = sign({ id: newUser.id }, process.env.JWT_SECRET!, {
+						expiresIn: '1d',
+					})
 
-				res.json({
-					token: token,
-					user: newUser,
-					success: 'User created',
-				})
+					res.status(201).json({
+						token: token,
+						user: newUser,
+						success: 'User created',
+					})
+				} catch (err) {
+					console.error('There was an error creating the user in the database', err)
+					res.status(500).json({
+						error: 'There was an error creating the user in the database',
+					})
+				}
 			}
 		} catch (error) {
-			console.error('There was an error creating the user', error)
-			res.json({
-				error: 'There was an error creating the user',
-				message: error.message,
+			console.error('There was an error checking if the user already exists in the database', error)
+			res.status(500).json({
+				error: 'There was an error checking if the user already exists in the database',
 			})
 		}
+	} else {
+		res.status(405).json({ error: 'Method not allowed' })
 	}
 }

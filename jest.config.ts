@@ -21,6 +21,7 @@ const customJestConfig = {
 		'/config/',
 		'/.vscode/',
 		'/tests_playwright/',
+		'/tests_mocha/',
 	],
 }
 

@@ -1,22 +1,17 @@
 // Path: ./pages/api/auth/resetPassword.ts
 
 import { NextApiRequest, NextApiResponse } from 'next'
-import { getSession } from 'next-auth/react'
 import prisma from '../../../lib/prisma'
 import crypto from 'crypto'
 import { sign } from 'jsonwebtoken'
 
 export default async function resetPassword(req: NextApiRequest, res: NextApiResponse) {
-	const session = await getSession({ req })
-
-	if (session) {
-		res.json({
-			error: 'You are already signed in',
-		})
-	}
-
 	if (req.method === 'POST') {
 		const { email, password } = req.body
+
+		if (!email || !password) {
+			return res.status(400).json({ error: 'Email and password are required' })
+		}
 
 		try {
 			const user = await prisma.user.findUnique({
@@ -26,7 +21,7 @@ export default async function resetPassword(req: NextApiRequest, res: NextApiRes
 			})
 
 			if (!user) {
-				res.json({
+				res.status(404).json({
 					error: 'User does not exist',
 				})
 			}
@@ -34,28 +29,34 @@ export default async function resetPassword(req: NextApiRequest, res: NextApiRes
 			const salt = crypto.randomBytes(16).toString('hex')
 			const hash = crypto.pbkdf2Sync(password, salt, 1000, 64, 'sha512').toString('hex')
 
-			await prisma.user.update({
-				where: {
-					email: email,
-				},
-				data: {
-					password: hash,
-					salt: salt,
-				},
-			})
+			try {
+				await prisma.user.update({
+					where: {
+						email: email,
+					},
+					data: {
+						password: hash,
+						salt: salt,
+					},
+				})
 
-			const newToken = sign({ email: user?.email }, process.env.JWT_SECRET!, { expiresIn: '1d' })
+				const newToken = sign({ email: user?.email }, process.env.JWT_SECRET!, { expiresIn: '1d' })
 
-			res.json({
-				token: newToken,
-				success: 'Password reset',
-			})
+				res.json({
+					token: newToken,
+					message: 'Password reset',
+				})
+			} catch (error) {
+				res.status(500).json({
+					error: "There was an error resetting the user's password" + error,
+				})
+			}
 		} catch (error) {
-			res.json({
-				error: error.message,
+			res.status(500).json({
+				error: 'There was an error finding the user in the database: ' + error,
 			})
 		}
 	} else {
-		res.json('Invalid request method')
+		res.status(405).json({ error: 'Method not allowed' })
 	}
 }

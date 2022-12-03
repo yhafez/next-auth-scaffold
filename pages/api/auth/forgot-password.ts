@@ -1,22 +1,17 @@
 // Path: ./pages/api/auth/forgotPassword.ts
 
 import { NextApiRequest, NextApiResponse } from 'next'
-import { getSession } from 'next-auth/react'
 import prisma from '../../../lib/prisma'
 import sgMail from '@sendgrid/mail'
 import { sign } from 'jsonwebtoken'
 
 export default async function forgotPassword(req: NextApiRequest, res: NextApiResponse) {
-	const session = await getSession({ req })
-
-	if (session) {
-		res.json({
-			error: 'You are already signed in',
-		})
-	}
-
 	if (req.method === 'POST') {
 		const { email } = req.body
+
+		if (!email) {
+			return res.status(400).json({ error: 'Email is required' })
+		}
 
 		const user = await prisma.user.findUnique({
 			where: {
@@ -25,7 +20,7 @@ export default async function forgotPassword(req: NextApiRequest, res: NextApiRe
 		})
 
 		if (!user) {
-			res.json({
+			res.status(404).json({
 				error: 'User does not exist',
 			})
 		}
@@ -78,9 +73,9 @@ Teach.ai
 			})
 
 		res.json({
-			success: 'Email sent',
+			message: 'Email sent',
 		})
 	} else {
-		res.json('Invalid request method')
+		res.status(405).json({ error: 'Method not allowed' })
 	}
 }

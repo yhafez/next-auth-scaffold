@@ -1,3 +1,4 @@
+// Path ./playwright.config.ts
 import type { PlaywrightTestConfig } from '@playwright/test'
 import { devices } from '@playwright/test'
 
@@ -11,7 +12,7 @@ import { devices } from '@playwright/test'
  * See https://playwright.dev/docs/test-configuration.
  */
 const config: PlaywrightTestConfig = {
-	testDir: './tests-examples',
+	testDir: './tests_playwright',
 	/* Maximum time one test can run for. */
 	timeout: 30 * 1000,
 	expect: {
@@ -51,47 +52,47 @@ const config: PlaywrightTestConfig = {
 			},
 		},
 
-		{
-			name: 'firefox',
-			use: {
-				...devices['Desktop Firefox'],
-			},
-		},
+		// {
+		// 	name: 'firefox',
+		// 	use: {
+		// 		...devices['Desktop Firefox'],
+		// 	},
+		// },
 
-		{
-			name: 'webkit',
-			use: {
-				...devices['Desktop Safari'],
-			},
-		},
+		// {
+		// 	name: 'webkit',
+		// 	use: {
+		// 		...devices['Desktop Safari'],
+		// 	},
+		// },
 
 		/* Test against mobile viewports. */
-		{
-			name: 'Mobile Chrome',
-			use: {
-				...devices['Pixel 5'],
-			},
-		},
-		{
-			name: 'Mobile Safari',
-			use: {
-				...devices['iPhone 12'],
-			},
-		},
+		// {
+		// 	name: 'Mobile Chrome',
+		// 	use: {
+		// 		...devices['Pixel 5'],
+		// 	},
+		// },
+		// {
+		// 	name: 'Mobile Safari',
+		// 	use: {
+		// 		...devices['iPhone 12'],
+		// 	},
+		// },
 
 		/* Test against branded browsers. */
-		{
-			name: 'Microsoft Edge',
-			use: {
-				channel: 'msedge',
-			},
-		},
-		{
-			name: 'Google Chrome',
-			use: {
-				channel: 'chrome',
-			},
-		},
+		// {
+		// 	name: 'Microsoft Edge',
+		// 	use: {
+		// 		channel: 'msedge',
+		// 	},
+		// },
+		// {
+		// 	name: 'Google Chrome',
+		// 	use: {
+		// 		channel: 'chrome',
+		// 	},
+		// },
 	],
 
 	/* Folder for test artifacts such as screenshots, videos, traces, etc. */
