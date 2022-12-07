@@ -1,11 +1,5 @@
 // Path: ./jest/__tests__/utils/helpers.test.tsx
-import {
-	toTitleCase,
-	clampAndRound,
-	darkenColor,
-	lightenColor,
-	getContrast,
-} from '../../utils/helpers'
+import { toTitleCase, clampAndRound, getContrastColor } from '../../utils/helpers'
 
 describe('toTitleCase', () => {
 	it('Should return a string with the first letter capitalized', () => {
@@ -56,133 +50,69 @@ describe('clampAndRound', () => {
 	})
 })
 
-describe('darkenColor', () => {
-	it('Should return a string with the color darkened', () => {
-		const test = darkenColor('#000000', 100)
-		expect(test).toBe('rgb(0, 0, 0)')
-	})
-
-	it('Should return a string with the color darkened', () => {
-		const test = darkenColor('#FFFFFF', 100)
-		expect(test).toBe('rgb(155, 155, 155)')
-	})
-
-	it('Should return a string with the color darkened', () => {
-		const test = darkenColor('#000000', 300)
-		expect(test).toBe('rgb(0, 0, 0)')
-	})
-
-	it('Should return a string with the color darkened', () => {
-		const test = darkenColor('#FFFFFF', 300)
-		expect(test).toBe('rgb(0, 0, 0)')
-	})
-
-	it('Should return a string with the color darkened', () => {
-		const test = darkenColor('#000000', -100)
-		expect(test).toBe('rgb(100, 100, 100)')
-	})
-
-	it('Should return a string with the color darkened', () => {
-		const test = darkenColor('#FFFFFF', -100)
-		expect(test).toBe('rgb(255, 255, 255)')
-	})
-})
-
-describe('lightenColor', () => {
-	it('Should return a string with the color lightened', () => {
-		const test = lightenColor('#000000', 100)
-		expect(test).toBe('rgb(100, 100, 100)')
-	})
-
-	it('Should return a string with the color lightened', () => {
-		const test = lightenColor('#FFFFFF', 100)
-		expect(test).toBe('rgb(255, 255, 255)')
-	})
-
-	it('Should return a string with the color lightened', () => {
-		const test = lightenColor('#000000', 300)
-		expect(test).toBe('rgb(255, 255, 255)')
-	})
-
-	it('Should return a string with the color lightened', () => {
-		const test = lightenColor('#FFFFFF', 300)
-		expect(test).toBe('rgb(255, 255, 255)')
-	})
-
-	it('Should return a string with the color lightened', () => {
-		const test = lightenColor('#000000', -100)
-		expect(test).toBe('rgb(0, 0, 0)')
-	})
-
-	it('Should return a string with the color lightened', () => {
-		const test = lightenColor('#FFFFFF', -100)
-		expect(test).toBe('rgb(155, 155, 155)')
-	})
-})
-
 describe('getContrast', () => {
 	it('Should return either black or white depending on the contrast', () => {
-		const test = getContrast('#000000')
+		const test = getContrastColor('#000000')
 		expect(test).toBe('white')
 	})
 
 	it('Should return either black or white depending on the contrast', () => {
-		const test = getContrast('#FFFFFF')
+		const test = getContrastColor('#FFFFFF')
 		expect(test).toBe('black')
 	})
 
 	it('Should return either black or white depending on the contrast', () => {
-		const test = getContrast('#FF0000')
+		const test = getContrastColor('#FF0000')
+		expect(test).toBe('black')
+	})
+
+	it('Should return either black or white depending on the contrast', () => {
+		const test = getContrastColor('#00FF00')
+		expect(test).toBe('black')
+	})
+
+	it('Should return either black or white depending on the contrast', () => {
+		const test = getContrastColor('#0000FF')
 		expect(test).toBe('white')
 	})
 
 	it('Should return either black or white depending on the contrast', () => {
-		const test = getContrast('#00FF00')
+		const test = getContrastColor('#FFFF00')
 		expect(test).toBe('black')
 	})
 
 	it('Should return either black or white depending on the contrast', () => {
-		const test = getContrast('#0000FF')
+		const test = getContrastColor('#00FFFF')
+		expect(test).toBe('black')
+	})
+
+	it('Should return either black or white depending on the contrast', () => {
+		const test = getContrastColor('#FF00FF')
+		expect(test).toBe('black')
+	})
+
+	it('Should return either black or white depending on the contrast', () => {
+		const test = getContrastColor('#808080')
+		expect(test).toBe('black')
+	})
+
+	it('Should return either black or white depending on the contrast', () => {
+		const test = getContrastColor('#C0C0C0')
+		expect(test).toBe('black')
+	})
+
+	it('Should return either black or white depending on the contrast', () => {
+		const test = getContrastColor('#808000')
+		expect(test).toBe('black')
+	})
+
+	it('Should return either black or white depending on the contrast', () => {
+		const test = getContrastColor('#008080')
 		expect(test).toBe('white')
 	})
 
 	it('Should return either black or white depending on the contrast', () => {
-		const test = getContrast('#FFFF00')
-		expect(test).toBe('black')
-	})
-
-	it('Should return either black or white depending on the contrast', () => {
-		const test = getContrast('#00FFFF')
-		expect(test).toBe('black')
-	})
-
-	it('Should return either black or white depending on the contrast', () => {
-		const test = getContrast('#FF00FF')
-		expect(test).toBe('white')
-	})
-
-	it('Should return either black or white depending on the contrast', () => {
-		const test = getContrast('#808080')
-		expect(test).toBe('black')
-	})
-
-	it('Should return either black or white depending on the contrast', () => {
-		const test = getContrast('#C0C0C0')
-		expect(test).toBe('black')
-	})
-
-	it('Should return either black or white depending on the contrast', () => {
-		const test = getContrast('#808000')
-		expect(test).toBe('white')
-	})
-
-	it('Should return either black or white depending on the contrast', () => {
-		const test = getContrast('#008080')
-		expect(test).toBe('white')
-	})
-
-	it('Should return either black or white depending on the contrast', () => {
-		const test = getContrast('#800080')
+		const test = getContrastColor('#800080')
 		expect(test).toBe('white')
 	})
 })

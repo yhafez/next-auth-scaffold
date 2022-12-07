@@ -1,3 +1,5 @@
+import { getContrast } from 'color2k'
+
 const minorWords = [
 	'a',
 	'an',
@@ -44,57 +46,8 @@ export const clampAndRound = (value: number, min: number, max: number) => {
 	return Math.round(Math.max(min, Math.min(max, value)))
 }
 
-export const darkenColor = (color: string, amount: number) => {
-	const cc = color.charAt(0) === '#' ? color.substring(1, 7) : color
-	const c = parseInt(cc, 16)
-	const r = (c >> 16) - amount
-	const b = ((c >> 8) & 0x00ff) - amount
-	const g = (c & 0x0000ff) - amount
-	const alpha = color.length === 9 ? color.substring(7, 9) : ''
-
-	// Clamp values
-	const rr = clampAndRound(r, 0, 255)
-	const bb = clampAndRound(b, 0, 255)
-	const gg = clampAndRound(g, 0, 255)
-
-	if (alpha) {
-		return `rgba(${rr}, ${bb}, ${gg}, ${alpha})`
-	} else {
-		return `rgb(${rr}, ${bb}, ${gg})`
-	}
-}
-
-export const lightenColor = (color: string, amount: number) => {
-	const cc = color.charAt(0) === '#' ? color.substring(1, 7) : color
-	const c = parseInt(cc, 16)
-	const r = (c >> 16) + amount
-	const b = ((c >> 8) & 0x00ff) + amount
-	const g = (c & 0x0000ff) + amount
-	const alpha = color.length === 9 ? color.substring(7, 9) : ''
-
-	// Clamp values
-	const rr = clampAndRound(r, 0, 255)
-	const bb = clampAndRound(b, 0, 255)
-	const gg = clampAndRound(g, 0, 255)
-
-	if (alpha) {
-		return `rgba(${rr}, ${bb}, ${gg}, ${alpha})`
-	} else {
-		return `rgb(${rr}, ${bb}, ${gg})`
-	}
-}
-
-export const getContrast = (color: string) => {
-	const cc = color.charAt(0) === '#' ? color.substring(1, 7) : color
-	const c = parseInt(cc, 16)
-	const r = c >> 16
-	const b = (c >> 8) & 0x00ff
-	const g = c & 0x0000ff
-
-	const yiq = (r * 299 + b * 587 + g * 114) / 1000
-
-	return yiq >= 128 ? 'black' : 'white'
-}
+export const getContrastColor = (color: string) =>
+	getContrast(color, '#FFF') > 4.5 ? 'white' : 'black'
 
 export const getSecondaryColor = (color: string) => {
 	const cc = color.charAt(0) === '#' ? color.substring(1, 7) : color

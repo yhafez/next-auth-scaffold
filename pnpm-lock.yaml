@@ -51,6 +51,7 @@ specifiers:
   chai: ^4.3.7
   chai-datetime: ^1.8.0
   chai-http: ^4.3.0
+  color2k: ^2.0.0
   css-loader: ^6.7.2
   eslint: ^8.29.0
   eslint-config-next: 13.0.6
@@ -95,6 +96,7 @@ dependencies:
   '@sendgrid/mail': 7.7.0
   bcrypt: 5.1.0
   bcryptjs: 2.4.3
+  color2k: 2.0.0
   googleapis: 109.0.1
   jsonwebtoken: 8.5.1
   next: 13.0.6_672uxklweod7ene3nqtsh262ca
@@ -6532,6 +6534,10 @@ packages:
   /color-support/1.1.3:
     resolution: {integrity: sha512-qiBjkpbMLO/HL68y+lh4q0/O1MZFj2RX6X/KmMa3+gJD3z+WwI1ZzDHysvqHGS3mP6mznPckpXmw1nI9cJjyRg==}
     hasBin: true
+
+  /color2k/2.0.0:
+    resolution: {integrity: sha512-DWX9eXOC4fbJNiuvdH4QSHvvfLWyFo9TuFp7V9OzdsbPAdrWAuYc8qvFP2bIQ/LKh4LrAVnJ6vhiQYPvAHdtTg==}
+    dev: false
 
   /colorette/1.4.0:
     resolution: {integrity: sha512-Y2oEozpomLn7Q3HFP7dpww7AtMJplbM9lGZP6RDfHqmbeRjiwRg4n6VM6j4KLmRke85uWEI7JqF17f3pqdRA0g==}

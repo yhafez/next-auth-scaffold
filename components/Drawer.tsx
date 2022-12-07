@@ -32,9 +32,10 @@ import {
 } from '@mui/icons-material'
 import { useTheme } from '@mui/material/styles'
 import { useSnackbar } from 'notistack'
+import { darken, lighten } from 'color2k'
 
 import { useBoundStore } from '../store'
-import { lightenColor, darkenColor, getContrast, getSecondaryColor } from '../utils/helpers'
+import { getContrastColor, getSecondaryColor } from '../utils/helpers'
 
 import ColorPickerPopover from './ColorPickerPopover'
 import DrawerButton from './DrawerButton'
@@ -68,15 +69,15 @@ export default function DrawerComponent({
 				...customPalette,
 				primary: {
 					main: newMainColor,
-					light: lightenColor(newMainColor, 25),
-					dark: darkenColor(newMainColor, 25),
-					contrastText: getContrast(newMainColor),
+					light: lighten(newMainColor, 0.1),
+					dark: darken(newMainColor, 0.1),
+					contrastText: getContrastColor(newMainColor),
 				},
 				secondary: {
 					main: getSecondaryColor(newMainColor),
-					light: lightenColor(getSecondaryColor(newMainColor), 25),
-					dark: darkenColor(getSecondaryColor(newMainColor), 25),
-					contrastText: getContrast(getSecondaryColor(newMainColor)),
+					light: lighten(getSecondaryColor(newMainColor), 0.1),
+					dark: darken(getSecondaryColor(newMainColor), 0.1),
+					contrastText: getContrastColor(getSecondaryColor(newMainColor)),
 				},
 			})
 		}
@@ -150,15 +151,15 @@ export default function DrawerComponent({
 			...customPalette,
 			primary: {
 				main: color,
-				light: lightenColor(color, 25),
-				dark: darkenColor(color, 25),
-				contrastText: getContrast(color),
+				light: lighten(color, 0.1),
+				dark: darken(color, 0.1),
+				contrastText: getContrastColor(color),
 			},
 			secondary: {
 				main: getSecondaryColor(color),
-				light: lightenColor(getSecondaryColor(color), 25),
-				dark: darkenColor(getSecondaryColor(color), 25),
-				contrastText: getContrast(getSecondaryColor(color)),
+				light: lighten(getSecondaryColor(color), 0.1),
+				dark: darken(getSecondaryColor(color), 0.1),
+				contrastText: getContrastColor(getSecondaryColor(color)),
 			},
 		})
 

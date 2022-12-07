@@ -34,6 +34,9 @@ export default function SubmitButton({
 				width: width ? width : '40%',
 				height: 35,
 				backgroundColor: darkMode ? 'primary.light' : 'primary.dark',
+				'&:hover': {
+					backgroundColor: 'primary.main',
+				},
 			}}
 		>
 			{loading ? (

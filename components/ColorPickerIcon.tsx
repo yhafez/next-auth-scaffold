@@ -2,11 +2,12 @@
 import { useState, MouseEvent, useCallback, useEffect } from 'react'
 import { Box, IconButton, Typography } from '@mui/material'
 import ColorLensIcon from '@mui/icons-material/ColorLens'
+import { darken, lighten } from 'color2k'
 
 import ColorPickerPopover from './ColorPickerPopover'
 
 import { useBoundStore } from '../store'
-import { lightenColor, darkenColor, getContrast, getSecondaryColor } from '../utils/helpers'
+import { getContrastColor, getSecondaryColor } from '../utils/helpers'
 
 export interface ColorPickerProps {
 	name: string
@@ -32,23 +33,23 @@ export default function ColorPickerIcon({ name }: ColorPickerProps) {
 		(color: string) => {
 			localStorage.setItem('customPalette', color)
 
-			const contrast = getContrast(color)
+			const contrast = getContrastColor(color)
 			const secondaryColor = getSecondaryColor(color)
-			const secondaryColorContrast = getContrast(secondaryColor)
+			const secondaryColorContrast = getContrastColor(secondaryColor)
 
 			const newPalette = {
 				...customPalette,
 				primary: {
 					main: color,
 					contrastText: contrast,
-					light: lightenColor(color, 25),
-					dark: darkenColor(color, 25),
+					light: lighten(color, 0.2),
+					dark: darken(color, 0.2),
 				},
 				secondary: {
 					main: secondaryColor,
 					contrastText: secondaryColorContrast,
-					light: lightenColor(secondaryColor, 25),
-					dark: darkenColor(secondaryColor, 25),
+					light: lighten(secondaryColor, 0.2),
+					dark: darken(secondaryColor, 0.2),
 				},
 			}
 

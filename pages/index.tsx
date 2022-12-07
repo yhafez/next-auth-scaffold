@@ -112,9 +112,9 @@ export default function Dashboard() {
 								sx={{
 									mb: 2,
 									color: 'primary.contrastText',
-									backgroundColor: 'primary.main',
+									backgroundColor: darkMode ? 'primary.light' : 'primary.dark',
 									'&:hover': {
-										backgroundColor: darkMode ? 'primary.dark' : 'primary.light',
+										backgroundColor: 'primary.main',
 									},
 								}}
 							>
