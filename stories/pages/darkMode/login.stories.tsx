@@ -21,14 +21,9 @@ const initialProps: LoginProps = {
 }
 
 const Template: Story<LoginProps> = args => {
-	const {
-		settings: { darkMode },
-		setSettings,
-	} = useBoundStore()
+	const { darkMode, setDarkMode } = useBoundStore()
 
-	if (!darkMode) {
-		setSettings({ darkMode: true })
-	}
+	if (!darkMode) setDarkMode(true)
 
 	return <Login {...args} />
 }

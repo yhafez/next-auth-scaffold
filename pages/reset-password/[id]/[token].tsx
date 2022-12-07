@@ -1,12 +1,13 @@
 // Path: ./pages/reset-password/[...token].tsx
-import { useState, useEffect } from 'react'
+import { useState, useEffect, KeyboardEvent } from 'react'
 import { useSnackbar } from 'notistack'
 import { useRouter } from 'next/router'
 
-import Modal from '../../components/Modal'
-import ConfirmPasswordInput from '../../components/ConfirmPasswordInput'
-import SubmitButton from '../../components/SubmitButton'
-import ActionButtonsContainer from '../../components/ActionButtonsContainer'
+import Modal from '../../../components/Modal'
+import ConfirmPasswordInput from '../../../components/ConfirmPasswordInput'
+import SubmitButton from '../../../components/SubmitButton'
+import ActionButtonsContainer from '../../../components/ActionButtonsContainer'
+import { Layout } from '../../../components/Layout'
 
 export interface ResetPasswordProps {
 	errorInit?: string
@@ -17,19 +18,18 @@ export interface ResetPasswordProps {
 }
 
 export default function ResetPassword({
-	errorInit = '',
+	errorInit = 'Unauthenticated',
 	passwordInit = '',
 	confirmPasswordInit = '',
 	loadingInit = false,
-	emailInit = '',
 }: ResetPasswordProps) {
 	const router = useRouter()
+	const { id, token } = router.query
 
 	const { enqueueSnackbar } = useSnackbar()
 
 	const [password, setPassword] = useState(passwordInit)
 	const [confirmPassword, setConfirmPassword] = useState(confirmPasswordInit)
-	const [email, setEmail] = useState(emailInit)
 	const [error, setError] = useState(errorInit)
 	const [loading, setLoading] = useState(loadingInit)
 
@@ -54,7 +54,7 @@ export default function ResetPassword({
 				},
 				body: JSON.stringify({
 					password,
-					email,
+					id,
 				}),
 			})
 				.then(res => res.json())
@@ -75,13 +75,14 @@ export default function ResetPassword({
 	}
 
 	useEffect(() => {
-		if (router.query.token) {
+		if (token) {
 			fetch('/api/auth/verify-token', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify({
+					id: router.query.id,
 					token: router.query.token,
 				}),
 			})
@@ -90,38 +91,41 @@ export default function ResetPassword({
 					if (data.error) {
 						setError(data.error)
 					} else {
-						setEmail(data.email)
+						setError('')
 					}
 				})
 		}
-	}, [router.query])
+	}, [token])
 
-	useEffect(() => {
-		if (!email) {
-			setError('Invalid token')
+	const handleEnter = (e: KeyboardEvent) => {
+		if (e.key === 'Enter') {
+			handleResetPassword()
 		}
-	}, [email])
+	}
 
 	return (
-		<Modal name="reset password" loading={loading} error={error} small>
-			<ConfirmPasswordInput
-				name="reset-password"
-				password={password}
-				setPassword={setPassword}
-				confirmPassword={confirmPassword}
-				setConfirmPassword={setConfirmPassword}
-				disabled={loading || !email}
-			/>
-
-			<ActionButtonsContainer name="reset-password">
-				<SubmitButton
+		<Layout name="reset-password">
+			<Modal name="reset password" loading={loading} error={error}>
+				<ConfirmPasswordInput
 					name="reset-password"
-					handleSubmit={handleResetPassword}
-					loading={loading}
-					label="reset"
-					disabled={!email}
+					password={password}
+					setPassword={setPassword}
+					confirmPassword={confirmPassword}
+					setConfirmPassword={setConfirmPassword}
+					disabled={loading || error !== ''}
+					handleEnter={handleEnter}
 				/>
-			</ActionButtonsContainer>
-		</Modal>
+
+				<ActionButtonsContainer name="reset-password">
+					<SubmitButton
+						name="reset-password"
+						handleSubmit={handleResetPassword}
+						loading={loading}
+						label="reset"
+						disabled={loading || error !== ''}
+					/>
+				</ActionButtonsContainer>
+			</Modal>
+		</Layout>
 	)
 }

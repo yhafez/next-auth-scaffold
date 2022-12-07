@@ -6,7 +6,7 @@ export interface User {
 	id: string
 	email: string
 	name: string
-	role: string
+	image: string
 }
 
 export interface UserState {
@@ -20,7 +20,7 @@ export const createUserSlice: StateCreator<UserState & SettingsState, [], [], Us
 		id: '',
 		email: '',
 		name: '',
-		role: '',
+		image: '',
 	},
 	setUser: (user: User) => set({ user }),
 	logout: () => set({ user: null }),

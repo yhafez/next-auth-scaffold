@@ -14,9 +14,7 @@ export interface ModalProps {
 }
 
 const Modal = ({ children, name, loading = false, error = '', small = false }: ModalProps) => {
-	const {
-		settings: { darkMode },
-	} = useBoundStore()
+	const { darkMode } = useBoundStore()
 
 	const formattedName = name.replace(/ /g, '-').toLowerCase()
 
@@ -35,31 +33,31 @@ const Modal = ({ children, name, loading = false, error = '', small = false }: M
 				justifyContent: 'center',
 				alignItems: 'center',
 				textAlign: 'center',
-				margin: 'auto',
 				gap: 2,
 				backgroundColor: darkMode ? 'primary.dark' : 'primary.light',
 				padding: 2,
 				borderRadius: 2,
 				boxShadow: 1,
+				offset: 1,
+				transform: 'translateY(-15%)',
 				width: isMobile
 					? '100%'
 					: isTablet
-						? '50%'
-						: isDesktop
-							? '30%'
-							: isLargeDesktop
-								? '20%'
-								: isExtraLargeDesktop
-									? '10%'
-									: '100%',
-				offset: 1,
+					? '50%'
+					: isDesktop
+					? '30%'
+					: isLargeDesktop
+					? '20%'
+					: isExtraLargeDesktop
+					? '10%'
+					: '100%',
 			}}
 		>
 			<Typography
 				id={`${formattedName}-modal-title`}
 				variant="h2"
 				sx={{
-					color: darkMode ? '#fff' : '#000',
+					color: 'primary.contrastText',
 					fontWeight: 600,
 					marginBottom: 1,
 				}}
@@ -75,7 +73,7 @@ const Modal = ({ children, name, loading = false, error = '', small = false }: M
 					alignItems: 'center',
 					gap: 1,
 					width: '100%',
-					height: small ? '15px' : '30px',
+					height: small ? '15px' : '50px',
 					marginBottom: 1,
 				}}
 			>
@@ -93,7 +91,7 @@ const Modal = ({ children, name, loading = false, error = '', small = false }: M
 							variant="body1"
 							sx={{
 								color: 'error.dark',
-								fontSize: '1.5rem'
+								fontSize: '1.5rem',
 							}}
 						>
 							{error}
@@ -114,7 +112,7 @@ const Modal = ({ children, name, loading = false, error = '', small = false }: M
 			>
 				{children}
 			</Box>
-		</Box >
+		</Box>
 	)
 }
 

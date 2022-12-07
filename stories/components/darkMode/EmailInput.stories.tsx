@@ -22,14 +22,9 @@ export default {
 const Template: Story<EmailInputProps> = args => {
 	const [email, setEmail] = useState('')
 
-	const {
-		settings: { darkMode },
-		setSettings,
-	} = useBoundStore()
+	const { darkMode, setDarkMode } = useBoundStore()
 
-	if (!darkMode) {
-		setSettings({ darkMode: true })
-	}
+	if (!darkMode) setDarkMode(true)
 
 	return <EmailInput {...args} value={email} setValue={setEmail} />
 }

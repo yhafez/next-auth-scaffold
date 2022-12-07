@@ -5,14 +5,14 @@ import { ThemeProvider } from '@mui/material/styles'
 
 import Signup from '../../../pages/signup'
 import { Layout } from '../../../components/Layout'
-import { theme } from '../../../theme'
+import { defaultTheme } from '../../../theme'
 
 describe('Signup', () => {
 	it('Should have no accessibility violations', async () => {
 		act(() =>
 			render(
-				<ThemeProvider theme={theme}>
-					<Layout>
+				<ThemeProvider theme={defaultTheme}>
+					<Layout name="test">
 						<main>
 							<Signup />
 						</main>
@@ -21,13 +21,13 @@ describe('Signup', () => {
 			),
 		)
 
-		await waitFor(async () => expect(await axe(screen.getByRole('main'))).toHaveNoViolations())
+		waitFor(async () => expect(await axe(screen.getByRole('main'))).toHaveNoViolations())
 	})
 
 	it('Should match snapshot', () => {
 		const { container } = render(
-			<ThemeProvider theme={theme}>
-				<Layout>
+			<ThemeProvider theme={defaultTheme}>
+				<Layout name="test">
 					<Signup />
 				</Layout>
 			</ThemeProvider>,

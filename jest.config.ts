@@ -13,7 +13,6 @@ const customJestConfig = {
 			'<rootDir>/config/jest/__mocks__/svg.js',
 	},
 	setupFilesAfterEnv: ['<rootDir>/config/jest/jest-setup.ts'],
-	// Exclude playwright tests
 	testPathIgnorePatterns: [
 		'/node_modules/',
 		'/.next/',

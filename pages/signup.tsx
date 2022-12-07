@@ -1,6 +1,6 @@
 // Path: pages/login.tsx
 
-import { useState } from 'react'
+import { useState, KeyboardEvent } from 'react'
 import { useRouter } from 'next/router'
 
 import Modal from '../components/Modal'
@@ -9,6 +9,7 @@ import EmailInput from '../components/EmailInput'
 import ConfirmPasswordInput from '../components/ConfirmPasswordInput'
 import ActionButtonsContainer from '../components/ActionButtonsContainer'
 import ModalNote from '../components/ModalNote'
+import { Layout } from '../components/Layout'
 
 export interface SignupProps {
 	errorInit?: string
@@ -64,28 +65,43 @@ export default function Signup({
 		}
 	}
 
-	return (
-		<Modal name="signup" loading={loading} error={error}>
-			<EmailInput name="signup" value={email} setValue={setEmail} disabled={loading} />
-			<ConfirmPasswordInput
-				name="signup"
-				password={password}
-				setPassword={setPassword}
-				confirmPassword={confirmPassword}
-				setConfirmPassword={setConfirmPassword}
-				disabled={loading}
-			/>
-			<ActionButtonsContainer name="signup">
-				<SubmitButton
-					name="signup"
-					label="Sign Up"
-					loading={loading}
-					handleSubmit={handleSignup}
-					width="100%"
-				/>
-			</ActionButtonsContainer>
+	const handleEnter = (e: KeyboardEvent) => {
+		if (e.key === 'Enter') {
+			handleSignup()
+		}
+	}
 
-			<ModalNote name="signup-login" label="Already have an account? Log in" href="/login" />
-		</Modal>
+	return (
+		<Layout name="signup">
+			<Modal name="signup" loading={loading} error={error}>
+				<EmailInput
+					name="signup"
+					value={email}
+					setValue={setEmail}
+					disabled={loading}
+					handleEnter={handleEnter}
+				/>
+				<ConfirmPasswordInput
+					name="signup"
+					password={password}
+					setPassword={setPassword}
+					confirmPassword={confirmPassword}
+					setConfirmPassword={setConfirmPassword}
+					disabled={loading}
+					handleEnter={handleEnter}
+				/>
+				<ActionButtonsContainer name="signup">
+					<SubmitButton
+						name="signup"
+						label="Sign Up"
+						loading={loading}
+						handleSubmit={handleSignup}
+						width="100%"
+					/>
+				</ActionButtonsContainer>
+
+				<ModalNote name="signup-login" label="Already have an account? Log in" href="/login" />
+			</Modal>
+		</Layout>
 	)
 }

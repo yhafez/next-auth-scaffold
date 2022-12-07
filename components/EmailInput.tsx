@@ -1,6 +1,6 @@
 // Path: ./components/EmailInput.tsx
 
-import { Dispatch, SetStateAction } from 'react'
+import { Dispatch, SetStateAction, KeyboardEvent } from 'react'
 import { TextField } from '@mui/material'
 
 import { useBoundStore } from '../store'
@@ -10,12 +10,17 @@ export interface EmailInputProps {
 	value: string
 	setValue: Dispatch<SetStateAction<string>>
 	disabled?: boolean
+	handleEnter?: (e: KeyboardEvent) => void
 }
 
-export default function EmailInput({ name, value, setValue, disabled = false }: EmailInputProps) {
-	const {
-		settings: { darkMode },
-	} = useBoundStore()
+export default function EmailInput({
+	name,
+	value,
+	setValue,
+	handleEnter,
+	disabled = false,
+}: EmailInputProps) {
+	const { darkMode } = useBoundStore()
 
 	return (
 		<TextField
@@ -25,21 +30,22 @@ export default function EmailInput({ name, value, setValue, disabled = false }: 
 			type="email"
 			value={value}
 			onChange={e => setValue(e.target.value)}
+			onKeyDown={handleEnter}
 			disabled={disabled}
 			sx={{
-				color: darkMode ? 'white' : 'black',
+				color: 'primary.contrastText',
 				width: '80%',
 				marginBottom: 1,
 				'& .MuiOutlinedInput-root': {
 					'& fieldset': {
-						borderColor: darkMode ? 'white' : 'black',
+						borderColor: 'primary.contrastText',
 					},
 				},
 				'& .MuiFormLabel-root': {
-					color: darkMode ? 'white' : 'black',
+					color: 'primary.contrastText',
 				},
 				'& .MuiInputBase-input': {
-					color: darkMode ? 'white' : 'black',
+					color: 'primary.contrastText',
 					'&:disabled': {
 						color: 'lightGray',
 						WebkitTextFillColor: darkMode ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.7)',

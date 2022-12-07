@@ -10,14 +10,9 @@ export default {
 } as Meta
 
 const Template: Story<ModalProps> = args => {
-	const {
-		settings: { darkMode },
-		setSettings,
-	} = useBoundStore()
+	const { darkMode, setDarkMode } = useBoundStore()
 
-	if (!darkMode) {
-		setSettings({ darkMode: true })
-	}
+	if (!darkMode) setDarkMode(true)
 
 	return <Modal {...args} />
 }

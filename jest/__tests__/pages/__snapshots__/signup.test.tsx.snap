@@ -2,294 +2,442 @@
 
 exports[`Signup Should match snapshot 1`] = `
 <div>
-  <header
-    aria-label="appbar"
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionStatic css-4zpzyw-MuiPaper-root-MuiAppBar-root"
-    id="layout-appbar"
+  <div
+    class="MuiBox-root css-86scw3"
+    id="test-layout-container"
   >
-    <div
-      aria-label="toolbar"
-      class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-1vjsjks-MuiToolbar-root"
-      id="layout-toolbar"
+    <header
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-7t767d-MuiPaper-root-MuiAppBar-root"
+      id="test-app-bar"
     >
       <div
-        aria-label="title"
-        class="MuiTypography-root MuiTypography-h1 css-nlhhuf-MuiTypography-root"
-        id="layout-title"
+        class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-1mg7r1q-MuiToolbar-root"
+        id="test-toolbar"
       >
-        Next Auth Scaffold
-      </div>
-      <div
-        class="MuiBox-root css-1ccwaxr"
-        id="dark-mode-switch-container"
-      >
-        <span
-          class="MuiSwitch-root MuiSwitch-sizeMedium css-1gsffcl-MuiSwitch-root"
+        <h1
+          class="MuiTypography-root MuiTypography-h6 MuiTypography-noWrap css-11cao63-MuiTypography-root"
+          id="test-toolbar-title"
         >
-          <span
-            class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-1flv81n-MuiButtonBase-root-MuiSwitch-switchBase"
+          Next Auth Scaffold
+        </h1>
+        <div
+          class="MuiBox-root css-16hvbxa"
+          id="test-toolbar-color-picker-container"
+        >
+          <button
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-xfhdu6-MuiButtonBase-root-MuiIconButton-root"
+            id="test-toolbar-color-picker-button"
+            tabindex="0"
+            type="button"
           >
-            <input
-              aria-label="dark mode switch"
-              class="PrivateSwitchBase-input MuiSwitch-input css-1m9pwf3"
-              id="dark-mode-switch"
-              type="checkbox"
-            />
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-              data-testid="WbSunnyIcon"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1kqeszy-MuiSvgIcon-root"
+              data-testid="ColorLensIcon"
               focusable="false"
-              id="dark-mode-icon"
+              id="test-toolbar-color-picker-icon"
               viewBox="0 0 24 24"
             >
               <path
-                d="m6.76 4.84-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7 1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91 1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z"
+                d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"
               />
             </svg>
-            <span
-              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            />
-          </span>
-          <span
-            class="MuiSwitch-track css-1yjjitx-MuiSwitch-track"
-          />
-        </span>
-        <p
-          aria-label="dark mode switch label"
-          class="MuiTypography-root MuiTypography-body2 css-ait9v5-MuiTypography-root"
-          id="dark-mode-switch-label"
-        >
-          Light Mode
-        </p>
-      </div>
-    </div>
-  </header>
-  <div
-    class="MuiBox-root css-1jajoos"
-    id="signup-modal-container"
-  >
-    <h2
-      class="MuiTypography-root MuiTypography-h2 css-1gvm0k9-MuiTypography-root"
-      id="signup-modal-title"
-    >
-      Signup
-    </h2>
-    <div
-      class="MuiBox-root css-q1d2cl"
-      id="signup-modal-notification-container"
-    />
-    <div
-      class="MuiBox-root css-1knh30t"
-      id="signup-modal-form"
-    >
-      <div
-        class="MuiFormControl-root MuiTextField-root css-100z0o4-MuiFormControl-root-MuiTextField-root"
-      >
-        <label
-          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-1xt11zg-MuiFormLabel-root-MuiInputLabel-root"
-          data-shrink="false"
-          for="signup-email-input"
-          id="signup-email-input-label"
-        >
-          Email
-        </label>
-        <div
-          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl css-138sa16-MuiInputBase-root-MuiOutlinedInput-root"
-        >
-          <input
-            aria-invalid="false"
-            class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
-            id="signup-email-input"
-            type="email"
-            value=""
-          />
-          <fieldset
-            aria-hidden="true"
-            class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
-          >
-            <legend
-              class="css-yjsfm1"
+            <p
+              class="MuiTypography-root MuiTypography-body2 css-1uk2y8w-MuiTypography-root"
+              id="test-toolbar-color-picker-label"
             >
-              <span>
-                Email
-              </span>
-            </legend>
-          </fieldset>
-        </div>
-      </div>
-      <div
-        class="MuiFormControl-root MuiTextField-root css-100z0o4-MuiFormControl-root-MuiTextField-root"
-      >
-        <label
-          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-1xt11zg-MuiFormLabel-root-MuiInputLabel-root"
-          data-shrink="false"
-          for="signup-password-input"
-          id="signup-password-input-label"
-        >
-          Password
-        </label>
-        <div
-          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedEnd css-76tznm-MuiInputBase-root-MuiOutlinedInput-root"
-        >
-          <input
-            aria-invalid="false"
-            class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd css-nxo287-MuiInputBase-input-MuiOutlinedInput-input"
-            id="signup-password-input"
-            type="password"
-            value=""
-          />
-          <button
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-dpfpu4-MuiButtonBase-root-MuiIconButton-root"
-            id="signup-password-input-show-hide-button"
-            tabindex="0"
-            type="button"
-          >
-            <div
-              class="MuiBox-root css-u6v8er"
-              id="signup-password-box"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1hjwbh6-MuiSvgIcon-root"
-                data-testid="VisibilityOffIcon"
-                focusable="false"
-                id="signup-password-input-visibility-off-icon"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78 3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z"
-                />
-              </svg>
-              <span
-                class="MuiTypography-root MuiTypography-caption css-jqzuwo-MuiTypography-root"
-                id="signup-password-input-show-password-text"
-              >
-                Show
-              </span>
-            </div>
+              Theme Color
+            </p>
             <span
               class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </button>
-          <fieldset
-            aria-hidden="true"
-            class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
-          >
-            <legend
-              class="css-yjsfm1"
-            >
-              <span>
-                Password
-              </span>
-            </legend>
-          </fieldset>
         </div>
-      </div>
-      <div
-        class="MuiFormControl-root MuiTextField-root css-100z0o4-MuiFormControl-root-MuiTextField-root"
-      >
-        <label
-          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-1xt11zg-MuiFormLabel-root-MuiInputLabel-root"
-          data-shrink="false"
-          for="signup-confirm-password-input"
-          id="signup-confirm-password-input-label"
-        >
-          Confirm Password
-        </label>
         <div
-          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedEnd css-76tznm-MuiInputBase-root-MuiOutlinedInput-root"
+          class="MuiBox-root css-4o796m"
+          id="test-toolbar-dark-mode-switch-container"
         >
-          <input
-            aria-invalid="false"
-            class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd css-nxo287-MuiInputBase-input-MuiOutlinedInput-input"
-            id="signup-confirm-password-input"
-            type="password"
-            value=""
-          />
-          <button
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-dpfpu4-MuiButtonBase-root-MuiIconButton-root"
-            id="signup-confirm-password-input-show-hide-button"
-            tabindex="0"
-            type="button"
+          <label
+            for="test-toolbar-dark-mode-switch"
           >
-            <div
-              class="MuiBox-root css-u6v8er"
-              id="signup-confirm-password-box"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1hjwbh6-MuiSvgIcon-root"
-                data-testid="VisibilityOffIcon"
-                focusable="false"
-                id="signup-confirm-password-input-visibility-off-icon"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78 3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z"
-                />
-              </svg>
-              <span
-                class="MuiTypography-root MuiTypography-caption css-jqzuwo-MuiTypography-root"
-                id="signup-confirm-password-input-show-password-text"
-              >
-                Show
-              </span>
-            </div>
             <span
-              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            />
-          </button>
-          <fieldset
-            aria-hidden="true"
-            class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
-          >
-            <legend
-              class="css-yjsfm1"
+              class="MuiSwitch-root MuiSwitch-sizeMedium css-1dkykqx-MuiSwitch-root"
             >
-              <span>
-                Confirm Password
+              <span
+                class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-28iv8m-MuiButtonBase-root-MuiSwitch-switchBase"
+              >
+                <input
+                  class="PrivateSwitchBase-input MuiSwitch-input css-1m9pwf3"
+                  id="test-toolbar-dark-mode-switch"
+                  type="checkbox"
+                />
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="WbSunnyIcon"
+                  focusable="false"
+                  id="test-toolbar-dark-mode-switch-icon-unchecked"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="m6.76 4.84-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7 1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91 1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z"
+                  />
+                </svg>
+                <span
+                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                />
               </span>
-            </legend>
-          </fieldset>
+              <span
+                class="MuiSwitch-track css-1yjjitx-MuiSwitch-track"
+              />
+            </span>
+            <p
+              class="MuiTypography-root MuiTypography-body2 css-1e5jxpk-MuiTypography-root"
+              id="test-toolbar-dark-mode-switch-label-light"
+            >
+              Light Mode
+            </p>
+          </label>
         </div>
       </div>
+    </header>
+    <div
+      class="MuiBox-root css-eohel5"
+      id="test-layout-content"
+    >
       <div
-        class="MuiBox-root css-1vug9qk"
-        id="signup-buttons-container"
+        class="MuiBox-root css-86scw3"
+        id="signup-layout-container"
       >
-        <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-5n4tye-MuiButtonBase-root-MuiButton-root"
-          id="signup-submit-button"
-          tabindex="0"
-          type="button"
+        <header
+          class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-7t767d-MuiPaper-root-MuiAppBar-root"
+          id="signup-app-bar"
         >
-          <span
-            class="MuiTypography-root MuiTypography-button css-7bal64-MuiTypography-root"
-            id="signup-submit-button-text"
+          <div
+            class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-1mg7r1q-MuiToolbar-root"
+            id="signup-toolbar"
           >
-            Sign Up
-          </span>
-          <span
-            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-          />
-        </button>
-      </div>
-      <div
-        class="MuiBox-root css-1tsywmc"
-        id="signup-login-modal-note-container"
-      >
-        <a
-          href="/login"
-          id="signup-login-modal-note-link"
+            <h1
+              class="MuiTypography-root MuiTypography-h6 MuiTypography-noWrap css-11cao63-MuiTypography-root"
+              id="signup-toolbar-title"
+            >
+              Next Auth Scaffold
+            </h1>
+            <div
+              class="MuiBox-root css-16hvbxa"
+              id="signup-toolbar-color-picker-container"
+            >
+              <button
+                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-xfhdu6-MuiButtonBase-root-MuiIconButton-root"
+                id="signup-toolbar-color-picker-button"
+                tabindex="0"
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1kqeszy-MuiSvgIcon-root"
+                  data-testid="ColorLensIcon"
+                  focusable="false"
+                  id="signup-toolbar-color-picker-icon"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"
+                  />
+                </svg>
+                <p
+                  class="MuiTypography-root MuiTypography-body2 css-1uk2y8w-MuiTypography-root"
+                  id="signup-toolbar-color-picker-label"
+                >
+                  Theme Color
+                </p>
+                <span
+                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                />
+              </button>
+            </div>
+            <div
+              class="MuiBox-root css-4o796m"
+              id="signup-toolbar-dark-mode-switch-container"
+            >
+              <label
+                for="signup-toolbar-dark-mode-switch"
+              >
+                <span
+                  class="MuiSwitch-root MuiSwitch-sizeMedium css-1dkykqx-MuiSwitch-root"
+                >
+                  <span
+                    class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-28iv8m-MuiButtonBase-root-MuiSwitch-switchBase"
+                  >
+                    <input
+                      class="PrivateSwitchBase-input MuiSwitch-input css-1m9pwf3"
+                      id="signup-toolbar-dark-mode-switch"
+                      type="checkbox"
+                    />
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                      data-testid="WbSunnyIcon"
+                      focusable="false"
+                      id="signup-toolbar-dark-mode-switch-icon-unchecked"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="m6.76 4.84-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7 1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91 1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z"
+                      />
+                    </svg>
+                    <span
+                      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                    />
+                  </span>
+                  <span
+                    class="MuiSwitch-track css-1yjjitx-MuiSwitch-track"
+                  />
+                </span>
+                <p
+                  class="MuiTypography-root MuiTypography-body2 css-1e5jxpk-MuiTypography-root"
+                  id="signup-toolbar-dark-mode-switch-label-light"
+                >
+                  Light Mode
+                </p>
+              </label>
+            </div>
+          </div>
+        </header>
+        <div
+          class="MuiBox-root css-eohel5"
+          id="signup-layout-content"
         >
-          <p
-            class="MuiTypography-root MuiTypography-body1 css-xer42j-MuiTypography-root"
-            id="signup-login-modal-note-link-text"
+          <div
+            class="MuiBox-root css-i0f2c6"
+            id="signup-modal-container"
           >
-            Already have an account? Log in
-          </p>
-        </a>
+            <h2
+              class="MuiTypography-root MuiTypography-h2 css-1r2xr24-MuiTypography-root"
+              id="signup-modal-title"
+            >
+              Signup
+            </h2>
+            <div
+              class="MuiBox-root css-53hblm"
+              id="signup-modal-notification-container"
+            />
+            <div
+              class="MuiBox-root css-xo10vp"
+              id="signup-modal-form"
+            >
+              <div
+                class="MuiFormControl-root MuiTextField-root css-qyglcw-MuiFormControl-root-MuiTextField-root"
+              >
+                <label
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-7yavjh-MuiFormLabel-root-MuiInputLabel-root"
+                  data-shrink="false"
+                  for="signup-email-input"
+                  id="signup-email-input-label"
+                >
+                  Email
+                </label>
+                <div
+                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl css-8r7mze-MuiInputBase-root-MuiOutlinedInput-root"
+                >
+                  <input
+                    aria-invalid="false"
+                    class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                    id="signup-email-input"
+                    type="email"
+                    value=""
+                  />
+                  <fieldset
+                    aria-hidden="true"
+                    class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+                  >
+                    <legend
+                      class="css-yjsfm1"
+                    >
+                      <span>
+                        Email
+                      </span>
+                    </legend>
+                  </fieldset>
+                </div>
+              </div>
+              <div
+                class="MuiFormControl-root MuiTextField-root css-qyglcw-MuiFormControl-root-MuiTextField-root"
+              >
+                <label
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-7yavjh-MuiFormLabel-root-MuiInputLabel-root"
+                  data-shrink="false"
+                  for="signup-password-input"
+                  id="signup-password-input-label"
+                >
+                  Password
+                </label>
+                <div
+                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedEnd css-7kjzy7-MuiInputBase-root-MuiOutlinedInput-root"
+                >
+                  <input
+                    aria-invalid="false"
+                    class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd css-nxo287-MuiInputBase-input-MuiOutlinedInput-input"
+                    id="signup-password-input"
+                    type="password"
+                    value=""
+                  />
+                  <button
+                    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-dpfpu4-MuiButtonBase-root-MuiIconButton-root"
+                    id="signup-password-input-show-hide-button"
+                    tabindex="0"
+                    type="button"
+                  >
+                    <div
+                      class="MuiBox-root css-u6v8er"
+                      id="signup-password-box"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1hjwbh6-MuiSvgIcon-root"
+                        data-testid="VisibilityOffIcon"
+                        focusable="false"
+                        id="signup-password-input-visibility-off-icon"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78 3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z"
+                        />
+                      </svg>
+                      <span
+                        class="MuiTypography-root MuiTypography-caption css-5oi5yi-MuiTypography-root"
+                        id="signup-password-input-show-password-text"
+                      >
+                        Show
+                      </span>
+                    </div>
+                    <span
+                      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                    />
+                  </button>
+                  <fieldset
+                    aria-hidden="true"
+                    class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+                  >
+                    <legend
+                      class="css-yjsfm1"
+                    >
+                      <span>
+                        Password
+                      </span>
+                    </legend>
+                  </fieldset>
+                </div>
+              </div>
+              <div
+                class="MuiFormControl-root MuiTextField-root css-qyglcw-MuiFormControl-root-MuiTextField-root"
+              >
+                <label
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-7yavjh-MuiFormLabel-root-MuiInputLabel-root"
+                  data-shrink="false"
+                  for="signup-confirm-password-input"
+                  id="signup-confirm-password-input-label"
+                >
+                  Confirm Password
+                </label>
+                <div
+                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedEnd css-7kjzy7-MuiInputBase-root-MuiOutlinedInput-root"
+                >
+                  <input
+                    aria-invalid="false"
+                    class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd css-nxo287-MuiInputBase-input-MuiOutlinedInput-input"
+                    id="signup-confirm-password-input"
+                    type="password"
+                    value=""
+                  />
+                  <button
+                    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-dpfpu4-MuiButtonBase-root-MuiIconButton-root"
+                    id="signup-confirm-password-input-show-hide-button"
+                    tabindex="0"
+                    type="button"
+                  >
+                    <div
+                      class="MuiBox-root css-u6v8er"
+                      id="signup-confirm-password-box"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1hjwbh6-MuiSvgIcon-root"
+                        data-testid="VisibilityOffIcon"
+                        focusable="false"
+                        id="signup-confirm-password-input-visibility-off-icon"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78 3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z"
+                        />
+                      </svg>
+                      <span
+                        class="MuiTypography-root MuiTypography-caption css-5oi5yi-MuiTypography-root"
+                        id="signup-confirm-password-input-show-password-text"
+                      >
+                        Show
+                      </span>
+                    </div>
+                    <span
+                      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                    />
+                  </button>
+                  <fieldset
+                    aria-hidden="true"
+                    class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+                  >
+                    <legend
+                      class="css-yjsfm1"
+                    >
+                      <span>
+                        Confirm Password
+                      </span>
+                    </legend>
+                  </fieldset>
+                </div>
+              </div>
+              <div
+                class="MuiBox-root css-ueupuo"
+                id="signup-buttons-container"
+              >
+                <button
+                  class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-bjrf84-MuiButtonBase-root-MuiButton-root"
+                  id="signup-submit-button"
+                  tabindex="0"
+                  type="button"
+                >
+                  <span
+                    class="MuiTypography-root MuiTypography-button css-15bj6dl-MuiTypography-root"
+                    id="signup-submit-button-text"
+                  >
+                    Sign Up
+                  </span>
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+              </div>
+              <div
+                class="MuiBox-root css-1h5af1d"
+                id="signup-login-modal-note-container"
+              >
+                <a
+                  href="/login"
+                  id="signup-login-modal-note-link"
+                  style="text-decoration: none;"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1 css-osji1d-MuiTypography-root"
+                    id="signup-login-modal-note-link-text"
+                  >
+                    Already have an account? Log in
+                  </p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

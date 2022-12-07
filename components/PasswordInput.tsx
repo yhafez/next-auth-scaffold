@@ -1,6 +1,6 @@
 // Path: ./components/PasswordInput.tsx
 
-import { useState, Dispatch, SetStateAction } from 'react'
+import { useState, Dispatch, SetStateAction, KeyboardEvent } from 'react'
 import { IconButton, TextField } from '@mui/material'
 
 import VisibilityIcon from './VisibilityIcon'
@@ -13,6 +13,7 @@ export interface PasswordInputProps {
 	setValue: Dispatch<SetStateAction<string>>
 	disabled: boolean
 	isConfirmPassword?: boolean
+	handleEnter?: (e: KeyboardEvent) => void
 }
 
 export default function PasswordInput({
@@ -20,13 +21,12 @@ export default function PasswordInput({
 	value,
 	setValue,
 	disabled,
+	handleEnter,
 	isConfirmPassword = false,
 }: PasswordInputProps) {
 	const formattedName = name.replace(/ /g, '-').toLowerCase()
 
-	const {
-		settings: { darkMode },
-	} = useBoundStore()
+	const { darkMode } = useBoundStore()
 
 	const [showPassword, setShowPassword] = useState(false)
 	const [hover, setHover] = useState(false)
@@ -39,21 +39,22 @@ export default function PasswordInput({
 			type={showPassword ? 'text' : 'password'}
 			value={value}
 			onChange={e => setValue(e.target.value)}
+			onKeyDown={handleEnter}
 			disabled={disabled}
 			sx={{
-				color: darkMode ? 'white' : 'black',
+				color: 'primary.contrastText',
 				width: '80%',
 				marginBottom: 1,
 				'& .MuiOutlinedInput-root': {
 					'& fieldset': {
-						borderColor: darkMode ? 'white' : 'black',
+						borderColor: 'primary.contrastText',
 					},
 				},
 				'& .MuiFormLabel-root': {
-					color: darkMode ? 'white' : 'black',
+					color: 'primary.contrastText',
 				},
 				'& .MuiInputBase-input': {
-					color: darkMode ? 'white' : 'black',
+					color: 'primary.contrastText',
 					'&:disabled': {
 						color: 'lightGray',
 						WebkitTextFillColor: darkMode ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.7)',

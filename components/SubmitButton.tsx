@@ -1,5 +1,6 @@
 // Path: ./components/SubmitButton.tsx
 import { Button, CircularProgress, Typography } from '@mui/material'
+import { text } from 'stream/consumers'
 
 import { useBoundStore } from '../store'
 
@@ -18,11 +19,9 @@ export default function SubmitButton({
 	loading,
 	handleSubmit,
 	width,
-	disabled
+	disabled,
 }: SubmitButtonProps) {
-	const {
-		settings: { darkMode },
-	} = useBoundStore()
+	const { darkMode } = useBoundStore()
 
 	return (
 		<Button
@@ -31,9 +30,10 @@ export default function SubmitButton({
 			onClick={handleSubmit}
 			disabled={disabled ? true : loading}
 			sx={{
-				color: darkMode ? 'white' : 'black',
+				color: 'primary.contrastText',
 				width: width ? width : '40%',
 				height: 35,
+				backgroundColor: darkMode ? 'primary.light' : 'primary.dark',
 			}}
 		>
 			{loading ? (
@@ -41,7 +41,7 @@ export default function SubmitButton({
 					id={`${name}-submit-button-loading`}
 					size={20}
 					sx={{
-						color: darkMode ? 'white' : 'black',
+						color: 'primary.contrastText',
 					}}
 				/>
 			) : (
@@ -49,7 +49,7 @@ export default function SubmitButton({
 					id={`${name}-submit-button-text`}
 					variant="button"
 					sx={{
-						color: darkMode ? 'white' : 'black',
+						color: 'primary.contrastText',
 					}}
 				>
 					{label}

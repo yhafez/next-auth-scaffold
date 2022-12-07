@@ -12,7 +12,6 @@ describe('ActionButtonsContainer', () => {
 					<ActionButtonsContainer name="test">
 						<div>Test</div>
 					</ActionButtonsContainer>
-					,
 				</main>,
 			),
 		)
@@ -22,11 +21,9 @@ describe('ActionButtonsContainer', () => {
 
 	it('Should have children with text "Test"', async () => {
 		const { container } = render(
-			<main>
-				<ActionButtonsContainer name="test">
-					<div>Test</div>
-				</ActionButtonsContainer>
-			</main>,
+			<ActionButtonsContainer name="test">
+				<div>Test</div>
+			</ActionButtonsContainer>,
 		)
 		const test = await findByText(container, 'Test')
 		expect(test).toBeTruthy()
@@ -34,12 +31,9 @@ describe('ActionButtonsContainer', () => {
 
 	it('Should have a Box element with id "test-buttons-container"', async () => {
 		const { container } = render(
-			<main>
-				<ActionButtonsContainer name="test">
-					<div>Test</div>
-				</ActionButtonsContainer>
-				,
-			</main>,
+			<ActionButtonsContainer name="test">
+				<div>Test</div>
+			</ActionButtonsContainer>,
 		)
 		const test = container.querySelector('#test-buttons-container')
 		expect(test).toBeTruthy()
@@ -47,11 +41,9 @@ describe('ActionButtonsContainer', () => {
 
 	it('Should match snapshot', () => {
 		const { container } = render(
-			<main>
-				<ActionButtonsContainer name="test">
-					<div>Test</div>
-				</ActionButtonsContainer>
-			</main>,
+			<ActionButtonsContainer name="test">
+				<div>Test</div>
+			</ActionButtonsContainer>,
 		)
 		expect(container).toMatchSnapshot()
 	})

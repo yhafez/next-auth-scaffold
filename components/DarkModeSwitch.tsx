@@ -7,28 +7,25 @@ import Brightness2Icon from '@mui/icons-material/Brightness2'
 import { useBoundStore } from '../store'
 
 export interface DarkModeSwitchProps {
-	label?: string
+	name: string
 }
 
-export default function DarkModeSwitch() {
-	const {
-		settings: { darkMode },
-		setSettings,
-	} = useBoundStore()
+export default function DarkModeSwitch({ name }: DarkModeSwitchProps) {
+	const { darkMode, setDarkMode } = useBoundStore()
 
 	const handleDarkMode = () => {
-		localStorage.setItem('darkMode', !darkMode ? 'true' : 'false')
-		setSettings({ darkMode: !darkMode })
+		localStorage.setItem('darkMode', JSON.stringify(!darkMode))
+		setDarkMode(!darkMode)
 	}
 
 	useEffect(() => {
-		const darkMode = localStorage.getItem('darkMode') === 'true'
-		setSettings({ darkMode })
-	}, [setSettings])
+		const darkMode = JSON.parse(localStorage.getItem('darkMode') || 'false')
+		setDarkMode(darkMode)
+	}, [darkMode, setDarkMode])
 
 	return (
 		<Box
-			id="dark-mode-switch-container"
+			id={`${name}-dark-mode-switch-container`}
 			sx={{
 				display: 'flex',
 				flexDirection: 'column',
@@ -38,30 +35,33 @@ export default function DarkModeSwitch() {
 				mt: 1,
 			}}
 		>
-			<Switch
-				id="dark-mode-switch"
-				checked={darkMode}
-				onChange={handleDarkMode}
-				inputProps={{ 'aria-label': 'dark mode switch' }}
-				sx={{
-					'& .MuiSwitch-track': {
-						backgroundColor: darkMode ? 'primary.light' : 'primary.dark',
-					},
-					'& .MuiSwitch-thumb': {
-						backgroundColor: darkMode ? 'primary.dark' : 'primary.light',
-					},
-				}}
-				checkedIcon={<Brightness2Icon id="light-mode-icon" />}
-				icon={<WbSunnyIcon id="dark-mode-icon" />}
-			/>
-			<Typography
-				id="dark-mode-switch-label"
-				variant="body2"
-				sx={{ fontWeight: 500, mb: 1, color: darkMode ? 'white' : 'black' }}
-				aria-label="dark mode switch label"
-			>
-				{darkMode ? 'Dark Mode' : 'Light Mode'}
-			</Typography>
+			<label htmlFor={`${name}-dark-mode-switch`}>
+				<Switch
+					id={`${name}-dark-mode-switch`}
+					checked={darkMode}
+					onChange={handleDarkMode}
+					sx={{
+						'& .MuiSwitch-switchBase': {
+							color: 'primary.contrastText',
+							'&.Mui-checked': {
+								color: 'primary.contrastText',
+							},
+							'&.Mui-checked + .MuiSwitch-track': {
+								backgroundColor: 'secondary.main',
+							},
+						},
+					}}
+					checkedIcon={<Brightness2Icon id={`${name}-dark-mode-switch-icon-checked`} />}
+					icon={<WbSunnyIcon id={`${name}-dark-mode-switch-icon-unchecked`} />}
+				/>
+				<Typography
+					id={`${name}-dark-mode-switch-label-${darkMode ? 'dark' : 'light'}`}
+					variant="body2"
+					sx={{ fontWeight: 500, mb: 1, color: 'primary.contrastText' }}
+				>
+					{darkMode ? 'Dark Mode' : 'Light Mode'}
+				</Typography>
+			</label>
 		</Box>
 	)
 }

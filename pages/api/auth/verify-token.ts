@@ -6,44 +6,49 @@ import { verify } from 'jsonwebtoken'
 
 export default async function verifyToken(req: NextApiRequest, res: NextApiResponse) {
 	if (req.method === 'POST') {
-		const { token } = req.body
+		const { token, id } = req.body
 
-		if (!token) return res.status(400).json({ error: 'Token is required' })
+		if (!token || !id) {
+			res.status(400).json({
+				error: 'Missing token or id',
+			})
+			return
+		}
 
 		try {
-			const decoded = verify(token, process.env.JWT_SECRET!)
+			const user = await prisma.user.findUnique({
+				where: {
+					id: id,
+				},
+			})
 
-			if (!decoded) {
+			if (!user?.id || !user?.email) {
+				res.status(404).json({
+					error: 'User does not exist',
+				})
+				return
+			}
+
+			const secret = process.env.JWT_SECRET! + user?.password + user?.salt
+
+			try {
+				const payload = verify(token, secret)
+
+				if (payload) {
+					res.status(200).json({
+						message: 'Token is valid',
+						payload,
+					})
+				}
+			} catch (error) {
 				res.status(401).json({
 					error: 'Invalid token',
 				})
 			}
-			try {
-				const user = await prisma.user.findUnique({
-					where: {
-						email: decoded.email,
-					},
-				})
-
-				if (!user) {
-					res.status(404).json({
-						error: 'User does not exist',
-					})
-				}
-
-				res.json({
-					message: 'Token verified',
-					email: user?.email,
-					token: token,
-				})
-			} catch (error) {
-				res.status(500).json({
-					error: 'There was an error finding the user in the database' + error,
-				})
-			}
 		} catch (error) {
-			res.status(401).json({
-				error: 'Invalid token',
+			console.error('There was an error finding the user: ', error)
+			res.status(500).json({
+				error: 'There was an error finding the user: ' + error,
 			})
 		}
 	} else {

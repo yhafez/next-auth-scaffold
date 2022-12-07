@@ -21,14 +21,9 @@ const initialProps: SignupProps = {
 }
 
 const Template: Story<SignupProps> = args => {
-	const {
-		settings: { darkMode },
-		setSettings,
-	} = useBoundStore()
+	const { darkMode, setDarkMode } = useBoundStore()
 
-	if (!darkMode) {
-		setSettings({ darkMode: true })
-	}
+	if (!darkMode) setDarkMode(true)
 
 	return <Signup {...args} />
 }

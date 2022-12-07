@@ -7,16 +7,16 @@ import { sign } from 'jsonwebtoken'
 
 export default async function resetPassword(req: NextApiRequest, res: NextApiResponse) {
 	if (req.method === 'POST') {
-		const { email, password } = req.body
+		const { id, password } = req.body
 
-		if (!email || !password) {
-			return res.status(400).json({ error: 'Email and password are required' })
+		if (!id || !password) {
+			return res.status(400).json({ error: 'ID and password are required' })
 		}
 
 		try {
 			const user = await prisma.user.findUnique({
 				where: {
-					email: email,
+					id,
 				},
 			})
 
@@ -32,7 +32,7 @@ export default async function resetPassword(req: NextApiRequest, res: NextApiRes
 			try {
 				await prisma.user.update({
 					where: {
-						email: email,
+						id,
 					},
 					data: {
 						password: hash,

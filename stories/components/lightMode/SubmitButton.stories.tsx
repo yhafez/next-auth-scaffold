@@ -19,14 +19,9 @@ export default {
 } as Meta
 
 const Template: Story<SubmitButtonProps> = args => {
-	const {
-		settings: { darkMode },
-		setSettings,
-	} = useBoundStore()
+	const { darkMode, setDarkMode } = useBoundStore()
 
-	if (darkMode) {
-		setSettings({ darkMode: false })
-	}
+	if (darkMode) setDarkMode(false)
 
 	return <SubmitButton {...args} />
 }

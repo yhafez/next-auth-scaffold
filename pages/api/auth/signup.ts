@@ -7,7 +7,7 @@ import { sign } from 'jsonwebtoken'
 
 export default async function signup(req: NextApiRequest, res: NextApiResponse) {
 	if (req.method === 'POST') {
-		const { email, password } = req.body
+		const { email, password, name } = req.body
 
 		if (!email || !password) {
 			return res.status(400).json({ error: 'Missing email or password' })
@@ -34,6 +34,7 @@ export default async function signup(req: NextApiRequest, res: NextApiResponse) 
 							email: email,
 							password: hash,
 							salt: salt,
+							name: name || null,
 						},
 					})
 

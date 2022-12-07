@@ -1,5 +1,5 @@
 // Path: ./components/ConfirmPasswordInput.tsx
-import { Dispatch, SetStateAction } from 'react'
+import { Dispatch, SetStateAction, KeyboardEvent } from 'react'
 import PasswordInput from './PasswordInput'
 
 export interface ConfirmPasswordInputProps {
@@ -9,6 +9,7 @@ export interface ConfirmPasswordInputProps {
 	confirmPassword: string
 	setConfirmPassword: Dispatch<SetStateAction<string>>
 	disabled?: boolean
+	handleEnter?: (e: KeyboardEvent) => void
 }
 
 export default function ConfirmPasswordInput({
@@ -18,16 +19,24 @@ export default function ConfirmPasswordInput({
 	confirmPassword,
 	setConfirmPassword,
 	disabled = false,
+	handleEnter,
 }: ConfirmPasswordInputProps) {
 	return (
 		<>
-			<PasswordInput name={name} value={password} setValue={setPassword} disabled={disabled} />
+			<PasswordInput
+				name={name}
+				value={password}
+				setValue={setPassword}
+				disabled={disabled}
+				handleEnter={handleEnter}
+			/>
 			<PasswordInput
 				name={`${name}`}
 				value={confirmPassword}
 				setValue={setConfirmPassword}
 				disabled={disabled}
 				isConfirmPassword={true}
+				handleEnter={handleEnter}
 			/>
 		</>
 	)

@@ -21,14 +21,9 @@ export default {
 const Template: Story<PasswordInputProps> = args => {
 	const [value, setValue] = useState('')
 
-	const {
-		settings: { darkMode },
-		setSettings,
-	} = useBoundStore()
+	const { darkMode, setDarkMode } = useBoundStore()
 
-	if (!darkMode) {
-		setSettings({ darkMode: true })
-	}
+	if (!darkMode) setDarkMode(true)
 
 	return <PasswordInput {...args} value={value} setValue={setValue} />
 }

@@ -2,7 +2,7 @@
 
 import { Meta, Story } from '@storybook/react'
 
-import ResetPassword, { ResetPasswordProps } from '../../../pages/reset-password/[...token]'
+import ResetPassword, { ResetPasswordProps } from '../../../pages/reset-password/[id]/[token]'
 import { useBoundStore } from '../../../store'
 
 const ResetPasswordStory = {
@@ -21,14 +21,9 @@ const initialProps: ResetPasswordProps = {
 }
 
 const Template: Story<ResetPasswordProps> = args => {
-	const {
-		settings: { darkMode },
-		setSettings,
-	} = useBoundStore()
+	const { darkMode, setDarkMode } = useBoundStore()
 
-	if (!darkMode) {
-		setSettings({ darkMode: true })
-	}
+	if (!darkMode) setDarkMode(true)
 
 	return <ResetPassword {...args} />
 }

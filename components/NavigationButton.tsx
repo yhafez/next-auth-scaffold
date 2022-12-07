@@ -17,9 +17,7 @@ export default function NavigationButton({
 	handleClick,
 	width,
 }: NavigationButtonProps) {
-	const {
-		settings: { darkMode },
-	} = useBoundStore()
+	const { darkMode } = useBoundStore()
 
 	return (
 		<Button
@@ -27,9 +25,10 @@ export default function NavigationButton({
 			variant="contained"
 			onClick={handleClick}
 			sx={{
-				color: darkMode ? 'white' : 'black',
+				color: 'primary.contrastText',
 				width: width ? width : '40%',
 				height: 35,
+				backgroundColor: darkMode ? 'primary.light' : 'primary.dark',
 			}}
 		>
 			{label}

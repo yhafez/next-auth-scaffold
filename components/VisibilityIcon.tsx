@@ -18,9 +18,7 @@ export default function VisibilityIconComponent({
 	hover,
 	isConfirmPassword = false,
 }: VisibilityIconProps) {
-	const {
-		settings: { darkMode },
-	} = useBoundStore()
+	const { darkMode } = useBoundStore()
 
 	return (
 		<>
@@ -45,7 +43,7 @@ export default function VisibilityIconComponent({
 							id={`${name}${isConfirmPassword ? '-confirm' : ''}-password-input-hide-password-text`}
 							variant="caption"
 							sx={{
-								color: darkMode ? '#fff' : '#000',
+								color: 'primary.contrastText',
 								fontWeight: hover ? 'bold' : 'normal',
 							}}
 						>
@@ -66,7 +64,7 @@ export default function VisibilityIconComponent({
 							id={`${name}${isConfirmPassword ? '-confirm' : ''}-password-input-show-password-text`}
 							variant="caption"
 							sx={{
-								color: darkMode ? '#fff' : '#000',
+								color: 'primary.contrastText',
 								fontWeight: hover ? 'bold' : 'normal',
 							}}
 						>

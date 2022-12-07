@@ -2,21 +2,22 @@
 
 exports[`DarkModeSwitch Should match snapshot 1`] = `
 <div>
-  <main>
-    <div
-      class="MuiBox-root css-1ccwaxr"
-      id="dark-mode-switch-container"
+  <div
+    class="MuiBox-root css-1ccwaxr"
+    id="test-dark-mode-switch-container"
+  >
+    <label
+      for="test-dark-mode-switch"
     >
       <span
-        class="MuiSwitch-root MuiSwitch-sizeMedium css-1025bkq-MuiSwitch-root"
+        class="MuiSwitch-root MuiSwitch-sizeMedium css-1optcn7-MuiSwitch-root"
       >
         <span
           class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase"
         >
           <input
-            aria-label="dark mode switch"
             class="PrivateSwitchBase-input MuiSwitch-input css-1m9pwf3"
-            id="dark-mode-switch"
+            id="test-dark-mode-switch"
             type="checkbox"
           />
           <svg
@@ -24,7 +25,7 @@ exports[`DarkModeSwitch Should match snapshot 1`] = `
             class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
             data-testid="WbSunnyIcon"
             focusable="false"
-            id="dark-mode-icon"
+            id="test-dark-mode-switch-icon-unchecked"
             viewBox="0 0 24 24"
           >
             <path
@@ -40,13 +41,12 @@ exports[`DarkModeSwitch Should match snapshot 1`] = `
         />
       </span>
       <p
-        aria-label="dark mode switch label"
-        class="MuiTypography-root MuiTypography-body2 css-1s53ivs-MuiTypography-root"
-        id="dark-mode-switch-label"
+        class="MuiTypography-root MuiTypography-body2 css-bnbzgt-MuiTypography-root"
+        id="test-dark-mode-switch-label-light"
       >
         Light Mode
       </p>
-    </div>
-  </main>
+    </label>
+  </div>
 </div>
 `;

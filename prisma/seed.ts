@@ -2,41 +2,75 @@
 import crypto from 'crypto'
 import prisma from '../lib/prisma.js'
 
+export const salt = crypto.randomBytes(16).toString('hex')
+const hash = crypto.pbkdf2Sync('password', salt, 1000, 64, 'sha512').toString('hex')
+
+const user = {
+	email: 'yhafez3@gmail.com',
+	password: hash,
+	salt: salt,
+	name: 'Youssef Hafez',
+}
+
+const user1 = {
+	email: 'test@example.com',
+	password: hash,
+	salt: salt,
+	name: 'Test User',
+}
+
+const user2 = {
+	email: 'test1@example.com',
+	password: hash,
+	salt: salt,
+	name: 'Test User 1',
+}
+
 async function main() {
-	const hashedPassword = crypto
-		.createHash('sha256')
-		.update('password' + 'salt')
-		.digest('hex')
+	const salt = crypto.randomBytes(16).toString('hex')
 
-	// const user = await prisma.user.create({
-	// 	data: {
-	// 		name: 'admin',
-	// 		email: 'yhafez3@gmail.com',
-	// 		password: hashedPassword,
-	// 		salt: 'salt',
-	// 		role: 'ADMIN',
-	// 	},
-	// })
+	try {
+		const users = await prisma.user.findMany({
+			where: {
+				email: {
+					in: [user.email, user1.email, user2.email],
+				},
+			},
+		})
 
-	// const user1 = await prisma.user.create({
-	// 	data: {
-	// 		name: 'user',
-	// 		email: 'test@example.com',
-	// 		password: hashedPassword,
-	// 		salt: 'salt',
-	// 		role: 'USER',
-	// 	},
-	// })
+		if (users.length === 0) {
+			await prisma.user.createMany({
+				data: [user, user1, user2],
+			})
+		} else {
+			// Delete all users
+			await prisma.user.deleteMany({
+				where: {
+					email: {
+						in: [user.email, user1.email, user2.email],
+					},
+				},
+			})
 
-	// const user2 = await prisma.user.create({
-	// 	data: {
-	// 		name: 'user2',
-	// 		email: 'test1@example.com',
-	// 		password: hashedPassword,
-	// 		salt: 'salt',
-	// 		role: 'USER',
-	// 	},
-	// })
+			// Create all users
+			const users = await prisma.user.createMany({
+				data: [user, user1, user2],
+			})
+
+			// find new users
+			const newUsers = await prisma.user.findMany({
+				where: {
+					email: {
+						in: [user.email, user1.email, user2.email],
+					},
+				},
+			})
+
+			console.info('Users created: ', newUsers)
+		}
+	} catch (error) {
+		console.error('There was an error seeding the db: ', error)
+	}
 }
 
 main()

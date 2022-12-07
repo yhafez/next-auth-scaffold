@@ -12,14 +12,9 @@ const LayoutStory = {
 export default LayoutStory
 
 const Template: Story<LayoutProps> = args => {
-	const {
-		settings: { darkMode },
-		setSettings,
-	} = useBoundStore()
+	const { darkMode, setDarkMode } = useBoundStore()
 
-	if (darkMode) {
-		setSettings({ darkMode: false })
-	}
+	if (darkMode) setDarkMode(false)
 
 	return <Layout {...args} />
 }

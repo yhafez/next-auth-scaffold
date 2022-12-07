@@ -22,14 +22,9 @@ export default {
 const Template: Story<VisibilityIconProps> = args => {
 	const [value, setValue] = useState('')
 
-	const {
-		settings: { darkMode },
-		setSettings,
-	} = useBoundStore()
+	const { darkMode, setDarkMode } = useBoundStore()
 
-	if (!darkMode) {
-		setSettings({ darkMode: true })
-	}
+	if (!darkMode) setDarkMode(true)
 
 	return <VisibilityIcon {...args} value={value} setValue={setValue} />
 }

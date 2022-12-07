@@ -3,16 +3,16 @@ import { render, act, screen, waitFor } from '@testing-library/react'
 import { axe } from 'jest-axe'
 import { ThemeProvider } from '@mui/material/styles'
 
-import ResetPassword from '../../../pages/reset-password/[...token]'
+import ResetPassword from '../../../pages/reset-password/[id]/[token]'
 import { Layout } from '../../../components/Layout'
-import { theme } from '../../../theme'
+import { defaultTheme } from '../../../theme'
 
 describe('ResetPassword', () => {
 	it('Should have no accessibility violations', async () => {
 		act(() =>
 			render(
-				<ThemeProvider theme={theme}>
-					<Layout>
+				<ThemeProvider theme={defaultTheme}>
+					<Layout name="test">
 						<main>
 							<ResetPassword />
 						</main>
@@ -21,13 +21,13 @@ describe('ResetPassword', () => {
 			),
 		)
 
-		await waitFor(async () => expect(await axe(screen.getByRole('main'))).toHaveNoViolations())
+		waitFor(async () => expect(await axe(screen.getByRole('main'))).toHaveNoViolations())
 	})
 
 	it('Should match snapshot', () => {
 		const { container } = render(
-			<ThemeProvider theme={theme}>
-				<Layout>
+			<ThemeProvider theme={defaultTheme}>
+				<Layout name="test">
 					<ResetPassword />
 				</Layout>
 			</ThemeProvider>,

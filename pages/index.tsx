@@ -1,45 +1,129 @@
 // Path: pages/index.tsx
-// This is the home page of the app.
-
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useSnackbar } from 'notistack'
 import { useRouter } from 'next/router'
 
-import { Typography } from '@mui/material'
+import { Box, Button, CircularProgress, Typography, useMediaQuery } from '@mui/material'
 
-import NavigationButton from '../components/NavigationButton'
+import { Layout } from '../components/Layout'
+import Drawer from '../components/Drawer'
+
+import { useBoundStore } from '../store'
 
 export default function Dashboard() {
+	const { darkMode, theme, user } = useBoundStore()
+
 	const router = useRouter()
 
 	const { enqueueSnackbar } = useSnackbar()
 
-	useEffect(() => {
-		if (!localStorage.getItem('token')) {
-			router.push('/login')
-			enqueueSnackbar('You are not logged in', { variant: 'error', autoHideDuration: 3000 })
-		}
-	}, [enqueueSnackbar, router])
+	const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
-	const handleLogout = () => {
-		localStorage.removeItem('token')
-		router.push('/login')
-		enqueueSnackbar('You have been logged out', { variant: 'success', autoHideDuration: 2000 })
-	}
+	const [loading, setLoading] = useState(false)
+	const [open, setOpen] = useState(false)
+	const drawerWidth = 240
+
+	useEffect(() => {
+		setLoading(true)
+		if (!localStorage.getItem('token')) {
+			enqueueSnackbar('You are not logged in', { variant: 'error', autoHideDuration: 3000 })
+			router.push('/login')
+		}
+		setLoading(false)
+	}, [router, enqueueSnackbar])
 
 	return (
-		<>
-			<Typography
-				id="dashboard-title"
-				variant="h1"
-				sx={{
-					color: 'white',
+		<Box
+			id="dashboard"
+			sx={{
+				display: 'flex',
+				flexDirection: 'column',
+				height: '100%',
+				width: '100%',
+			}}
+		>
+			<Drawer
+				open={open}
+				handleDrawerClose={() => {
+					setOpen(false)
 				}}
-			>
-				Home
-			</Typography>
-
-			<NavigationButton name="logout" label="Logout" handleClick={handleLogout} width="20%" />
-		</>
+				drawerWidth={drawerWidth}
+			/>
+			<Layout drawerWidth={drawerWidth} name="dashboard">
+				{loading ? (
+					<Box
+						id="dashboard-loading"
+						sx={{
+							display: 'flex',
+							flexDirection: 'column',
+							justifyContent: 'center',
+							alignItems: 'center',
+							height: '100%',
+							width: '100%',
+						}}
+					>
+						<CircularProgress
+							id="dashboard-loading-spinner"
+							sx={{
+								color: 'primary.contrastText',
+							}}
+						/>
+					</Box>
+				) : (
+					<Box
+						id="dashboard-content"
+						sx={{
+							display: 'flex',
+							flexDirection: 'column',
+							justifyContent: 'center',
+							alignItems: 'center',
+							height: '100%',
+							width: '100%',
+						}}
+					>
+						<Typography
+							id="dashboard-content-title"
+							variant="h2"
+							sx={{
+								mb: 2,
+								color: darkMode ? 'white' : 'black',
+							}}
+						>
+							Dashboard
+						</Typography>
+						<Typography
+							id="dashboard-content-subtitle"
+							variant="body1"
+							sx={{
+								color: darkMode ? 'white' : 'black',
+								fontSize: '1.5rem',
+								mb: 12,
+							}}
+						>
+							Welcome {user?.name ?? 'User'}!
+						</Typography>
+						{isMobile && (
+							<Button
+								id="dashboard-content-button"
+								variant="contained"
+								onClick={() => {
+									setOpen(true)
+								}}
+								sx={{
+									mb: 2,
+									color: 'primary.contrastText',
+									backgroundColor: 'primary.main',
+									'&:hover': {
+										backgroundColor: darkMode ? 'primary.dark' : 'primary.light',
+									},
+								}}
+							>
+								Open Drawer
+							</Button>
+						)}
+					</Box>
+				)}
+			</Layout>
+		</Box>
 	)
 }

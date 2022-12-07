@@ -13,14 +13,9 @@ const DashboardStory = {
 export default DashboardStory
 
 export const Default = () => {
-	const {
-		settings: { darkMode },
-		setSettings,
-	} = useBoundStore()
+	const { darkMode, setDarkMode } = useBoundStore()
 
-	if (darkMode) {
-		setSettings({ darkMode: false })
-	}
+	if (darkMode) setDarkMode(false)
 
 	return <Dashboard />
 }

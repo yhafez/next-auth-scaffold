@@ -1,6 +1,7 @@
 // Path: pages/login.tsx
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, KeyboardEvent } from 'react'
+import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { useSnackbar } from 'notistack'
 import { useBoundStore } from '../store'
@@ -14,6 +15,7 @@ import EmailInput from '../components/EmailInput'
 import PasswordInput from '../components/PasswordInput'
 import ActionButtonsContainer from '../components/ActionButtonsContainer'
 import ModalNote from '../components/ModalNote'
+import { Layout } from '../components/Layout'
 
 export interface LoginProps {
 	errorInit?: string
@@ -30,12 +32,8 @@ export default function Login({
 	rememberInit = true,
 	loadingInit = false,
 }: LoginProps) {
-	const {
-		settings: { darkMode },
-	} = useBoundStore()
-
+	const { darkMode, customPalette, setUser } = useBoundStore()
 	const router = useRouter()
-
 	const { enqueueSnackbar } = useSnackbar()
 
 	const [email, setEmail] = useState(emailInit)
@@ -54,38 +52,57 @@ export default function Login({
 			return
 		}
 
-		if (remember) {
-			localStorage.setItem('email', email)
-		} else {
-			localStorage.removeItem('email')
-		}
+		if (remember) localStorage.setItem('email', email)
+		else localStorage.removeItem('email')
 
 		try {
-			const res = await fetch('/api/auth/login', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify({
-					email,
-					password,
-				}),
+			const res = await signIn('credentials', {
+				redirect: false,
+				username: email,
+				password,
 			})
 
-			const data = await res.json()
+			if (res?.error) {
+				setError(res.error)
+				setLoading(false)
+				return
+			}
 
-			if (data.error) {
-				setError(data.error)
-			} else {
-				localStorage.setItem('token', data.token)
+			try {
+				const res = await fetch('/api/auth/token', {
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+				})
+
+				const data = await res.json()
+
+				if (data.error) {
+					setError(data.error)
+					setLoading(false)
+					return
+				}
+
+				localStorage.setItem('token', JSON.stringify(data.token))
+				setUser(data.token.user.user)
+				enqueueSnackbar('Logged in successfully', { variant: 'success', autoHideDuration: 3000 })
+				setLoading(false)
 				router.push('/')
-				enqueueSnackbar('Logged in successfully', { variant: 'success', autoHideDuration: 2000 })
+			} catch (err) {
+				setError(`There was an error fetching the token: ${err}`)
+				setLoading(false)
+				return
 			}
 		} catch (err) {
-			setError(err.message)
+			setError(`There was an error signing in: ${err}`)
 			setLoading(false)
-		} finally {
-			setLoading(false)
+		}
+	}
+
+	const handleEnter = (e: KeyboardEvent) => {
+		if (e.key === 'Enter') {
+			handleLogin()
 		}
 	}
 
@@ -100,75 +117,89 @@ export default function Login({
 	}, [router])
 
 	return (
-		<Modal name="login" loading={loading} error={error}>
-			<EmailInput name="login" value={email} setValue={setEmail} disabled={loading} />
-
-			<PasswordInput name="login" value={password} setValue={setPassword} disabled={loading} />
-
-			<ActionButtonsContainer name="login">
-				<NavigationButton
-					name="login-signup"
-					label="Sign up"
-					handleClick={() => router.push('/signup')}
+		<Layout name="login">
+			<Modal name="login" loading={loading} error={error}>
+				<EmailInput
+					name="login"
+					value={email}
+					setValue={setEmail}
+					disabled={loading}
+					handleEnter={handleEnter}
 				/>
 
-				<SubmitButton name="login" label="Log in" loading={loading} handleSubmit={handleLogin} />
-			</ActionButtonsContainer>
-			<Box
-				id="login-forgot-password-container"
-				sx={{
-					display: 'flex',
-					flexDirection: 'row',
-					justifyContent: 'end',
-					alignItems: 'center',
-					gap: 1,
-				}}
-			>
-				<label
-					id="login-forgot-password-label"
-					htmlFor="remember-me-checkbox"
-					style={{
+				<PasswordInput
+					name="login"
+					value={password}
+					setValue={setPassword}
+					disabled={loading}
+					handleEnter={handleEnter}
+				/>
+
+				<ActionButtonsContainer name="login">
+					<NavigationButton
+						name="login-signup"
+						label="Sign up"
+						handleClick={() => router.push('/signup')}
+					/>
+
+					<SubmitButton name="login" label="Log in" loading={loading} handleSubmit={handleLogin} />
+				</ActionButtonsContainer>
+				<Box
+					id="login-forgot-password-container"
+					sx={{
 						display: 'flex',
 						flexDirection: 'row',
-						justifyContent: 'center',
+						justifyContent: 'end',
 						alignItems: 'center',
 						gap: 1,
-						color: darkMode ? 'white' : 'black',
-						cursor: 'pointer',
-						fontWeight: 600,
 					}}
 				>
-					Remember Me
-					<Checkbox
-						id="remember-me-checkbox"
-						checked={remember}
-						onChange={() => setRemember(remember => !remember)}
-						sx={{
-							color: darkMode ? 'white' : 'black',
-							'&.Mui-checked': {
-								color: darkMode ? 'primary.light' : 'primary.dark',
-							},
-
-							'&.MuiIconButton-colorPrimary:hover': {
-								backgroundColor: 'transparent',
-							},
-
-							'&.MuiIconButton-colorPrimary:active': {
-								backgroundColor: 'transparent',
-							},
-
-							'&.MuiIconButton-colorPrimary:focus': {
-								backgroundColor: 'transparent',
-							},
-
-							'&.MuiIconButton-colorPrimary.Mui-disabled': {
-								color: darkMode ? 'white' : 'black',
-							},
+					<label
+						id="login-forgot-password-label"
+						htmlFor="remember-me-checkbox"
+						style={{
+							display: 'flex',
+							flexDirection: 'row',
+							justifyContent: 'center',
+							alignItems: 'center',
+							gap: 1,
+							color: customPalette.primary.contrastText,
+							cursor: 'pointer',
+							fontWeight: 600,
 						}}
-					/>
-				</label>
-			</Box>
-			<ModalNote name="login-forgot-password" label="Forgot password?" href="/forgot-password" />
-		</Modal>
+					>
+						Remember Me
+						<Checkbox
+							id="remember-me-checkbox"
+							checked={remember}
+							onChange={() => setRemember(remember => !remember)}
+							sx={{
+								color: 'primary.contrastText',
+								'&.Mui-checked': {
+									color: darkMode ? 'primary.light' : 'primary.dark',
+								},
+
+								'&.MuiIconButton-colorPrimary:hover': {
+									backgroundColor: 'transparent',
+								},
+
+								'&.MuiIconButton-colorPrimary:active': {
+									backgroundColor: 'transparent',
+								},
+
+								'&.MuiIconButton-colorPrimary:focus': {
+									backgroundColor: 'transparent',
+								},
+
+								'&.MuiIconButton-colorPrimary.Mui-disabled': {
+									color: 'primary.contrastText',
+								},
+							}}
+						/>
+					</label>
+				</Box>
+				<ModalNote name="login-forgot-password" label="Forgot password?" href="/forgot-password" />
+			</Modal>
+		</Layout>
 	)
 }

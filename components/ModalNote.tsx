@@ -12,9 +12,7 @@ export interface ModalNoteProps {
 }
 
 export default function ModalNote({ name, label, href }: ModalNoteProps) {
-	const {
-		settings: { darkMode },
-	} = useBoundStore()
+	const { darkMode } = useBoundStore()
 
 	return (
 		<Box
@@ -27,12 +25,12 @@ export default function ModalNote({ name, label, href }: ModalNoteProps) {
 				gap: 2,
 			}}
 		>
-			<Link href={href} id={`${name}-modal-note-link`}>
+			<Link href={href} id={`${name}-modal-note-link`} style={{ textDecoration: 'none' }}>
 				<Typography
 					id={`${name}-modal-note-link-text`}
 					variant="body1"
 					sx={{
-						color: darkMode ? 'white' : 'black',
+						color: 'primary.contrastText',
 						fontWeight: 500,
 						marginBottom: 2,
 						cursor: 'pointer',

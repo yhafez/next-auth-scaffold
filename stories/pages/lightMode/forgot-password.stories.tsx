@@ -19,14 +19,9 @@ const initialProps: ForgotPasswordProps = {
 }
 
 const Template: Story<ForgotPasswordProps> = args => {
-	const {
-		settings: { darkMode },
-		setSettings,
-	} = useBoundStore()
+	const { darkMode, setDarkMode } = useBoundStore()
 
-	if (darkMode) {
-		setSettings({ darkMode: false })
-	}
+	if (darkMode) setDarkMode(false)
 
 	return <ForgotPassword {...args} />
 }
