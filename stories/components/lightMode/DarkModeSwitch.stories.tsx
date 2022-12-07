@@ -11,7 +11,7 @@ export default {
 	component: DarkModeSwitch,
 	decorators: [
 		Story => (
-			<Modal name="confirm-password-modal" loading={false} error="">
+			<Modal name="dark-mode-switch-modal" loading={false} error="">
 				<Story />
 			</Modal>
 		),
@@ -23,7 +23,7 @@ const Template: Story = args => {
 
 	if (darkMode) setDarkMode(false)
 
-	return <DarkModeSwitch {...args} />
+	return <DarkModeSwitch name="test" {...args} />
 }
 
 export const Default = Template.bind({})

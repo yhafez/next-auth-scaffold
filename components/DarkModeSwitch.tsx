@@ -29,35 +29,43 @@ export default function DarkModeSwitch({ name }: DarkModeSwitchProps) {
 			sx={{
 				display: 'flex',
 				flexDirection: 'column',
-				justifyContent: 'center',
+				justifyContent: 'space-around',
 				alignItems: 'center',
-				gap: 1,
+				height: '100%',
 				mt: 1,
 			}}
 		>
-			<label htmlFor={`${name}-dark-mode-switch`}>
-				<Switch
-					id={`${name}-dark-mode-switch`}
-					checked={darkMode}
-					onChange={handleDarkMode}
-					sx={{
-						'& .MuiSwitch-switchBase': {
+			<Switch
+				id={`${name}-dark-mode-switch`}
+				checked={darkMode}
+				onChange={handleDarkMode}
+				aria-labelledby={`${name}-dark-mode-switch-label-${darkMode ? 'dark' : 'light'}`}
+				sx={{
+					'& .MuiSwitch-switchBase': {
+						color: 'primary.contrastText',
+						'&.Mui-checked': {
 							color: 'primary.contrastText',
-							'&.Mui-checked': {
-								color: 'primary.contrastText',
-							},
-							'&.Mui-checked + .MuiSwitch-track': {
-								backgroundColor: 'secondary.main',
-							},
 						},
-					}}
-					checkedIcon={<Brightness2Icon id={`${name}-dark-mode-switch-icon-checked`} />}
-					icon={<WbSunnyIcon id={`${name}-dark-mode-switch-icon-unchecked`} />}
-				/>
+						'&.Mui-checked + .MuiSwitch-track': {
+							backgroundColor: 'secondary.main',
+						},
+					},
+				}}
+				checkedIcon={<Brightness2Icon id={`${name}-dark-mode-switch-icon-checked`} />}
+				icon={<WbSunnyIcon id={`${name}-dark-mode-switch-icon-unchecked`} />}
+			/>
+			<label htmlFor={`${name}-dark-mode-switch`}>
 				<Typography
 					id={`${name}-dark-mode-switch-label-${darkMode ? 'dark' : 'light'}`}
 					variant="body2"
-					sx={{ fontWeight: 500, mb: 1, color: 'primary.contrastText' }}
+					sx={{
+						fontWeight: 500,
+						color: 'primary.contrastText',
+						cursor: 'pointer',
+						'&:hover': {
+							color: darkMode ? 'primary.light' : 'primary.dark',
+						},
+					}}
 				>
 					{darkMode ? 'Dark Mode' : 'Light Mode'}
 				</Typography>

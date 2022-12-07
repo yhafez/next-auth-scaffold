@@ -1,235 +1,121 @@
 // Path: ./jest/__tests__/components/Drawer.test.tsx
-
-import { render, act, screen, waitFor } from '@testing-library/react'
+import { render, findByText, act, screen, waitFor } from '@testing-library/react'
 import { axe } from 'jest-axe'
 
 import Drawer from '../../../components/Drawer'
+
+jest.mock('@mui/material', () => {
+	const originalModule = jest.requireActual('@mui/material')
+	return {
+		...originalModule,
+		Drawer: (props: any) => {
+			return <div {...props} />
+		},
+		IconButton: (props: any) => {
+			return <div {...props} />
+		},
+		Box: (props: any) => {
+			return <div {...props} />
+		},
+		Typography: (props: any) => {
+			return <div {...props} />
+		},
+		useMediaQuery: () => {
+			return true
+		},
+	}
+})
 
 describe('Drawer', () => {
 	it('Should have no accessibility violations', async () => {
 		act(() =>
 			render(
 				<main>
-					<Drawer open={true} handleDrawerClose={() => jest.fn()} drawerWidth={240} />
+					<Drawer open={true} handleDrawerClose={() => {}}>
+						<div>Test</div>
+					</Drawer>
 				</main>,
 			),
 		)
 
-		await waitFor(async () => expect(await axe(screen.getByRole('main'))).toHaveNoViolations())
+		waitFor(async () => expect(await axe(screen.getByRole('main'))).toHaveNoViolations())
+	})
+
+	it('Should have children with text "Test"', async () => {
+		const { container } = render(
+			<Drawer open={true} handleDrawerClose={() => {}}>
+				<div>Test</div>
+			</Drawer>,
+		)
+		const test = await findByText(container, 'Test')
+		expect(test).toBeTruthy()
 	})
 
 	it('Should have a Drawer element with id "drawer"', () => {
 		const { container } = render(
-			<Drawer open={true} handleDrawerClose={() => jest.fn()} drawerWidth={240} />,
+			<Drawer open={true} handleDrawerClose={() => {}}>
+				<div>Test</div>
+			</Drawer>,
 		)
 		const test = container.querySelector('#drawer')
 		expect(test).toBeTruthy()
 	})
 
-	it('Should have a Box element with id "drawer-header"', () => {
+	it('Should have a Box element with id "drawer-close-button-container"', () => {
 		const { container } = render(
-			<Drawer open={true} handleDrawerClose={() => jest.fn()} drawerWidth={240} />,
+			<Drawer open={true} handleDrawerClose={() => {}}>
+				<div>Test</div>
+			</Drawer>,
 		)
-		const test = container.querySelector('#drawer-header')
+		const test = container.querySelector('#drawer-close-button-container')
 		expect(test).toBeTruthy()
 	})
 
-	it('Should have a Box element with id "drawer-header-user"', () => {
+	it('Should have an IconButton element with id "drawer-close-button"', () => {
 		const { container } = render(
-			<Drawer open={true} handleDrawerClose={() => jest.fn()} drawerWidth={240} />,
+			<Drawer open={true} handleDrawerClose={() => {}}>
+				<div>Test</div>
+			</Drawer>,
 		)
-		const test = container.querySelector('#drawer-header-user')
+		const test = container.querySelector('#drawer-close-button')
 		expect(test).toBeTruthy()
 	})
 
-	it('Should have a Button element with id "drawer-user-avatar"', () => {
+	it('Should have a ChevronLeft element with id "drawer-close-button-icon"', () => {
 		const { container } = render(
-			<Drawer open={true} handleDrawerClose={() => jest.fn()} drawerWidth={240} />,
+			<Drawer open={true} handleDrawerClose={() => {}}>
+				<div>Test</div>
+			</Drawer>,
 		)
-		const test = container.querySelector('#drawer-user-avatar')
+		const test = container.querySelector('#drawer-close-button-icon')
 		expect(test).toBeTruthy()
 	})
 
-	it('Should have an Avatar element with id "drawer-user-avatar-image"', () => {
+	it('Should have a label element with id "drawer-close-button-label"', () => {
 		const { container } = render(
-			<Drawer open={true} handleDrawerClose={() => jest.fn()} drawerWidth={240} />,
+			<Drawer open={true} handleDrawerClose={() => {}}>
+				<div>Test</div>
+			</Drawer>,
 		)
-		const test = container.querySelector('#drawer-user-avatar-image')
+		const test = container.querySelector('#drawer-close-button-label')
 		expect(test).toBeTruthy()
 	})
 
-	it('Should have a Typography element with id "drawer-user-avatar-name-placeholder"', () => {
+	it('Should have a Typography element with id "drawer-close-button-label-text"', () => {
 		const { container } = render(
-			<Drawer open={true} handleDrawerClose={() => jest.fn()} drawerWidth={240} />,
+			<Drawer open={true} handleDrawerClose={() => {}}>
+				<div>Test</div>
+			</Drawer>,
 		)
-		const test = container.querySelector('#drawer-user-avatar-name-placeholder')
+		const test = container.querySelector('#drawer-close-button-label-text')
 		expect(test).toBeTruthy()
 	})
 
-	it('Should have a Box element with id "drawer-header-actions"', () => {
+	it('Should match snapshot', () => {
 		const { container } = render(
-			<Drawer open={true} handleDrawerClose={() => jest.fn()} drawerWidth={240} />,
-		)
-		const test = container.querySelector('#drawer-header-actions')
-		expect(test).toBeTruthy()
-	})
-
-	it('Should have a Button element with id "menu-drawer-button"', () => {
-		const { container } = render(
-			<Drawer open={true} handleDrawerClose={() => jest.fn()} drawerWidth={240} />,
-		)
-		const test = container.querySelector('#menu-drawer-button')
-		expect(test).toBeTruthy()
-	})
-
-	it('Should have a Typography element with id "menu-drawer-button-label"', () => {
-		const { container } = render(
-			<Drawer open={true} handleDrawerClose={() => jest.fn()} drawerWidth={240} />,
-		)
-		const test = container.querySelector('#menu-drawer-button-label')
-		expect(test).toBeTruthy()
-	})
-
-	it('Should have a Typography element with text "menu"', () => {
-		const { container } = render(
-			<Drawer open={true} handleDrawerClose={() => jest.fn()} drawerWidth={240} />,
-		)
-		const test = container.querySelector('#menu-drawer-button-label')?.textContent
-		expect(test).toBe('Menu')
-	})
-
-	it('Should have a Button element with id "settings-drawer-button"', () => {
-		const { container } = render(
-			<Drawer open={true} handleDrawerClose={() => jest.fn()} drawerWidth={240} />,
-		)
-		const test = container.querySelector('#settings-drawer-button')
-		expect(test).toBeTruthy()
-	})
-
-	it('Should have a Typography element with id "settings-drawer-button-label"', () => {
-		const { container } = render(
-			<Drawer open={true} handleDrawerClose={() => jest.fn()} drawerWidth={240} />,
-		)
-		const test = container.querySelector('#settings-drawer-button-label')
-		expect(test).toBeTruthy()
-	})
-
-	it('Should have a Typography element with text "settings"', () => {
-		const { container } = render(
-			<Drawer open={true} handleDrawerClose={() => jest.fn()} drawerWidth={240} />,
-		)
-		const test = container.querySelector('#settings-drawer-button-label')?.textContent
-		expect(test).toBe('Settings')
-	})
-
-	it('Should have a Button element with id "profile-drawer-button"', () => {
-		const { container } = render(
-			<Drawer open={true} handleDrawerClose={() => jest.fn()} drawerWidth={240} />,
-		)
-		const test = container.querySelector('#profile-drawer-button')
-		expect(test).toBeTruthy()
-	})
-
-	it('Should have a Typography element with id "profile-drawer-button-label"', () => {
-		const { container } = render(
-			<Drawer open={true} handleDrawerClose={() => jest.fn()} drawerWidth={240} />,
-		)
-		const test = container.querySelector('#profile-drawer-button-label')
-		expect(test).toBeTruthy()
-	})
-
-	it('Should have a Typography element with text "profile"', () => {
-		const { container } = render(
-			<Drawer open={true} handleDrawerClose={() => jest.fn()} drawerWidth={240} />,
-		)
-		const test = container.querySelector('#profile-drawer-button-label')?.textContent
-		expect(test).toBe('Profile')
-	})
-
-	it('Should have a Box element with id "drawer-footer"', () => {
-		const { container } = render(
-			<Drawer open={true} handleDrawerClose={() => jest.fn()} drawerWidth={240} />,
-		)
-		const test = container.querySelector('#drawer-footer')
-		expect(test).toBeTruthy()
-	})
-
-	it('Should have a Button element with id "color-picker-drawer-button"', () => {
-		const { container } = render(
-			<Drawer open={true} handleDrawerClose={() => jest.fn()} drawerWidth={240} />,
-		)
-		const test = container.querySelector('#color-picker-drawer-button')
-		expect(test).toBeTruthy()
-	})
-
-	it('Should have a Typography element with id "color-picker-drawer-button-label"', () => {
-		const { container } = render(
-			<Drawer open={true} handleDrawerClose={() => jest.fn()} drawerWidth={240} />,
-		)
-		const test = container.querySelector('#color-picker-drawer-button-label')
-		expect(test).toBeTruthy()
-	})
-
-	it('Should have a Typography element with text "color picker"', () => {
-		const { container } = render(
-			<Drawer open={true} handleDrawerClose={() => jest.fn()} drawerWidth={240} />,
-		)
-		const test = container.querySelector('#color-picker-drawer-button-label')?.textContent
-		expect(test).toBe('Theme Color')
-	})
-
-	it('Should have a Button element with id "dark-mode-drawer-button"', () => {
-		const { container } = render(
-			<Drawer open={true} handleDrawerClose={() => jest.fn()} drawerWidth={240} />,
-		)
-		const test = container.querySelector('#dark-mode-drawer-button')
-		expect(test).toBeTruthy()
-	})
-
-	it('Should have a Typography element with id "dark-mode-drawer-button-label"', () => {
-		const { container } = render(
-			<Drawer open={true} handleDrawerClose={() => jest.fn()} drawerWidth={240} />,
-		)
-		const test = container.querySelector('#dark-mode-drawer-button-label')
-		expect(test).toBeTruthy()
-	})
-
-	it('Should have a Typography element with text "Dark Mode" or "Light Mode"', () => {
-		const { container } = render(
-			<Drawer open={true} handleDrawerClose={() => jest.fn()} drawerWidth={240} />,
-		)
-		const options = ['Dark Mode', 'Light Mode']
-		const test = container.querySelector('#dark-mode-drawer-button-label')?.textContent
-		expect(options).toContain(test)
-	})
-
-	it('Should have a Button element with id "logout-drawer-button"', () => {
-		const { container } = render(
-			<Drawer open={true} handleDrawerClose={() => jest.fn()} drawerWidth={240} />,
-		)
-		const test = container.querySelector('#logout-drawer-button')
-		expect(test).toBeTruthy()
-	})
-
-	it('Should have a Typography element with id "logout-drawer-button-label"', () => {
-		const { container } = render(
-			<Drawer open={true} handleDrawerClose={() => jest.fn()} drawerWidth={240} />,
-		)
-		const test = container.querySelector('#logout-drawer-button-label')
-		expect(test).toBeTruthy()
-	})
-
-	it('Should have a Typography element with text "logout"', () => {
-		const { container } = render(
-			<Drawer open={true} handleDrawerClose={() => jest.fn()} drawerWidth={240} />,
-		)
-		const test = container.querySelector('#logout-drawer-button-label')?.textContent
-		expect(test).toBe('Logout')
-	})
-
-	it('Should math snapshot', () => {
-		const { container } = render(
-			<Drawer open={true} handleDrawerClose={() => jest.fn()} drawerWidth={240} />,
+			<Drawer open={true} handleDrawerClose={() => {}}>
+				<div>Test</div>
+			</Drawer>,
 		)
 		expect(container).toMatchSnapshot()
 	})

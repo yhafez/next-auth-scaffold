@@ -14,7 +14,7 @@ export interface ColorPickerProps {
 }
 
 export default function ColorPickerIcon({ name }: ColorPickerProps) {
-	const { customPalette, setCustomPalette } = useBoundStore()
+	const { darkMode, customPalette, setCustomPalette } = useBoundStore()
 
 	const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null)
 
@@ -77,36 +77,49 @@ export default function ColorPickerIcon({ name }: ColorPickerProps) {
 				justifyContent: 'center',
 			}}
 		>
-			<IconButton
-				id={`${name}-color-picker-button`}
-				aria-describedby={id}
-				onClick={handleClick}
+			<Box
+				id={`${name}-color-picker-box`}
 				sx={{
 					display: 'flex',
 					flexDirection: 'column',
 					alignItems: 'center',
-					justifyContent: 'space-evenly',
-					gap: 1,
+					justifyContent: 'center',
 					mt: 2,
 					p: 0,
 					height: '100%',
 				}}
 			>
-				<ColorLensIcon
-					id={`${name}-color-picker-icon`}
-					sx={{
-						color: 'primary.contrastText',
-						fontSize: '1.5rem',
-					}}
-				/>
-				<Typography
-					id={`${name}-color-picker-label`}
-					variant="body2"
-					sx={{ fontWeight: 500, color: 'primary.contrastText' }}
+				<IconButton
+					id={`${name}-color-picker-button`}
+					aria-describedby={id}
+					aria-labelledby={`${name}-color-picker-label`}
+					onClick={handleClick}
 				>
-					Theme Color
-				</Typography>
-			</IconButton>
+					<ColorLensIcon
+						id={`${name}-color-picker-icon`}
+						sx={{
+							color: 'primary.contrastText',
+							fontSize: '1.5rem',
+						}}
+					/>
+				</IconButton>
+				<label htmlFor={`${name}-color-picker-button`}>
+					<Typography
+						id={`${name}-color-picker-label`}
+						variant="body2"
+						sx={{
+							fontWeight: 500,
+							color: 'primary.contrastText',
+							cursor: 'pointer',
+							'&:hover': {
+								color: darkMode ? 'primary.light' : 'primary.dark',
+							},
+						}}
+					>
+						Theme Color
+					</Typography>
+				</label>
+			</Box>
 			<ColorPickerPopover
 				name={name}
 				open={open}

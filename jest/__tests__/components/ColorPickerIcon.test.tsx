@@ -16,7 +16,7 @@ describe('ColorPickerIcon', () => {
 			),
 		)
 
-		await waitFor(async () => expect(await axe(screen.getByRole('button'))).toHaveNoViolations())
+		waitFor(async () => expect(await axe(screen.getByRole('button'))).toHaveNoViolations())
 	})
 
 	it('Should have a Box icon with id "test-color-picker-container"', async () => {

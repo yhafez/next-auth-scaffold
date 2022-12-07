@@ -1,17 +1,17 @@
-// Path: ./stories/components/darkMode/DarkModeSwitch.stories.tsx
+// Path: ./stories/components/lightMode/ColorPickerIcon.stories.tsx
 
 import { Meta, Story } from '@storybook/react'
-import DarkModeSwitch from '../../../components/DarkModeSwitch'
+import ColorPickerIcon from '../../../components/ColorPickerIcon'
 import Modal from '../../../components/Modal'
 
 import { useBoundStore } from '../../../store'
 
 export default {
-	title: 'Components/DarkModeSwitch/DarkMode',
-	component: DarkModeSwitch,
+	title: 'Components/ColorPickerIcon/LightMode',
+	component: ColorPickerIcon,
 	decorators: [
 		Story => (
-			<Modal name="dark-mode-switch-modal" loading={false} error="">
+			<Modal name="color-picker-icon-modal" loading={false} error="">
 				<Story />
 			</Modal>
 		),
@@ -21,9 +21,9 @@ export default {
 const Template: Story = args => {
 	const { darkMode, setDarkMode } = useBoundStore()
 
-	if (!darkMode) setDarkMode(true)
+	if (darkMode) setDarkMode(false)
 
-	return <DarkModeSwitch name="test" {...args} />
+	return <ColorPickerIcon name="test" {...args} />
 }
 
 export const Default = Template.bind({})

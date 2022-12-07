@@ -21,7 +21,7 @@ describe('ConfirmPasswordInput', () => {
 			),
 		)
 
-		await waitFor(async () => expect(await axe(screen.getByRole('main'))).toHaveNoViolations())
+		waitFor(async () => expect(await axe(screen.getByRole('main'))).toHaveNoViolations())
 	})
 
 	it('Should have a TextField element with id "test-password-input"', async () => {

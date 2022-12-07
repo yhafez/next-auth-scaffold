@@ -21,7 +21,7 @@ describe('DrawerButton', () => {
 			),
 		)
 
-		await waitFor(async () => expect(await axe(screen.getByRole('button'))).toHaveNoViolations())
+		waitFor(async () => expect(await axe(screen.getByRole('button'))).toHaveNoViolations())
 	})
 
 	it('Should have an Icon Button element with id "test-drawer-button"', () => {

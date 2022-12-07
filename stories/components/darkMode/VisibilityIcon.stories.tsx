@@ -20,13 +20,11 @@ export default {
 } as Meta
 
 const Template: Story<VisibilityIconProps> = args => {
-	const [value, setValue] = useState('')
-
 	const { darkMode, setDarkMode } = useBoundStore()
 
 	if (!darkMode) setDarkMode(true)
 
-	return <VisibilityIcon {...args} value={value} setValue={setValue} />
+	return <VisibilityIcon {...args} />
 }
 
 const defaultArgs: VisibilityIconProps = {

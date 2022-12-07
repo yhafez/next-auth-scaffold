@@ -13,7 +13,7 @@ describe('DarkModeSwitch', () => {
 				</main>,
 			),
 		)
-		await waitFor(async () => expect(await axe(screen.getByRole('main'))).toHaveNoViolations())
+		waitFor(async () => expect(await axe(screen.getByRole('main'))).toHaveNoViolations())
 	})
 
 	it('Should have a Box element with id "test-dark-mode-switch-container"', async () => {

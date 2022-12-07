@@ -1,6 +1,6 @@
 // Path: ./components/ColorPickerPopover.tsx
 
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback } from 'react'
 import { Popover, PopoverOrigin } from '@mui/material'
 import { useBoundStore } from '../store'
 import { ChromePicker } from 'react-color'

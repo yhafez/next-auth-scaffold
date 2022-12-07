@@ -100,6 +100,7 @@
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
 		"@typescript-eslint/parser": "^5.45.0",
 		"babel-loader": "^9.1.0",
+		"canvas": "^2.10.2",
 		"chai": "^4.3.7",
 		"chai-datetime": "^1.8.0",
 		"chai-http": "^4.3.0",

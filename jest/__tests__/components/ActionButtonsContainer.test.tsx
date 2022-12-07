@@ -16,7 +16,7 @@ describe('ActionButtonsContainer', () => {
 			),
 		)
 
-		await waitFor(async () => expect(await axe(screen.getByRole('main'))).toHaveNoViolations())
+		waitFor(async () => expect(await axe(screen.getByRole('main'))).toHaveNoViolations())
 	})
 
 	it('Should have children with text "Test"', async () => {

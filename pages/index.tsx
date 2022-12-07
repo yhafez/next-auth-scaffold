@@ -3,25 +3,21 @@ import { useEffect, useState } from 'react'
 import { useSnackbar } from 'notistack'
 import { useRouter } from 'next/router'
 
-import { Box, Button, CircularProgress, Typography, useMediaQuery } from '@mui/material'
+import { Box, CircularProgress, Typography } from '@mui/material'
 
 import { Layout } from '../components/Layout'
-import Drawer from '../components/Drawer'
+import DashboardDrawer from '../components/Drawers/DashboardDrawer'
 
 import { useBoundStore } from '../store'
 
 export default function Dashboard() {
-	const { darkMode, theme, user } = useBoundStore()
+	const { darkMode, user } = useBoundStore()
 
 	const router = useRouter()
 
 	const { enqueueSnackbar } = useSnackbar()
 
-	const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
-
 	const [loading, setLoading] = useState(false)
-	const [open, setOpen] = useState(false)
-	const drawerWidth = 240
 
 	useEffect(() => {
 		setLoading(true)
@@ -42,14 +38,7 @@ export default function Dashboard() {
 				width: '100%',
 			}}
 		>
-			<Drawer
-				open={open}
-				handleDrawerClose={() => {
-					setOpen(false)
-				}}
-				drawerWidth={drawerWidth}
-			/>
-			<Layout drawerWidth={drawerWidth} name="dashboard">
+			<Layout name="dashboard" drawerChildren={<DashboardDrawer />}>
 				{loading ? (
 					<Box
 						id="dashboard-loading"
@@ -102,25 +91,6 @@ export default function Dashboard() {
 						>
 							Welcome {user?.name ?? 'User'}!
 						</Typography>
-						{isMobile && (
-							<Button
-								id="dashboard-content-button"
-								variant="contained"
-								onClick={() => {
-									setOpen(true)
-								}}
-								sx={{
-									mb: 2,
-									color: 'primary.contrastText',
-									backgroundColor: darkMode ? 'primary.light' : 'primary.dark',
-									'&:hover': {
-										backgroundColor: 'primary.main',
-									},
-								}}
-							>
-								Open Drawer
-							</Button>
-						)}
 					</Box>
 				)}
 			</Layout>
