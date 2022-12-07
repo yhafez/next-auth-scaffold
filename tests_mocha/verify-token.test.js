@@ -36,6 +36,16 @@ describe('POST /auth/verify-token', () => {
 
 		expect(res.body).to.have.property('payload')
 		expect(res.body.payload).to.be.an('object')
+
+		expect(res.body.payload).to.have.property('email')
+		expect(res.body.payload.email).to.be.a('string')
+		expect(res.body.payload.email).to.equal(user?.email)
+
+		expect(res.body.payload).to.have.property('iat')
+		expect(res.body.payload.iat).to.be.a('number')
+
+		expect(res.body.payload).to.have.property('exp')
+		expect(res.body.payload.exp).to.be.a('number')
 	})
 
 	it('should return 400 on invalid or missing token', async () => {
