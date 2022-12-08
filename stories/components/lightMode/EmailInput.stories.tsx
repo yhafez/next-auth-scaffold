@@ -1,5 +1,4 @@
 // Path: ./stories/components/lightMode/EmailInput.stories.tsx
-
 import { useState } from 'react'
 import { Story, Meta } from '@storybook/react'
 import EmailInput, { EmailInputProps } from '../../../components/EmailInput'

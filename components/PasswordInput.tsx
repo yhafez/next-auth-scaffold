@@ -63,7 +63,7 @@ export default function PasswordInput({
 				'& .Mui-disabled': {
 					color: 'lightGray',
 					'& .MuiOutlinedInput-notchedOutline': {
-						borderColor: 'darkGray',
+						borderColor: darkMode ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 0, 0, 0.5)',
 					},
 				},
 			}}

@@ -1,5 +1,4 @@
 // Path: ./stories/components/darkMode/DarkModeSwitch.stories.tsx
-
 import { Meta, Story } from '@storybook/react'
 import DarkModeSwitch from '../../../components/DarkModeSwitch'
 import Modal from '../../../components/Modal'

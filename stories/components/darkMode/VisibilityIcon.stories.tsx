@@ -1,6 +1,4 @@
 // Path: ./stories/components/darkMode/VisibilityIcon.stories.tsx
-
-import { useState } from 'react'
 import { Story, Meta } from '@storybook/react'
 import VisibilityIcon, { VisibilityIconProps } from '../../../components/VisibilityIcon'
 import Modal from '../../../components/Modal'

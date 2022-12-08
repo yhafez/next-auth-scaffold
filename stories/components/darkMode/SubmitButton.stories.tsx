@@ -1,5 +1,4 @@
 // Path: ./stories/components/darkMode/SubmitButton.stories.tsx
-
 import { Meta, Story } from '@storybook/react'
 import SubmitButton, { SubmitButtonProps } from '../../../components/SubmitButton'
 import Modal from '../../../components/Modal'

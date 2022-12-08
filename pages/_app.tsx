@@ -10,7 +10,7 @@ import CloseIcon from '@mui/icons-material/Close'
 
 import { useBoundStore } from '../store'
 import { createCustomTheme } from '../theme'
-import { Button, IconButton } from '@mui/material'
+import { IconButton } from '@mui/material'
 
 const queryClient = new QueryClient({
 	defaultOptions: {

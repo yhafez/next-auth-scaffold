@@ -11,24 +11,34 @@ import { getContrastColor, getSecondaryColor } from '../utils/helpers'
 
 export interface ColorPickerProps {
 	name: string
+	selectedInit?: boolean
 }
 
-export default function ColorPickerIcon({ name }: ColorPickerProps) {
+export default function ColorPickerIcon({ name, selectedInit = false }: ColorPickerProps) {
 	const { darkMode, customPalette, setCustomPalette } = useBoundStore()
 
 	const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null)
-	const [selected, setSelected] = useState(false)
+	const [selected, setSelected] = useState(selectedInit)
+
+	useEffect(() => {
+		const customPalette = localStorage.getItem('customPalette')
+
+		if (customPalette) {
+			handleColorChange(customPalette)
+		}
+	}, [])
+
+	const open = Boolean(anchorEl)
+	const id = open ? 'simple-popover' : undefined
 
 	const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
 		setAnchorEl(event.currentTarget)
 	}
 
 	const handleClose = () => {
+		setSelected(false)
 		setAnchorEl(null)
 	}
-
-	const open = Boolean(anchorEl)
-	const id = open ? 'simple-popover' : undefined
 
 	const handleColorChange = useCallback(
 		(color: string) => {
@@ -58,14 +68,6 @@ export default function ColorPickerIcon({ name }: ColorPickerProps) {
 		},
 		[customPalette, setCustomPalette],
 	)
-
-	useEffect(() => {
-		const customPalette = localStorage.getItem('customPalette')
-
-		if (customPalette) {
-			handleColorChange(customPalette)
-		}
-	}, [])
 
 	return (
 		<Box

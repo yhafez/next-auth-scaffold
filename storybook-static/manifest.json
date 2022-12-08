@@ -1,0 +1,41 @@
+// Path: ./manifest.json
+// Manifest file for app
+
+{
+	"name": "next-auth-scaffold",
+	"short_name": "next-auth-scaffold",
+	"description": "A scaffold for next-auth",
+	"start_url": "/",
+	"display": "standalone",
+	"background_color": "#ffffff",
+	"theme_color": "#ffffff",
+	"icons": [
+		{
+			"src": "/favicon.ico",
+			"sizes": "64x64 32x32 24x24 16x16",
+			"type": "image/x-icon"
+		},
+		{
+			"src": "/favicon.ico",
+			"sizes": "64x64 32x32 24x24 16x16",
+			"type": "image/x-icon"
+		}
+	],
+	"scope": "/",
+	"lang": "en-US",
+	"dir": "ltr",
+	"orientation": "any",
+	"categories": [
+		"business",
+		"education",
+		"entertainment",
+		"finance",
+		"food",
+		"games",
+		"health",
+		"lifestyle",
+		"medical",
+		"music",
+		"news"
+	]
+}
