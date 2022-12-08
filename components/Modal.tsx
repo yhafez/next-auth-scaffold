@@ -1,6 +1,7 @@
 // Path: ./components/Modal.tsx
 
 import { Box, CircularProgress, Typography, useMediaQuery } from '@mui/material'
+import { getContrast } from 'color2k'
 
 import { useBoundStore } from '../store'
 import { toTitleCase } from '../utils/helpers'
@@ -14,7 +15,12 @@ export interface ModalProps {
 }
 
 const Modal = ({ children, name, loading = false, error = '', small = false }: ModalProps) => {
-	const { darkMode } = useBoundStore()
+	const { darkMode, customPalette } = useBoundStore()
+	const isSufficientContrast =
+		getContrast(
+			darkMode ? customPalette.primary.dark : customPalette.primary.light,
+			customPalette.error.light,
+		) >= 4.5
 
 	const formattedName = name.replace(/ /g, '-').toLowerCase()
 
@@ -90,7 +96,11 @@ const Modal = ({ children, name, loading = false, error = '', small = false }: M
 							id={`${formattedName}-modal-error`}
 							variant="body1"
 							sx={{
-								color: 'error.dark',
+								color: isSufficientContrast
+									? darkMode
+										? customPalette.error.main
+										: customPalette.error.dark
+									: 'primary.contrastText',
 								fontSize: '1.5rem',
 							}}
 						>

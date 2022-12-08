@@ -10,16 +10,17 @@ exports[`DarkModeSwitch Should match snapshot 1`] = `
       class="MuiSwitch-root MuiSwitch-sizeMedium css-14s0ud6-MuiSwitch-root"
     >
       <span
-        aria-labelledby="test-dark-mode-switch-label-light"
         class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase"
       >
         <input
+          aria-checked="false"
+          aria-labelledby="test-dark-mode-switch-label-light"
           class="PrivateSwitchBase-input MuiSwitch-input css-1m9pwf3"
           id="test-dark-mode-switch"
           type="checkbox"
         />
         <svg
-          aria-hidden="true"
+          aria-hidden="false"
           class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-17slstj-MuiSvgIcon-root"
           data-testid="WbSunnyIcon"
           focusable="false"

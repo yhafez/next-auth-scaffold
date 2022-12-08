@@ -1,9 +1,9 @@
 // Path: ./components/PasswordInput.tsx
 
 import { useState, Dispatch, SetStateAction, KeyboardEvent } from 'react'
-import { IconButton, TextField } from '@mui/material'
+import { TextField } from '@mui/material'
 
-import VisibilityIcon from './VisibilityIcon'
+import VisibilityIconButton from './VisibilityIconButton'
 
 import { useBoundStore } from '../store'
 
@@ -27,9 +27,7 @@ export default function PasswordInput({
 	const formattedName = name.replace(/ /g, '-').toLowerCase()
 
 	const { darkMode } = useBoundStore()
-
 	const [showPassword, setShowPassword] = useState(false)
-	const [hover, setHover] = useState(false)
 
 	return (
 		<TextField
@@ -45,6 +43,7 @@ export default function PasswordInput({
 				color: 'primary.contrastText',
 				width: '80%',
 				marginBottom: 1,
+				cursor: disabled ? 'not-allowed' : 'text',
 				'& .MuiOutlinedInput-root': {
 					'& fieldset': {
 						borderColor: 'primary.contrastText',
@@ -55,38 +54,33 @@ export default function PasswordInput({
 				},
 				'& .MuiInputBase-input': {
 					color: 'primary.contrastText',
-					'&:disabled': {
-						color: 'lightGray',
-						WebkitTextFillColor: darkMode ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.7)',
-					},
+				},
+				'&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+					borderColor: 'primary.contrastText',
+				},
+				'&.Mui-focused .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+					borderColor: 'primary.contrastText',
 				},
 				'& .Mui-disabled': {
 					color: 'lightGray',
+					WebkitTextFillColor: 'lightGray',
 					'& .MuiOutlinedInput-notchedOutline': {
+						borderColor: darkMode ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 0, 0, 0.5)',
+					},
+					'&:hover .MuiOutlinedInput-notchedOutline': {
 						borderColor: darkMode ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 0, 0, 0.5)',
 					},
 				},
 			}}
 			InputProps={{
 				endAdornment: (
-					<IconButton
-						id={`${formattedName}${
-							isConfirmPassword ? '-confirm' : ''
-						}-password-input-show-hide-button`}
-						onClick={() => setShowPassword(show => !show)}
-						sx={{
-							color: darkMode ? '#fff' : '#000',
-						}}
-						onMouseEnter={() => setHover(true)}
-						onMouseLeave={() => setHover(false)}
-					>
-						<VisibilityIcon
-							name={`${formattedName}`}
-							showPassword={showPassword}
-							hover={hover}
-							isConfirmPassword={isConfirmPassword}
-						/>
-					</IconButton>
+					<VisibilityIconButton
+						name={`${formattedName}`}
+						showPassword={showPassword}
+						setShowPassword={setShowPassword}
+						isConfirmPassword={isConfirmPassword}
+						disabled={disabled}
+					/>
 				),
 			}}
 		/>

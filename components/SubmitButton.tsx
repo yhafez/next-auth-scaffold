@@ -9,7 +9,7 @@ export interface SubmitButtonProps {
 	label: string
 	loading: boolean
 	handleSubmit: () => void
-	width?: string
+	width?: number
 	disabled?: boolean
 }
 
@@ -31,11 +31,17 @@ export default function SubmitButton({
 			disabled={disabled ? true : loading}
 			sx={{
 				color: 'primary.contrastText',
-				width: width ? width : '40%',
-				height: 35,
+				width: width ? `${width}%` : '40%',
+				height: 40,
+				lineHeight: 1.5,
 				backgroundColor: darkMode ? 'primary.light' : 'primary.dark',
 				'&:hover': {
 					backgroundColor: 'primary.main',
+				},
+				'&:disabled': {
+					backgroundColor: darkMode ? 'rgba(255, 255, 255, 0.12)' : 'rgba(0, 0, 0, 0.12)',
+					cursor: 'not-allowed',
+					color: darkMode ? 'rgba(255, 255, 255, 0.26)' : 'rgba(0, 0, 0, 0.26)',
 				},
 			}}
 		>
@@ -52,7 +58,11 @@ export default function SubmitButton({
 					id={`${name}-submit-button-text`}
 					variant="button"
 					sx={{
-						color: 'primary.contrastText',
+						color: disabled
+							? darkMode
+								? 'rgba(255, 255, 255, 0.26)'
+								: 'rgba(0, 0, 0, 0.26)'
+							: 'primary.contrastText',
 					}}
 				>
 					{label}

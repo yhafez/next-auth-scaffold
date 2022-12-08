@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react'
 import { useSnackbar } from 'notistack'
 import { useRouter } from 'next/router'
+import { useSession } from 'next-auth/react'
 
 import { Box, CircularProgress, Typography } from '@mui/material'
 
@@ -12,21 +13,35 @@ import { useBoundStore } from '../store'
 
 export default function Dashboard() {
 	const { darkMode, user } = useBoundStore()
-
 	const router = useRouter()
-
 	const { enqueueSnackbar } = useSnackbar()
+	const { data: session, status } = useSession()
 
 	const [loading, setLoading] = useState(false)
 
 	useEffect(() => {
 		setLoading(true)
-		if (!localStorage.getItem('token')) {
-			enqueueSnackbar('You are not logged in', { variant: 'error', autoHideDuration: 3000 })
+		if (session) {
+			if (user) {
+				if (user?.role === 'admin') {
+					router.push('/admin')
+				}
+			} else {
+				enqueueSnackbar('You are not authorized to access this page', {
+					variant: 'error',
+					autoHideDuration: 3000,
+				})
+				router.push('/login')
+			}
+		} else {
+			enqueueSnackbar('You are not authorized to access this page', {
+				variant: 'error',
+				autoHideDuration: 3000,
+			})
 			router.push('/login')
 		}
 		setLoading(false)
-	}, [router, enqueueSnackbar])
+	}, [status, enqueueSnackbar, router, session, user])
 
 	return (
 		<Box

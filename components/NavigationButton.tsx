@@ -8,7 +8,7 @@ export interface NavigationButtonProps {
 	name: string
 	label: string
 	handleClick: () => void
-	width?: string
+	width?: number
 }
 
 export default function NavigationButton({
@@ -26,8 +26,9 @@ export default function NavigationButton({
 			onClick={handleClick}
 			sx={{
 				color: 'primary.contrastText',
-				width: width ? width : '40%',
-				height: 35,
+				width: width ? `${width}%` : '40%',
+				height: 40,
+				lineHeight: 1.5,
 				backgroundColor: darkMode ? 'primary.light' : 'primary.dark',
 				'&:hover': {
 					backgroundColor: 'primary.main',

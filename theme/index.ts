@@ -329,3 +329,4 @@ export const createCustomTheme = (customPalette?: PaletteOptions, isDarkMode?: b
 }
 
 export const defaultTheme = createCustomTheme()
+export const defaultDarkTheme = createCustomTheme(undefined, true)

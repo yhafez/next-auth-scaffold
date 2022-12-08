@@ -70,7 +70,6 @@ export default function ForgotPassword({
 	return (
 		<Layout name="forgot-password">
 			<Modal name="forgot password" loading={loading} error={error}>
-				{loading && <CircularProgress />}
 				<EmailInput
 					name="forgot-password"
 					value={email}

@@ -3,11 +3,11 @@
 exports[`Layout Should match snapshot 1`] = `
 <div>
   <div
-    class="MuiBox-root css-oqgvqi"
+    class="MuiBox-root css-hl5ug1"
     id="test-layout-container"
   >
     <header
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-1w9mh9n-MuiPaper-root-MuiAppBar-root"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-t9699t-MuiPaper-root-MuiAppBar-root"
       id="test-app-bar"
     >
       <div
@@ -71,16 +71,17 @@ exports[`Layout Should match snapshot 1`] = `
             class="MuiSwitch-root MuiSwitch-sizeMedium css-14s0ud6-MuiSwitch-root"
           >
             <span
-              aria-labelledby="test-toolbar-dark-mode-switch-label-light"
               class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase"
             >
               <input
+                aria-checked="false"
+                aria-labelledby="test-toolbar-dark-mode-switch-label-light"
                 class="PrivateSwitchBase-input MuiSwitch-input css-1m9pwf3"
                 id="test-toolbar-dark-mode-switch"
                 type="checkbox"
               />
               <svg
-                aria-hidden="true"
+                aria-hidden="false"
                 class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-17slstj-MuiSvgIcon-root"
                 data-testid="WbSunnyIcon"
                 focusable="false"
@@ -113,7 +114,7 @@ exports[`Layout Should match snapshot 1`] = `
       </div>
     </header>
     <div
-      class="MuiBox-root css-1i89r39"
+      class="MuiBox-root css-12s2zvf"
       id="test-layout-content"
     >
       <div>

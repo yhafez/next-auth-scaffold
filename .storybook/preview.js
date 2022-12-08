@@ -1,45 +1,43 @@
-import React from 'react'
-import Image from 'next/image'
-import { RouterContext } from 'next/dist/shared/lib/router-context'
-import { ThemeProvider } from '@mui/material'
-import { SnackbarProvider } from 'notistack'
+import React, { useMemo, useState, useRef, ElementRef } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
-import { SessionProvider } from 'next-auth/react'
-import CloseIcon from '@mui/icons-material/Close'
-
-import { defaultTheme, createCustomTheme } from '../theme'
-import { IconButton } from '@mui/material'
+import Image from 'next/image'
 import Head from 'next/head'
-import { Box } from '@mui/material'
+import { SessionProvider } from 'next-auth/react'
+import { RouterContext } from 'next/dist/shared/lib/router-context'
+import { ThemeProvider, CssBaseline, IconButton, Box } from '@mui/material'
+import CloseIcon from '@mui/icons-material/Close'
+import { SnackbarProvider } from 'notistack'
+
+import { defaultTheme, defaultDarkTheme } from '../theme'
+
+import '@fontsource/roboto/300.css'
+import '@fontsource/roboto/400.css'
+import '@fontsource/roboto/500.css'
+import '@fontsource/roboto/700.css'
+import '@fontsource/material-icons'
+import { useEffect } from 'react'
+
+const THEMES = {
+	light: defaultTheme,
+	dark: defaultDarkTheme,
+}
 
 export const globalTypes = {
 	theme: {
 		name: 'Theme',
+		title: 'Theme',
 		description: 'Global theme for components',
-		defaultValue: 'light',
+		defaultValue: 'dark',
 		toolbar: {
-			icon: 'circlehollow',
-			items: ['light', 'dark'],
-			showName: true,
+			icon: 'paintbrush',
+			dynamicTitle: true,
+			items: [
+				{ value: 'light', left: '☀️', title: 'Light' },
+				{ value: 'dark', left: '🌙', title: 'Dark' },
+			],
 		},
 	},
 }
-
-const queryClient = new QueryClient({
-	defaultOptions: {
-		queries: {
-			retry: false,
-			refetchOnWindowFocus: false,
-		},
-	},
-})
-
-const OriginalNextImage = Image
-
-Object.defineProperty(Image, 'default', {
-	configurable: true,
-	value: props => <OriginalNextImage {...props} unoptimized />,
-})
 
 export const parameters = {
 	nextRouter: {
@@ -47,6 +45,7 @@ export const parameters = {
 	},
 	actions: { argTypesRegex: '^on[A-Z].*' },
 	controls: {
+		expanded: true,
 		matchers: {
 			color: /(background|color)$/i,
 			date: /Date$/,
@@ -57,12 +56,34 @@ export const parameters = {
 	},
 }
 
-const snackbarRef = React.createRef()
-const darkMode = false
-const customPalette = defaultTheme.palette
+const OriginalNextImage = Image
 
-export const decorators = [
-	Story => (
+Object.defineProperty(Image, 'default', {
+	configurable: true,
+	value: props => <OriginalNextImage {...props} unoptimized />,
+})
+
+const queryClient = new QueryClient({
+	defaultOptions: {
+		queries: {
+			retry: false,
+			refetchOnWindowFocus: false,
+		},
+	},
+})
+
+const withMuiTheme = (Story, context) => {
+	const { theme: themeKey } = context.globals
+	const theme = useMemo(() => THEMES[themeKey] || THEMES['light'], [themeKey])
+
+	const [isMounted, setIsMounted] = useState(false)
+	const snackbarRef = useRef(null)
+
+	useEffect(() => {
+		setIsMounted(true)
+	}, [])
+
+	return (
 		<>
 			<Head>
 				<title>Next Auth Scaffold</title>
@@ -82,7 +103,8 @@ export const decorators = [
 						},
 					}}
 				>
-					<ThemeProvider theme={defaultTheme}>
+					<ThemeProvider theme={theme}>
+						<CssBaseline />
 						<SnackbarProvider
 							ref={snackbarRef}
 							maxSnack={3}
@@ -126,6 +148,7 @@ export const decorators = [
 										justifyContent: 'center',
 										alignItems: 'center',
 										minHeight: '100vh',
+										minWidth: '100vw',
 									}}
 								>
 									<Story />
@@ -136,5 +159,7 @@ export const decorators = [
 				</SessionProvider>
 			</QueryClientProvider>
 		</>
-	),
-]
+	)
+}
+
+export const decorators = [withMuiTheme]

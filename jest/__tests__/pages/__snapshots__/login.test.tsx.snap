@@ -3,11 +3,11 @@
 exports[`Login Should match snapshot 1`] = `
 <div>
   <div
-    class="MuiBox-root css-oqgvqi"
+    class="MuiBox-root css-hl5ug1"
     id="test-layout-container"
   >
     <header
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-1j51lgx-MuiPaper-root-MuiAppBar-root"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-1wf2xz6-MuiPaper-root-MuiAppBar-root"
       id="test-app-bar"
     >
       <div
@@ -71,16 +71,17 @@ exports[`Login Should match snapshot 1`] = `
             class="MuiSwitch-root MuiSwitch-sizeMedium css-1yek0we-MuiSwitch-root"
           >
             <span
-              aria-labelledby="test-toolbar-dark-mode-switch-label-light"
               class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-28iv8m-MuiButtonBase-root-MuiSwitch-switchBase"
             >
               <input
+                aria-checked="false"
+                aria-labelledby="test-toolbar-dark-mode-switch-label-light"
                 class="PrivateSwitchBase-input MuiSwitch-input css-1m9pwf3"
                 id="test-toolbar-dark-mode-switch"
                 type="checkbox"
               />
               <svg
-                aria-hidden="true"
+                aria-hidden="false"
                 class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-17slstj-MuiSvgIcon-root"
                 data-testid="WbSunnyIcon"
                 focusable="false"
@@ -113,15 +114,15 @@ exports[`Login Should match snapshot 1`] = `
       </div>
     </header>
     <div
-      class="MuiBox-root css-1i89r39"
+      class="MuiBox-root css-12s2zvf"
       id="test-layout-content"
     >
       <div
-        class="MuiBox-root css-oqgvqi"
+        class="MuiBox-root css-hl5ug1"
         id="login-layout-container"
       >
         <header
-          class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-1j51lgx-MuiPaper-root-MuiAppBar-root"
+          class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-1wf2xz6-MuiPaper-root-MuiAppBar-root"
           id="login-app-bar"
         >
           <div
@@ -185,16 +186,17 @@ exports[`Login Should match snapshot 1`] = `
                 class="MuiSwitch-root MuiSwitch-sizeMedium css-1yek0we-MuiSwitch-root"
               >
                 <span
-                  aria-labelledby="login-toolbar-dark-mode-switch-label-light"
                   class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-28iv8m-MuiButtonBase-root-MuiSwitch-switchBase"
                 >
                   <input
+                    aria-checked="false"
+                    aria-labelledby="login-toolbar-dark-mode-switch-label-light"
                     class="PrivateSwitchBase-input MuiSwitch-input css-1m9pwf3"
                     id="login-toolbar-dark-mode-switch"
                     type="checkbox"
                   />
                   <svg
-                    aria-hidden="true"
+                    aria-hidden="false"
                     class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-17slstj-MuiSvgIcon-root"
                     data-testid="WbSunnyIcon"
                     focusable="false"
@@ -227,7 +229,7 @@ exports[`Login Should match snapshot 1`] = `
           </div>
         </header>
         <div
-          class="MuiBox-root css-1i89r39"
+          class="MuiBox-root css-12s2zvf"
           id="login-layout-content"
         >
           <div
@@ -249,7 +251,7 @@ exports[`Login Should match snapshot 1`] = `
               id="login-modal-form"
             >
               <div
-                class="MuiFormControl-root MuiTextField-root css-qyglcw-MuiFormControl-root-MuiTextField-root"
+                class="MuiFormControl-root MuiTextField-root css-8v3hey-MuiFormControl-root-MuiTextField-root"
               >
                 <label
                   class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-7yavjh-MuiFormLabel-root-MuiInputLabel-root"
@@ -284,7 +286,7 @@ exports[`Login Should match snapshot 1`] = `
                 </div>
               </div>
               <div
-                class="MuiFormControl-root MuiTextField-root css-1p0w868-MuiFormControl-root-MuiTextField-root"
+                class="MuiFormControl-root MuiTextField-root css-8v3hey-MuiFormControl-root-MuiTextField-root"
               >
                 <label
                   class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-7yavjh-MuiFormLabel-root-MuiInputLabel-root"
@@ -356,7 +358,7 @@ exports[`Login Should match snapshot 1`] = `
                 id="login-buttons-container"
               >
                 <button
-                  class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-x54eel-MuiButtonBase-root-MuiButton-root"
+                  class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1yz4nqo-MuiButtonBase-root-MuiButton-root"
                   id="login-signup-navigation-button"
                   tabindex="0"
                   type="button"
@@ -367,7 +369,7 @@ exports[`Login Should match snapshot 1`] = `
                   />
                 </button>
                 <button
-                  class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-x54eel-MuiButtonBase-root-MuiButton-root"
+                  class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-uz0nmx-MuiButtonBase-root-MuiButton-root"
                   id="login-submit-button"
                   tabindex="0"
                   type="button"

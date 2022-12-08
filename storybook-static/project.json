@@ -1,6 +1,6 @@
 {
-	"generatedAt": 1670480662136,
-	"builder": { "name": "webpack5" },
+	"generatedAt": 1670484853501,
+	"builder": { "name": "@storybook/builder-webpack5" },
 	"hasCustomBabel": false,
 	"hasCustomWebpack": true,
 	"hasStaticDirs": true,
@@ -8,12 +8,22 @@
 	"refCount": 0,
 	"metaFramework": { "name": "Next", "packageName": "next", "version": "13.0.6" },
 	"packageManager": { "type": "pnpm", "version": "7.13.6" },
+	"typescriptOptions": {
+		"check": false,
+		"checkOptions": {},
+		"reactDocgen": "react-docgen-typescript",
+		"reactDocgenTypescriptOptions": {
+			"allowSyntheticDefaultImports": false,
+			"esModuleInterop": false,
+			"shouldExtractLiteralValuesFromEnum": true,
+			"shouldRemoveUndefinedFromOptional": true
+		}
+	},
 	"storybookVersion": "6.5.14",
 	"language": "typescript",
 	"storybookPackages": {
 		"@storybook/addon-actions": { "version": "6.5.14" },
 		"@storybook/addon-docs": { "version": "6.5.14" },
-		"@storybook/addon-interactions": { "version": "6.5.14" },
 		"@storybook/addon-postcss": { "version": "2.0.0" },
 		"@storybook/api": { "version": "6.5.14" },
 		"@storybook/builder-webpack5": { "version": "6.5.14" },
@@ -26,6 +36,7 @@
 	"addons": {
 		"@storybook/addon-links": { "version": "6.5.14" },
 		"@storybook/addon-essentials": { "version": "6.5.14" },
+		"@storybook/addon-interactions": { "version": "6.5.14" },
 		"storybook-addon-next-router": { "version": "4.0.1" },
 		"@storybook/addon-a11y": { "version": "6.5.14" }
 	}

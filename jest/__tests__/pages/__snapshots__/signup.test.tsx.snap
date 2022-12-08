@@ -3,11 +3,11 @@
 exports[`Signup Should match snapshot 1`] = `
 <div>
   <div
-    class="MuiBox-root css-oqgvqi"
+    class="MuiBox-root css-hl5ug1"
     id="test-layout-container"
   >
     <header
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-1j51lgx-MuiPaper-root-MuiAppBar-root"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-1wf2xz6-MuiPaper-root-MuiAppBar-root"
       id="test-app-bar"
     >
       <div
@@ -71,16 +71,17 @@ exports[`Signup Should match snapshot 1`] = `
             class="MuiSwitch-root MuiSwitch-sizeMedium css-1yek0we-MuiSwitch-root"
           >
             <span
-              aria-labelledby="test-toolbar-dark-mode-switch-label-light"
               class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-28iv8m-MuiButtonBase-root-MuiSwitch-switchBase"
             >
               <input
+                aria-checked="false"
+                aria-labelledby="test-toolbar-dark-mode-switch-label-light"
                 class="PrivateSwitchBase-input MuiSwitch-input css-1m9pwf3"
                 id="test-toolbar-dark-mode-switch"
                 type="checkbox"
               />
               <svg
-                aria-hidden="true"
+                aria-hidden="false"
                 class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-17slstj-MuiSvgIcon-root"
                 data-testid="WbSunnyIcon"
                 focusable="false"
@@ -113,15 +114,15 @@ exports[`Signup Should match snapshot 1`] = `
       </div>
     </header>
     <div
-      class="MuiBox-root css-1i89r39"
+      class="MuiBox-root css-12s2zvf"
       id="test-layout-content"
     >
       <div
-        class="MuiBox-root css-oqgvqi"
+        class="MuiBox-root css-hl5ug1"
         id="signup-layout-container"
       >
         <header
-          class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-1j51lgx-MuiPaper-root-MuiAppBar-root"
+          class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-1wf2xz6-MuiPaper-root-MuiAppBar-root"
           id="signup-app-bar"
         >
           <div
@@ -185,16 +186,17 @@ exports[`Signup Should match snapshot 1`] = `
                 class="MuiSwitch-root MuiSwitch-sizeMedium css-1yek0we-MuiSwitch-root"
               >
                 <span
-                  aria-labelledby="signup-toolbar-dark-mode-switch-label-light"
                   class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-28iv8m-MuiButtonBase-root-MuiSwitch-switchBase"
                 >
                   <input
+                    aria-checked="false"
+                    aria-labelledby="signup-toolbar-dark-mode-switch-label-light"
                     class="PrivateSwitchBase-input MuiSwitch-input css-1m9pwf3"
                     id="signup-toolbar-dark-mode-switch"
                     type="checkbox"
                   />
                   <svg
-                    aria-hidden="true"
+                    aria-hidden="false"
                     class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-17slstj-MuiSvgIcon-root"
                     data-testid="WbSunnyIcon"
                     focusable="false"
@@ -227,7 +229,7 @@ exports[`Signup Should match snapshot 1`] = `
           </div>
         </header>
         <div
-          class="MuiBox-root css-1i89r39"
+          class="MuiBox-root css-12s2zvf"
           id="signup-layout-content"
         >
           <div
@@ -249,7 +251,7 @@ exports[`Signup Should match snapshot 1`] = `
               id="signup-modal-form"
             >
               <div
-                class="MuiFormControl-root MuiTextField-root css-qyglcw-MuiFormControl-root-MuiTextField-root"
+                class="MuiFormControl-root MuiTextField-root css-8v3hey-MuiFormControl-root-MuiTextField-root"
               >
                 <label
                   class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-7yavjh-MuiFormLabel-root-MuiInputLabel-root"
@@ -284,7 +286,7 @@ exports[`Signup Should match snapshot 1`] = `
                 </div>
               </div>
               <div
-                class="MuiFormControl-root MuiTextField-root css-1p0w868-MuiFormControl-root-MuiTextField-root"
+                class="MuiFormControl-root MuiTextField-root css-8v3hey-MuiFormControl-root-MuiTextField-root"
               >
                 <label
                   class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-7yavjh-MuiFormLabel-root-MuiInputLabel-root"
@@ -352,7 +354,7 @@ exports[`Signup Should match snapshot 1`] = `
                 </div>
               </div>
               <div
-                class="MuiFormControl-root MuiTextField-root css-1p0w868-MuiFormControl-root-MuiTextField-root"
+                class="MuiFormControl-root MuiTextField-root css-8v3hey-MuiFormControl-root-MuiTextField-root"
               >
                 <label
                   class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-7yavjh-MuiFormLabel-root-MuiInputLabel-root"
@@ -424,7 +426,7 @@ exports[`Signup Should match snapshot 1`] = `
                 id="signup-buttons-container"
               >
                 <button
-                  class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1h9cy5j-MuiButtonBase-root-MuiButton-root"
+                  class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-yws0mn-MuiButtonBase-root-MuiButton-root"
                   id="signup-submit-button"
                   tabindex="0"
                   type="button"

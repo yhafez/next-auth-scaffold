@@ -96,7 +96,7 @@ export default function Signup({
 						label="Sign Up"
 						loading={loading}
 						handleSubmit={handleSignup}
-						width="100%"
+						width={100}
 					/>
 				</ActionButtonsContainer>
 

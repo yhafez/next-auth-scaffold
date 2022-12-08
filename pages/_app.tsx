@@ -3,6 +3,7 @@ import Head from 'next/head'
 import { useState, useEffect, useRef } from 'react'
 import { AppProps } from 'next/app'
 import { ThemeProvider } from '@mui/material/styles'
+import CssBaseline from '@mui/material/CssBaseline'
 import { SnackbarProvider } from 'notistack'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { SessionProvider } from 'next-auth/react'
@@ -43,6 +44,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 			<QueryClientProvider client={queryClient}>
 				<SessionProvider session={pageProps.session}>
 					<ThemeProvider theme={theme}>
+						<CssBaseline />
 						<SnackbarProvider
 							ref={snackbarRef}
 							maxSnack={3}

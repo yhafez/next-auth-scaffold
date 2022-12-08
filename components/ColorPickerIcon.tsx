@@ -14,19 +14,46 @@ export interface ColorPickerProps {
 	selectedInit?: boolean
 }
 
-export default function ColorPickerIcon({ name, selectedInit = false }: ColorPickerProps) {
+export default function ColorPickerIcon({ name, selectedInit }: ColorPickerProps) {
 	const { darkMode, customPalette, setCustomPalette } = useBoundStore()
 
 	const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null)
-	const [selected, setSelected] = useState(selectedInit)
+	const [selected, setSelected] = useState(selectedInit ?? false)
+
+	const handleColorChange = useCallback((color: string) => {
+		localStorage.setItem('customPalette', color)
+
+		const contrast = getContrastColor(color)
+		const secondaryColor = getSecondaryColor(color)
+		const secondaryColorContrast = getContrastColor(secondaryColor)
+
+		const newPalette = {
+			...customPalette,
+			primary: {
+				main: color,
+				contrastText: contrast,
+				light: lighten(color, 0.2),
+				dark: darken(color, 0.2),
+			},
+			secondary: {
+				main: secondaryColor,
+				contrastText: secondaryColorContrast,
+				light: lighten(secondaryColor, 0.2),
+				dark: darken(secondaryColor, 0.2),
+			},
+		}
+
+		setCustomPalette(newPalette)
+	}, [])
 
 	useEffect(() => {
 		const customPalette = localStorage.getItem('customPalette')
+		if (customPalette) handleColorChange(customPalette)
+	}, [handleColorChange])
 
-		if (customPalette) {
-			handleColorChange(customPalette)
-		}
-	}, [])
+	useEffect(() => {
+		setSelected(selectedInit ?? false)
+	}, [selectedInit])
 
 	const open = Boolean(anchorEl)
 	const id = open ? 'simple-popover' : undefined
@@ -39,35 +66,6 @@ export default function ColorPickerIcon({ name, selectedInit = false }: ColorPic
 		setSelected(false)
 		setAnchorEl(null)
 	}
-
-	const handleColorChange = useCallback(
-		(color: string) => {
-			localStorage.setItem('customPalette', color)
-
-			const contrast = getContrastColor(color)
-			const secondaryColor = getSecondaryColor(color)
-			const secondaryColorContrast = getContrastColor(secondaryColor)
-
-			const newPalette = {
-				...customPalette,
-				primary: {
-					main: color,
-					contrastText: contrast,
-					light: lighten(color, 0.2),
-					dark: darken(color, 0.2),
-				},
-				secondary: {
-					main: secondaryColor,
-					contrastText: secondaryColorContrast,
-					light: lighten(secondaryColor, 0.2),
-					dark: darken(secondaryColor, 0.2),
-				},
-			}
-
-			setCustomPalette(newPalette)
-		},
-		[customPalette, setCustomPalette],
-	)
 
 	return (
 		<Box

@@ -36,6 +36,7 @@ export default function EmailInput({
 				color: 'primary.contrastText',
 				width: '80%',
 				marginBottom: 1,
+				cursor: disabled ? 'not-allowed' : 'text',
 				'& .MuiOutlinedInput-root': {
 					'& fieldset': {
 						borderColor: 'primary.contrastText',
@@ -46,15 +47,21 @@ export default function EmailInput({
 				},
 				'& .MuiInputBase-input': {
 					color: 'primary.contrastText',
-					'&:disabled': {
-						color: 'lightGray',
-						WebkitTextFillColor: darkMode ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.7)',
-					},
+				},
+				'&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+					borderColor: 'primary.contrastText',
+				},
+				'&.Mui-focused .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+					borderColor: 'primary.contrastText',
 				},
 				'& .Mui-disabled': {
 					color: 'lightGray',
+					WebkitTextFillColor: 'lightGray',
 					'& .MuiOutlinedInput-notchedOutline': {
-						borderColor: 'darkGray',
+						borderColor: darkMode ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 0, 0, 0.5)',
+					},
+					'&:hover .MuiOutlinedInput-notchedOutline': {
+						borderColor: darkMode ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 0, 0, 0.5)',
 					},
 				},
 			}}

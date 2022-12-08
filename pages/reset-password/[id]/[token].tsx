@@ -14,7 +14,6 @@ export interface ResetPasswordProps {
 	passwordInit?: string
 	confirmPasswordInit?: string
 	loadingInit?: boolean
-	emailInit?: string
 }
 
 export default function ResetPassword({
@@ -96,6 +95,12 @@ export default function ResetPassword({
 				})
 		}
 	}, [token])
+
+	useEffect(() => {
+		if (!id || !token) {
+			setError('Unauthenticated')
+		}
+	}, [id, token])
 
 	const handleEnter = (e: KeyboardEvent) => {
 		if (e.key === 'Enter') {

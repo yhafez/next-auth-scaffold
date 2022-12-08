@@ -72,7 +72,7 @@ const DashboardDrawer = () => {
 		if (savedDarkMode) {
 			setDarkMode(JSON.parse(savedDarkMode))
 		}
-	}, [darkMode, setDarkMode])
+	}, [])
 
 	const handleClickMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
 		setAnchorElMenu(event.currentTarget)

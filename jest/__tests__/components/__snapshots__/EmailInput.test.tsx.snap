@@ -3,7 +3,7 @@
 exports[`EmailInput Should match snapshot 1`] = `
 <div>
   <div
-    class="MuiFormControl-root MuiTextField-root css-jmhp63-MuiFormControl-root-MuiTextField-root"
+    class="MuiFormControl-root MuiTextField-root css-6n4yle-MuiFormControl-root-MuiTextField-root"
   >
     <label
       class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined css-1sumxir-MuiFormLabel-root-MuiInputLabel-root"

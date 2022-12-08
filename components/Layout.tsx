@@ -33,6 +33,8 @@ export function Layout({ name, children, drawerChildren }: LayoutProps) {
 				id={`${name}-layout-container`}
 				sx={{
 					display: 'flex',
+					width: '100%',
+					height: '100%',
 					'& .MuiDrawer-paper': {
 						width: 240,
 						boxSizing: 'border-box',
@@ -51,7 +53,7 @@ export function Layout({ name, children, drawerChildren }: LayoutProps) {
 						}),
 						width: `${isMobile || !drawerChildren ? '100%' : `calc(100% - 240px)`}`,
 						ml: `${isMobile || !drawerChildren ? 0 : `240px`}`,
-						height: '64px',
+						height: '80px',
 					}}
 				>
 					<Toolbar
@@ -147,9 +149,9 @@ export function Layout({ name, children, drawerChildren }: LayoutProps) {
 							easing: theme.transitions.easing.sharp,
 							duration: theme.transitions.duration.leavingScreen,
 						}),
-						marginLeft: '240px',
-						width: `${isMobile || !drawerChildren ? '100%' : `calc(100% - 240px)`}`,
-						ml: `${isMobile || !drawerChildren ? 0 : `240px`}`,
+						marginLeft: '224px',
+						width: `${isMobile || !drawerChildren ? '100%' : `calc(100% - 224px)`}`,
+						ml: `${isMobile || !drawerChildren ? '-16px' : `224px`}`,
 						mt: '64px',
 						display: 'flex',
 						flexDirection: 'column',

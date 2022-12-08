@@ -20,9 +20,9 @@ export default function DarkModeSwitch({ name }: DarkModeSwitchProps) {
 	}
 
 	useEffect(() => {
-		const darkMode = JSON.parse(localStorage.getItem('darkMode') || 'false')
+		const darkMode = localStorage.getItem('darkMode') === 'true'
 		setDarkMode(darkMode)
-	}, [darkMode, setDarkMode])
+	}, [])
 
 	const handleEnter = (e: React.KeyboardEvent<HTMLButtonElement>) => {
 		if (e.key === 'Enter') {
@@ -51,7 +51,10 @@ export default function DarkModeSwitch({ name }: DarkModeSwitchProps) {
 				checked={darkMode}
 				onChange={handleDarkMode}
 				onKeyDown={handleEnter}
-				aria-labelledby={`${name}-dark-mode-switch-label-${darkMode ? 'dark' : 'light'}`}
+				inputProps={{
+					'aria-checked': darkMode,
+					'aria-labelledby': `${name}-dark-mode-switch-label-${darkMode ? 'dark' : 'light'}`,
+				}}
 				sx={{
 					color: selected ? (darkMode ? 'primary.light' : 'primary.dark') : 'primary.contrastText',
 					'& .MuiSwitch-switchBase': {
@@ -67,6 +70,7 @@ export default function DarkModeSwitch({ name }: DarkModeSwitchProps) {
 				checkedIcon={
 					<Brightness2Icon
 						id={`${name}-dark-mode-switch-icon-checked`}
+						aria-hidden={darkMode ? 'false' : 'true'}
 						sx={{
 							color: selected
 								? darkMode
@@ -79,6 +83,7 @@ export default function DarkModeSwitch({ name }: DarkModeSwitchProps) {
 				icon={
 					<WbSunnyIcon
 						id={`${name}-dark-mode-switch-icon-unchecked`}
+						aria-hidden={darkMode ? 'true' : 'false'}
 						sx={{
 							color: selected
 								? darkMode
