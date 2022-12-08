@@ -27,10 +27,6 @@ const DrawerButton = ({ name, label, icon, handleClick }: DrawerButtonProps) => 
 					backgroundColor: 'primary.main',
 					color: 'primary.contrastText',
 				},
-				'&:focus': {
-					backgroundColor: 'primary.main',
-					color: 'primary.contrastText',
-				},
 				'&:active': {
 					backgroundColor: 'primary.main',
 					color: 'primary.contrastText',

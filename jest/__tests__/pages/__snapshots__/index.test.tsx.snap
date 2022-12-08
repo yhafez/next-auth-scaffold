@@ -25,7 +25,7 @@ exports[`Dashboard Should match snapshot 1`] = `
           id="test-toolbar-color-picker-container"
         >
           <div
-            class="MuiBox-root css-1krk1je"
+            class="MuiBox-root css-nw3l2a"
             id="test-toolbar-color-picker-box"
           >
             <button
@@ -55,7 +55,7 @@ exports[`Dashboard Should match snapshot 1`] = `
               for="test-toolbar-color-picker-button"
             >
               <p
-                class="MuiTypography-root MuiTypography-body2 css-hahk6-MuiTypography-root"
+                class="MuiTypography-root MuiTypography-body2 css-191g3cx-MuiTypography-root"
                 id="test-toolbar-color-picker-label"
               >
                 Theme Color
@@ -68,7 +68,7 @@ exports[`Dashboard Should match snapshot 1`] = `
           id="test-toolbar-dark-mode-switch-container"
         >
           <span
-            class="MuiSwitch-root MuiSwitch-sizeMedium css-1dkykqx-MuiSwitch-root"
+            class="MuiSwitch-root MuiSwitch-sizeMedium css-1yek0we-MuiSwitch-root"
           >
             <span
               aria-labelledby="test-toolbar-dark-mode-switch-label-light"
@@ -81,7 +81,7 @@ exports[`Dashboard Should match snapshot 1`] = `
               />
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-17slstj-MuiSvgIcon-root"
                 data-testid="WbSunnyIcon"
                 focusable="false"
                 id="test-toolbar-dark-mode-switch-icon-unchecked"
@@ -103,7 +103,7 @@ exports[`Dashboard Should match snapshot 1`] = `
             for="test-toolbar-dark-mode-switch"
           >
             <p
-              class="MuiTypography-root MuiTypography-body2 css-hahk6-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-body2 css-191g3cx-MuiTypography-root"
               id="test-toolbar-dark-mode-switch-label-light"
             >
               Light Mode
@@ -182,7 +182,7 @@ exports[`Dashboard Should match snapshot 1`] = `
                   id="dashboard-drawer-header-actions"
                 >
                   <button
-                    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-hmb9pg-MuiButtonBase-root-MuiIconButton-root"
+                    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-15xrays-MuiButtonBase-root-MuiIconButton-root"
                     id="dashboard-menu-drawer-button"
                     tabindex="0"
                     type="button"
@@ -209,7 +209,7 @@ exports[`Dashboard Should match snapshot 1`] = `
                     />
                   </button>
                   <button
-                    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-hmb9pg-MuiButtonBase-root-MuiIconButton-root"
+                    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-15xrays-MuiButtonBase-root-MuiIconButton-root"
                     id="dashboard-profile-drawer-button"
                     tabindex="0"
                     type="button"
@@ -236,7 +236,7 @@ exports[`Dashboard Should match snapshot 1`] = `
                     />
                   </button>
                   <button
-                    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-hmb9pg-MuiButtonBase-root-MuiIconButton-root"
+                    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-15xrays-MuiButtonBase-root-MuiIconButton-root"
                     id="dashboard-settings-drawer-button"
                     tabindex="0"
                     type="button"
@@ -269,7 +269,7 @@ exports[`Dashboard Should match snapshot 1`] = `
                 id="dashboard-drawer-footer"
               >
                 <button
-                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-hmb9pg-MuiButtonBase-root-MuiIconButton-root"
+                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-15xrays-MuiButtonBase-root-MuiIconButton-root"
                   id="dashboard-color-picker-drawer-button"
                   tabindex="0"
                   type="button"
@@ -296,7 +296,7 @@ exports[`Dashboard Should match snapshot 1`] = `
                   />
                 </button>
                 <button
-                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-hmb9pg-MuiButtonBase-root-MuiIconButton-root"
+                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-15xrays-MuiButtonBase-root-MuiIconButton-root"
                   id="dashboard-dark-mode-drawer-button"
                   tabindex="0"
                   type="button"
@@ -323,7 +323,7 @@ exports[`Dashboard Should match snapshot 1`] = `
                   />
                 </button>
                 <button
-                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-hmb9pg-MuiButtonBase-root-MuiIconButton-root"
+                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-15xrays-MuiButtonBase-root-MuiIconButton-root"
                   id="dashboard-logout-drawer-button"
                   tabindex="0"
                   type="button"
@@ -376,7 +376,7 @@ exports[`Dashboard Should match snapshot 1`] = `
                 id="dashboard-toolbar-color-picker-container"
               >
                 <div
-                  class="MuiBox-root css-1krk1je"
+                  class="MuiBox-root css-nw3l2a"
                   id="dashboard-toolbar-color-picker-box"
                 >
                   <button
@@ -406,7 +406,7 @@ exports[`Dashboard Should match snapshot 1`] = `
                     for="dashboard-toolbar-color-picker-button"
                   >
                     <p
-                      class="MuiTypography-root MuiTypography-body2 css-hahk6-MuiTypography-root"
+                      class="MuiTypography-root MuiTypography-body2 css-191g3cx-MuiTypography-root"
                       id="dashboard-toolbar-color-picker-label"
                     >
                       Theme Color
@@ -419,7 +419,7 @@ exports[`Dashboard Should match snapshot 1`] = `
                 id="dashboard-toolbar-dark-mode-switch-container"
               >
                 <span
-                  class="MuiSwitch-root MuiSwitch-sizeMedium css-1dkykqx-MuiSwitch-root"
+                  class="MuiSwitch-root MuiSwitch-sizeMedium css-1yek0we-MuiSwitch-root"
                 >
                   <span
                     aria-labelledby="dashboard-toolbar-dark-mode-switch-label-light"
@@ -432,7 +432,7 @@ exports[`Dashboard Should match snapshot 1`] = `
                     />
                     <svg
                       aria-hidden="true"
-                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-17slstj-MuiSvgIcon-root"
                       data-testid="WbSunnyIcon"
                       focusable="false"
                       id="dashboard-toolbar-dark-mode-switch-icon-unchecked"
@@ -454,7 +454,7 @@ exports[`Dashboard Should match snapshot 1`] = `
                   for="dashboard-toolbar-dark-mode-switch"
                 >
                   <p
-                    class="MuiTypography-root MuiTypography-body2 css-hahk6-MuiTypography-root"
+                    class="MuiTypography-root MuiTypography-body2 css-191g3cx-MuiTypography-root"
                     id="dashboard-toolbar-dark-mode-switch-label-light"
                   >
                     Light Mode

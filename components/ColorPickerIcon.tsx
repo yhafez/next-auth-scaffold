@@ -17,6 +17,7 @@ export default function ColorPickerIcon({ name }: ColorPickerProps) {
 	const { darkMode, customPalette, setCustomPalette } = useBoundStore()
 
 	const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null)
+	const [selected, setSelected] = useState(false)
 
 	const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
 		setAnchorEl(event.currentTarget)
@@ -69,6 +70,8 @@ export default function ColorPickerIcon({ name }: ColorPickerProps) {
 	return (
 		<Box
 			id={`${name}-color-picker-container`}
+			onMouseEnter={() => setSelected(true)}
+			onMouseLeave={() => setSelected(false)}
 			sx={{
 				mr: 4,
 				height: '100%',
@@ -87,6 +90,7 @@ export default function ColorPickerIcon({ name }: ColorPickerProps) {
 					mt: 2,
 					p: 0,
 					height: '100%',
+					cursor: 'pointer',
 				}}
 			>
 				<IconButton
@@ -98,7 +102,11 @@ export default function ColorPickerIcon({ name }: ColorPickerProps) {
 					<ColorLensIcon
 						id={`${name}-color-picker-icon`}
 						sx={{
-							color: 'primary.contrastText',
+							color: selected
+								? darkMode
+									? 'primary.light'
+									: 'primary.dark'
+								: 'primary.contrastText',
 							fontSize: '1.5rem',
 						}}
 					/>
@@ -109,11 +117,12 @@ export default function ColorPickerIcon({ name }: ColorPickerProps) {
 						variant="body2"
 						sx={{
 							fontWeight: 500,
-							color: 'primary.contrastText',
 							cursor: 'pointer',
-							'&:hover': {
-								color: darkMode ? 'primary.light' : 'primary.dark',
-							},
+							color: selected
+								? darkMode
+									? 'primary.light'
+									: 'primary.dark'
+								: 'primary.contrastText',
 						}}
 					>
 						Theme Color

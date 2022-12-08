@@ -7,7 +7,7 @@ exports[`DarkModeSwitch Should match snapshot 1`] = `
     id="test-dark-mode-switch-container"
   >
     <span
-      class="MuiSwitch-root MuiSwitch-sizeMedium css-1optcn7-MuiSwitch-root"
+      class="MuiSwitch-root MuiSwitch-sizeMedium css-14s0ud6-MuiSwitch-root"
     >
       <span
         aria-labelledby="test-dark-mode-switch-label-light"
@@ -20,7 +20,7 @@ exports[`DarkModeSwitch Should match snapshot 1`] = `
         />
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-17slstj-MuiSvgIcon-root"
           data-testid="WbSunnyIcon"
           focusable="false"
           id="test-dark-mode-switch-icon-unchecked"
@@ -42,7 +42,7 @@ exports[`DarkModeSwitch Should match snapshot 1`] = `
       for="test-dark-mode-switch"
     >
       <p
-        class="MuiTypography-root MuiTypography-body2 css-1ntcjg8-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-body2 css-28mjxw-MuiTypography-root"
         id="test-dark-mode-switch-label-light"
       >
         Light Mode

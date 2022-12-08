@@ -57,7 +57,7 @@ exports[`DashboardDrawer Should math snapshot 1`] = `
         id="dashboard-drawer-header-actions"
       >
         <button
-          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1cc9kza-MuiButtonBase-root-MuiIconButton-root"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-xntsca-MuiButtonBase-root-MuiIconButton-root"
           id="dashboard-menu-drawer-button"
           tabindex="0"
           type="button"
@@ -84,7 +84,7 @@ exports[`DashboardDrawer Should math snapshot 1`] = `
           />
         </button>
         <button
-          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1cc9kza-MuiButtonBase-root-MuiIconButton-root"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-xntsca-MuiButtonBase-root-MuiIconButton-root"
           id="dashboard-profile-drawer-button"
           tabindex="0"
           type="button"
@@ -111,7 +111,7 @@ exports[`DashboardDrawer Should math snapshot 1`] = `
           />
         </button>
         <button
-          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1cc9kza-MuiButtonBase-root-MuiIconButton-root"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-xntsca-MuiButtonBase-root-MuiIconButton-root"
           id="dashboard-settings-drawer-button"
           tabindex="0"
           type="button"
@@ -144,7 +144,7 @@ exports[`DashboardDrawer Should math snapshot 1`] = `
       id="dashboard-drawer-footer"
     >
       <button
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1cc9kza-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-xntsca-MuiButtonBase-root-MuiIconButton-root"
         id="dashboard-color-picker-drawer-button"
         tabindex="0"
         type="button"
@@ -171,7 +171,7 @@ exports[`DashboardDrawer Should math snapshot 1`] = `
         />
       </button>
       <button
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1cc9kza-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-xntsca-MuiButtonBase-root-MuiIconButton-root"
         id="dashboard-dark-mode-drawer-button"
         tabindex="0"
         type="button"
@@ -198,7 +198,7 @@ exports[`DashboardDrawer Should math snapshot 1`] = `
         />
       </button>
       <button
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1cc9kza-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-xntsca-MuiButtonBase-root-MuiIconButton-root"
         id="dashboard-logout-drawer-button"
         tabindex="0"
         type="button"

@@ -7,7 +7,7 @@ exports[`ColorPickerIcon Should match snapshot 1`] = `
     id="test-color-picker-container"
   >
     <div
-      class="MuiBox-root css-1rq3z77"
+      class="MuiBox-root css-1rks40w"
       id="test-color-picker-box"
     >
       <button
@@ -37,7 +37,7 @@ exports[`ColorPickerIcon Should match snapshot 1`] = `
         for="test-color-picker-button"
       >
         <p
-          class="MuiTypography-root MuiTypography-body2 css-1ntcjg8-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body2 css-28mjxw-MuiTypography-root"
           id="test-color-picker-label"
         >
           Theme Color

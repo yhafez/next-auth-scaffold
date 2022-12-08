@@ -1,5 +1,5 @@
 // Path: ./components/DarkModeSwitch.tsx
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Box, Switch, Typography } from '@mui/material'
 import WbSunnyIcon from '@mui/icons-material/WbSunny'
 import Brightness2Icon from '@mui/icons-material/Brightness2'
@@ -12,6 +12,7 @@ export interface DarkModeSwitchProps {
 
 export default function DarkModeSwitch({ name }: DarkModeSwitchProps) {
 	const { darkMode, setDarkMode } = useBoundStore()
+	const [selected, setSelected] = useState(false)
 
 	const handleDarkMode = () => {
 		localStorage.setItem('darkMode', JSON.stringify(!darkMode))
@@ -23,9 +24,17 @@ export default function DarkModeSwitch({ name }: DarkModeSwitchProps) {
 		setDarkMode(darkMode)
 	}, [darkMode, setDarkMode])
 
+	const handleEnter = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+		if (e.key === 'Enter') {
+			handleDarkMode()
+		}
+	}
+
 	return (
 		<Box
 			id={`${name}-dark-mode-switch-container`}
+			onMouseEnter={() => setSelected(true)}
+			onMouseLeave={() => setSelected(false)}
 			sx={{
 				display: 'flex',
 				flexDirection: 'column',
@@ -39,8 +48,10 @@ export default function DarkModeSwitch({ name }: DarkModeSwitchProps) {
 				id={`${name}-dark-mode-switch`}
 				checked={darkMode}
 				onChange={handleDarkMode}
+				onKeyDown={handleEnter}
 				aria-labelledby={`${name}-dark-mode-switch-label-${darkMode ? 'dark' : 'light'}`}
 				sx={{
+					color: selected ? (darkMode ? 'primary.light' : 'primary.dark') : 'primary.contrastText',
 					'& .MuiSwitch-switchBase': {
 						color: 'primary.contrastText',
 						'&.Mui-checked': {
@@ -51,8 +62,30 @@ export default function DarkModeSwitch({ name }: DarkModeSwitchProps) {
 						},
 					},
 				}}
-				checkedIcon={<Brightness2Icon id={`${name}-dark-mode-switch-icon-checked`} />}
-				icon={<WbSunnyIcon id={`${name}-dark-mode-switch-icon-unchecked`} />}
+				checkedIcon={
+					<Brightness2Icon
+						id={`${name}-dark-mode-switch-icon-checked`}
+						sx={{
+							color: selected
+								? darkMode
+									? 'primary.light'
+									: 'primary.dark'
+								: 'primary.contrastText',
+						}}
+					/>
+				}
+				icon={
+					<WbSunnyIcon
+						id={`${name}-dark-mode-switch-icon-unchecked`}
+						sx={{
+							color: selected
+								? darkMode
+									? 'primary.light'
+									: 'primary.dark'
+								: 'primary.contrastText',
+						}}
+					/>
+				}
 			/>
 			<label htmlFor={`${name}-dark-mode-switch`}>
 				<Typography
@@ -60,11 +93,12 @@ export default function DarkModeSwitch({ name }: DarkModeSwitchProps) {
 					variant="body2"
 					sx={{
 						fontWeight: 500,
-						color: 'primary.contrastText',
+						color: selected
+							? darkMode
+								? 'primary.light'
+								: 'primary.dark'
+							: 'primary.contrastText',
 						cursor: 'pointer',
-						'&:hover': {
-							color: darkMode ? 'primary.light' : 'primary.dark',
-						},
 					}}
 				>
 					{darkMode ? 'Dark Mode' : 'Light Mode'}

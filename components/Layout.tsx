@@ -20,6 +20,7 @@ export function Layout({ name, children, drawerChildren }: LayoutProps) {
 	const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
 	const [drawerOpen, setDrawerOpen] = useState(false)
+	const [selected, setSelected] = useState(false)
 
 	return (
 		<>
@@ -64,6 +65,8 @@ export function Layout({ name, children, drawerChildren }: LayoutProps) {
 						{isMobile && drawerChildren && (
 							<Box
 								id={`${name}-toolbar-collapse-drawer`}
+								onMouseEnter={() => setSelected(true)}
+								onMouseLeave={() => setSelected(false)}
 								sx={{
 									display: 'flex',
 									flexDirection: 'column',
@@ -84,7 +87,16 @@ export function Layout({ name, children, drawerChildren }: LayoutProps) {
 										...(drawerOpen && { display: 'none' }),
 									}}
 								>
-									<ChevronRight />
+									<ChevronRight
+										id={`${name}-toolbar-collapse-drawer-icon`}
+										sx={{
+											color: selected
+												? darkMode
+													? 'primary.light'
+													: 'primary.dark'
+												: 'primary.contrastText',
+										}}
+									/>
 								</IconButton>
 								<label htmlFor={`${name}-toolbar-collapse-drawer-icon`}>
 									<Typography
@@ -92,12 +104,13 @@ export function Layout({ name, children, drawerChildren }: LayoutProps) {
 										variant="body1"
 										sx={{
 											fontWeight: 500,
-											color: 'primary.contrastText',
 											ml: 1,
 											cursor: 'pointer',
-											'&:hover': {
-												color: darkMode ? 'primary.light' : 'primary.dark',
-											},
+											color: selected
+												? darkMode
+													? 'primary.light'
+													: 'primary.dark'
+												: 'primary.contrastText',
 											...(drawerOpen && { display: 'none' }),
 										}}
 									>

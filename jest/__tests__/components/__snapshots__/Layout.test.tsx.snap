@@ -25,7 +25,7 @@ exports[`Layout Should match snapshot 1`] = `
           id="test-toolbar-color-picker-container"
         >
           <div
-            class="MuiBox-root css-1rq3z77"
+            class="MuiBox-root css-1rks40w"
             id="test-toolbar-color-picker-box"
           >
             <button
@@ -55,7 +55,7 @@ exports[`Layout Should match snapshot 1`] = `
               for="test-toolbar-color-picker-button"
             >
               <p
-                class="MuiTypography-root MuiTypography-body2 css-1ntcjg8-MuiTypography-root"
+                class="MuiTypography-root MuiTypography-body2 css-28mjxw-MuiTypography-root"
                 id="test-toolbar-color-picker-label"
               >
                 Theme Color
@@ -68,7 +68,7 @@ exports[`Layout Should match snapshot 1`] = `
           id="test-toolbar-dark-mode-switch-container"
         >
           <span
-            class="MuiSwitch-root MuiSwitch-sizeMedium css-1optcn7-MuiSwitch-root"
+            class="MuiSwitch-root MuiSwitch-sizeMedium css-14s0ud6-MuiSwitch-root"
           >
             <span
               aria-labelledby="test-toolbar-dark-mode-switch-label-light"
@@ -81,7 +81,7 @@ exports[`Layout Should match snapshot 1`] = `
               />
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-17slstj-MuiSvgIcon-root"
                 data-testid="WbSunnyIcon"
                 focusable="false"
                 id="test-toolbar-dark-mode-switch-icon-unchecked"
@@ -103,7 +103,7 @@ exports[`Layout Should match snapshot 1`] = `
             for="test-toolbar-dark-mode-switch"
           >
             <p
-              class="MuiTypography-root MuiTypography-body2 css-1ntcjg8-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-body2 css-28mjxw-MuiTypography-root"
               id="test-toolbar-dark-mode-switch-label-light"
             >
               Light Mode
