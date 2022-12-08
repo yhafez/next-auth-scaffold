@@ -35,6 +35,8 @@ export default function DarkModeSwitch({ name }: DarkModeSwitchProps) {
 			id={`${name}-dark-mode-switch-container`}
 			onMouseEnter={() => setSelected(true)}
 			onMouseLeave={() => setSelected(false)}
+			onFocus={() => setSelected(true)}
+			onBlur={() => setSelected(false)}
 			sx={{
 				display: 'flex',
 				flexDirection: 'column',

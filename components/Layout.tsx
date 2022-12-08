@@ -67,6 +67,8 @@ export function Layout({ name, children, drawerChildren }: LayoutProps) {
 								id={`${name}-toolbar-collapse-drawer`}
 								onMouseEnter={() => setSelected(true)}
 								onMouseLeave={() => setSelected(false)}
+								onFocus={() => setSelected(true)}
+								onBlur={() => setSelected(false)}
 								sx={{
 									display: 'flex',
 									flexDirection: 'column',

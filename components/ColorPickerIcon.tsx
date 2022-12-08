@@ -72,6 +72,8 @@ export default function ColorPickerIcon({ name }: ColorPickerProps) {
 			id={`${name}-color-picker-container`}
 			onMouseEnter={() => setSelected(true)}
 			onMouseLeave={() => setSelected(false)}
+			onFocus={() => setSelected(true)}
+			onBlur={() => setSelected(false)}
 			sx={{
 				mr: 4,
 				height: '100%',
