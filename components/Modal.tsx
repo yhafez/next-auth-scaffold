@@ -1,6 +1,7 @@
 // Path: ./components/Modal.tsx
 
 import { Box, CircularProgress, Typography, useMediaQuery } from '@mui/material'
+import { ErrorOutline } from '@mui/icons-material'
 import { getContrast } from 'color2k'
 
 import { useBoundStore } from '../store'
@@ -9,13 +10,21 @@ import { toTitleCase } from '../utils/helpers'
 export interface ModalProps {
 	children: React.ReactNode
 	name: string
+	onSubmit?: () => void
 	loading: boolean
 	error: string
 	small?: boolean
 }
 
-const Modal = ({ children, name, loading = false, error = '', small = false }: ModalProps) => {
-	const { darkMode, customPalette } = useBoundStore()
+const Modal = ({
+	children,
+	name,
+	onSubmit,
+	loading = false,
+	error = '',
+	small = false,
+}: ModalProps) => {
+	const { darkMode, customPalette, theme } = useBoundStore()
 	const isSufficientContrast =
 		getContrast(
 			darkMode ? customPalette.primary.dark : customPalette.primary.light,
@@ -24,16 +33,36 @@ const Modal = ({ children, name, loading = false, error = '', small = false }: M
 
 	const formattedName = name.replace(/ /g, '-').toLowerCase()
 
-	const isMobile = useMediaQuery('(max-width: 600px)')
-	const isTablet = useMediaQuery('(max-width: 960px)')
-	const isDesktop = useMediaQuery('(min-width: 960px)')
-	const isLargeDesktop = useMediaQuery('(min-width: 1280px)')
-	const isExtraLargeDesktop = useMediaQuery('(min-width: 1920px)')
+	const isMobile = useMediaQuery(`(max-width:${theme.breakpoints.values.sm}px)`)
+	const isDesktop = useMediaQuery(`(min-width:${theme.breakpoints.values.md}px)`)
+	const isLargeDesktop = useMediaQuery(`(min-width:${theme.breakpoints.values.lg}px)`)
+	const isExtraLargeDesktop = useMediaQuery(`(min-width:${theme.breakpoints.values.xl}px)`)
+
+	// Create media queries for vertical height of screen
+	const isExtraShortScreen = useMediaQuery(`(max-height: 350px)`)
+	const isShortScreen = useMediaQuery(`(max-height: 600px)`)
+	const isMediumScreen = useMediaQuery(`(max-height: 750px)`)
+	const isLargeScreen = useMediaQuery(`(max-height: 850px)`)
+
+	// Calculate top position of modal based on vertical height of screen
+	const topPosition = isExtraShortScreen
+		? '20%'
+		: isShortScreen
+		? '15%'
+		: isMediumScreen
+		? '10%'
+		: isLargeScreen
+		? '5%'
+		: 'auto'
 
 	return (
 		<Box
 			id={`${formattedName}-modal-container`}
 			sx={{
+				position: 'absolute',
+				top: topPosition,
+				my: 2,
+				overflow: 'scroll',
 				display: 'flex',
 				flexDirection: 'column',
 				justifyContent: 'center',
@@ -44,12 +73,8 @@ const Modal = ({ children, name, loading = false, error = '', small = false }: M
 				padding: 2,
 				borderRadius: 2,
 				boxShadow: 1,
-				offset: 1,
-				transform: 'translateY(-15%)',
 				width: isMobile
 					? '100%'
-					: isTablet
-					? '50%'
 					: isDesktop
 					? '30%'
 					: isLargeDesktop
@@ -61,10 +86,11 @@ const Modal = ({ children, name, loading = false, error = '', small = false }: M
 		>
 			<Typography
 				id={`${formattedName}-modal-title`}
-				variant="h2"
+				variant="h1"
 				sx={{
 					color: 'primary.contrastText',
 					fontWeight: 600,
+					fontSize: isMobile ? '3rem' : '5rem',
 					marginBottom: 1,
 				}}
 			>
@@ -92,25 +118,51 @@ const Modal = ({ children, name, loading = false, error = '', small = false }: M
 					/>
 				) : (
 					error && (
-						<Typography
-							id={`${formattedName}-modal-error`}
-							variant="body1"
+						<Box
+							id={`${formattedName}-modal-error-container`}
 							sx={{
-								color: isSufficientContrast
-									? darkMode
-										? customPalette.error.main
-										: customPalette.error.dark
-									: 'primary.contrastText',
-								fontSize: '1.5rem',
+								display: 'flex',
+								justifyContent: 'center',
+								alignItems: 'center',
+								gap: 2,
+								width: '100%',
+								height: '100%',
 							}}
 						>
-							{error}
-						</Typography>
+							<ErrorOutline
+								id={`${formattedName}-modal-error-icon`}
+								sx={{
+									color: isSufficientContrast
+										? darkMode
+											? customPalette.error.main
+											: customPalette.error.dark
+										: 'primary.contrastText',
+								}}
+								aria-label="error"
+							/>
+							<Typography
+								id={`${formattedName}-modal-error`}
+								variant="body1"
+								sx={{
+									color: isSufficientContrast
+										? darkMode
+											? customPalette.error.main
+											: customPalette.error.dark
+										: 'primary.contrastText',
+									fontSize: '1.5rem',
+								}}
+							>
+								{error}
+							</Typography>
+						</Box>
 					)
 				)}
 			</Box>
 			<Box
 				id={`${formattedName}-modal-form`}
+				component={onSubmit ? 'form' : 'div'}
+				onSubmit={onSubmit ? onSubmit : undefined}
+				role={onSubmit ? 'form' : undefined}
 				sx={{
 					display: 'flex',
 					flexDirection: 'column',

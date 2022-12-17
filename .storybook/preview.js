@@ -1,11 +1,11 @@
-import React, { useMemo, useState, useRef, ElementRef } from 'react'
+import React, { useMemo, useState, useRef } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import Image from 'next/image'
 import Head from 'next/head'
 import { SessionProvider } from 'next-auth/react'
 import { RouterContext } from 'next/dist/shared/lib/router-context'
 import { ThemeProvider, CssBaseline, IconButton, Box } from '@mui/material'
-import CloseIcon from '@mui/icons-material/Close'
+import { Close } from '@mui/icons-material'
 import { SnackbarProvider } from 'notistack'
 
 import { defaultTheme, defaultDarkTheme } from '../theme'
@@ -129,7 +129,7 @@ const withMuiTheme = (Story, context) => {
 										},
 									}}
 								>
-									<CloseIcon
+									<Close
 										id="snackbar-dismiss-button-icon"
 										fontSize="small"
 										sx={{

@@ -1,7 +1,7 @@
 // Path: ./stories/components/DrawerButton.stories.tsx
 import { useState, useEffect } from 'react'
 import { Meta, Story } from '@storybook/react'
-import Menu from '@mui/icons-material/Menu'
+import { Menu } from '@mui/icons-material'
 
 import Drawer from '../../components/Drawer'
 import DrawerButton from '../../components/DrawerButton'

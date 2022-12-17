@@ -27,96 +27,61 @@ jest.mock('@mui/material', () => {
 })
 
 describe('Drawer', () => {
-	it('Should have no accessibility violations', async () => {
-		act(() =>
-			render(
+	let container: HTMLElement
+	beforeEach(() => {
+		act(() => {
+			container = render(
 				<main>
 					<Drawer open={true} handleDrawerClose={() => {}}>
 						<div>Test</div>
 					</Drawer>
 				</main>,
-			),
-		)
+			).container
 
+			return container
+		})
+	})
+
+	it('Should have no accessibility violations', async () => {
 		waitFor(async () => expect(await axe(screen.getByRole('main'))).toHaveNoViolations())
 	})
 
 	it('Should have children with text "Test"', async () => {
-		const { container } = render(
-			<Drawer open={true} handleDrawerClose={() => {}}>
-				<div>Test</div>
-			</Drawer>,
-		)
 		const test = await findByText(container, 'Test')
 		expect(test).toBeTruthy()
 	})
 
 	it('Should have a Drawer element with id "drawer"', () => {
-		const { container } = render(
-			<Drawer open={true} handleDrawerClose={() => {}}>
-				<div>Test</div>
-			</Drawer>,
-		)
 		const test = container.querySelector('#drawer')
 		expect(test).toBeTruthy()
 	})
 
 	it('Should have a Box element with id "drawer-close-button-container"', () => {
-		const { container } = render(
-			<Drawer open={true} handleDrawerClose={() => {}}>
-				<div>Test</div>
-			</Drawer>,
-		)
 		const test = container.querySelector('#drawer-close-button-container')
 		expect(test).toBeTruthy()
 	})
 
 	it('Should have an IconButton element with id "drawer-close-button"', () => {
-		const { container } = render(
-			<Drawer open={true} handleDrawerClose={() => {}}>
-				<div>Test</div>
-			</Drawer>,
-		)
 		const test = container.querySelector('#drawer-close-button')
 		expect(test).toBeTruthy()
 	})
 
 	it('Should have a ChevronLeft element with id "drawer-close-button-icon"', () => {
-		const { container } = render(
-			<Drawer open={true} handleDrawerClose={() => {}}>
-				<div>Test</div>
-			</Drawer>,
-		)
 		const test = container.querySelector('#drawer-close-button-icon')
 		expect(test).toBeTruthy()
 	})
 
 	it('Should have a label element with id "drawer-close-button-label"', () => {
-		const { container } = render(
-			<Drawer open={true} handleDrawerClose={() => {}}>
-				<div>Test</div>
-			</Drawer>,
-		)
 		const test = container.querySelector('#drawer-close-button-label')
 		expect(test).toBeTruthy()
 	})
 
 	it('Should have a Typography element with id "drawer-close-button-label-text"', () => {
-		const { container } = render(
-			<Drawer open={true} handleDrawerClose={() => {}}>
-				<div>Test</div>
-			</Drawer>,
-		)
 		const test = container.querySelector('#drawer-close-button-label-text')
 		expect(test).toBeTruthy()
 	})
 
 	it('Should match snapshot', () => {
-		const { container } = render(
-			<Drawer open={true} handleDrawerClose={() => {}}>
-				<div>Test</div>
-			</Drawer>,
-		)
 		expect(container).toMatchSnapshot()
 	})
 })

@@ -81,10 +81,9 @@ export default async function forgotPassword(req: NextApiRequest, res: NextApiRe
 			})
 
 			if (!user?.id || !user?.email) {
-				res.status(404).json({
+				return res.status(404).json({
 					error: 'User does not exist',
 				})
-				return
 			}
 
 			const secret = process.env.JWT_SECRET! + user?.password + user?.salt
@@ -95,27 +94,27 @@ export default async function forgotPassword(req: NextApiRequest, res: NextApiRe
 				const result = await sendForgotPasswordEmailMail(user?.email, link)
 
 				if (result.rejected.length > 0) {
-					res.status(400).json({
+					return res.status(400).json({
 						error: 'There was an error sending the forgot password email. Email not sent',
 					})
 				} else {
-					res.status(200).json({
+					return res.status(200).json({
 						message: 'Email sent',
 					})
 				}
 			} catch (error) {
 				console.error('There was an error sending the forgot password email: ', error)
-				res.status(500).json({
+				return res.status(500).json({
 					error: 'There was an error sending the forgot password email: ' + error,
 				})
 			}
 		} catch (error) {
 			console.error('There was an error finding the user in the database: ', error)
-			res.status(500).json({
+			return res.status(500).json({
 				error: 'There was an error finding the user in the database: ' + error,
 			})
 		}
 	} else {
-		res.status(405).json({ error: 'Method not allowed' })
+		return res.status(405).json({ error: 'Method not allowed' })
 	}
 }

@@ -1,8 +1,7 @@
 // Path: ./components/DarkModeSwitch.tsx
 import { useEffect, useState } from 'react'
 import { Box, Switch, Typography } from '@mui/material'
-import WbSunnyIcon from '@mui/icons-material/WbSunny'
-import Brightness2Icon from '@mui/icons-material/Brightness2'
+import { WbSunny, Brightness2 } from '@mui/icons-material'
 
 import { useBoundStore } from '../store'
 
@@ -38,11 +37,13 @@ export default function DarkModeSwitch({ name }: DarkModeSwitchProps) {
 			onFocus={() => setSelected(true)}
 			onBlur={() => setSelected(false)}
 			sx={{
+				textAlign: 'center',
 				display: 'flex',
 				flexDirection: 'column',
 				justifyContent: 'space-around',
 				alignItems: 'center',
 				height: '100%',
+				width: '100%',
 				mt: 1,
 			}}
 		>
@@ -68,7 +69,7 @@ export default function DarkModeSwitch({ name }: DarkModeSwitchProps) {
 					},
 				}}
 				checkedIcon={
-					<Brightness2Icon
+					<Brightness2
 						id={`${name}-dark-mode-switch-icon-checked`}
 						aria-hidden={darkMode ? 'false' : 'true'}
 						sx={{
@@ -81,7 +82,7 @@ export default function DarkModeSwitch({ name }: DarkModeSwitchProps) {
 					/>
 				}
 				icon={
-					<WbSunnyIcon
+					<WbSunny
 						id={`${name}-dark-mode-switch-icon-unchecked`}
 						aria-hidden={darkMode ? 'true' : 'false'}
 						sx={{
@@ -108,7 +109,8 @@ export default function DarkModeSwitch({ name }: DarkModeSwitchProps) {
 						cursor: 'pointer',
 					}}
 				>
-					{darkMode ? 'Dark Mode' : 'Light Mode'}
+					{darkMode ? 'Dark' : 'Light'}
+					<br /> Mode
 				</Typography>
 			</label>
 		</Box>

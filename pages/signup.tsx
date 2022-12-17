@@ -2,6 +2,7 @@
 
 import { useState, KeyboardEvent } from 'react'
 import { useRouter } from 'next/router'
+import { useHydrated } from 'react-hydration-provider'
 
 import Modal from '../components/Modal'
 import SubmitButton from '../components/SubmitButton'
@@ -27,6 +28,7 @@ export default function Signup({
 	loadingInit = false,
 }: SignupProps) {
 	const router = useRouter()
+	const hydrated = useHydrated()
 
 	const [email, setEmail] = useState(emailInit)
 	const [password, setPassword] = useState(passwordInit)
@@ -71,9 +73,11 @@ export default function Signup({
 		}
 	}
 
+	if (!hydrated) return null
+
 	return (
-		<Layout name="signup">
-			<Modal name="signup" loading={loading} error={error}>
+		<Layout name="signup" pageTitle="sign up">
+			<Modal name="signup" onSubmit={handleSignup} loading={loading} error={error}>
 				<EmailInput
 					name="signup"
 					value={email}

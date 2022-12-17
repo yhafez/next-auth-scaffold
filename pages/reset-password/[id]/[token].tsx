@@ -2,6 +2,7 @@
 import { useState, useEffect, KeyboardEvent } from 'react'
 import { useSnackbar } from 'notistack'
 import { useRouter } from 'next/router'
+import { useHydrated } from 'react-hydration-provider'
 
 import Modal from '../../../components/Modal'
 import ConfirmPasswordInput from '../../../components/ConfirmPasswordInput'
@@ -26,6 +27,7 @@ export default function ResetPassword({
 	const { id, token } = router.query
 
 	const { enqueueSnackbar } = useSnackbar()
+	const hydrated = useHydrated()
 
 	const [password, setPassword] = useState(passwordInit)
 	const [confirmPassword, setConfirmPassword] = useState(confirmPasswordInit)
@@ -108,9 +110,11 @@ export default function ResetPassword({
 		}
 	}
 
+	if (!hydrated) return null
+
 	return (
-		<Layout name="reset-password">
-			<Modal name="reset password" loading={loading} error={error}>
+		<Layout name="reset-password" pageTitle="reset password">
+			<Modal name="reset password" onSubmit={handleResetPassword} loading={loading} error={error}>
 				<ConfirmPasswordInput
 					name="reset-password"
 					password={password}

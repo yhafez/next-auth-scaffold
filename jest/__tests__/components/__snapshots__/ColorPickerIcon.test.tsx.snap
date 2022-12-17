@@ -2,48 +2,50 @@
 
 exports[`ColorPickerIcon Should match snapshot 1`] = `
 <div>
-  <div
-    class="MuiBox-root css-zd0i21"
-    id="test-color-picker-container"
-  >
+  <main>
     <div
-      class="MuiBox-root css-1rks40w"
-      id="test-color-picker-box"
+      class="MuiBox-root css-4v0dfa"
+      id="test-color-picker-container"
     >
-      <button
-        aria-labelledby="test-color-picker-label"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
-        id="test-color-picker-button"
-        tabindex="0"
-        type="button"
+      <div
+        class="MuiBox-root css-1rks40w"
+        id="test-color-picker-box"
       >
-        <svg
-          aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1kqeszy-MuiSvgIcon-root"
-          data-testid="ColorLensIcon"
-          focusable="false"
-          id="test-color-picker-icon"
-          viewBox="0 0 24 24"
+        <button
+          aria-labelledby="test-color-picker-label"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+          id="test-color-picker-button"
+          tabindex="0"
+          type="button"
         >
-          <path
-            d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1kqeszy-MuiSvgIcon-root"
+            data-testid="ColorLensIcon"
+            focusable="false"
+            id="test-color-picker-icon"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"
+            />
+          </svg>
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
           />
-        </svg>
-        <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-        />
-      </button>
-      <label
-        for="test-color-picker-button"
-      >
-        <p
-          class="MuiTypography-root MuiTypography-body2 css-28mjxw-MuiTypography-root"
-          id="test-color-picker-label"
+        </button>
+        <label
+          for="test-color-picker-button"
         >
-          Theme Color
-        </p>
-      </label>
+          <p
+            class="MuiTypography-root MuiTypography-body2 css-28mjxw-MuiTypography-root"
+            id="test-color-picker-label"
+          >
+            Theme Color
+          </p>
+        </label>
+      </div>
     </div>
-  </div>
+  </main>
 </div>
 `;

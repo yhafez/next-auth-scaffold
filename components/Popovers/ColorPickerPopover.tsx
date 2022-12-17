@@ -2,12 +2,11 @@
 
 import { useState, useCallback } from 'react'
 import { Popover, PopoverOrigin } from '@mui/material'
-import { useBoundStore } from '../store'
+import { useBoundStore } from '../../store'
 import { ChromePicker } from 'react-color'
 
 export interface ColorPickerPopoverProps {
 	name: string
-	open: boolean
 	anchorEl: HTMLButtonElement | null
 	handleClose: () => void
 	handleColorChange: (color: string) => void
@@ -17,7 +16,6 @@ export interface ColorPickerPopoverProps {
 
 const ColorPickerPopover = ({
 	name,
-	open,
 	anchorEl,
 	handleClose,
 	handleColorChange,
@@ -39,7 +37,7 @@ const ColorPickerPopover = ({
 	return (
 		<Popover
 			id={`${name}-color-picker-popover`}
-			open={open}
+			open={!!anchorEl}
 			anchorEl={anchorEl}
 			onClose={handleClose}
 			anchorOrigin={anchorOrigin}

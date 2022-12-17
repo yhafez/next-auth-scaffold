@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import { Meta, Story } from '@storybook/react'
 import { Layout, LayoutProps } from '../../components/Layout'
-import { ThemeProvider } from '@mui/material/styles'
+import { ThemeProvider } from '@mui/material'
 
 import { defaultTheme } from '../../theme'
 import { useBoundStore } from '../../store'

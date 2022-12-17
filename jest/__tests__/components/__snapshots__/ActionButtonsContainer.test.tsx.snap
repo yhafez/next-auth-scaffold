@@ -2,13 +2,15 @@
 
 exports[`ActionButtonsContainer Should match snapshot 1`] = `
 <div>
-  <div
-    class="MuiBox-root css-1vug9qk"
-    id="test-buttons-container"
-  >
-    <div>
-      Test
+  <main>
+    <div
+      class="MuiBox-root css-1vug9qk"
+      id="test-buttons-container"
+    >
+      <div>
+        Test
+      </div>
     </div>
-  </div>
+  </main>
 </div>
 `;

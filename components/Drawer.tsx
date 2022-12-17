@@ -12,7 +12,7 @@ export interface DrawerProps {
 
 export default function DrawerComponent({ open, handleDrawerClose, children }: DrawerProps) {
 	const { darkMode, theme } = useBoundStore()
-	const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
+	const isMobile = useMediaQuery(`(max-width:${theme.breakpoints.values.sm}px)`)
 
 	return (
 		<Drawer
@@ -34,6 +34,13 @@ export default function DrawerComponent({ open, handleDrawerClose, children }: D
 			open={open}
 			anchor="left"
 			onClose={handleDrawerClose}
+			PaperProps={{
+				sx: {
+					position: 'absolute',
+					top: 0,
+					left: 0,
+				},
+			}}
 		>
 			<>
 				{isMobile && (

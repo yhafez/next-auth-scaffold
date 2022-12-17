@@ -39,7 +39,13 @@
 		"@typescript-eslint/no-explicit-any": "off",
 		"@typescript-eslint/no-non-null-assertion": "off",
 		"@typescript-eslint/no-empty-function": "off",
-		"no-mixed-spaces-and-tabs": "off"
+		"no-mixed-spaces-and-tabs": "off",
+		"no-restricted-imports": [
+			"error",
+			{
+				"patterns": ["@mui/*/*/*", "!@mui/material/test-utils/*"]
+			}
+		]
 	},
 	"settings": {
 		"react": { "version": "detect" }

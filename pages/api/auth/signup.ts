@@ -21,7 +21,7 @@ export default async function signup(req: NextApiRequest, res: NextApiResponse) 
 			})
 
 			if (user) {
-				res.status(400).json({
+				return res.status(400).json({
 					error: 'User already exists',
 				})
 			} else {
@@ -42,25 +42,25 @@ export default async function signup(req: NextApiRequest, res: NextApiResponse) 
 						expiresIn: '1d',
 					})
 
-					res.status(201).json({
+					return res.status(201).json({
 						token: token,
 						user: newUser,
 						success: 'User created',
 					})
 				} catch (err) {
 					console.error('There was an error creating the user in the database', err)
-					res.status(500).json({
+					return res.status(500).json({
 						error: 'There was an error creating the user in the database',
 					})
 				}
 			}
 		} catch (error) {
 			console.error('There was an error checking if the user already exists in the database', error)
-			res.status(500).json({
+			return res.status(500).json({
 				error: 'There was an error checking if the user already exists in the database',
 			})
 		}
 	} else {
-		res.status(405).json({ error: 'Method not allowed' })
+		return res.status(405).json({ error: 'Method not allowed' })
 	}
 }

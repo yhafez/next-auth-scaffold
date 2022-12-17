@@ -29,9 +29,11 @@ export const authOptions = {
 						}),
 					})
 
-					const user = await res.json()
+					const { user } = await res.json()
 
 					if (res.ok && user) {
+						delete user.password
+						delete user.salt
 						return user
 					}
 
@@ -50,19 +52,13 @@ export const authOptions = {
 	},
 	database: process.env.DATABASE_URL,
 	session: {
-		strategy: 'jwt',
+		strategy: 'jwt' as const,
 		jwt: true,
 		maxAge: 30 * 24 * 60 * 60, // 30 days
 	},
 	callbacks: {
-		async jwt(token, user, account, profile, isNewUser) {
-			if (user) {
-				token.id = user.id
-				token.email = user.email
-				token.name = user.name
-				token.image = user.image
-			}
-			return token
+		async jwt(payload) {
+			return { ...payload }
 		},
 	},
 }

@@ -2,22 +2,26 @@
 
 exports[`ModalNote Should match snapshot 1`] = `
 <div>
-  <div
-    class="MuiBox-root css-1tsywmc"
-    id="test-modal-note-container"
-  >
-    <a
-      href="/test"
-      id="test-modal-note-link"
-      style="text-decoration: none;"
+  <main>
+    <div
+      class="MuiBox-root css-1tsywmc"
+      id="test-modal-note-container"
     >
-      <p
-        class="MuiTypography-root MuiTypography-body1 css-1jo470d-MuiTypography-root"
-        id="test-modal-note-link-text"
+      <a
+        aria-label="test"
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1supet1-MuiTypography-root-MuiLink-root"
+        href="/test"
+        id="test-modal-note-link"
+        title="test"
       >
-        test
-      </p>
-    </a>
-  </div>
+        <p
+          class="MuiTypography-root MuiTypography-body1 css-ba5jyk-MuiTypography-root"
+          id="test-modal-note-link-text"
+        >
+          test
+        </p>
+      </a>
+    </div>
+  </main>
 </div>
 `;

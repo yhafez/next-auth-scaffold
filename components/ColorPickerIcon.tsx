@@ -1,10 +1,10 @@
 // Path: ./components/ColorPicker.tsx
 import { useState, MouseEvent, useCallback, useEffect } from 'react'
 import { Box, IconButton, Typography } from '@mui/material'
-import ColorLensIcon from '@mui/icons-material/ColorLens'
+import { ColorLens } from '@mui/icons-material'
 import { darken, lighten } from 'color2k'
 
-import ColorPickerPopover from './ColorPickerPopover'
+import ColorPickerPopover from './Popovers/ColorPickerPopover'
 
 import { useBoundStore } from '../store'
 import { getContrastColor, getSecondaryColor } from '../utils/helpers'
@@ -75,8 +75,9 @@ export default function ColorPickerIcon({ name, selectedInit }: ColorPickerProps
 			onFocus={() => setSelected(true)}
 			onBlur={() => setSelected(false)}
 			sx={{
-				mr: 4,
+				textAlign: 'center',
 				height: '100%',
+				width: '100%',
 				display: 'flex',
 				alignItems: 'center',
 				justifyContent: 'center',
@@ -101,7 +102,7 @@ export default function ColorPickerIcon({ name, selectedInit }: ColorPickerProps
 					aria-labelledby={`${name}-color-picker-label`}
 					onClick={handleClick}
 				>
-					<ColorLensIcon
+					<ColorLens
 						id={`${name}-color-picker-icon`}
 						sx={{
 							color: selected

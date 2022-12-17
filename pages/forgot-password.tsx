@@ -1,6 +1,7 @@
 // Path: ./pages/forgot-password.tsx
 import { useState, KeyboardEvent } from 'react'
 import { useSnackbar } from 'notistack'
+import { useHydrated } from 'react-hydration-provider'
 
 import Modal from '../components/Modal'
 import SubmitButton from '../components/SubmitButton'
@@ -8,7 +9,6 @@ import EmailInput from '../components/EmailInput'
 import ActionButtonsContainer from '../components/ActionButtonsContainer'
 import ModalNote from '../components/ModalNote'
 import { Layout } from '../components/Layout'
-import { CircularProgress } from '@mui/material'
 
 export interface ForgotPasswordProps {
 	errorInit?: string
@@ -22,6 +22,7 @@ export default function ForgotPassword({
 	loadingInit = false,
 }: ForgotPasswordProps) {
 	const { enqueueSnackbar } = useSnackbar()
+	const hydrated = useHydrated()
 
 	const [email, setEmail] = useState(emailInit)
 	const [loading, setLoading] = useState(loadingInit)
@@ -67,9 +68,11 @@ export default function ForgotPassword({
 		}
 	}
 
+	if (!hydrated) return null
+
 	return (
-		<Layout name="forgot-password">
-			<Modal name="forgot password" loading={loading} error={error}>
+		<Layout name="forgot-password" pageTitle="forgot password">
+			<Modal name="forgot password" onSubmit={handleForgotPassword} loading={loading} error={error}>
 				<EmailInput
 					name="forgot-password"
 					value={email}

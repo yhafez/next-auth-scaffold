@@ -2,49 +2,34 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { signOut } from 'next-auth/react'
-import {
-	Typography,
-	Box,
-	Avatar,
-	Menu,
-	MenuItem,
-	Button,
-	Dialog,
-	DialogTitle,
-	DialogContent,
-	DialogContentText,
-	DialogActions,
-} from '@mui/material'
+import { Typography, Box, Avatar, Button, List, ListItem } from '@mui/material'
+import { useTheme } from '@mui/material/styles'
 import {
 	ExitToApp,
 	Settings,
-	Menu as MenuIcon,
 	Palette,
 	AccountCircle,
 	Brightness7,
 	Brightness4,
+	Home,
 } from '@mui/icons-material'
-import { useTheme } from '@mui/material/styles'
-import { useSnackbar } from 'notistack'
 import { darken, lighten } from 'color2k'
+
+import DrawerButton from '../DrawerButton'
+import ColorPickerPopover from '../Popovers/ColorPickerPopover'
+import DashboardSignOutPopover from '../Popovers/DrawerSignOutPopover'
 
 import { useBoundStore } from '../../store'
 import { getContrastColor, getSecondaryColor } from '../../utils/helpers'
 
-import ColorPickerPopover from '../ColorPickerPopover'
-import DrawerButton from '../DrawerButton'
-
 const DashboardDrawer = () => {
 	const { darkMode, customPalette, user, setDarkMode, setCustomPalette } = useBoundStore()
-	const { enqueueSnackbar } = useSnackbar()
 	const router = useRouter()
 	const theme = useTheme()
 
-	const [anchorElMenu, setAnchorElMenu] = useState<null | HTMLElement>(null)
-	const [colorPickerAnchorEl, setColorPickerAnchorEl] = useState<null | HTMLButtonElement>(null)
-	const [colorPickerOpen, setColorPickerOpen] = useState(false)
-	const [signOutOpen, setSignOutOpen] = useState(false)
+	const [anchorElMenu, setAnchorElMenu] = useState<null | HTMLButtonElement>(null)
+	const [anchorElSignOut, setAnchorElSignOut] = useState<null | HTMLButtonElement>(null)
+	const [anchorElColorPicker, setAnchorElColorPicker] = useState<null | HTMLButtonElement>(null)
 
 	useEffect(() => {
 		const newMainColor = localStorage.getItem('customPalette')
@@ -74,44 +59,16 @@ const DashboardDrawer = () => {
 		}
 	}, [])
 
-	const handleClickMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
-		setAnchorElMenu(event.currentTarget)
-	}
-
-	const handleCloseMenu = () => {
-		setAnchorElMenu(null)
-	}
-
-	const handleClickColorPicker = (event: React.MouseEvent<HTMLButtonElement>) => {
-		setColorPickerAnchorEl(event.currentTarget)
-		setColorPickerOpen(true)
-	}
-
 	const handleClickDarkMode = () => {
 		localStorage.setItem('darkMode', JSON.stringify(!darkMode))
 		setDarkMode(!darkMode)
 	}
 
-	const handleClickLogout = () => {
-		handleCloseMenu()
-		setSignOutOpen(true)
-	}
+	const handleClickLogout = (event: React.MouseEvent<HTMLButtonElement>) => {
+		setAnchorElSignOut(event.currentTarget)
 
-	const handleSignOut = () => {
-		localStorage.removeItem('token')
-		enqueueSnackbar('Logged out successfully', { variant: 'success', autoHideDuration: 3000 })
-		signOut({ callbackUrl: '/login' })
-	}
-
-	const handleCloseSignOut = () => {
-		setSignOutOpen(false)
-	}
-
-	const handleCloseColorPicker = () => {
 		const handleClickOutside = (event: MouseEvent) => {
-			if (colorPickerAnchorEl && !colorPickerAnchorEl.contains(event.target as Node)) {
-				setColorPickerAnchorEl(null)
-				setColorPickerOpen(false)
+			if (anchorElSignOut && !anchorElSignOut.contains(event.target as Node)) {
 				document.removeEventListener('click', handleClickOutside)
 			}
 		}
@@ -119,15 +76,35 @@ const DashboardDrawer = () => {
 
 		const handleEscape = (event: KeyboardEvent) => {
 			if (event.key === 'Escape') {
-				setColorPickerAnchorEl(null)
-				setColorPickerOpen(false)
 				document.removeEventListener('keydown', handleEscape)
 			}
 		}
 		document.addEventListener('keydown', handleEscape)
 
-		setColorPickerAnchorEl(null)
-		setColorPickerOpen(false)
+		return () => {
+			document.removeEventListener('click', handleClickOutside)
+			document.removeEventListener('keydown', handleEscape)
+		}
+	}
+
+	const handleCloseColorPicker = () => {
+		const handleClickOutside = (event: MouseEvent) => {
+			if (anchorElColorPicker && !anchorElColorPicker.contains(event.target as Node)) {
+				setAnchorElColorPicker(null)
+				document.removeEventListener('click', handleClickOutside)
+			}
+		}
+		document.addEventListener('click', handleClickOutside)
+
+		const handleEscape = (event: KeyboardEvent) => {
+			if (event.key === 'Escape') {
+				setAnchorElColorPicker(null)
+				document.removeEventListener('keydown', handleEscape)
+			}
+		}
+		document.addEventListener('keydown', handleEscape)
+
+		setAnchorElColorPicker(null)
 	}
 
 	const handleColorChange = (color: string) => {
@@ -154,13 +131,14 @@ const DashboardDrawer = () => {
 		<Box
 			id="dashboard-drawer"
 			component="nav"
+			aria-label="left-hand drawer dashboard navigation"
 			sx={{
 				width: { sm: 240 },
 				flexShrink: { sm: 0 },
 				'& .MuiDrawer-paper': {
 					width: 240,
 					boxSizing: 'border-box',
-					backgroundColor: theme.palette.background.default,
+					backgroundColor: 'background.default',
 				},
 				display: 'flex',
 				flexDirection: 'column',
@@ -225,66 +203,38 @@ const DashboardDrawer = () => {
 										transition: 'transform 0.2s',
 									},
 								}}
-								src={user?.image}
-								alt={`${user?.name} avatar`}
+								src={user?.image ?? '/default_profile.svg'}
+								alt={`${user?.name ?? user?.email ?? 'User'}'s avatar`}
 							/>
-							{user?.name ? (
-								<Typography
-									id="dashboard-drawer-user-avatar-name"
-									sx={{
-										fontSize: '1.2rem',
-										fontWeight: 'bold',
-										color: 'primary.contrastText',
-										'&:hover': {
-											color: darkMode ? 'primary.light' : 'primary.dark',
-											transform: 'scale(1.05)',
-											transition: 'transform 0.2s',
-										},
-										'&:focus': {
-											color: darkMode ? 'primary.light' : 'primary.dark',
-											transform: 'scale(1.05)',
-											transition: 'transform 0.2s',
-										},
-										'&:active': {
-											color: darkMode ? 'primary.light' : 'primary.dark',
-											transform: 'scale(1.05)',
-											transition: 'transform 0.2s',
-										},
-									}}
-								>
-									{user.name}
-								</Typography>
-							) : (
-								<Typography
-									id="dashboard-drawer-user-avatar-name-placeholder"
-									sx={{
-										fontSize: '1.2rem',
-										fontWeight: 'bold',
-										color: 'primary.contrastText',
-										'&:hover': {
-											color: darkMode ? 'primary.light' : 'primary.dark',
-											transform: 'scale(1.05)',
-											transition: 'transform 0.2s',
-										},
-										'&:focus': {
-											color: darkMode ? 'primary.light' : 'primary.dark',
-											transform: 'scale(1.05)',
-											transition: 'transform 0.2s',
-										},
-										'&:active': {
-											color: darkMode ? 'primary.light' : 'primary.dark',
-											transform: 'scale(1.05)',
-											transition: 'transform 0.2s',
-										},
-									}}
-								>
-									User
-								</Typography>
-							)}
+							<Typography
+								id={`dashboard-drawer-user-avatar-name`}
+								sx={{
+									fontSize: '1.2rem',
+									fontWeight: 'bold',
+									color: 'primary.contrastText',
+									'&:hover': {
+										color: darkMode ? 'primary.light' : 'primary.dark',
+										transform: 'scale(1.05)',
+										transition: 'transform 0.2s',
+									},
+									'&:focus': {
+										color: darkMode ? 'primary.light' : 'primary.dark',
+										transform: 'scale(1.05)',
+										transition: 'transform 0.2s',
+									},
+									'&:active': {
+										color: darkMode ? 'primary.light' : 'primary.dark',
+										transform: 'scale(1.05)',
+										transition: 'transform 0.2s',
+									},
+								}}
+							>
+								{user?.name ?? user?.email ?? 'User'}
+							</Typography>
 						</Button>
 					</label>
 				</Box>
-				<Box
+				<List
 					id="dashboard-drawer-header-actions"
 					sx={{
 						display: 'flex',
@@ -296,29 +246,34 @@ const DashboardDrawer = () => {
 						borderBottom: '1px solid rgba(255, 255, 255, 0.12)',
 					}}
 				>
-					<DrawerButton
-						name="dashboard-menu"
-						label="Menu"
-						icon={<MenuIcon />}
-						handleClick={handleClickMenu}
-					/>
+					<ListItem id="dashboard-drawer-header-actions-home-list-item" sx={{ p: 0 }}>
+						<DrawerButton
+							name="dashboard-home"
+							label="Home"
+							icon={<Home id="dashboard-home-drawer-icon" />}
+							href="/"
+						/>
+					</ListItem>
+					<ListItem id="dashboard-drawer-header-actions-profile-list-item" sx={{ p: 0 }}>
+						<DrawerButton
+							name="dashboard-profile"
+							label="Profile"
+							icon={<AccountCircle id="dashboard-profile-drawer-icon" />}
+							href="/profile"
+						/>
+					</ListItem>
 
-					<DrawerButton
-						name="dashboard-profile"
-						label="Profile"
-						icon={<AccountCircle />}
-						handleClick={() => router.push('/profile')}
-					/>
-
-					<DrawerButton
-						name="dashboard-settings"
-						label="Settings"
-						icon={<Settings />}
-						handleClick={() => router.push('/settings')}
-					/>
-				</Box>
+					<ListItem id="dashboard-drawer-header-actions-settings-list-item" sx={{ p: 0 }}>
+						<DrawerButton
+							name="dashboard-settings"
+							label="Settings"
+							icon={<Settings id="dashboard-settings-drawer-icon" />}
+							href="/settings"
+						/>
+					</ListItem>
+				</List>
 			</Box>
-			<Box
+			<List
 				id="dashboard-drawer-footer"
 				sx={{
 					display: 'flex',
@@ -330,70 +285,42 @@ const DashboardDrawer = () => {
 					borderTop: '1px solid rgba(255, 255, 255, 0.12)',
 				}}
 			>
-				<DrawerButton
-					name="dashboard-color-picker"
-					label="Theme Color"
-					icon={<Palette />}
-					handleClick={handleClickColorPicker}
-				/>
+				<ListItem id="dashboard-drawer-footer-color-picker-list-item" sx={{ p: 0 }}>
+					<DrawerButton
+						name="dashboard-color-picker"
+						label="Theme Color"
+						icon={<Palette id="dashboard-color-picker-drawer-icon" />}
+						handleClick={e => setAnchorElColorPicker(e.currentTarget)}
+					/>
+				</ListItem>
 
-				<DrawerButton
-					name="dashboard-dark-mode"
-					label="Dark Mode"
-					icon={darkMode ? <Brightness7 /> : <Brightness4 />}
-					handleClick={handleClickDarkMode}
-				/>
+				<ListItem id="dashboard-drawer-footer-dark-mode-list-item" sx={{ p: 0 }}>
+					<DrawerButton
+						name="dashboard-dark-mode"
+						label={darkMode ? 'Light Mode' : 'Dark Mode'}
+						icon={
+							darkMode ? (
+								<Brightness7 id="dashboard-light-mode-drawer-icon" />
+							) : (
+								<Brightness4 id="dashboard-dark-mode-drawer-icon" />
+							)
+						}
+						handleClick={handleClickDarkMode}
+					/>
+				</ListItem>
 
-				<DrawerButton
-					name="dashboard-logout"
-					label="Logout"
-					icon={<ExitToApp />}
-					handleClick={handleClickLogout}
-				/>
-			</Box>
-			<Menu
-				id="dashboard-drawer-header-actions-menu"
-				anchorEl={anchorElMenu}
-				open={Boolean(anchorElMenu)}
-				onClose={handleCloseMenu}
-				anchorOrigin={{
-					vertical: 'bottom',
-					horizontal: 'right',
-				}}
-				transformOrigin={{
-					vertical: 'top',
-					horizontal: 'center',
-				}}
-				MenuListProps={{
-					'aria-labelledby': 'drawer-header-actions-menu-button',
-				}}
-				sx={{
-					'& .MuiPaper-root': {
-						backgroundColor: 'primary.main',
-						color: 'primary.contrastText',
-					},
-				}}
-			>
-				<MenuItem id="dashboard-drawer-header-actions-menu-item-1" onClick={() => router.push('/')}>
-					Home
-				</MenuItem>
-				<MenuItem
-					id="dashboard-drawer-header-actions-menu-item-2"
-					onClick={() => router.push('/about')}
-				>
-					About
-				</MenuItem>
-				<MenuItem
-					id="dashboard-drawer-header-actions-menu-item-3"
-					onClick={() => router.push('/contact')}
-				>
-					Contact
-				</MenuItem>
-			</Menu>
+				<ListItem id="dashboard-drawer-footer-log-out-list-item" sx={{ p: 0 }}>
+					<DrawerButton
+						name="dashboard-log-out"
+						label="Logout"
+						icon={<ExitToApp id="dashboard-log-out-drawer-icon" />}
+						handleClick={handleClickLogout}
+					/>
+				</ListItem>
+			</List>
 			<ColorPickerPopover
 				name="dashboard-drawer"
-				open={colorPickerOpen}
-				anchorEl={colorPickerAnchorEl}
+				anchorEl={anchorElColorPicker}
 				handleClose={handleCloseColorPicker}
 				handleColorChange={handleColorChange}
 				anchorOrigin={{
@@ -405,83 +332,10 @@ const DashboardDrawer = () => {
 					horizontal: 'left',
 				}}
 			/>
-			<Dialog
-				open={signOutOpen}
-				id="dashboard-sign-out-dialog"
-				onClose={handleCloseSignOut}
-				aria-labelledby="sign-out-dialog-title"
-				aria-describedby="sign-out-dialog-description"
-				sx={{
-					'& .MuiPaper-root': {
-						backgroundColor: 'primary.main',
-						color: 'primary.contrastText',
-					},
-				}}
-			>
-				<DialogTitle
-					id="dashboard-sign-out-dialog-title"
-					sx={{
-						backgroundColor: 'primary.main',
-						color: 'primary.contrastText',
-					}}
-				>
-					{'Sign Out?'}
-				</DialogTitle>
-				<DialogContent
-					id="dashboard-sign-out-dialog-content"
-					sx={{
-						backgroundColor: 'primary.main',
-						color: 'primary.contrastText',
-					}}
-				>
-					<DialogContentText
-						id="dashboard-sign-out-dialog-description"
-						sx={{
-							backgroundColor: 'primary.main',
-							color: 'primary.contrastText',
-						}}
-					>
-						Are you sure you want to sign out?
-					</DialogContentText>
-				</DialogContent>
-				<DialogActions
-					id="dashboard-sign-out-dialog-actions"
-					sx={{
-						backgroundColor: 'primary.main',
-						color: 'primary.contrastText',
-						display: 'flex',
-						justifyContent: 'space-evenly',
-					}}
-				>
-					<Button
-						id="dashboard-sign-out-dialog-cancel-button"
-						onClick={handleCloseSignOut}
-						sx={{
-							backgroundColor: 'primary.main',
-							color: 'primary.contrastText',
-							'&:hover': {
-								backgroundColor: darkMode ? 'primary.dark' : 'primary.light',
-							},
-						}}
-					>
-						Cancel
-					</Button>
-					<Button
-						id="dashboard-sign-out-dialog-confirm-button"
-						onClick={handleSignOut}
-						autoFocus
-						sx={{
-							backgroundColor: 'primary.main',
-							color: 'primary.contrastText',
-							'&:hover': {
-								backgroundColor: darkMode ? 'primary.dark' : 'primary.light',
-							},
-						}}
-					>
-						Confirm
-					</Button>
-				</DialogActions>
-			</Dialog>
+			<DashboardSignOutPopover
+				anchorEl={anchorElSignOut}
+				handleClose={() => setAnchorElSignOut(null)}
+			/>
 		</Box>
 	)
 }

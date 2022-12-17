@@ -1,12 +1,11 @@
 // Path: pages/login.tsx
 
-import { useEffect, useState, KeyboardEvent } from 'react'
-import { signIn } from 'next-auth/react'
+import { useEffect, useState, useCallback } from 'react'
+import { useHydrated } from 'react-hydration-provider'
+import { signIn, useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { useSnackbar } from 'notistack'
-import { useBoundStore } from '../store'
-
-import { Box, Checkbox } from '@mui/material'
+import { Box, Checkbox, Typography } from '@mui/material'
 
 import Modal from '../components/Modal'
 import NavigationButton from '../components/NavigationButton'
@@ -16,6 +15,8 @@ import PasswordInput from '../components/PasswordInput'
 import ActionButtonsContainer from '../components/ActionButtonsContainer'
 import ModalNote from '../components/ModalNote'
 import { Layout } from '../components/Layout'
+
+import { useBoundStore } from '../store'
 
 export interface LoginProps {
 	errorInit?: string
@@ -35,6 +36,8 @@ export default function Login({
 	const { darkMode, customPalette, setUser } = useBoundStore()
 	const router = useRouter()
 	const { enqueueSnackbar } = useSnackbar()
+	const { data: session, status } = useSession()
+	const hydrated = useHydrated()
 
 	const [email, setEmail] = useState(emailInit)
 	const [password, setPassword] = useState(passwordInit)
@@ -42,14 +45,43 @@ export default function Login({
 	const [loading, setLoading] = useState(loadingInit)
 	const [error, setError] = useState(errorInit)
 
-	const handleLogin = async () => {
-		setLoading(true)
+	useEffect(() => {
+		if (localStorage.getItem('email')) setEmail(localStorage.getItem('email') as string)
+	}, [])
+
+	const getToken = useCallback(async () => {
 		setError('')
+		setLoading(true)
+		try {
+			const res = await fetch('/api/auth/token')
+			const data = await res.json()
+
+			if (data.error) {
+				setError(data.error)
+				return setLoading(false)
+			}
+
+			setUser(data.user)
+			enqueueSnackbar('Logged in successfully', { variant: 'success', autoHideDuration: 3000 })
+			setLoading(false)
+			return router.push('/')
+		} catch (e) {
+			setError(`There was an error fetching the token: ${e}`)
+			return setLoading(false)
+		}
+	}, [enqueueSnackbar, router])
+
+	useEffect(() => {
+		if (status === 'authenticated') getToken()
+	}, [status, getToken])
+
+	const handleLogin = async () => {
+		setError('')
+		setLoading(true)
 
 		if (email === '' || password === '') {
 			setError('Please fill in all fields')
-			setLoading(false)
-			return
+			return setLoading(false)
 		}
 
 		if (remember) localStorage.setItem('email', email)
@@ -61,70 +93,30 @@ export default function Login({
 				username: email,
 				password,
 			})
-
 			if (res?.error) {
 				setError(res.error)
-				setLoading(false)
-				return
+				return setLoading(false)
 			}
-
-			try {
-				const res = await fetch('/api/auth/token', {
-					method: 'GET',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-				})
-
-				const data = await res.json()
-
-				if (data.error) {
-					setError(data.error)
-					setLoading(false)
-					return
-				}
-
-				localStorage.setItem('token', JSON.stringify(data.token))
-				setUser(data.token.user.user)
-				enqueueSnackbar('Logged in successfully', { variant: 'success', autoHideDuration: 3000 })
-				setLoading(false)
-				router.push('/')
-			} catch (err) {
-				setError(`There was an error fetching the token: ${err}`)
-				setLoading(false)
-				return
-			}
+			getToken()
 		} catch (err) {
 			setError(`There was an error signing in: ${err}`)
-			setLoading(false)
+			return setLoading(false)
 		}
 	}
 
-	const handleEnter = (e: KeyboardEvent) => {
-		if (e.key === 'Enter') {
-			handleLogin()
-		}
-	}
-
-	useEffect(() => {
-		if (localStorage.getItem('token')) {
-			router.push('/')
-		}
-
-		if (localStorage.getItem('email')) {
-			setEmail(localStorage.getItem('email')!)
-		}
-	}, [router])
+	if (!hydrated) return null
 
 	return (
-		<Layout name="login">
-			<Modal name="login" loading={loading} error={error}>
+		<Layout name="login" pageTitle="login">
+			<Modal name="login" onSubmit={handleLogin} loading={loading} error={error}>
 				<EmailInput
 					name="login"
 					value={email}
 					setValue={setEmail}
 					disabled={loading}
-					handleEnter={handleEnter}
+					handleEnter={e => {
+						if (e.key === 'Enter') handleLogin()
+					}}
 				/>
 
 				<PasswordInput
@@ -132,7 +124,9 @@ export default function Login({
 					value={password}
 					setValue={setPassword}
 					disabled={loading}
-					handleEnter={handleEnter}
+					handleEnter={e => {
+						if (e.key === 'Enter') handleLogin()
+					}}
 				/>
 
 				<ActionButtonsContainer name="login">
@@ -168,11 +162,38 @@ export default function Login({
 							fontWeight: 600,
 						}}
 					>
-						Remember Me
+						<Typography
+							id="login-forgot-password-text"
+							variant="body1"
+							sx={{
+								color: 'primary.contrastText',
+								fontWeight: 600,
+
+								'&:hover': {
+									color: darkMode ? 'primary.light' : 'primary.dark',
+									transform: 'scale(1.05)',
+								},
+
+								'&:active': {
+									color: darkMode ? 'primary.light' : 'primary.dark',
+									transform: 'scale(1.05)',
+								},
+
+								'&:focus': {
+									color: darkMode ? 'primary.light' : 'primary.dark',
+									transform: 'scale(1.05)',
+								},
+							}}
+						>
+							Remember Me
+						</Typography>
 						<Checkbox
 							id="remember-me-checkbox"
 							checked={remember}
 							onChange={() => setRemember(remember => !remember)}
+							onKeyDown={e => {
+								if (e.key === 'Enter') setRemember(remember => !remember)
+							}}
 							sx={{
 								color: 'primary.contrastText',
 								'&.Mui-checked': {

@@ -1,7 +1,5 @@
 // Path: ./theme/index.ts
-import { createTheme } from '@mui/material/styles'
-import { PaletteOptions } from '@mui/material/styles/createPalette'
-import { TypographyOptions } from '@mui/material/styles/createTypography'
+import { createTheme, PaletteOptions } from '@mui/material/styles'
 
 const palette: PaletteOptions = {
 	mode: 'light',
@@ -12,9 +10,9 @@ const palette: PaletteOptions = {
 		contrastText: '#fff',
 	},
 	secondary: {
-		light: '#ff79b0',
-		main: '#ff4081',
-		dark: '#c60055',
+		light: '#ff4081',
+		main: '#f50057',
+		dark: '#c51162',
 		contrastText: '#000',
 	},
 	error: {
@@ -211,7 +209,7 @@ const components = {
 	},
 }
 
-const typography: TypographyOptions = {
+const typography = {
 	htmlFontSize: 16,
 	fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
 	fontSize: 14,
@@ -288,7 +286,6 @@ const typography: TypographyOptions = {
 	button: {
 		fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
 		fontSize: '0.875rem',
-		textTransform: 'uppercase',
 	},
 	caption: {
 		fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
@@ -301,7 +298,6 @@ const typography: TypographyOptions = {
 		fontSize: '0.75rem',
 		lineHeight: 2.66,
 		letterSpacing: '0.08333em',
-		textTransform: 'uppercase',
 	},
 }
 

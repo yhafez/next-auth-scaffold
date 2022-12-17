@@ -8,31 +8,26 @@ import { Layout } from '../../../components/Layout'
 import { defaultTheme } from '../../../theme'
 
 describe('ResetPassword', () => {
-	it('Should have no accessibility violations', async () => {
-		act(() =>
-			render(
+	let container: HTMLElement
+	beforeEach(() => {
+		act(() => {
+			container = render(
 				<ThemeProvider theme={defaultTheme}>
-					<Layout name="test">
-						<main>
-							<ResetPassword />
-						</main>
+					<Layout name="test" pageTitle="test">
+						<ResetPassword />
 					</Layout>
 				</ThemeProvider>,
-			),
-		)
+			).container
 
+			return container
+		})
+	})
+
+	it('Should have no accessibility violations', async () => {
 		waitFor(async () => expect(await axe(screen.getByRole('main'))).toHaveNoViolations())
 	})
 
 	it('Should match snapshot', () => {
-		const { container } = render(
-			<ThemeProvider theme={defaultTheme}>
-				<Layout name="test">
-					<ResetPassword />
-				</Layout>
-			</ThemeProvider>,
-		)
-
 		expect(container).toMatchSnapshot()
 	})
 })

@@ -6,7 +6,7 @@ import { ThemeProvider } from '@mui/material'
 import { darken, lighten } from 'color2k'
 
 import Modal from '../../components/Modal'
-import ColorPickerPopover from '../../components/ColorPickerPopover'
+import ColorPickerPopover from '../../components/Popovers/ColorPickerPopover'
 
 import { useBoundStore } from '../../store'
 import { createCustomTheme } from '../../theme'

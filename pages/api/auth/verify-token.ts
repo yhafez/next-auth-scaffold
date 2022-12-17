@@ -9,7 +9,7 @@ export default async function verifyToken(req: NextApiRequest, res: NextApiRespo
 		const { token, id } = req.body
 
 		if (!token || !id) {
-			res.status(400).json({
+			return res.status(400).json({
 				error: 'Missing token or id',
 			})
 			return
@@ -34,25 +34,27 @@ export default async function verifyToken(req: NextApiRequest, res: NextApiRespo
 			try {
 				const payload = verify(token, secret)
 
+				console.log('payload: ', payload)
+
 				if (payload) {
-					res.status(200).json({
+					return res.status(200).json({
 						message: 'Token is valid',
 						payload,
 					})
 				}
 			} catch (error) {
-				res.status(401).json({
+				return res.status(401).json({
 					error: 'Invalid token',
 				})
 			}
 		} catch (error) {
 			console.error('There was an error finding the user: ', error)
-			res.status(500).json({
+			return res.status(500).json({
 				error: 'There was an error finding the user: ' + error,
 			})
 		}
 	} else {
-		res.status(405).json({
+		return res.status(405).json({
 			error: 'Method not allowed',
 		})
 	}

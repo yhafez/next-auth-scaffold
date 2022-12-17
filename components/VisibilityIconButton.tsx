@@ -1,7 +1,6 @@
 // Path: ./components/VisibilityIconButton.tsx
 import { useState } from 'react'
-import VisibilityIcon from '@mui/icons-material/Visibility'
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
+import { Visibility, VisibilityOff } from '@mui/icons-material'
 import { Box, IconButton, Typography } from '@mui/material'
 
 import { useBoundStore } from '../store'
@@ -34,6 +33,13 @@ export default function VisibilityIconButton({
 			}}
 			onMouseEnter={() => setHover(true)}
 			onMouseLeave={() => setHover(false)}
+			onKeyDown={e => {
+				if (e.key === 'Enter' || e.key === 'Space') {
+					e.preventDefault()
+					e.stopPropagation()
+					setShowPassword(!showPassword)
+				}
+			}}
 			disabled={disabled}
 		>
 			<Box
@@ -47,7 +53,7 @@ export default function VisibilityIconButton({
 			>
 				{showPassword ? (
 					<>
-						<VisibilityIcon
+						<Visibility
 							id={`${name}${isConfirmPassword ? '-confirm' : ''}-password-input-visibility-on-icon`}
 							sx={{
 								color: darkMode ? '#fff' : '#000',
@@ -74,7 +80,7 @@ export default function VisibilityIconButton({
 					</>
 				) : (
 					<>
-						<VisibilityOffIcon
+						<VisibilityOff
 							id={`${name}${
 								isConfirmPassword ? '-confirm' : ''
 							}-password-input-visibility-off-icon`}

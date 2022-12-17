@@ -21,7 +21,7 @@ export default async function resetPassword(req: NextApiRequest, res: NextApiRes
 			})
 
 			if (!user) {
-				res.status(404).json({
+				return res.status(404).json({
 					error: 'User does not exist',
 				})
 			}
@@ -41,22 +41,21 @@ export default async function resetPassword(req: NextApiRequest, res: NextApiRes
 				})
 
 				const newToken = sign({ email: user?.email }, process.env.JWT_SECRET!, { expiresIn: '1d' })
-
-				res.json({
+				return res.json({
 					token: newToken,
 					message: 'Password reset',
 				})
 			} catch (error) {
-				res.status(500).json({
+				return res.status(500).json({
 					error: "There was an error resetting the user's password" + error,
 				})
 			}
 		} catch (error) {
-			res.status(500).json({
+			return res.status(500).json({
 				error: 'There was an error finding the user in the database: ' + error,
 			})
 		}
 	} else {
-		res.status(405).json({ error: 'Method not allowed' })
+		return res.status(405).json({ error: 'Method not allowed' })
 	}
 }

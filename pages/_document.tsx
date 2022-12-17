@@ -77,10 +77,8 @@ export default function MyDocument() {
 					backgroundColor: darkMode ? customPalette.grey[900] : customPalette.grey[100],
 				}}
 			>
-				<main id="main">
-					<Main />
-					<NextScript />
-				</main>
+				<Main />
+				<NextScript />
 			</body>
 		</Html>
 	)

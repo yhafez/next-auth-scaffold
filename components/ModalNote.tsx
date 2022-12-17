@@ -1,6 +1,6 @@
 // Path: ./components/ModalNote.tsx
 
-import { Box, Typography } from '@mui/material'
+import { Box, Typography, Link as MuiLink } from '@mui/material'
 import Link from 'next/link'
 
 import { useBoundStore } from '../store'
@@ -25,23 +25,44 @@ export default function ModalNote({ name, label, href }: ModalNoteProps) {
 				gap: 2,
 			}}
 		>
-			<Link href={href} id={`${name}-modal-note-link`} style={{ textDecoration: 'none' }}>
+			<MuiLink
+				href={href}
+				title={label}
+				aria-label={label}
+				id={`${name}-modal-note-link`}
+				sx={{
+					'&:hover': {
+						color: 'primary.main',
+						transform: 'scale(1.05)',
+					},
+
+					'&:active': {
+						color: 'primary.main',
+						transform: 'scale(1.05)',
+					},
+
+					'&:focus': {
+						color: 'primary.main',
+						transform: 'scale(1.05)',
+					},
+					color: darkMode ? 'primary.light' : 'primary.dark',
+					textDecorationColor: darkMode ? 'primary.light' : 'primary.dark',
+				}}
+				component={Link}
+			>
 				<Typography
 					id={`${name}-modal-note-link-text`}
 					variant="body1"
 					sx={{
-						color: 'primary.contrastText',
+						color: 'inherit',
 						fontWeight: 500,
 						marginBottom: 2,
 						cursor: 'pointer',
-						'&:hover': {
-							color: darkMode ? 'primary.light' : 'primary.dark',
-						},
 					}}
 				>
 					{label}
 				</Typography>
-			</Link>
+			</MuiLink>
 		</Box>
 	)
 }

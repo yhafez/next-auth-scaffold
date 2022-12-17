@@ -2,49 +2,52 @@
 
 exports[`Drawer Should match snapshot 1`] = `
 <div>
-  <div
-    anchor="left"
-    id="drawer"
-    open=""
-    sx="[object Object]"
-    variant="temporary"
-  >
+  <main>
     <div
-      id="drawer-close-button-container"
+      anchor="left"
+      id="drawer"
+      open=""
+      paperprops="[object Object]"
       sx="[object Object]"
+      variant="temporary"
     >
       <div
-        id="drawer-close-button"
+        id="drawer-close-button-container"
         sx="[object Object]"
       >
-        <svg
-          aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1ha5wk2-MuiSvgIcon-root"
-          data-testid="ChevronLeftIcon"
-          focusable="false"
-          id="drawer-close-button-icon"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"
-          />
-        </svg>
-      </div>
-      <label
-        for="drawer-close-button"
-        id="drawer-close-button-label"
-      >
         <div
-          id="drawer-close-button-label-text"
+          id="drawer-close-button"
           sx="[object Object]"
         >
-          Close
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1ha5wk2-MuiSvgIcon-root"
+            data-testid="ChevronLeftIcon"
+            focusable="false"
+            id="drawer-close-button-icon"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+            />
+          </svg>
         </div>
-      </label>
+        <label
+          for="drawer-close-button"
+          id="drawer-close-button-label"
+        >
+          <div
+            id="drawer-close-button-label-text"
+            sx="[object Object]"
+          >
+            Close
+          </div>
+        </label>
+      </div>
+      <div>
+        Test
+      </div>
     </div>
-    <div>
-      Test
-    </div>
-  </div>
+  </main>
 </div>
 `;

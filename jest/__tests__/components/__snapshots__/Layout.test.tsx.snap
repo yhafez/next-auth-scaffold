@@ -2,125 +2,170 @@
 
 exports[`Layout Should match snapshot 1`] = `
 <div>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1kfjuhk-MuiButtonBase-root-MuiButton-root"
+    id="test-skip-nav-link"
+    tabindex="0"
+    type="button"
+  >
+    <p
+      class="MuiTypography-root MuiTypography-body1 css-170ouv-MuiTypography-root"
+      id="test-skip-nav-link-text"
+    >
+      Skip to main content
+    </p>
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
+  </button>
   <div
-    class="MuiBox-root css-hl5ug1"
+    class="MuiBox-root css-114gqq5"
     id="test-layout-container"
   >
     <header
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-t9699t-MuiPaper-root-MuiAppBar-root"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-1hzidt9-MuiPaper-root-MuiAppBar-root"
       id="test-app-bar"
     >
-      <div
+      <nav
+        aria-label="header navigation"
         class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-u4fbkj-MuiToolbar-root"
         id="test-toolbar"
       >
-        <h1
-          class="MuiTypography-root MuiTypography-h6 MuiTypography-noWrap css-11cao63-MuiTypography-root"
-          id="test-toolbar-title"
+        <a
+          aria-label="Home"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-8r1r03-MuiTypography-root-MuiLink-root"
+          href="/"
+          id="test-toolbar-title-link"
+          title="Home"
         >
-          Next Auth Scaffold
-        </h1>
-        <div
-          class="MuiBox-root css-zd0i21"
-          id="test-toolbar-color-picker-container"
-        >
-          <div
-            class="MuiBox-root css-1rks40w"
-            id="test-toolbar-color-picker-box"
+          <h1
+            class="MuiTypography-root MuiTypography-h1 MuiTypography-noWrap css-wy0958-MuiTypography-root"
+            id="test-toolbar-title"
           >
-            <button
-              aria-labelledby="test-toolbar-color-picker-label"
-              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
-              id="test-toolbar-color-picker-button"
-              tabindex="0"
-              type="button"
+            Next Auth Scaffold
+          </h1>
+        </a>
+        <ul
+          class="MuiList-root MuiList-padding css-1s0q78e-MuiList-root"
+          id="test-toolbar-icons"
+        >
+          <li
+            class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1aet8nr-MuiListItem-root"
+            id="test-toolbar-icons-color-picker-item"
+          >
+            <div
+              class="MuiBox-root css-4v0dfa"
+              id="test-toolbar-color-picker-container"
             >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1kqeszy-MuiSvgIcon-root"
-                data-testid="ColorLensIcon"
-                focusable="false"
-                id="test-toolbar-color-picker-icon"
-                viewBox="0 0 24 24"
+              <div
+                class="MuiBox-root css-1rks40w"
+                id="test-toolbar-color-picker-box"
               >
-                <path
-                  d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"
-                />
-              </svg>
+                <button
+                  aria-labelledby="test-toolbar-color-picker-label"
+                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+                  id="test-toolbar-color-picker-button"
+                  tabindex="0"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1kqeszy-MuiSvgIcon-root"
+                    data-testid="ColorLensIcon"
+                    focusable="false"
+                    id="test-toolbar-color-picker-icon"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"
+                    />
+                  </svg>
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+                <label
+                  for="test-toolbar-color-picker-button"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body2 css-28mjxw-MuiTypography-root"
+                    id="test-toolbar-color-picker-label"
+                  >
+                    Theme Color
+                  </p>
+                </label>
+              </div>
+            </div>
+          </li>
+          <li
+            class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-u6euwo-MuiListItem-root"
+            id="test-toolbar-icons-dark-mode-switch-item"
+          >
+            <div
+              class="MuiBox-root css-1wddo4y"
+              id="test-toolbar-dark-mode-switch-container"
+            >
               <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
-            </button>
-            <label
-              for="test-toolbar-color-picker-button"
-            >
-              <p
-                class="MuiTypography-root MuiTypography-body2 css-28mjxw-MuiTypography-root"
-                id="test-toolbar-color-picker-label"
+                class="MuiSwitch-root MuiSwitch-sizeMedium css-14s0ud6-MuiSwitch-root"
               >
-                Theme Color
-              </p>
-            </label>
-          </div>
-        </div>
-        <div
-          class="MuiBox-root css-1lvwh4e"
-          id="test-toolbar-dark-mode-switch-container"
-        >
-          <span
-            class="MuiSwitch-root MuiSwitch-sizeMedium css-14s0ud6-MuiSwitch-root"
-          >
-            <span
-              class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase"
-            >
-              <input
-                aria-checked="false"
-                aria-labelledby="test-toolbar-dark-mode-switch-label-light"
-                class="PrivateSwitchBase-input MuiSwitch-input css-1m9pwf3"
-                id="test-toolbar-dark-mode-switch"
-                type="checkbox"
-              />
-              <svg
-                aria-hidden="false"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-17slstj-MuiSvgIcon-root"
-                data-testid="WbSunnyIcon"
-                focusable="false"
-                id="test-toolbar-dark-mode-switch-icon-unchecked"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="m6.76 4.84-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7 1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91 1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z"
+                <span
+                  class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase"
+                >
+                  <input
+                    aria-checked="false"
+                    aria-labelledby="test-toolbar-dark-mode-switch-label-light"
+                    class="PrivateSwitchBase-input MuiSwitch-input css-1m9pwf3"
+                    id="test-toolbar-dark-mode-switch"
+                    type="checkbox"
+                  />
+                  <svg
+                    aria-hidden="false"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-17slstj-MuiSvgIcon-root"
+                    data-testid="WbSunnyIcon"
+                    focusable="false"
+                    id="test-toolbar-dark-mode-switch-icon-unchecked"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="m6.76 4.84-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7 1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91 1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z"
+                    />
+                  </svg>
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </span>
+                <span
+                  class="MuiSwitch-track css-1yjjitx-MuiSwitch-track"
                 />
-              </svg>
-              <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
-            </span>
-            <span
-              class="MuiSwitch-track css-1yjjitx-MuiSwitch-track"
-            />
-          </span>
-          <label
-            for="test-toolbar-dark-mode-switch"
-          >
-            <p
-              class="MuiTypography-root MuiTypography-body2 css-28mjxw-MuiTypography-root"
-              id="test-toolbar-dark-mode-switch-label-light"
-            >
-              Light Mode
-            </p>
-          </label>
-        </div>
-      </div>
+              </span>
+              <label
+                for="test-toolbar-dark-mode-switch"
+              >
+                <p
+                  class="MuiTypography-root MuiTypography-body2 css-28mjxw-MuiTypography-root"
+                  id="test-toolbar-dark-mode-switch-label-light"
+                >
+                  Light
+                  <br />
+                   Mode
+                </p>
+              </label>
+            </div>
+          </li>
+        </ul>
+      </nav>
     </header>
-    <div
-      class="MuiBox-root css-12s2zvf"
+    <main
+      class="MuiBox-root css-nsv90w"
       id="test-layout-content"
+      tabindex="-1"
     >
-      <div>
+      <div
+        id="children"
+      >
         Children
       </div>
-    </div>
+    </main>
   </div>
 </div>
 `;
