@@ -8,7 +8,6 @@ import prisma from '../../../lib/prisma'
 export default async function changePassword(req: NextApiRequest, res: NextApiResponse) {
 	if (req.method === 'PATCH') {
 		const session = await getSession({ req })
-		console.log('session', session)
 
 		if (session) {
 			const { password, newPassword, confirmNewPassword, email } = req.body

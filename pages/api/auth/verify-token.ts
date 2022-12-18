@@ -34,8 +34,6 @@ export default async function verifyToken(req: NextApiRequest, res: NextApiRespo
 			try {
 				const payload = verify(token, secret)
 
-				console.log('payload: ', payload)
-
 				if (payload) {
 					return res.status(200).json({
 						message: 'Token is valid',

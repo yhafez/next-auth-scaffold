@@ -38,9 +38,6 @@ describe('PATCH /auth/change-password', () => {
 				confirmNewPassword: 'newPassword',
 				email: 'test@example.com',
 			})
-
-		console.log('res.body', res.body)
-
 		expect(res).to.have.status(200)
 		expect(res.body).to.have.property('user')
 		expect(res.body.user).to.be.an('object')

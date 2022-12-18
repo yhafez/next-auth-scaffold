@@ -27,10 +27,8 @@ export default function Dashboard() {
 	const getToken = async () => {
 		setLoading(true)
 		try {
-			console.log('fetching token...')
 			const res = await fetch('/api/auth/token')
 			const data = await res.json()
-			console.log('data', data)
 
 			if (data.error) return setLoading(false)
 
@@ -63,9 +61,8 @@ export default function Dashboard() {
 
 	useEffect(() => {
 		if (status === 'authenticated' && !user) {
-			console.log('here')
 			setLoading(true)
-			getToken().then(data => console.log)
+			getToken()
 		}
 	}, [status])
 
