@@ -75,8 +75,8 @@ const Modal = ({
 				.split(' ')
 				.map((word, i) => (
 					<Typography
+						key={`${formattedName}-modal-title-word-${i}`}
 						id={`${formattedName}-modal-title-word-${i}`}
-						key={word}
 						sx={{
 							display: 'block',
 							color: 'primary.contrastText',

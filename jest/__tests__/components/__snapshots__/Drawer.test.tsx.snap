@@ -7,7 +7,6 @@ exports[`Drawer Should match snapshot 1`] = `
       anchor="left"
       id="drawer"
       open=""
-      paperprops="[object Object]"
       sx="[object Object]"
       variant="temporary"
     >

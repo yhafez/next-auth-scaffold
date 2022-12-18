@@ -23,7 +23,7 @@ exports[`Dashboard Should match snapshot 1`] = `
     id="drawer"
   >
     <div
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiDrawer-paper MuiDrawer-paperAnchorLeft MuiDrawer-paperAnchorDockedLeft css-dgb9m-MuiPaper-root-MuiDrawer-paper"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiDrawer-paper MuiDrawer-paperAnchorLeft MuiDrawer-paperAnchorDockedLeft css-12i7wg6-MuiPaper-root-MuiDrawer-paper"
     >
       <nav
         aria-label="left-hand drawer dashboard navigation"

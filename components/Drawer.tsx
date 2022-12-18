@@ -34,13 +34,6 @@ export default function DrawerComponent({ open, handleDrawerClose, children }: D
 			open={open}
 			anchor="left"
 			onClose={handleDrawerClose}
-			PaperProps={{
-				sx: {
-					position: 'absolute',
-					top: 0,
-					left: 0,
-				},
-			}}
 		>
 			<>
 				{isMobile && (
