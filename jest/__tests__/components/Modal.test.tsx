@@ -3,7 +3,6 @@ import { render, findByText, act, screen, waitFor } from '@testing-library/react
 import { axe } from 'jest-axe'
 
 import Modal from '../../../components/Modal'
-import { toTitleCase } from '../../../utils/helpers'
 
 describe('Modal', () => {
 	it('Should have no accessibility violations', async () => {
@@ -31,26 +30,28 @@ describe('Modal', () => {
 		expect(test).toBeTruthy()
 	})
 
-	it('Should have a Typography element with id "test-test-modal-title"', async () => {
+	it('Should have a Typography element with id "test-test-modal-title-word-0"', async () => {
 		const { container } = render(
 			<Modal name="test test" loading={false} error="" small={false}>
 				<div>Children</div>
 			</Modal>,
 		)
 
-		const test = container.querySelector('#test-test-modal-title')
+		const test = container.querySelector('#test-test-modal-title-word-0')
 		expect(test).toBeTruthy()
 	})
 
-	it('Should have a Typography element with text "test test"', async () => {
+	it('Should have a Typography element with text "test " and a Typography element with text "test', async () => {
 		const { container } = render(
 			<Modal name="test test" loading={false} error="" small={false}>
 				<div>Children</div>
 			</Modal>,
 		)
 
-		const test = await findByText(container, toTitleCase('test test'))
-		expect(test).toBeTruthy()
+		const test = container.querySelector('#test-test-modal-title-word-0')?.textContent
+		expect(test).toBe('Test ')
+		const test2 = container.querySelector('#test-test-modal-title-word-1')?.textContent
+		expect(test2).toBe('Test')
 	})
 
 	it('Should have a Box element with id "test-test-modal-notification-container"', async () => {

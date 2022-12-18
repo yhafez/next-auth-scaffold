@@ -5,7 +5,7 @@ import { useSnackbar } from 'notistack'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import { useSession } from 'next-auth/react'
-import { Box, Typography } from '@mui/material'
+import { Box, Button } from '@mui/material'
 import { useHydrated } from 'react-hydration-provider'
 
 import Modal from '../../components/Modal'
@@ -16,15 +16,12 @@ import EditableTextField from '../../components/EditableTextField'
 import { useBoundStore } from '../../store'
 
 export default function ProfileSettings() {
-	const { user, darkMode, customPalette } = useBoundStore()
+	const { user, darkMode } = useBoundStore()
 	const { data: session, status } = useSession()
 	const { enqueueSnackbar } = useSnackbar()
 	const router = useRouter()
 	const hydrated = useHydrated()
 
-	const [editName, setEditName] = useState(false)
-	const [editEmail, setEditEmail] = useState(false)
-	const [editPassword, setEditPassword] = useState(false)
 	const [name, setName] = useState(user?.name ?? '')
 	const [email, setEmail] = useState(user?.email ?? '')
 	const [password, setPassword] = useState('')
@@ -41,7 +38,6 @@ export default function ProfileSettings() {
 
 	if (!hydrated) return null
 
-	console.log('user', user)
 	return (
 		<Box
 			id="profile-settings"
@@ -67,6 +63,7 @@ export default function ProfileSettings() {
 							justifyContent: 'center',
 							height: '100%',
 							width: '100%',
+							p: 4,
 						}}
 					>
 						<Box
@@ -86,36 +83,27 @@ export default function ProfileSettings() {
 								width={140}
 								height={140}
 							/>
-						</Box>
-						<Box
-							id="profile-settings-name"
-							sx={{
-								display: 'flex',
-								flexDirection: 'column',
-								alignItems: 'center',
-								justifyContent: 'center',
-								height: '100%',
-								width: '100%',
-							}}
-						>
-							<Typography
-								variant="h4"
+							<Button
+								variant="contained"
+								onClick={() => {}}
 								sx={{
 									margin: '1rem',
 									color: 'primary.contrastText',
+									backgroundColor: darkMode ? 'primary.light' : 'primary.dark',
+									mb: 0,
+									'&:hover': {
+										backgroundColor: 'primary.main',
+									},
+									'&:active': {
+										backgroundColor: 'primary.main',
+									},
+									'&:focus': {
+										backgroundColor: 'primary.main',
+									},
 								}}
 							>
-								{user?.name}
-							</Typography>
-							<Typography
-								variant="h6"
-								sx={{
-									margin: '1rem',
-									color: 'primary.contrastText',
-								}}
-							>
-								{user?.email}
-							</Typography>
+								Change Avatar
+							</Button>
 						</Box>
 						<EditableTextField
 							name="profile-settings-name"

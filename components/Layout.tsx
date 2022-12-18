@@ -40,7 +40,10 @@ export function Layout({ pageTitle, name, children, drawerChildren }: LayoutProp
 	const theme = useTheme()
 	const router = useRouter()
 
-	const isMobile = useMediaQuery(`(max-width:${customTheme.breakpoints.values.sm}px)`)
+	const isMobile = useMediaQuery(`(max-width:${theme.breakpoints.values.sm}px)`)
+	const isDesktop = useMediaQuery(`(max-width:${theme.breakpoints.values.md}px)`)
+	const isLargeDesktop = useMediaQuery(`(max-width:${theme.breakpoints.values.lg}px)`)
+	const isExtraLargeDesktop = useMediaQuery(`(max-width:${theme.breakpoints.values.xl}px)`)
 
 	const [drawerOpen, setDrawerOpen] = useState(false)
 	const [selected, setSelected] = useState(false)
@@ -128,6 +131,9 @@ export function Layout({ pageTitle, name, children, drawerChildren }: LayoutProp
 					id={`${name}-app-bar`}
 					position="fixed"
 					sx={{
+						top: 0,
+						left: 0,
+						right: 0,
 						backgroundColor: darkMode ? 'primary.dark' : 'primary.light',
 						color: customPalette.primary.contrastText,
 						transition: theme.transitions.create(['margin', 'width'], {
@@ -244,7 +250,15 @@ export function Layout({ pageTitle, name, children, drawerChildren }: LayoutProp
 									color: 'inherit',
 									fontWeight: 500,
 									cursor: 'pointer',
-									fontSize: '4rem',
+									fontSize: isMobile
+										? '1.5rem'
+										: isDesktop
+										? '2rem'
+										: isLargeDesktop
+										? '2.5rem'
+										: isExtraLargeDesktop
+										? '3rem'
+										: '4rem',
 									ml: 4,
 									mt: 2,
 								}}
@@ -281,7 +295,11 @@ export function Layout({ pageTitle, name, children, drawerChildren }: LayoutProp
 					component="main"
 					tabIndex={-1}
 					sx={{
-						position: 'relative',
+						position: 'fixed',
+						top: 0,
+						left: 0,
+						right: 0,
+						bottom: 0,
 						flexGrow: 1,
 						padding: theme.spacing(3),
 						overflow: 'scroll',
@@ -289,15 +307,16 @@ export function Layout({ pageTitle, name, children, drawerChildren }: LayoutProp
 							easing: customTheme.transitions.easing.sharp,
 							duration: customTheme.transitions.duration.leavingScreen,
 						}),
-						marginLeft: '224px',
-						width: `${isMobile || !drawerChildren ? '100%' : `calc(100% - 224px)`}`,
-						ml: `${isMobile || !drawerChildren ? '-16px' : `224px`}`,
-						mt: '64px',
+						marginLeft: '240px',
+						width: `${isMobile || !drawerChildren ? '100%' : `calc(100% - 240px)`}`,
+						ml: `${isMobile || !drawerChildren ? '0' : `240px`}`,
+						mt: '80px',
+						p: 0,
 						display: 'flex',
 						flexDirection: 'column',
 						justifyContent: 'center',
 						alignItems: 'center',
-						height: 'calc(100vh - 64px)',
+						height: 'calc(100vh - 80px)',
 						contain: 'layout',
 						backgroundColor: darkMode ? 'grey.900' : 'grey.100',
 					}}

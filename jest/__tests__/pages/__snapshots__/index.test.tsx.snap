@@ -266,7 +266,7 @@ exports[`Dashboard Should match snapshot 1`] = `
     id="test-layout-container"
   >
     <header
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-1567bih-MuiPaper-root-MuiAppBar-root"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-1y9sg8x-MuiPaper-root-MuiAppBar-root"
       id="test-app-bar"
     >
       <nav
@@ -399,7 +399,7 @@ exports[`Dashboard Should match snapshot 1`] = `
       </nav>
     </header>
     <main
-      class="MuiBox-root css-demccz"
+      class="MuiBox-root css-18agqmd"
       id="test-layout-content"
       tabindex="-1"
     />

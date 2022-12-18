@@ -34,35 +34,21 @@ const Modal = ({
 	const formattedName = name.replace(/ /g, '-').toLowerCase()
 
 	const isMobile = useMediaQuery(`(max-width:${theme.breakpoints.values.sm}px)`)
-	const isDesktop = useMediaQuery(`(min-width:${theme.breakpoints.values.md}px)`)
-	const isLargeDesktop = useMediaQuery(`(min-width:${theme.breakpoints.values.lg}px)`)
-	const isExtraLargeDesktop = useMediaQuery(`(min-width:${theme.breakpoints.values.xl}px)`)
-
-	// Create media queries for vertical height of screen
-	const isExtraShortScreen = useMediaQuery(`(max-height: 350px)`)
-	const isShortScreen = useMediaQuery(`(max-height: 600px)`)
-	const isMediumScreen = useMediaQuery(`(max-height: 750px)`)
-	const isLargeScreen = useMediaQuery(`(max-height: 850px)`)
-
-	// Calculate top position of modal based on vertical height of screen
-	const topPosition = isExtraShortScreen
-		? '20%'
-		: isShortScreen
-		? '15%'
-		: isMediumScreen
-		? '10%'
-		: isLargeScreen
-		? '5%'
-		: 'auto'
+	const isDesktop = useMediaQuery(`(max-width:${theme.breakpoints.values.md}px)`)
+	const isLargeDesktop = useMediaQuery(`(max-width:${theme.breakpoints.values.lg}px)`)
+	const isExtraLargeDesktop = useMediaQuery(`(max-width:${theme.breakpoints.values.xl}px)`)
 
 	return (
 		<Box
 			id={`${formattedName}-modal-container`}
 			sx={{
 				position: 'absolute',
-				top: topPosition,
-				my: 2,
-				overflow: 'scroll',
+				mx: 'auto',
+				top: isMobile ? '0px' : '50%',
+				left: '50%',
+				transform: `translate(-50%, ${isMobile ? '0' : '-50%'})`,
+				minHeight: isMobile ? 'calc(100%)' : 'max-content',
+				overflowY: 'scroll',
 				display: 'flex',
 				flexDirection: 'column',
 				justifyContent: 'center',
@@ -70,32 +56,38 @@ const Modal = ({
 				textAlign: 'center',
 				gap: 2,
 				backgroundColor: darkMode ? 'primary.dark' : 'primary.light',
-				padding: 2,
-				borderRadius: 2,
+				px: 2,
+				py: 8,
+				borderRadius: isMobile ? '0' : 2,
 				boxShadow: 1,
 				width: isMobile
 					? '100%'
 					: isDesktop
-					? '30%'
+					? '80%'
 					: isLargeDesktop
-					? '20%'
+					? '55%'
 					: isExtraLargeDesktop
-					? '10%'
+					? '40%'
 					: '100%',
 			}}
 		>
-			<Typography
-				id={`${formattedName}-modal-title`}
-				variant="h1"
-				sx={{
-					color: 'primary.contrastText',
-					fontWeight: 600,
-					fontSize: isMobile ? '3rem' : '5rem',
-					marginBottom: 1,
-				}}
-			>
-				{toTitleCase(name)}
-			</Typography>
+			{toTitleCase(name)
+				.split(' ')
+				.map((word, i) => (
+					<Typography
+						id={`${formattedName}-modal-title-word-${i}`}
+						key={word}
+						sx={{
+							display: 'block',
+							color: 'primary.contrastText',
+							fontWeight: 600,
+							fontSize: isMobile ? '4rem' : '5rem',
+							lineHeight: 1,
+						}}
+					>
+						{i === name.split(' ').length - 1 ? `${word}` : `${word} `}
+					</Typography>
+				))}
 			<Box
 				id={`${formattedName}-modal-notification-container`}
 				sx={{
