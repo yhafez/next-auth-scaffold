@@ -24,6 +24,7 @@ export interface LoginProps {
 	passwordInit?: string
 	rememberInit?: boolean
 	loadingInit?: boolean
+	hydratedInit?: boolean
 }
 
 export default function Login({
@@ -32,6 +33,7 @@ export default function Login({
 	passwordInit = '',
 	rememberInit = true,
 	loadingInit = false,
+	hydratedInit = false,
 }: LoginProps) {
 	const { darkMode, customPalette, setUser } = useBoundStore()
 	const router = useRouter()
@@ -45,10 +47,6 @@ export default function Login({
 	const [loading, setLoading] = useState(loadingInit)
 	const [error, setError] = useState(errorInit)
 
-	useEffect(() => {
-		if (localStorage.getItem('email')) setEmail(localStorage.getItem('email') as string)
-	}, [])
-
 	const getToken = useCallback(async () => {
 		setError('')
 		setLoading(true)
@@ -56,11 +54,11 @@ export default function Login({
 			const res = await fetch('/api/auth/token')
 			const data = await res.json()
 
+			console.log('data', data)
 			if (data.error) {
 				setError(data.error)
 				return setLoading(false)
 			}
-
 			setUser(data.user)
 			enqueueSnackbar('Logged in successfully', { variant: 'success', autoHideDuration: 3000 })
 			setLoading(false)
@@ -69,9 +67,14 @@ export default function Login({
 			setError(`There was an error fetching the token: ${e}`)
 			return setLoading(false)
 		}
-	}, [enqueueSnackbar, router])
+	}, [])
 
 	useEffect(() => {
+		if (localStorage.getItem('email')) setEmail(localStorage.getItem('email') as string)
+	}, [])
+
+	useEffect(() => {
+		console.log('status', status)
 		if (status === 'authenticated') getToken()
 	}, [status, getToken])
 
@@ -104,7 +107,7 @@ export default function Login({
 		}
 	}
 
-	if (!hydrated) return null
+	if (!hydrated && !hydratedInit) return null
 
 	return (
 		<Layout name="login" pageTitle="login">
@@ -189,6 +192,9 @@ export default function Login({
 						</Typography>
 						<Checkbox
 							id="remember-me-checkbox"
+							inputProps={{
+								'aria-checked': remember,
+							}}
 							checked={remember}
 							onChange={() => setRemember(remember => !remember)}
 							onKeyDown={e => {

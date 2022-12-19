@@ -1,8 +1,9 @@
 // Path: ./stories/components/Layout.stories.tsx
 import { useState, useEffect } from 'react'
 import { Meta, Story } from '@storybook/react'
+import { ThemeProvider } from '@mui/material/styles'
+
 import { Layout, LayoutProps } from '../../components/Layout'
-import { ThemeProvider } from '@mui/material'
 
 import { defaultTheme } from '../../theme'
 import { useBoundStore } from '../../store'

@@ -1,11 +1,12 @@
 // Path: ./stories/pages/[...token].stories.tsx
 import { useState, useEffect } from 'react'
 import { Meta, Story } from '@storybook/react'
+import { ThemeProvider } from '@mui/material/styles'
+import { SessionProvider } from 'next-auth/react'
 
 import ResetPassword, { ResetPasswordProps } from '../../pages/reset-password/[id]/[token]'
 import { useBoundStore } from '../../store'
 import { defaultTheme } from '../../theme'
-import { ThemeProvider } from '@mui/material'
 
 export default {
 	title: 'Pages/ResetPassword',
@@ -15,6 +16,7 @@ export default {
 		passwordInit: '',
 		confirmPasswordInit: '',
 		loadingInit: false,
+		hydratedInit: true,
 	},
 	argTypes: {
 		errorInit: {
@@ -33,6 +35,11 @@ export default {
 			},
 		},
 		loadingInit: {
+			table: {
+				disable: true,
+			},
+		},
+		hydratedInit: {
 			table: {
 				disable: true,
 			},
@@ -73,9 +80,11 @@ const Template: Story<ResetPasswordProps> = (args, { globals: { theme } }) => {
 	}, [customPalette])
 
 	return (
-		<ThemeProvider theme={customTheme}>
-			<ResetPassword {...args} />
-		</ThemeProvider>
+		<SessionProvider session={null}>
+			<ThemeProvider theme={customTheme}>
+				<ResetPassword {...args} />
+			</ThemeProvider>
+		</SessionProvider>
 	)
 }
 

@@ -57,9 +57,11 @@ exports[`DashboardDrawer Should math snapshot 1`] = `
             id="dashboard-drawer-header-actions-home-list-item"
           >
             <a
+              aria-label="Home"
               class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-hwqx0i-MuiTypography-root-MuiLink-root"
               href="/"
               id="dashboard-home-drawer-link"
+              title="Home"
             >
               <p
                 class="MuiTypography-root MuiTypography-body1 css-b6p50a-MuiTypography-root"
@@ -86,9 +88,11 @@ exports[`DashboardDrawer Should math snapshot 1`] = `
             id="dashboard-drawer-header-actions-profile-list-item"
           >
             <a
+              aria-label="Profile"
               class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-hwqx0i-MuiTypography-root-MuiLink-root"
               href="/profile"
               id="dashboard-profile-drawer-link"
+              title="Profile"
             >
               <p
                 class="MuiTypography-root MuiTypography-body1 css-b6p50a-MuiTypography-root"
@@ -115,9 +119,11 @@ exports[`DashboardDrawer Should math snapshot 1`] = `
             id="dashboard-drawer-header-actions-settings-list-item"
           >
             <a
+              aria-label="Settings"
               class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-hwqx0i-MuiTypography-root-MuiLink-root"
               href="/settings"
               id="dashboard-settings-drawer-link"
+              title="Settings"
             >
               <p
                 class="MuiTypography-root MuiTypography-body1 css-b6p50a-MuiTypography-root"

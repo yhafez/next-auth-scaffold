@@ -12,10 +12,14 @@ import DashboardDrawer from '../components/Drawers/DashboardDrawer'
 
 import { useBoundStore } from '../store'
 
-export default function Dashboard() {
+export interface DashboardProps {
+	hydratedInit?: boolean
+}
+
+export default function Dashboard({ hydratedInit = false }: DashboardProps) {
 	const { darkMode, user, setUser } = useBoundStore()
 	const router = useRouter()
-	const { enqueueSnackbar } = useSnackbar()
+	const { enqueueSnackbar, closeSnackbar } = useSnackbar()
 	const { data: session, status } = useSession()
 	const hydrated = useHydrated()
 
@@ -45,10 +49,7 @@ export default function Dashboard() {
 		if (status === 'loading') return setLoading(true)
 		setLoading(true)
 		if (status === 'unauthenticated') {
-			enqueueSnackbar('You are not authorized to access this page', {
-				variant: 'error',
-				autoHideDuration: 3000,
-			})
+			setUser(null)
 			setLoading(false)
 			router.push('/login')
 		}
@@ -66,7 +67,7 @@ export default function Dashboard() {
 		}
 	}, [status])
 
-	if (!hydrated) return null
+	if (!hydrated && !hydratedInit) return null
 
 	return (
 		<Box
@@ -96,6 +97,8 @@ export default function Dashboard() {
 							sx={{
 								color: 'primary.contrastText',
 							}}
+							role="img"
+							aria-label="loading spinner"
 						/>
 					</Box>
 				) : (

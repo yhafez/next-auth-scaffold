@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { Meta, Story } from '@storybook/react'
 import ColorPickerIcon from '../../components/ColorPickerIcon'
 import Modal from '../../components/Modal'
-import { ThemeProvider } from '@mui/material'
+import { ThemeProvider } from '@mui/material/styles'
 
 import { useBoundStore } from '../../store'
 import { createCustomTheme } from '../../theme'

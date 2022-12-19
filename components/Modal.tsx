@@ -83,6 +83,7 @@ const Modal = ({
 							fontWeight: 600,
 							fontSize: isMobile ? '4rem' : '5rem',
 							lineHeight: 1,
+							mb: 2,
 						}}
 					>
 						{i === name.split(' ').length - 1 ? `${word}` : `${word} `}
@@ -98,7 +99,7 @@ const Modal = ({
 					gap: 1,
 					width: '100%',
 					height: small ? '15px' : '50px',
-					marginBottom: 1,
+					marginBottom: 2,
 				}}
 			>
 				{loading ? (
@@ -107,6 +108,8 @@ const Modal = ({
 						sx={{
 							color: darkMode ? 'primary.light' : 'primary.dark',
 						}}
+						role="img"
+						aria-label="loading spinner"
 					/>
 				) : (
 					error && (
@@ -117,7 +120,7 @@ const Modal = ({
 								justifyContent: 'center',
 								alignItems: 'center',
 								gap: 2,
-								width: '100%',
+								width: '75%',
 								height: '100%',
 							}}
 						>
@@ -130,6 +133,7 @@ const Modal = ({
 											: customPalette.error.dark
 										: 'primary.contrastText',
 								}}
+								role="img"
 								aria-label="error"
 							/>
 							<Typography

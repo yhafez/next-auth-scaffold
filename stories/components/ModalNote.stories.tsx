@@ -1,8 +1,8 @@
 // Path: ./stories/components/ModalNote.stories.tsx
 import { useEffect } from 'react'
 import { Meta, Story } from '@storybook/react'
-import Modal from '../../components/Modal'
 
+import Modal from '../../components/Modal'
 import ModalNote from '../../components/ModalNote'
 
 import { useBoundStore } from '../../store'

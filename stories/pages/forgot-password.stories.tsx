@@ -1,7 +1,8 @@
 // Path: ./stories/pages/forgot-password.stories.tsx
 import { useEffect, useState } from 'react'
-import { ThemeProvider } from '@mui/material'
 import { Story, Meta } from '@storybook/react'
+import { ThemeProvider } from '@mui/material/styles'
+import { SessionProvider } from 'next-auth/react'
 
 import ForgotPassword, { ForgotPasswordProps } from '../../pages/forgot-password'
 
@@ -15,6 +16,7 @@ const ForgotPasswordStory = {
 		errorInit: '',
 		emailInit: '',
 		loadingInit: false,
+		hydratedInit: true,
 	},
 	argTypes: {
 		errorInit: {
@@ -28,6 +30,11 @@ const ForgotPasswordStory = {
 			},
 		},
 		loadingInit: {
+			table: {
+				disable: true,
+			},
+		},
+		hydratedInit: {
 			table: {
 				disable: true,
 			},
@@ -69,9 +76,11 @@ const Template: Story<ForgotPasswordProps> = (args, { globals: { theme } }) => {
 	}, [customPalette])
 
 	return (
-		<ThemeProvider theme={customTheme}>
-			<ForgotPassword {...args} />
-		</ThemeProvider>
+		<SessionProvider session={null}>
+			<ThemeProvider theme={customTheme}>
+				<ForgotPassword {...args} />
+			</ThemeProvider>
+		</SessionProvider>
 	)
 }
 

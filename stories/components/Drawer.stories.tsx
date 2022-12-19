@@ -1,10 +1,10 @@
 // Path: ./stories/components/Drawer.stories.tsx
 import { useState, useEffect } from 'react'
 import { Meta, Story } from '@storybook/react'
+import { Box } from '@mui/material'
 
 import Drawer from '../../components/Drawer'
 import { useBoundStore } from '../../store'
-import { Box } from '@mui/material'
 
 export default {
 	title: 'Components/Drawer',

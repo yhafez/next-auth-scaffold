@@ -15,7 +15,11 @@ import EditableTextField from '../../components/EditableTextField'
 
 import { useBoundStore } from '../../store'
 
-export default function ProfileSettings() {
+export interface ProfileSettingsProps {
+	hydratedInit?: boolean
+}
+
+export default function ProfileSettings({ hydratedInit = false }: ProfileSettingsProps) {
 	const { user, darkMode } = useBoundStore()
 	const { data: session, status } = useSession()
 	const { enqueueSnackbar } = useSnackbar()
@@ -36,7 +40,7 @@ export default function ProfileSettings() {
 		}
 	}, [status, enqueueSnackbar, router])
 
-	if (!hydrated) return null
+	if (!hydrated && !hydratedInit) return null
 
 	return (
 		<Box

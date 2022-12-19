@@ -15,6 +15,7 @@ export interface ResetPasswordProps {
 	passwordInit?: string
 	confirmPasswordInit?: string
 	loadingInit?: boolean
+	hydratedInit?: boolean
 }
 
 export default function ResetPassword({
@@ -22,6 +23,7 @@ export default function ResetPassword({
 	passwordInit = '',
 	confirmPasswordInit = '',
 	loadingInit = false,
+	hydratedInit = false,
 }: ResetPasswordProps) {
 	const router = useRouter()
 	const { id, token } = router.query
@@ -110,7 +112,7 @@ export default function ResetPassword({
 		}
 	}
 
-	if (!hydrated) return null
+	if (!hydrated && !hydratedInit) return null
 
 	return (
 		<Layout name="reset-password" pageTitle="reset password">

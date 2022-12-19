@@ -11,7 +11,11 @@ import Modal from '../../components/Modal'
 import { Layout } from '../../components/Layout'
 import SettingsDrawer from '../../components/Drawers/SettingsDrawer'
 
-export default function AccountSettings() {
+export interface AccountSettingsProps {
+	hydratedInit?: boolean
+}
+
+export default function AccountSettings({ hydratedInit = false }: AccountSettingsProps) {
 	const { data: session, status } = useSession()
 	const { enqueueSnackbar } = useSnackbar()
 	const router = useRouter()
@@ -27,7 +31,7 @@ export default function AccountSettings() {
 		}
 	}, [status])
 
-	if (!hydrated) return null
+	if (!hydrated && !hydratedInit) return null
 
 	return (
 		<Box

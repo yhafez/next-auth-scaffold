@@ -11,7 +11,13 @@ import Modal from '../../components/Modal'
 import { Layout } from '../../components/Layout'
 import SettingsDrawer from '../../components/Drawers/SettingsDrawer'
 
-export default function AccessibilitySettings() {
+export interface AccessibilitySettingsProps {
+	hydratedInit?: boolean
+}
+
+export default function AccessibilitySettings({
+	hydratedInit = false,
+}: AccessibilitySettingsProps) {
 	const { data: session, status } = useSession()
 	const { enqueueSnackbar } = useSnackbar()
 	const router = useRouter()
@@ -27,7 +33,7 @@ export default function AccessibilitySettings() {
 		}
 	}, [status])
 
-	if (!hydrated) return null
+	if (!hydrated && !hydratedInit) return null
 
 	return (
 		<Box

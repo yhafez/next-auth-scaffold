@@ -28,7 +28,9 @@
 		"next.config.ts",
 		"playwright.config.js",
 		"store/index.tsz",
-		"shared/styles.tsz"
+		"shared/styles.tsz",
+		"mocks/handlers.js",
+		"mocks/browser.js"
 	],
 	"exclude": ["node_modules", "config"],
 	"references": [

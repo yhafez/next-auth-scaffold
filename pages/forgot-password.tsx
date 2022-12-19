@@ -14,12 +14,14 @@ export interface ForgotPasswordProps {
 	errorInit?: string
 	emailInit?: string
 	loadingInit?: boolean
+	hydratedInit?: boolean
 }
 
 export default function ForgotPassword({
 	errorInit = '',
 	emailInit = '',
 	loadingInit = false,
+	hydratedInit = false,
 }: ForgotPasswordProps) {
 	const { enqueueSnackbar } = useSnackbar()
 	const hydrated = useHydrated()
@@ -68,7 +70,7 @@ export default function ForgotPassword({
 		}
 	}
 
-	if (!hydrated) return null
+	if (!hydrated && !hydratedInit) return null
 
 	return (
 		<Layout name="forgot-password" pageTitle="forgot password">

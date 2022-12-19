@@ -18,6 +18,7 @@ export interface SignupProps {
 	passwordInit?: string
 	confirmPasswordInit?: string
 	loadingInit?: boolean
+	hydratedInit?: boolean
 }
 
 export default function Signup({
@@ -26,6 +27,7 @@ export default function Signup({
 	passwordInit = '',
 	confirmPasswordInit = '',
 	loadingInit = false,
+	hydratedInit = false,
 }: SignupProps) {
 	const router = useRouter()
 	const hydrated = useHydrated()
@@ -73,7 +75,7 @@ export default function Signup({
 		}
 	}
 
-	if (!hydrated) return null
+	if (!hydrated && !hydratedInit) return null
 
 	return (
 		<Layout name="signup" pageTitle="sign up">

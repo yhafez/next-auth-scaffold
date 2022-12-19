@@ -51,6 +51,8 @@ export default function SubmitButton({
 					sx={{
 						color: 'primary.contrastText',
 					}}
+					role="img"
+					aria-label="loading spinner"
 				/>
 			) : (
 				<Typography

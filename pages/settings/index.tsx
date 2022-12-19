@@ -13,7 +13,11 @@ import { Layout } from '../../components/Layout'
 import SettingsDrawer from '../../components/Drawers/SettingsDrawer'
 import ModalButton from '../../components/ModalButton'
 
-export default function Settings() {
+export interface SettingsProps {
+	hydratedInit?: boolean
+}
+
+export default function Settings({ hydratedInit = false }: SettingsProps) {
 	const { data: session, status } = useSession()
 	const { enqueueSnackbar } = useSnackbar()
 	const router = useRouter()
@@ -29,7 +33,7 @@ export default function Settings() {
 		}
 	}, [status, enqueueSnackbar, router])
 
-	if (!hydrated) return null
+	if (!hydrated && !hydratedInit) return null
 
 	return (
 		<Layout name="settings" drawerChildren={<SettingsDrawer />} pageTitle="settings">

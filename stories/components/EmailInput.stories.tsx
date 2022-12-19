@@ -1,6 +1,7 @@
 // Path: ./stories/components/EmailInput.stories.tsx
 import { useState, useEffect } from 'react'
 import { Story, Meta } from '@storybook/react'
+
 import EmailInput from '../../components/EmailInput'
 import Modal from '../../components/Modal'
 

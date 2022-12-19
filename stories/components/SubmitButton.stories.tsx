@@ -1,8 +1,8 @@
 // Path: ./stories/components/SubmitButton.stories.tsx
 import { useEffect } from 'react'
 import { Meta, Story } from '@storybook/react'
-import SubmitButton from '../../components/SubmitButton'
 
+import SubmitButton from '../../components/SubmitButton'
 import Modal from '../../components/Modal'
 
 import { useBoundStore } from '../../store'
