@@ -71,7 +71,7 @@ exports[`Dashboard Should match snapshot 1`] = `
             </label>
           </div>
           <ul
-            class="MuiList-root MuiList-padding css-1w0me52-MuiList-root"
+            class="MuiList-root MuiList-padding css-16p2v77-MuiList-root"
             id="dashboard-drawer-header-actions"
           >
             <li
@@ -79,7 +79,7 @@ exports[`Dashboard Should match snapshot 1`] = `
               id="dashboard-drawer-header-actions-home-list-item"
             >
               <a
-                aria-label="Home"
+                aria-labelledby="dashboard-home-drawer-button-label"
                 class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1ljgqtc-MuiTypography-root-MuiLink-root"
                 href="/"
                 id="dashboard-home-drawer-link"
@@ -97,6 +97,7 @@ exports[`Dashboard Should match snapshot 1`] = `
                   data-testid="HomeIcon"
                   focusable="false"
                   id="dashboard-home-drawer-icon"
+                  role="img"
                   viewBox="0 0 24 24"
                 >
                   <path
@@ -110,7 +111,7 @@ exports[`Dashboard Should match snapshot 1`] = `
               id="dashboard-drawer-header-actions-profile-list-item"
             >
               <a
-                aria-label="Profile"
+                aria-labelledby="dashboard-profile-drawer-button-label"
                 class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1ljgqtc-MuiTypography-root-MuiLink-root"
                 href="/profile"
                 id="dashboard-profile-drawer-link"
@@ -128,6 +129,7 @@ exports[`Dashboard Should match snapshot 1`] = `
                   data-testid="AccountCircleIcon"
                   focusable="false"
                   id="dashboard-profile-drawer-icon"
+                  role="img"
                   viewBox="0 0 24 24"
                 >
                   <path
@@ -141,7 +143,7 @@ exports[`Dashboard Should match snapshot 1`] = `
               id="dashboard-drawer-header-actions-settings-list-item"
             >
               <a
-                aria-label="Settings"
+                aria-labelledby="dashboard-settings-drawer-button-label"
                 class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1ljgqtc-MuiTypography-root-MuiLink-root"
                 href="/settings"
                 id="dashboard-settings-drawer-link"
@@ -159,6 +161,7 @@ exports[`Dashboard Should match snapshot 1`] = `
                   data-testid="SettingsIcon"
                   focusable="false"
                   id="dashboard-settings-drawer-icon"
+                  role="img"
                   viewBox="0 0 24 24"
                 >
                   <path
@@ -170,7 +173,7 @@ exports[`Dashboard Should match snapshot 1`] = `
           </ul>
         </div>
         <ul
-          class="MuiList-root MuiList-padding css-1rgovn0-MuiList-root"
+          class="MuiList-root MuiList-padding css-1f4h1di-MuiList-root"
           id="dashboard-drawer-footer"
         >
           <li
@@ -195,6 +198,7 @@ exports[`Dashboard Should match snapshot 1`] = `
                 data-testid="PaletteIcon"
                 focusable="false"
                 id="dashboard-color-picker-drawer-icon"
+                role="img"
                 viewBox="0 0 24 24"
               >
                 <path
@@ -225,6 +229,7 @@ exports[`Dashboard Should match snapshot 1`] = `
                 data-testid="Brightness4Icon"
                 focusable="false"
                 id="dashboard-dark-mode-drawer-icon"
+                role="img"
                 viewBox="0 0 24 24"
               >
                 <path
@@ -255,6 +260,7 @@ exports[`Dashboard Should match snapshot 1`] = `
                 data-testid="ExitToAppIcon"
                 focusable="false"
                 id="dashboard-log-out-drawer-icon"
+                role="img"
                 viewBox="0 0 24 24"
               >
                 <path
@@ -319,10 +325,12 @@ exports[`Dashboard Should match snapshot 1`] = `
                 >
                   <svg
                     aria-hidden="true"
+                    aria-labelledby="test-toolbar-color-picker-label"
                     class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1kqeszy-MuiSvgIcon-root"
                     data-testid="ColorLensIcon"
                     focusable="false"
                     id="test-toolbar-color-picker-icon"
+                    role="img"
                     viewBox="0 0 24 24"
                   >
                     <path
@@ -365,14 +373,17 @@ exports[`Dashboard Should match snapshot 1`] = `
                     aria-labelledby="test-toolbar-dark-mode-switch-label-light"
                     class="PrivateSwitchBase-input MuiSwitch-input css-1m9pwf3"
                     id="test-toolbar-dark-mode-switch"
+                    role="switch"
                     type="checkbox"
                   />
                   <svg
                     aria-hidden="false"
+                    aria-labelledby="test-toolbar-dark-mode-switch-label-light"
                     class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-17slstj-MuiSvgIcon-root"
                     data-testid="WbSunnyIcon"
                     focusable="false"
                     id="test-toolbar-dark-mode-switch-icon-unchecked"
+                    role="img"
                     viewBox="0 0 24 24"
                   >
                     <path

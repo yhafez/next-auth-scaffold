@@ -74,6 +74,8 @@ export default function VisibilityIconButton({
 									WebkitTextFillColor: 'lightgrey',
 								}),
 							}}
+							aria-label="hide password"
+							role="button"
 						>
 							Hide
 						</Typography>
@@ -91,6 +93,8 @@ export default function VisibilityIconButton({
 									WebkitTextFillColor: 'lightgrey',
 								}),
 							}}
+							aria-label="show password"
+							role="button"
 						/>
 						<Typography
 							id={`${name}${isConfirmPassword ? '-confirm' : ''}-password-input-show-password-text`}

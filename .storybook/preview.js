@@ -108,7 +108,7 @@ const withMuiTheme = (Story, context) => {
 								color="inherit"
 								onClick={() => snackbarRef.current?.closeSnackbar(key)}
 							>
-								<Close fontSize="small" />
+								<Close fontSize="small" role="img" />
 							</IconButton>
 						)}
 					>

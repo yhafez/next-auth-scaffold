@@ -20,10 +20,12 @@ exports[`ColorPickerIcon Should match snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
+            aria-labelledby="test-color-picker-label"
             class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1kqeszy-MuiSvgIcon-root"
             data-testid="ColorLensIcon"
             focusable="false"
             id="test-color-picker-icon"
+            role="img"
             viewBox="0 0 24 24"
           >
             <path

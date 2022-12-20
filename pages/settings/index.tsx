@@ -86,7 +86,13 @@ export default function Settings({ hydratedInit = false }: SettingsProps) {
 						<ModalButton
 							name="account-settings"
 							buttonText="Account"
-							icon={<SettingsIcon />}
+							icon={
+								<SettingsIcon
+									id="settings-content-list-item-account-settings-icon"
+									role="img"
+									aria-label="settings"
+								/>
+							}
 							handleClick={() => {
 								router.push('/settings/account')
 							}}

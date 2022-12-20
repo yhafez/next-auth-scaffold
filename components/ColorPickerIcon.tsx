@@ -112,6 +112,8 @@ export default function ColorPickerIcon({ name, selectedInit }: ColorPickerProps
 								: 'primary.contrastText',
 							fontSize: '1.5rem',
 						}}
+						aria-labelledby={`${name}-color-picker-label`}
+						role="img"
 					/>
 				</IconButton>
 				<label htmlFor={`${name}-color-picker-button`}>
@@ -134,7 +136,6 @@ export default function ColorPickerIcon({ name, selectedInit }: ColorPickerProps
 			</Box>
 			<ColorPickerPopover
 				name={name}
-				open={open}
 				anchorEl={anchorEl}
 				handleClose={handleClose}
 				anchorOrigin={{

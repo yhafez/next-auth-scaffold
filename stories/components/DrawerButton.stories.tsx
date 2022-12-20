@@ -42,7 +42,12 @@ export const Default: Story = (args, { globals: { theme } }) => {
 
 	return (
 		<Drawer {...args} open={open} handleDrawerClose={() => setOpen(false)}>
-			<DrawerButton name="test" label="Test" icon={<Menu />} handleClick={() => {}} />
+			<DrawerButton
+				name="test"
+				label="Test"
+				icon={<Menu id="test-menu-icon" role="button" aria-label="test menu" />}
+				handleClick={() => {}}
+			/>
 		</Drawer>
 	)
 }

@@ -242,7 +242,6 @@ const DashboardDrawer = () => {
 						alignItems: 'center',
 						justifyContent: 'center',
 						width: '100%',
-						padding: 1,
 						borderBottom: '1px solid rgba(255, 255, 255, 0.12)',
 					}}
 				>
@@ -250,7 +249,7 @@ const DashboardDrawer = () => {
 						<DrawerButton
 							name="dashboard-home"
 							label="Home"
-							icon={<Home id="dashboard-home-drawer-icon" />}
+							icon={<Home id="dashboard-home-drawer-icon" role="img" />}
 							href="/"
 						/>
 					</ListItem>
@@ -258,7 +257,7 @@ const DashboardDrawer = () => {
 						<DrawerButton
 							name="dashboard-profile"
 							label="Profile"
-							icon={<AccountCircle id="dashboard-profile-drawer-icon" />}
+							icon={<AccountCircle id="dashboard-profile-drawer-icon" role="img" />}
 							href="/profile"
 						/>
 					</ListItem>
@@ -267,7 +266,7 @@ const DashboardDrawer = () => {
 						<DrawerButton
 							name="dashboard-settings"
 							label="Settings"
-							icon={<Settings id="dashboard-settings-drawer-icon" />}
+							icon={<Settings id="dashboard-settings-drawer-icon" role="img" />}
 							href="/settings"
 						/>
 					</ListItem>
@@ -281,7 +280,6 @@ const DashboardDrawer = () => {
 					alignItems: 'center',
 					justifyContent: 'center',
 					width: '100%',
-					padding: 1,
 					borderTop: '1px solid rgba(255, 255, 255, 0.12)',
 				}}
 			>
@@ -289,7 +287,7 @@ const DashboardDrawer = () => {
 					<DrawerButton
 						name="dashboard-color-picker"
 						label="Theme Color"
-						icon={<Palette id="dashboard-color-picker-drawer-icon" />}
+						icon={<Palette id="dashboard-color-picker-drawer-icon" role="img" />}
 						handleClick={e => setAnchorElColorPicker(e.currentTarget)}
 					/>
 				</ListItem>
@@ -300,9 +298,9 @@ const DashboardDrawer = () => {
 						label={darkMode ? 'Light Mode' : 'Dark Mode'}
 						icon={
 							darkMode ? (
-								<Brightness7 id="dashboard-light-mode-drawer-icon" />
+								<Brightness7 id="dashboard-light-mode-drawer-icon" role="img" />
 							) : (
-								<Brightness4 id="dashboard-dark-mode-drawer-icon" />
+								<Brightness4 id="dashboard-dark-mode-drawer-icon" role="img" />
 							)
 						}
 						handleClick={handleClickDarkMode}
@@ -313,7 +311,7 @@ const DashboardDrawer = () => {
 					<DrawerButton
 						name="dashboard-log-out"
 						label="Logout"
-						icon={<ExitToApp id="dashboard-log-out-drawer-icon" />}
+						icon={<ExitToApp id="dashboard-log-out-drawer-icon" role="img" />}
 						handleClick={handleClickLogout}
 					/>
 				</ListItem>

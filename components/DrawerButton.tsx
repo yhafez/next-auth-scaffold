@@ -25,7 +25,7 @@ const DrawerButton = ({ name, label, icon, handleClick, reverse, href }: DrawerB
 				href={href}
 				aria-current={isSelected ? 'page' : undefined}
 				title={label}
-				aria-label={label}
+				aria-labelledby={`${name}-drawer-button-label`}
 				sx={{
 					textDecoration: 'none',
 					color: 'primary.contrastText',

@@ -55,6 +55,7 @@ export default function DarkModeSwitch({ name }: DarkModeSwitchProps) {
 				inputProps={{
 					'aria-checked': darkMode,
 					'aria-labelledby': `${name}-dark-mode-switch-label-${darkMode ? 'dark' : 'light'}`,
+					role: 'switch',
 				}}
 				sx={{
 					color: selected ? (darkMode ? 'primary.light' : 'primary.dark') : 'primary.contrastText',
@@ -72,6 +73,8 @@ export default function DarkModeSwitch({ name }: DarkModeSwitchProps) {
 					<Brightness2
 						id={`${name}-dark-mode-switch-icon-checked`}
 						aria-hidden={darkMode ? 'false' : 'true'}
+						aria-labelledby={`${name}-dark-mode-switch-label-dark`}
+						role="img"
 						sx={{
 							color: selected
 								? darkMode
@@ -85,6 +88,8 @@ export default function DarkModeSwitch({ name }: DarkModeSwitchProps) {
 					<WbSunny
 						id={`${name}-dark-mode-switch-icon-unchecked`}
 						aria-hidden={darkMode ? 'true' : 'false'}
+						aria-labelledby={`${name}-dark-mode-switch-label-light`}
+						role="img"
 						sx={{
 							color: selected
 								? darkMode

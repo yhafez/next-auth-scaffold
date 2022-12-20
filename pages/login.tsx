@@ -194,6 +194,7 @@ export default function Login({
 							id="remember-me-checkbox"
 							inputProps={{
 								'aria-checked': remember,
+								role: 'checkbox',
 							}}
 							checked={remember}
 							onChange={() => setRemember(remember => !remember)}

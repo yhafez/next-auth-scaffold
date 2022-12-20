@@ -192,6 +192,8 @@ export function Layout({ pageTitle, name, children, drawerChildren }: LayoutProp
 													: 'primary.dark'
 												: 'primary.contrastText',
 										}}
+										role="img"
+										aria-label="open drawer"
 									/>
 								</IconButton>
 								<Typography
