@@ -45,7 +45,7 @@ export const Default: Story = (args, { globals: { theme } }) => {
 			<DrawerButton
 				name="test"
 				label="Test"
-				icon={<Menu id="test-menu-icon" role="button" aria-label="test menu" />}
+				icon={<Menu id="test-menu-icon" role="img" aria-hidden="true" />}
 				handleClick={() => {}}
 			/>
 		</Drawer>

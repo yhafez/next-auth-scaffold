@@ -76,7 +76,13 @@ const SettingsDrawer = () => {
 						<DrawerButton
 							name="profile-settings"
 							label="Profile"
-							icon={<Person id="settings-drawer-content-profile-settings-icon" role="img" />}
+							icon={
+								<Person
+									id="settings-drawer-content-profile-settings-icon"
+									role="img"
+									aria-hidden="true"
+								/>
+							}
 							href="/settings/profile"
 						/>
 					</ListItem>
@@ -84,7 +90,13 @@ const SettingsDrawer = () => {
 						<DrawerButton
 							name="account-settings"
 							label="Account"
-							icon={<Settings id="settings-drawer-content-account-settings-icon" role="img" />}
+							icon={
+								<Settings
+									id="settings-drawer-content-account-settings-icon"
+									role="img"
+									aria-hidden="true"
+								/>
+							}
 							href="/settings/account"
 						/>
 					</ListItem>
@@ -92,7 +104,13 @@ const SettingsDrawer = () => {
 						<DrawerButton
 							name="security-settings"
 							label="Security"
-							icon={<Security id="settings-drawer-content-security-settings-icon" role="img" />}
+							icon={
+								<Security
+									id="settings-drawer-content-security-settings-icon"
+									role="img"
+									aria-hidden="true"
+								/>
+							}
 							href="/settings/security"
 						/>
 					</ListItem>
@@ -104,6 +122,7 @@ const SettingsDrawer = () => {
 								<Accessibility
 									id="settings-drawer-content-accessibility-settings-icon"
 									role="img"
+									aria-hidden="true"
 								/>
 							}
 							href="/settings/accessibility"
@@ -129,7 +148,11 @@ const SettingsDrawer = () => {
 							name="settings"
 							label="General Settings"
 							icon={
-								<ArrowBack id="settings-drawer-footer-arrow-back-to-settings-icon" role="img" />
+								<ArrowBack
+									id="settings-drawer-footer-arrow-back-to-settings-icon"
+									role="img"
+									aria-hidden="true"
+								/>
 							}
 							href="/settings"
 						/>
@@ -140,7 +163,13 @@ const SettingsDrawer = () => {
 					<DrawerButton
 						name="dashboard"
 						label="Dashboard"
-						icon={<ArrowBack id="settings-drawer-footer-arrow-back-to-dashboard-icon" role="img" />}
+						icon={
+							<ArrowBack
+								id="settings-drawer-footer-arrow-back-to-dashboard-icon"
+								role="img"
+								aria-hidden="true"
+							/>
+						}
 						href="/"
 					/>
 				</ListItem>
@@ -154,7 +183,9 @@ const SettingsDrawer = () => {
 					<DrawerButton
 						name="logout"
 						label="Logout"
-						icon={<ExitToApp id="settings-drawer-footer-log-out-icon" role="img" />}
+						icon={
+							<ExitToApp id="settings-drawer-footer-log-out-icon" role="img" aria-hidden="true" />
+						}
 						handleClick={e => {
 							setAnchorElSignOut(e.currentTarget)
 						}}
