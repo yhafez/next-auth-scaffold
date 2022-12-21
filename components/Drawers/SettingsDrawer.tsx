@@ -27,8 +27,8 @@ const SettingsDrawer = () => {
 			sx={{
 				display: 'flex',
 				flexDirection: 'column',
-				alignItems: 'center',
 				justifyContent: 'space-between',
+				alignItems: 'center',
 				height: '100%',
 				width: '100%',
 			}}
@@ -47,12 +47,11 @@ const SettingsDrawer = () => {
 				<Typography
 					variant="h1"
 					sx={{
-						marginBottom: '1rem',
 						color: 'primary.contrastText',
 						fontSize: '3rem',
 						fontWeight: 700,
 						width: '100%',
-						height: '72px',
+						height: '112px',
 						display: 'flex',
 						alignItems: 'center',
 						justifyContent: 'center',

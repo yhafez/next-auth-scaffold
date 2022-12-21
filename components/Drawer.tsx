@@ -18,10 +18,11 @@ export default function DrawerComponent({ open, handleDrawerClose, children }: D
 		<Drawer
 			id="drawer"
 			sx={{
-				width: '240px',
+				width: '320px',
 				flexShrink: 0,
+				overflowY: 'scroll',
 				'& .MuiDrawer-paper': {
-					width: '240px',
+					width: '320px',
 					boxSizing: 'border-box',
 					backgroundColor: darkMode ? 'primary.dark' : 'primary.light',
 					color: 'primary.contrastText',

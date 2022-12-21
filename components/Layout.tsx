@@ -140,10 +140,13 @@ export function Layout({ pageTitle, name, children, drawerChildren }: LayoutProp
 							easing: customTheme.transitions.easing.sharp,
 							duration: customTheme.transitions.duration.leavingScreen,
 						}),
-						width: `${isMobile || !drawerChildren ? '100%' : `calc(100% - 240px)`}`,
-						ml: `${isMobile || !drawerChildren ? 0 : `240px`}`,
-						height: '80px',
+						width: `${isMobile || !drawerChildren ? '100%' : `calc(100% - 320px)`}`,
+						ml: `${isMobile || !drawerChildren ? 0 : `320px`}`,
+						height: '120px',
 						zIndex: 1000,
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'space-between',
 					}}
 				>
 					<Toolbar
@@ -154,6 +157,7 @@ export function Layout({ pageTitle, name, children, drawerChildren }: LayoutProp
 							display: 'flex',
 							justifyContent: 'space-between',
 							alignItems: 'center',
+							height: '100%',
 						}}
 					>
 						{isMobile && drawerChildren && (
@@ -275,17 +279,19 @@ export function Layout({ pageTitle, name, children, drawerChildren }: LayoutProp
 								flexDirection: 'row',
 								justifyContent: 'center',
 								alignItems: 'center',
+								height: '100%',
+								p: 0,
 							}}
 						>
 							<ListItem
 								id={`${name}-toolbar-icons-color-picker-item`}
-								sx={{ p: 0, width: '100%', mr: 4 }}
+								sx={{ p: 0, mr: 4, height: '100%' }}
 							>
 								<ColorPickerIcon name={`${name}-toolbar`} />
 							</ListItem>
 							<ListItem
 								id={`${name}-toolbar-icons-dark-mode-switch-item`}
-								sx={{ p: 0, width: '100%' }}
+								sx={{ p: 0, height: '100%' }}
 							>
 								<DarkModeSwitch name={`${name}-toolbar`} />
 							</ListItem>
@@ -309,16 +315,16 @@ export function Layout({ pageTitle, name, children, drawerChildren }: LayoutProp
 							easing: customTheme.transitions.easing.sharp,
 							duration: customTheme.transitions.duration.leavingScreen,
 						}),
-						marginLeft: '240px',
-						width: `${isMobile || !drawerChildren ? '100%' : `calc(100% - 240px)`}`,
-						ml: `${isMobile || !drawerChildren ? '0' : `240px`}`,
-						mt: '80px',
+						marginLeft: '320px',
+						width: `${isMobile || !drawerChildren ? '100%' : `calc(100% - 320px)`}`,
+						ml: `${isMobile || !drawerChildren ? '0' : `320px`}`,
+						mt: '120px',
 						p: 0,
 						display: 'flex',
 						flexDirection: 'column',
 						justifyContent: 'center',
 						alignItems: 'center',
-						height: 'calc(100vh - 80px)',
+						height: 'calc(100vh - 120px)',
 						contain: 'layout',
 						backgroundColor: darkMode ? 'grey.900' : 'grey.100',
 					}}

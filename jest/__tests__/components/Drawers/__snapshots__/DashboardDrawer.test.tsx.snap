@@ -5,11 +5,11 @@ exports[`DashboardDrawer Should math snapshot 1`] = `
   <main>
     <nav
       aria-label="left-hand drawer dashboard navigation"
-      class="MuiBox-root css-1y7wqgk"
+      class="MuiBox-root css-r0x2ub"
       id="dashboard-drawer"
     >
       <div
-        class="MuiBox-root css-o52woa"
+        class="MuiBox-root css-1hnpd1e"
         id="dashboard-drawer-header"
       >
         <div
@@ -21,7 +21,7 @@ exports[`DashboardDrawer Should math snapshot 1`] = `
             style="width: 100%;"
           >
             <button
-              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-disableElevation MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-disableElevation css-105vx4d-MuiButtonBase-root-MuiButton-root"
+              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-disableElevation MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-disableElevation css-1mxcjpt-MuiButtonBase-root-MuiButton-root"
               id="dashboard-drawer-user-avatar"
               tabindex="0"
               type="button"
@@ -37,7 +37,7 @@ exports[`DashboardDrawer Should math snapshot 1`] = `
                 />
               </div>
               <p
-                class="MuiTypography-root MuiTypography-body1 css-1399pl0-MuiTypography-root"
+                class="MuiTypography-root MuiTypography-body1 css-1md76xf-MuiTypography-root"
                 id="dashboard-drawer-user-avatar-name"
               >
                 User

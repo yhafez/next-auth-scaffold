@@ -4,11 +4,11 @@ exports[`DarkModeSwitch Should match snapshot 1`] = `
 <div>
   <main>
     <div
-      class="MuiBox-root css-1wddo4y"
+      class="MuiBox-root css-f9wnac"
       id="test-dark-mode-switch-container"
     >
       <span
-        class="MuiSwitch-root MuiSwitch-sizeMedium css-14s0ud6-MuiSwitch-root"
+        class="MuiSwitch-root MuiSwitch-sizeMedium css-6uczze-MuiSwitch-root"
       >
         <span
           class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase"
@@ -24,7 +24,7 @@ exports[`DarkModeSwitch Should match snapshot 1`] = `
           <svg
             aria-hidden="false"
             aria-labelledby="test-dark-mode-switch-label-light"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-17slstj-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-aq4ggj-MuiSvgIcon-root"
             data-testid="WbSunnyIcon"
             focusable="false"
             id="test-dark-mode-switch-icon-unchecked"

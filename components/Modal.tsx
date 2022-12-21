@@ -38,13 +38,29 @@ const Modal = ({
 	const isLargeDesktop = useMediaQuery(`(max-width:${theme.breakpoints.values.lg}px)`)
 	const isExtraLargeDesktop = useMediaQuery(`(min-width:${theme.breakpoints.values.lg}px)`)
 
+	const isSmall = useMediaQuery(`(max-height: 400px)`)
+	const isMedium = useMediaQuery(`(max-height: 500px)`)
+	const isLarge = useMediaQuery(`(max-height: 600px)`)
+	const isExtraLarge = useMediaQuery(`(max-height: 600px)`)
+
+	console.log('isMobile', isMobile)
 	return (
 		<Box
 			id={`${formattedName}-modal-container`}
 			sx={{
 				position: 'absolute',
 				mx: 'auto',
-				top: isMobile ? '0px' : '50%',
+				top: isMobile
+					? '0px'
+					: isSmall
+					? '90%'
+					: isMedium
+					? '80%'
+					: isLarge
+					? '70%'
+					: isExtraLarge
+					? '60%'
+					: '50%',
 				left: '50%',
 				transform: `translate(-50%, ${isMobile ? '0' : '-50%'})`,
 				minHeight: isMobile ? 'calc(100%)' : 'max-content',
@@ -55,19 +71,19 @@ const Modal = ({
 				alignItems: 'center',
 				textAlign: 'center',
 				gap: 2,
-				backgroundColor: darkMode ? 'primary.dark' : 'primary.light',
 				px: 2,
 				py: 8,
+				backgroundColor: darkMode ? 'primary.dark' : 'primary.light',
 				borderRadius: isMobile ? '0' : 2,
 				boxShadow: 1,
 				width: isMobile
 					? '100%'
 					: isDesktop
-					? '80%'
+					? '90%'
 					: isLargeDesktop
-					? '55%'
+					? '65%'
 					: isExtraLargeDesktop
-					? '40%'
+					? '50%'
 					: '100%',
 			}}
 		>

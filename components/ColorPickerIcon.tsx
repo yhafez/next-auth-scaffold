@@ -134,31 +134,17 @@ export default function ColorPickerIcon({ name, selectedInit }: ColorPickerProps
 	}
 
 	return (
-		<Box
-			id={`${name}-color-picker-container`}
-			onMouseEnter={() => setSelected(true)}
-			onMouseLeave={() => setSelected(false)}
-			onFocus={() => setSelected(true)}
-			onBlur={() => setSelected(false)}
-			sx={{
-				textAlign: 'center',
-				height: '100%',
-				width: '100%',
-				display: 'flex',
-				alignItems: 'center',
-				justifyContent: 'center',
-			}}
-		>
+		<>
 			<Box
-				id={`${name}-color-picker-box`}
+				id={`${name}-color-picker-container`}
 				sx={{
 					display: 'flex',
 					flexDirection: 'column',
 					alignItems: 'center',
 					justifyContent: 'center',
-					mt: 2,
 					p: 0,
 					height: '100%',
+					width: '100%',
 					cursor: 'pointer',
 				}}
 			>
@@ -187,6 +173,7 @@ export default function ColorPickerIcon({ name, selectedInit }: ColorPickerProps
 						id={`${name}-color-picker-label`}
 						variant="body2"
 						sx={{
+							textAlign: 'center',
 							fontWeight: 500,
 							cursor: 'pointer',
 							color: selected
@@ -214,6 +201,6 @@ export default function ColorPickerIcon({ name, selectedInit }: ColorPickerProps
 				}}
 				handleColorChange={handleColorChange}
 			/>
-		</Box>
+		</>
 	)
 }

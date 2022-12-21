@@ -133,17 +133,12 @@ const DashboardDrawer = () => {
 			component="nav"
 			aria-label="left-hand drawer dashboard navigation"
 			sx={{
-				width: { sm: 240 },
-				flexShrink: { sm: 0 },
-				'& .MuiDrawer-paper': {
-					width: 240,
-					boxSizing: 'border-box',
-					backgroundColor: 'background.default',
-				},
 				display: 'flex',
 				flexDirection: 'column',
 				justifyContent: 'space-between',
+				alignItems: 'center',
 				height: '100%',
+				width: '100%',
 			}}
 		>
 			<Box
@@ -152,8 +147,8 @@ const DashboardDrawer = () => {
 					display: 'flex',
 					flexDirection: 'column',
 					alignItems: 'center',
-					justifyContent: 'flex-end',
-					...theme.mixins.toolbar,
+					justifyContent: 'center',
+					width: '100%',
 				}}
 			>
 				<Box
@@ -176,7 +171,7 @@ const DashboardDrawer = () => {
 								flexDirection: 'column',
 								alignItems: 'center',
 								justifyContent: 'center',
-								height: '180px',
+								height: '200px',
 								width: '100%',
 								borderBottom: '1px solid rgba(255, 255, 255, 0.12)',
 							}}
@@ -212,6 +207,7 @@ const DashboardDrawer = () => {
 									fontSize: '1.2rem',
 									fontWeight: 'bold',
 									color: 'primary.contrastText',
+									wordBreak: 'break-all',
 									'&:hover': {
 										color: darkMode ? 'primary.light' : 'primary.dark',
 										transform: 'scale(1.05)',

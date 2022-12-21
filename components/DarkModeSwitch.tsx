@@ -40,11 +40,10 @@ export default function DarkModeSwitch({ name }: DarkModeSwitchProps) {
 				textAlign: 'center',
 				display: 'flex',
 				flexDirection: 'column',
-				justifyContent: 'space-around',
+				justifyContent: 'center',
 				alignItems: 'center',
 				height: '100%',
 				width: '100%',
-				mt: 1,
 			}}
 		>
 			<Switch
@@ -58,6 +57,7 @@ export default function DarkModeSwitch({ name }: DarkModeSwitchProps) {
 					role: 'switch',
 				}}
 				sx={{
+					fontSize: '1.5rem',
 					color: selected ? (darkMode ? 'primary.light' : 'primary.dark') : 'primary.contrastText',
 					'& .MuiSwitch-switchBase': {
 						color: 'primary.contrastText',
@@ -76,6 +76,7 @@ export default function DarkModeSwitch({ name }: DarkModeSwitchProps) {
 						aria-labelledby={`${name}-dark-mode-switch-label-dark`}
 						role="img"
 						sx={{
+							fontSize: '1.5rem',
 							color: selected
 								? darkMode
 									? 'primary.light'
@@ -91,6 +92,7 @@ export default function DarkModeSwitch({ name }: DarkModeSwitchProps) {
 						aria-labelledby={`${name}-dark-mode-switch-label-light`}
 						role="img"
 						sx={{
+							fontSize: '1.5rem',
 							color: selected
 								? darkMode
 									? 'primary.light'
