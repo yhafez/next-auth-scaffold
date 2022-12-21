@@ -108,7 +108,7 @@ describe('getContrast', () => {
 
 	it('Should return either black or white depending on the contrast', () => {
 		const test = getContrastColor('#008080')
-		expect(test).toBe('white')
+		expect(test).toBe('black')
 	})
 
 	it('Should return either black or white depending on the contrast', () => {

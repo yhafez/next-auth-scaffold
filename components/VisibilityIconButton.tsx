@@ -49,6 +49,8 @@ export default function VisibilityIconButton({
 					flexDirection: 'column',
 					alignItems: 'center',
 					justifyContent: 'center',
+					minWidth: '44px',
+					minHeight: '44px',
 				}}
 			>
 				{showPassword ? (
@@ -56,7 +58,7 @@ export default function VisibilityIconButton({
 						<Visibility
 							id={`${name}${isConfirmPassword ? '-confirm' : ''}-password-input-visibility-on-icon`}
 							sx={{
-								color: darkMode ? '#fff' : '#000',
+								color: 'primary.contrastText',
 								...(disabled && {
 									color: 'lightgrey',
 									WebkitTextFillColor: 'lightgrey',
@@ -87,7 +89,7 @@ export default function VisibilityIconButton({
 								isConfirmPassword ? '-confirm' : ''
 							}-password-input-visibility-off-icon`}
 							sx={{
-								color: darkMode ? '#fff' : '#000',
+								color: 'primary.contrastText',
 								...(disabled && {
 									color: 'lightgrey',
 									WebkitTextFillColor: 'lightgrey',

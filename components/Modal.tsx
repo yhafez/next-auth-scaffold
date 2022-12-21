@@ -29,7 +29,7 @@ const Modal = ({
 		getContrast(
 			darkMode ? customPalette.primary.dark : customPalette.primary.light,
 			customPalette.error.light,
-		) >= 4.5
+		) >= 7
 
 	const formattedName = name.replace(/ /g, '-').toLowerCase()
 

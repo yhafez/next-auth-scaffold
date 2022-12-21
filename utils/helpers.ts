@@ -47,7 +47,7 @@ export const clampAndRound = (value: number, min: number, max: number) => {
 }
 
 export const getContrastColor = (color: string) =>
-	getContrast(color, '#FFF') > 4.5 ? 'white' : 'black'
+	getContrast(color, '#FFF') > 7 ? 'white' : 'black'
 
 export const getSecondaryColor = (color: string) => {
 	const cc = color.charAt(0) === '#' ? color.substring(1, 7) : color
