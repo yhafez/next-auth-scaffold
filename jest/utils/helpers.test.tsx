@@ -1,5 +1,11 @@
 // Path: ./jest/__tests__/utils/helpers.test.tsx
-import { toTitleCase, clampAndRound, getContrastColor } from '../../utils/helpers'
+import {
+	toTitleCase,
+	clampAndRound,
+	getContrastColor,
+	mixColors,
+	isOverlayNecessary,
+} from '../../utils/helpers'
 
 describe('toTitleCase', () => {
 	it('Should return a string with the first letter capitalized', () => {
@@ -108,11 +114,60 @@ describe('getContrast', () => {
 
 	it('Should return either black or white depending on the contrast', () => {
 		const test = getContrastColor('#008080')
-		expect(test).toBe('black')
+		expect(test).toBe('white')
 	})
 
 	it('Should return either black or white depending on the contrast', () => {
 		const test = getContrastColor('#800080')
 		expect(test).toBe('white')
+	})
+})
+
+describe('mixColors', () => {
+	it('Should return a mixed color', () => {
+		const test = mixColors('#000000', '#FFFFFF', 0.5)
+		expect(test).toBe('rgb(128, 128, 128)')
+	})
+
+	it('Should return a mixed color', () => {
+		const test = mixColors('#000000', '#FFFFFF', 0.25)
+		expect(test).toBe('rgb(64, 64, 64)')
+	})
+
+	it('Should return a mixed color', () => {
+		const test = mixColors('#000000', '#FFFFFF', 0.75)
+		expect(test).toBe('rgb(191, 191, 191)')
+	})
+
+	it('Should return a mixed color', () => {
+		const test = mixColors('#000000', '#FFFFFF', 0.1)
+		expect(test).toBe('rgb(26, 26, 26)')
+	})
+
+	it('Should return a mixed color', () => {
+		const test = mixColors('#000000', '#FFFFFF', 0.9)
+		expect(test).toBe('rgb(230, 230, 230)')
+	})
+
+	it('Should return a mixed color', () => {
+		const test = mixColors('#000000', '#FFFFFF', 0)
+		expect(test).toBe('rgb(0, 0, 0)')
+	})
+
+	it('Should return a mixed color', () => {
+		const test = mixColors('#000000', '#FFFFFF', 1)
+		expect(test).toBe('rgb(255, 255, 255)')
+	})
+})
+
+describe('isOverlayNecessary', () => {
+	it('Should return true if the contrast is not high enough', () => {
+		const test = isOverlayNecessary('#000000', '#FFFFFF', 7)
+		expect(test).toBe(true)
+	})
+
+	it('Should return false if the contrast is high enough', () => {
+		const test = isOverlayNecessary('#000000', '#808080', 7)
+		expect(test).toBe(false)
 	})
 })

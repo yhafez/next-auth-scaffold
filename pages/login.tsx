@@ -54,7 +54,6 @@ export default function Login({
 			const res = await fetch('/api/auth/token')
 			const data = await res.json()
 
-			console.log('data', data)
 			if (data.error) {
 				setError(data.error)
 				return setLoading(false)
@@ -74,7 +73,6 @@ export default function Login({
 	}, [])
 
 	useEffect(() => {
-		console.log('status', status)
 		if (status === 'authenticated') getToken()
 	}, [status, getToken])
 

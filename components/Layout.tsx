@@ -43,7 +43,7 @@ export function Layout({ pageTitle, name, children, drawerChildren }: LayoutProp
 	const isMobile = useMediaQuery(`(max-width:${theme.breakpoints.values.sm}px)`)
 	const isDesktop = useMediaQuery(`(max-width:${theme.breakpoints.values.md}px)`)
 	const isLargeDesktop = useMediaQuery(`(max-width:${theme.breakpoints.values.lg}px)`)
-	const isExtraLargeDesktop = useMediaQuery(`(max-width:${theme.breakpoints.values.xl}px)`)
+	const isExtraLargeDesktop = useMediaQuery(`(min-width:${theme.breakpoints.values.lg}px)`)
 
 	const [drawerOpen, setDrawerOpen] = useState(false)
 	const [selected, setSelected] = useState(false)

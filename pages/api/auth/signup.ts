@@ -28,7 +28,6 @@ const sendVerifyEmailMessage = async (toEmail: string, verifyUrl: string) => {
 				pass: PASSWORD,
 			},
 		} as SMTPTransport.Options)
-		console.log('transport', transport)
 		const mailOptions = {
 			from: `Next Auth Scaffold <${FROM_EMAIL}>`,
 			to: toEmail,
