@@ -9,7 +9,7 @@ exports[`VisibilityIconButton Should match snapshot 1`] = `
     type="button"
   >
     <div
-      class="MuiBox-root css-emr63"
+      class="MuiBox-root css-gzblg"
       id="test-password-box"
     >
       <svg

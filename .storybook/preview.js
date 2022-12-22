@@ -118,8 +118,8 @@ const withMuiTheme = (Story, context) => {
 								flexDirection: 'column',
 								justifyContent: 'center',
 								alignItems: 'center',
-								minHeight: '100vh',
-								minWidth: '100vw',
+								height: '100vh',
+								width: '100vw',
 							}}
 						>
 							<Story />

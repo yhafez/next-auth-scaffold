@@ -49,8 +49,8 @@ export default function VisibilityIconButton({
 					flexDirection: 'column',
 					alignItems: 'center',
 					justifyContent: 'center',
-					minWidth: '44px',
-					minHeight: '44px',
+					width: '44px',
+					height: '44px',
 				}}
 			>
 				{showPassword ? (
