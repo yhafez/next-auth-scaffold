@@ -1,8 +1,10 @@
 // Path: pages/login.tsx
 
-import { useState, KeyboardEvent } from 'react'
+import { useState, KeyboardEvent, useCallback } from 'react'
 import { useRouter } from 'next/router'
+import { signIn, useSession } from 'next-auth/react'
 import { useHydrated } from 'react-hydration-provider'
+import { useSnackbar } from 'notistack'
 
 import Modal from '../components/Modal'
 import SubmitButton from '../components/SubmitButton'
@@ -11,6 +13,8 @@ import ConfirmPasswordInput from '../components/ConfirmPasswordInput'
 import ActionButtonsContainer from '../components/ActionButtonsContainer'
 import ModalNote from '../components/ModalNote'
 import { Layout } from '../components/Layout'
+
+import { useBoundStore } from '../store'
 
 export interface SignupProps {
 	errorInit?: string
@@ -31,12 +35,34 @@ export default function Signup({
 }: SignupProps) {
 	const router = useRouter()
 	const hydrated = useHydrated()
+	const { setUser } = useBoundStore()
+	const { enqueueSnackbar } = useSnackbar()
 
 	const [email, setEmail] = useState(emailInit)
 	const [password, setPassword] = useState(passwordInit)
 	const [confirmPassword, setConfirmPassword] = useState(confirmPasswordInit)
 	const [loading, setLoading] = useState(loadingInit)
 	const [error, setError] = useState(errorInit)
+
+	const getToken = useCallback(async () => {
+		setError('')
+		setLoading(true)
+		try {
+			const res = await fetch('/api/auth/token')
+			const data = await res.json()
+
+			if (data.error) {
+				setError(data.error)
+				return setLoading(false)
+			}
+			enqueueSnackbar('Logged in successfully', { variant: 'success', autoHideDuration: 3000 })
+			setLoading(false)
+			return router.push('/')
+		} catch (e) {
+			setError(`There was an error fetching the token: ${e}`)
+			return setLoading(false)
+		}
+	}, [])
 
 	const handleSignup = async () => {
 		setLoading(true)
@@ -54,12 +80,28 @@ export default function Signup({
 			})
 
 			const data = await res.json()
+			console.log('data', data)
 
 			if (data.error) {
 				setError(data.error)
 			} else {
 				localStorage.setItem('token', data.token)
-				router.push('/')
+				setUser(data.user)
+				try {
+					const res = await signIn('credentials', {
+						redirect: false,
+						username: email,
+						password,
+					})
+					if (res?.error) {
+						setError(res.error)
+						return setLoading(false)
+					}
+					getToken()
+				} catch (err) {
+					setError(`There was an error signing in: ${err}`)
+					return setLoading(false)
+				}
 			}
 
 			setLoading(false)
@@ -70,9 +112,7 @@ export default function Signup({
 	}
 
 	const handleEnter = (e: KeyboardEvent) => {
-		if (e.key === 'Enter') {
-			handleSignup()
-		}
+		if (e.key === 'Enter') handleSignup()
 	}
 
 	if (!hydrated && !hydratedInit) return null

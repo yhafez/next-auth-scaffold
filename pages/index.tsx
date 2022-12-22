@@ -46,7 +46,6 @@ export default function Dashboard({ hydratedInit = false }: DashboardProps) {
 	}
 
 	useEffect(() => {
-		if (status === 'loading') return setLoading(true)
 		setLoading(true)
 		if (status === 'unauthenticated') {
 			setUser(null)
@@ -65,6 +64,10 @@ export default function Dashboard({ hydratedInit = false }: DashboardProps) {
 			setLoading(true)
 			getToken()
 		}
+	}, [status, user])
+
+	useEffect(() => {
+		if (status === 'loading') return setLoading(true)
 	}, [status])
 
 	if (!hydrated && !hydratedInit) return null

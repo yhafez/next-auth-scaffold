@@ -94,6 +94,11 @@ export default async function signup(req: NextApiRequest, res: NextApiResponse) 
 							name: name || null,
 						},
 					})
+					if (!newUser) {
+						return res.status(500).json({
+							error: 'There was an error creating the user in the database',
+						})
+					}
 
 					const secret = process.env.JWT_SECRET! + newUser?.password + newUser?.salt
 					const token = sign({ email: newUser?.email }, secret, { expiresIn: '1d' })
@@ -101,9 +106,15 @@ export default async function signup(req: NextApiRequest, res: NextApiResponse) 
 					try {
 						const response = await sendVerifyEmailMessage(email, verifyUrl)
 
+						if (!response) {
+							return res.status(500).json({
+								error: 'There was an error sending the verification email',
+							})
+						}
+
 						return res.status(201).json({
 							token: token,
-							user: newUser,
+							user: { ...newUser, password: null, salt: null },
 							success: 'User created',
 						})
 					} catch (e) {
