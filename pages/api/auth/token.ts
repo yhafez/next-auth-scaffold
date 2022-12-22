@@ -1,5 +1,4 @@
 // path: ./pages/api/auth/get-auth-token.ts
-
 import { NextApiRequest, NextApiResponse } from 'next'
 import { getToken } from 'next-auth/jwt'
 
