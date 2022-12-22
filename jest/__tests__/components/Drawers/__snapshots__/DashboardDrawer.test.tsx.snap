@@ -21,13 +21,13 @@ exports[`DashboardDrawer Should math snapshot 1`] = `
             style="width: 100%;"
           >
             <button
-              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-disableElevation MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-disableElevation css-1v660sp-MuiButtonBase-root-MuiButton-root"
+              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-disableElevation MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-disableElevation css-186bged-MuiButtonBase-root-MuiButton-root"
               id="dashboard-drawer-user-avatar"
               tabindex="0"
               type="button"
             >
               <div
-                class="MuiAvatar-root MuiAvatar-circular css-g7f4jy-MuiAvatar-root"
+                class="MuiAvatar-root MuiAvatar-circular css-1oin0wn-MuiAvatar-root"
                 id="dashboard-drawer-user-avatar-image"
               >
                 <img

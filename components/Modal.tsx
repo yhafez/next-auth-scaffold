@@ -43,7 +43,6 @@ const Modal = ({
 	const isLarge = useMediaQuery(`(max-height: 600px)`)
 	const isExtraLarge = useMediaQuery(`(max-height: 600px)`)
 
-	console.log('isMobile', isMobile)
 	return (
 		<Box
 			id={`${formattedName}-modal-container`}

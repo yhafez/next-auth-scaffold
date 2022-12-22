@@ -171,7 +171,7 @@ const DashboardDrawer = () => {
 								flexDirection: 'column',
 								alignItems: 'center',
 								justifyContent: 'center',
-								height: '12em',
+								height: '18em',
 								width: '100%',
 								borderBottom: '1px solid rgba(255, 255, 255, 0.12)',
 							}}
@@ -180,8 +180,8 @@ const DashboardDrawer = () => {
 							<Avatar
 								id="dashboard-drawer-user-avatar-image"
 								sx={{
-									width: '100px',
-									height: '100px',
+									width: '8em',
+									height: '8em',
 									border: '2px solid',
 									mb: 4,
 									borderColor: 'primary.contrastText',

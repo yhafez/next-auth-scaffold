@@ -3,7 +3,7 @@
 exports[`Login Should match snapshot 1`] = `
 <div>
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-8095sb-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-14umlvy-MuiButtonBase-root-MuiButton-root"
     id="test-skip-nav-link"
     tabindex="0"
     type="button"
@@ -23,7 +23,7 @@ exports[`Login Should match snapshot 1`] = `
     id="test-layout-container"
   >
     <header
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-g0o95h-MuiPaper-root-MuiAppBar-root"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-38ln4h-MuiPaper-root-MuiAppBar-root"
       id="test-app-bar"
     >
       <nav
@@ -156,7 +156,7 @@ exports[`Login Should match snapshot 1`] = `
       </nav>
     </header>
     <main
-      class="MuiBox-root css-k7ubyk"
+      class="MuiBox-root css-cn70eu"
       id="test-layout-content"
       tabindex="-1"
     />
