@@ -171,7 +171,7 @@ const DashboardDrawer = () => {
 								flexDirection: 'column',
 								alignItems: 'center',
 								justifyContent: 'center',
-								height: '200px',
+								height: '12em',
 								width: '100%',
 								borderBottom: '1px solid rgba(255, 255, 255, 0.12)',
 							}}

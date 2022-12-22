@@ -3,7 +3,7 @@
 exports[`Dashboard Should match snapshot 1`] = `
 <div>
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1ga822l-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-8095sb-MuiButtonBase-root-MuiButton-root"
     id="test-skip-nav-link"
     tabindex="0"
     type="button"
@@ -19,7 +19,7 @@ exports[`Dashboard Should match snapshot 1`] = `
     />
   </button>
   <div
-    class="MuiDrawer-root MuiDrawer-docked css-chevd-MuiDrawer-docked"
+    class="MuiDrawer-root MuiDrawer-docked css-8q0ahb-MuiDrawer-docked"
     id="drawer"
   >
     <div
@@ -43,7 +43,7 @@ exports[`Dashboard Should match snapshot 1`] = `
               style="width: 100%;"
             >
               <button
-                class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-disableElevation MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-disableElevation css-zkuhqy-MuiButtonBase-root-MuiButton-root"
+                class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-disableElevation MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-disableElevation css-25tzd5-MuiButtonBase-root-MuiButton-root"
                 id="dashboard-drawer-user-avatar"
                 tabindex="0"
                 type="button"
@@ -278,7 +278,7 @@ exports[`Dashboard Should match snapshot 1`] = `
     id="test-layout-container"
   >
     <header
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-wtsqd1-MuiPaper-root-MuiAppBar-root"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-2zjcpr-MuiPaper-root-MuiAppBar-root"
       id="test-app-bar"
     >
       <nav
@@ -411,7 +411,7 @@ exports[`Dashboard Should match snapshot 1`] = `
       </nav>
     </header>
     <main
-      class="MuiBox-root css-tc2fc"
+      class="MuiBox-root css-t8d6lw"
       id="test-layout-content"
       tabindex="-1"
     />

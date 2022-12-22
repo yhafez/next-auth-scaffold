@@ -18,11 +18,11 @@ export default function DrawerComponent({ open, handleDrawerClose, children }: D
 		<Drawer
 			id="drawer"
 			sx={{
-				width: '320px',
+				width: '12em',
 				flexShrink: 0,
 				overflowY: 'scroll',
 				'& .MuiDrawer-paper': {
-					width: '320px',
+					width: '12em',
 					boxSizing: 'border-box',
 					backgroundColor: darkMode ? 'primary.dark' : 'primary.light',
 					color: 'primary.contrastText',
@@ -52,7 +52,7 @@ export default function DrawerComponent({ open, handleDrawerClose, children }: D
 							pb: 2,
 							px: 0,
 							width: '100%',
-							height: '48px',
+							height: '2em',
 							cursor: 'pointer',
 							'&:hover': {
 								backgroundColor: 'primary.main',
