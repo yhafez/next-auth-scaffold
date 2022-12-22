@@ -1,5 +1,4 @@
 // Path: ./components/ModalNote.tsx
-
 import { Box, Typography, Link as MuiLink } from '@mui/material'
 import Link from 'next/link'
 

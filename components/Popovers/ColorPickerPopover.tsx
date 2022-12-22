@@ -1,9 +1,9 @@
 // Path: ./components/ColorPickerPopover.tsx
-
 import { useState, useCallback } from 'react'
 import { Popover, PopoverOrigin } from '@mui/material'
-import { useBoundStore } from '../../store'
 import { ChromePicker } from 'react-color'
+
+import { useBoundStore } from '../../store'
 
 export interface ColorPickerPopoverProps {
 	name: string

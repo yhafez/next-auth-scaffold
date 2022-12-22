@@ -1,7 +1,8 @@
 // Path: ./components/Drawers/SettingsDrawer.tsx
 import { useState } from 'react'
 import { useRouter } from 'next/router'
-import { Box, Typography, List, ListItem } from '@mui/material'
+import Link from 'next/link'
+import { Box, Link as MuiLink, List, ListItem } from '@mui/material'
 import {
 	Security,
 	Settings,
@@ -11,10 +12,12 @@ import {
 	ExitToApp,
 } from '@mui/icons-material'
 
-import DrawerButton from '../DrawerButton'
-import DrawerSignOutPopover from '../Popovers/DrawerSignOutPopover'
+import { DrawerButton, DrawerSignOutPopover } from '..'
+import { useBoundStore } from '../../store'
+import { bounce } from '../../shared/styles'
 
 export default function SettingsDrawer() {
+	const { darkMode } = useBoundStore()
 	const router = useRouter()
 
 	const [anchorElSignOut, setAnchorElSignOut] = useState<null | HTMLButtonElement>(null)
@@ -44,9 +47,14 @@ export default function SettingsDrawer() {
 					borderBottom: '1px solid rgba(255, 255, 255, 0.12)',
 				}}
 			>
-				<Typography
-					variant="h1"
+				<MuiLink
+					id="settings-drawer-header-title"
+					component={Link}
+					href="/settings"
+					title="General Settings"
+					aria-label="General Settings"
 					sx={{
+						textDecoration: 'none',
 						color: 'primary.contrastText',
 						fontSize: '3rem',
 						fontWeight: 700,
@@ -57,10 +65,25 @@ export default function SettingsDrawer() {
 						justifyContent: 'center',
 						borderBottom: '1px solid rgba(255, 255, 255, 0.12)',
 						my: 2,
+
+						'&:hover': {
+							color: darkMode ? 'primary.light' : 'primary.dark',
+							animation: `${bounce} 2s ease-in-out infinite alternate`,
+						},
+
+						'&:active': {
+							color: darkMode ? 'primary.light' : 'primary.dark',
+							animation: `${bounce} 2s ease-in-out infinite alternate`,
+						},
+
+						'&:focus': {
+							color: darkMode ? 'primary.light' : 'primary.dark',
+							animation: `${bounce} 2s ease-in-out infinite alternate`,
+						},
 					}}
 				>
 					Settings
-				</Typography>
+				</MuiLink>
 				<List
 					id="settings-drawer-content"
 					sx={{

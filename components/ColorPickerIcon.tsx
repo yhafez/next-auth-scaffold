@@ -4,8 +4,7 @@ import { Box, IconButton, Typography } from '@mui/material'
 import { ColorLens } from '@mui/icons-material'
 import { darken, lighten } from 'color2k'
 
-import ColorPickerPopover from './Popovers/ColorPickerPopover'
-
+import { ColorPickerPopover } from '.'
 import { useBoundStore } from '../store'
 import {
 	getContrastColor,

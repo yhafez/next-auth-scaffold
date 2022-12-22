@@ -5,7 +5,7 @@ import DashboardDrawer from './Drawers/DashboardDrawer'
 import SettingsDrawer from './Drawers/SettingsDrawer'
 
 import ColorPickerPopover from './Popovers/ColorPickerPopover'
-import DashboardSignOutPopover from './Popovers/DrawerSignOutPopover'
+import DrawerSignOutPopover from './Popovers/DrawerSignOutPopover'
 
 import ActionButtonsContainer from './ActionButtonsContainer'
 import ColorPickerIcon from './ColorPickerIcon'
@@ -28,7 +28,7 @@ export {
 	DashboardDrawer,
 	SettingsDrawer,
 	ColorPickerPopover,
-	DashboardSignOutPopover,
+	DrawerSignOutPopover,
 	ActionButtonsContainer,
 	ColorPickerIcon,
 	ConfirmPasswordInput,

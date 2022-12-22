@@ -18,10 +18,7 @@ import {
 import { useTheme } from '@mui/material/styles'
 import { ChevronRight } from '@mui/icons-material'
 
-import Drawer from './Drawer'
-import DarkModeSwitch from './DarkModeSwitch'
-import ColorPickerIcon from './ColorPickerIcon'
-
+import { Drawer, DarkModeSwitch, ColorPickerIcon } from '.'
 import { useBoundStore } from '../store'
 import { toTitleCase } from '../utils/helpers'
 import { bounce } from '../shared/styles'
@@ -264,10 +261,10 @@ export default function Layout({ pageTitle, name, children, drawerChildren }: La
 										: isDesktop
 										? '2rem'
 										: isLargeDesktop
-										? '2.5rem'
-										: isExtraLargeDesktop
 										? '3rem'
-										: '4rem',
+										: isExtraLargeDesktop
+										? '4rem'
+										: '5rem',
 									ml: 4,
 									mt: 2,
 								}}

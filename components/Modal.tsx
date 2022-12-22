@@ -1,5 +1,4 @@
 // Path: ./components/Modal.tsx
-
 import { Box, CircularProgress, Typography, useMediaQuery } from '@mui/material'
 import { ErrorOutline } from '@mui/icons-material'
 import { getContrast } from 'color2k'

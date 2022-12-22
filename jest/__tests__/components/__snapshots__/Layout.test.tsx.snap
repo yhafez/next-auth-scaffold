@@ -39,7 +39,7 @@ exports[`Layout Should match snapshot 1`] = `
           title="Home"
         >
           <h1
-            class="MuiTypography-root MuiTypography-h1 MuiTypography-noWrap css-wy0958-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-h1 MuiTypography-noWrap css-10lyjyp-MuiTypography-root"
             id="test-toolbar-title"
           >
             Next Auth Scaffold

@@ -14,10 +14,7 @@ import {
 } from '@mui/icons-material'
 import { darken, lighten } from 'color2k'
 
-import DrawerButton from '../DrawerButton'
-import ColorPickerPopover from '../Popovers/ColorPickerPopover'
-import DashboardSignOutPopover from '../Popovers/DrawerSignOutPopover'
-
+import { DrawerButton, ColorPickerPopover, DrawerSignOutPopover } from '..'
 import { useBoundStore } from '../../store'
 import { getContrastColor, getSecondaryColor } from '../../utils/helpers'
 
@@ -325,7 +322,7 @@ export default function DashboardDrawer() {
 					horizontal: 'left',
 				}}
 			/>
-			<DashboardSignOutPopover
+			<DrawerSignOutPopover
 				anchorEl={anchorElSignOut}
 				handleClose={() => setAnchorElSignOut(null)}
 			/>
