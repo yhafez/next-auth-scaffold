@@ -172,6 +172,7 @@ export function Layout({ pageTitle, name, children, drawerChildren }: LayoutProp
 									flexDirection: 'column',
 									justifyContent: 'center',
 									alignItems: 'center',
+									mx: 4,
 								}}
 							>
 								<IconButton
@@ -179,17 +180,18 @@ export function Layout({ pageTitle, name, children, drawerChildren }: LayoutProp
 									color="inherit"
 									aria-labelledby={`${name}-toolbar-collapse-drawer-text`}
 									onClick={() => setDrawerOpen(true)}
-									edge="start"
 									sx={{
+										width: '48px',
+										height: '48px',
 										color: customPalette.primary.contrastText,
 										cursor: 'pointer',
-										mx: 4,
 										...(drawerOpen && { display: 'none' }),
 									}}
 								>
 									<ChevronRight
 										id={`${name}-toolbar-collapse-drawer-icon`}
 										sx={{
+											fontSize: '1.5em',
 											color: selected
 												? darkMode
 													? 'primary.light'
@@ -207,7 +209,8 @@ export function Layout({ pageTitle, name, children, drawerChildren }: LayoutProp
 									htmlFor={`${name}-toolbar-collapse-drawer-icon`}
 									sx={{
 										fontWeight: 500,
-										ml: 1,
+										width: '100%',
+										textAlign: 'center',
 										cursor: 'pointer',
 										color: selected
 											? darkMode

@@ -200,6 +200,8 @@ export default function Login({
 								if (e.key === 'Enter') setRemember(remember => !remember)
 							}}
 							sx={{
+								width: '48px',
+								height: '48px',
 								color: 'primary.contrastText',
 								'&.Mui-checked': {
 									color: darkMode ? 'primary.light' : 'primary.dark',
