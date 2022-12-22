@@ -4,11 +4,13 @@ import { useSnackbar } from 'notistack'
 import { useRouter } from 'next/router'
 import { useHydrated } from 'react-hydration-provider'
 
-import Modal from '../../../components/Modal'
-import ConfirmPasswordInput from '../../../components/ConfirmPasswordInput'
-import SubmitButton from '../../../components/SubmitButton'
-import ActionButtonsContainer from '../../../components/ActionButtonsContainer'
-import { Layout } from '../../../components/Layout'
+import {
+	Modal,
+	ConfirmPasswordInput,
+	SubmitButton,
+	ActionButtonsContainer,
+	Layout,
+} from '../../../components'
 
 export interface ResetPasswordProps {
 	errorInit?: string

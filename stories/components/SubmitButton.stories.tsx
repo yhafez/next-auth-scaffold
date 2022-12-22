@@ -2,9 +2,7 @@
 import { useEffect } from 'react'
 import { Meta, Story } from '@storybook/react'
 
-import SubmitButton from '../../components/SubmitButton'
-import Modal from '../../components/Modal'
-
+import { SubmitButton, Modal } from '../../components'
 import { useBoundStore } from '../../store'
 
 export default {

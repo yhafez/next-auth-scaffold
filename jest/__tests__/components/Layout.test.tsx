@@ -4,7 +4,7 @@ import { render, act, screen, waitFor } from '@testing-library/react'
 import { axe } from 'jest-axe'
 import { SessionProvider } from 'next-auth/react'
 
-import { Layout } from '../../../components/Layout'
+import { Layout } from '../../../components'
 
 describe('Layout', () => {
 	let container: HTMLElement

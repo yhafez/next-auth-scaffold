@@ -4,7 +4,7 @@ import { render, act, screen, waitFor } from '@testing-library/react'
 import { axe } from 'jest-axe'
 import MenuIcon from '@mui/icons-material/Menu'
 
-import DrawerButton from '../../../components/DrawerButton'
+import { DrawerButton } from '../../../components'
 
 describe('DrawerButton', () => {
 	let container: HTMLElement

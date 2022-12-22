@@ -35,7 +35,7 @@ export interface LayoutProps {
 	drawerChildren?: ReactNode
 }
 
-export function Layout({ pageTitle, name, children, drawerChildren }: LayoutProps) {
+export default function Layout({ pageTitle, name, children, drawerChildren }: LayoutProps) {
 	const { darkMode, customPalette, theme: customTheme } = useBoundStore()
 	const theme = useTheme()
 	const router = useRouter()

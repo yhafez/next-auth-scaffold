@@ -1,5 +1,4 @@
 // Path: ./pages/settings.tsx
-
 import { useEffect } from 'react'
 import { useSnackbar } from 'notistack'
 import { useRouter } from 'next/router'
@@ -7,16 +6,14 @@ import { useSession } from 'next-auth/react'
 import { Box } from '@mui/material'
 import { useHydrated } from 'react-hydration-provider'
 
-import Modal from '../../components/Modal'
-import { Layout } from '../../components/Layout'
-import SettingsDrawer from '../../components/Drawers/SettingsDrawer'
+import { Modal, Layout, SettingsDrawer } from '../../components'
 
 export interface AccountSettingsProps {
 	hydratedInit?: boolean
 }
 
 export default function AccountSettings({ hydratedInit = false }: AccountSettingsProps) {
-	const { data: session, status } = useSession()
+	const { data: _session, status } = useSession()
 	const { enqueueSnackbar } = useSnackbar()
 	const router = useRouter()
 	const hydrated = useHydrated()

@@ -5,8 +5,7 @@ import { SessionProvider } from 'next-auth/react'
 import { ThemeProvider } from '@mui/material/styles'
 
 import Dashboard from '../../../pages'
-import { Layout } from '../../../components/Layout'
-import DashboardDrawer from '../../../components/Drawers/DashboardDrawer'
+import { Layout, DashboardDrawer } from '../../../components'
 import { defaultTheme } from '../../../theme'
 
 describe('Dashboard', () => {

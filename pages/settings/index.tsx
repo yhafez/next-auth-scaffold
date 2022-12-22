@@ -1,5 +1,4 @@
 // Path: ./pages/settings.tsx
-
 import { useEffect } from 'react'
 import { useSnackbar } from 'notistack'
 import { useRouter } from 'next/router'
@@ -8,17 +7,14 @@ import { List, ListItem } from '@mui/material'
 import { Accessibility, Person, Security, Settings as SettingsIcon } from '@mui/icons-material'
 import { useHydrated } from 'react-hydration-provider'
 
-import Modal from '../../components/Modal'
-import { Layout } from '../../components/Layout'
-import SettingsDrawer from '../../components/Drawers/SettingsDrawer'
-import ModalButton from '../../components/ModalButton'
+import { Modal, ModalButton, Layout, SettingsDrawer } from '../../components'
 
 export interface SettingsProps {
 	hydratedInit?: boolean
 }
 
 export default function Settings({ hydratedInit = false }: SettingsProps) {
-	const { data: session, status } = useSession()
+	const { data: _session, status } = useSession()
 	const { enqueueSnackbar } = useSnackbar()
 	const router = useRouter()
 	const hydrated = useHydrated()

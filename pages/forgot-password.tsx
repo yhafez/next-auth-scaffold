@@ -3,12 +3,14 @@ import { useState, KeyboardEvent } from 'react'
 import { useSnackbar } from 'notistack'
 import { useHydrated } from 'react-hydration-provider'
 
-import Modal from '../components/Modal'
-import SubmitButton from '../components/SubmitButton'
-import EmailInput from '../components/EmailInput'
-import ActionButtonsContainer from '../components/ActionButtonsContainer'
-import ModalNote from '../components/ModalNote'
-import { Layout } from '../components/Layout'
+import {
+	Modal,
+	ModalNote,
+	EmailInput,
+	SubmitButton,
+	ActionButtonsContainer,
+	Layout,
+} from '../components'
 
 export interface ForgotPasswordProps {
 	errorInit?: string

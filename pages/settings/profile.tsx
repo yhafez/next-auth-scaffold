@@ -1,5 +1,4 @@
 // Path: ./pages/settings.tsx
-
 import { useState, useEffect } from 'react'
 import { useSnackbar } from 'notistack'
 import { useRouter } from 'next/router'
@@ -8,11 +7,7 @@ import { useSession } from 'next-auth/react'
 import { Box, Button } from '@mui/material'
 import { useHydrated } from 'react-hydration-provider'
 
-import Modal from '../../components/Modal'
-import { Layout } from '../../components/Layout'
-import SettingsDrawer from '../../components/Drawers/SettingsDrawer'
-import EditableTextField from '../../components/EditableTextField'
-
+import { Modal, Layout, SettingsDrawer, EditableTextField } from '../../components'
 import { useBoundStore } from '../../store'
 
 export interface ProfileSettingsProps {
@@ -21,7 +16,7 @@ export interface ProfileSettingsProps {
 
 export default function ProfileSettings({ hydratedInit = false }: ProfileSettingsProps) {
 	const { user, darkMode } = useBoundStore()
-	const { data: session, status } = useSession()
+	const { data: _session, status } = useSession()
 	const { enqueueSnackbar } = useSnackbar()
 	const router = useRouter()
 	const hydrated = useHydrated()

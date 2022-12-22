@@ -5,7 +5,7 @@ import { SessionProvider } from 'next-auth/react'
 import { ThemeProvider } from '@mui/material/styles'
 
 import Login from '../../../pages/login'
-import { Layout } from '../../../components/Layout'
+import { Layout } from '../../../components'
 import { defaultTheme } from '../../../theme'
 
 describe('Login', () => {

@@ -13,13 +13,13 @@ export interface EditableTextFieldProps {
 	isPassword?: boolean
 }
 
-const EditableTextField = ({
+export default function EditableTextField({
 	name,
 	label,
 	value,
 	setValue,
 	isPassword = false,
-}: EditableTextFieldProps) => {
+}: EditableTextFieldProps) {
 	const { darkMode, customPalette } = useBoundStore()
 	const [edit, setEdit] = useState(false)
 
@@ -62,7 +62,7 @@ const EditableTextField = ({
 
 				'& .MuiInputBase-root-MuiInput-root:hover:not(.Mui-disabled):before': {
 					borderBottom: `2px solid ${
-						darkMode ? customPalette?.primary?.light : customPalette?.primary?.dark
+						darkMode ? customPalette.primary.light : customPalette.primary.dark
 					}`,
 				},
 			}}
@@ -131,5 +131,3 @@ const EditableTextField = ({
 		/>
 	)
 }
-
-export default EditableTextField

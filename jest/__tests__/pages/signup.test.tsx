@@ -4,7 +4,7 @@ import { axe } from 'jest-axe'
 import { ThemeProvider } from '@mui/material/styles'
 
 import Signup from '../../../pages/signup'
-import { Layout } from '../../../components/Layout'
+import { Layout } from '../../../components'
 import { defaultTheme } from '../../../theme'
 
 describe('Signup', () => {

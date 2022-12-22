@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { Meta, Story } from '@storybook/react'
 import { ThemeProvider } from '@mui/material/styles'
 
-import { Layout, LayoutProps } from '../../components/Layout'
+import { Layout } from '../../components'
 
 import { defaultTheme } from '../../theme'
 import { useBoundStore } from '../../store'
@@ -31,7 +31,7 @@ const LayoutStory = {
 
 export default LayoutStory
 
-export const WithoutDrawer: Story<LayoutProps> = (args, { globals: { theme } }) => {
+export const WithoutDrawer: Story = (args, { globals: { theme } }) => {
 	const { setDarkMode, customPalette } = useBoundStore()
 	const [customTheme, setCustomTheme] = useState(defaultTheme)
 
@@ -58,7 +58,7 @@ export const WithoutDrawer: Story<LayoutProps> = (args, { globals: { theme } }) 
 
 	return (
 		<ThemeProvider theme={customTheme}>
-			<Layout {...args} drawerChildren={null}>
+			<Layout {...args} pageTitle="test" name="test" drawerChildren={null}>
 				<div
 					style={{
 						display: 'flex',
@@ -74,7 +74,7 @@ export const WithoutDrawer: Story<LayoutProps> = (args, { globals: { theme } }) 
 	)
 }
 
-export const WithDrawer: Story<LayoutProps> = (args, { globals: { theme } }) => {
+export const WithDrawer: Story = (args, { globals: { theme } }) => {
 	const { setDarkMode, customPalette } = useBoundStore()
 	const [customTheme, setCustomTheme] = useState(defaultTheme)
 
@@ -101,7 +101,7 @@ export const WithDrawer: Story<LayoutProps> = (args, { globals: { theme } }) => 
 
 	return (
 		<ThemeProvider theme={customTheme}>
-			<Layout {...args} drawerChildren={<></>}>
+			<Layout {...args} pageTitle="test" name="test" drawerChildren={<></>}>
 				<div
 					style={{
 						display: 'flex',

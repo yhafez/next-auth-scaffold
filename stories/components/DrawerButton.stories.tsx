@@ -3,9 +3,7 @@ import { useState, useEffect } from 'react'
 import { Meta, Story } from '@storybook/react'
 import { Menu } from '@mui/icons-material'
 
-import Drawer from '../../components/Drawer'
-import DrawerButton from '../../components/DrawerButton'
-
+import { Drawer, DrawerButton } from '../../components'
 import { useBoundStore } from '../../store'
 
 export default {

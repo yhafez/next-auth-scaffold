@@ -16,14 +16,14 @@ export interface ModalProps {
 	small?: boolean
 }
 
-const Modal = ({
+export default function Modal({
 	children,
 	name,
 	onSubmit,
 	loading = false,
 	error = '',
 	small = false,
-}: ModalProps) => {
+}: ModalProps) {
 	const { darkMode, customPalette, theme } = useBoundStore()
 	const isSufficientContrast =
 		getContrast(
@@ -188,5 +188,3 @@ const Modal = ({
 		</Box>
 	)
 }
-
-export default Modal

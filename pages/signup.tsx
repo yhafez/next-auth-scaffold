@@ -1,19 +1,19 @@
 // Path: pages/login.tsx
-
 import { useState, KeyboardEvent, useCallback } from 'react'
 import { useRouter } from 'next/router'
-import { signIn, useSession } from 'next-auth/react'
+import { signIn } from 'next-auth/react'
 import { useHydrated } from 'react-hydration-provider'
 import { useSnackbar } from 'notistack'
 
-import Modal from '../components/Modal'
-import SubmitButton from '../components/SubmitButton'
-import EmailInput from '../components/EmailInput'
-import ConfirmPasswordInput from '../components/ConfirmPasswordInput'
-import ActionButtonsContainer from '../components/ActionButtonsContainer'
-import ModalNote from '../components/ModalNote'
-import { Layout } from '../components/Layout'
-
+import {
+	Modal,
+	Layout,
+	SubmitButton,
+	EmailInput,
+	ConfirmPasswordInput,
+	ActionButtonsContainer,
+	ModalNote,
+} from '../components'
 import { useBoundStore } from '../store'
 
 export interface SignupProps {

@@ -14,7 +14,7 @@ import {
 import DrawerButton from '../DrawerButton'
 import DrawerSignOutPopover from '../Popovers/DrawerSignOutPopover'
 
-const SettingsDrawer = () => {
+export default function SettingsDrawer() {
 	const router = useRouter()
 
 	const [anchorElSignOut, setAnchorElSignOut] = useState<null | HTMLButtonElement>(null)
@@ -198,5 +198,3 @@ const SettingsDrawer = () => {
 		</Box>
 	)
 }
-
-export default SettingsDrawer

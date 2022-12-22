@@ -4,10 +4,7 @@ import { useRouter } from 'next/router'
 import { useSnackbar } from 'notistack'
 import { useHydrated } from 'react-hydration-provider'
 
-import Modal from '../../../components/Modal'
-import ActionButtonsContainer from '../../../components/ActionButtonsContainer'
-import { Layout } from '../../../components/Layout'
-import NavigationButton from '../../../components/NavigationButton'
+import { Modal, ActionButtonsContainer, Layout, NavigationButton } from '../../../components'
 
 export interface VerifyEmailProps {
 	errorInit?: string

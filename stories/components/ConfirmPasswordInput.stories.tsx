@@ -1,10 +1,8 @@
 // Path: ./stories/components/ConfirmPasswordInput.stories.tsx
 import { useState, useEffect } from 'react'
 import { Story, Meta } from '@storybook/react'
-import ConfirmPasswordInput, {
-	ConfirmPasswordInputProps,
-} from '../../components/ConfirmPasswordInput'
-import Modal from '../../components/Modal'
+
+import { ConfirmPasswordInput, Modal } from '../../components'
 
 import { useBoundStore } from '../../store'
 
@@ -66,7 +64,7 @@ export default {
 	],
 } as Meta
 
-export const Default: Story<ConfirmPasswordInputProps> = (args, { globals: { theme } }) => {
+export const Default: Story = (args, { globals: { theme } }) => {
 	const [password, setPassword] = useState('')
 	const [confirmPassword, setConfirmPassword] = useState('')
 
@@ -79,6 +77,7 @@ export const Default: Story<ConfirmPasswordInputProps> = (args, { globals: { the
 	return (
 		<ConfirmPasswordInput
 			{...args}
+			name="test"
 			password={password}
 			setPassword={setPassword}
 			confirmPassword={confirmPassword}

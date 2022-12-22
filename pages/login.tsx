@@ -1,5 +1,4 @@
 // Path: pages/login.tsx
-
 import { useEffect, useState, useCallback } from 'react'
 import { useHydrated } from 'react-hydration-provider'
 import { signIn, useSession } from 'next-auth/react'
@@ -7,15 +6,16 @@ import { useRouter } from 'next/router'
 import { useSnackbar } from 'notistack'
 import { Box, Checkbox, Typography } from '@mui/material'
 
-import Modal from '../components/Modal'
-import NavigationButton from '../components/NavigationButton'
-import SubmitButton from '../components/SubmitButton'
-import EmailInput from '../components/EmailInput'
-import PasswordInput from '../components/PasswordInput'
-import ActionButtonsContainer from '../components/ActionButtonsContainer'
-import ModalNote from '../components/ModalNote'
-import { Layout } from '../components/Layout'
-
+import {
+	Modal,
+	Layout,
+	NavigationButton,
+	SubmitButton,
+	EmailInput,
+	PasswordInput,
+	ActionButtonsContainer,
+	ModalNote,
+} from '../components'
 import { useBoundStore } from '../store'
 
 export interface LoginProps {
@@ -38,7 +38,7 @@ export default function Login({
 	const { darkMode, customPalette, setUser } = useBoundStore()
 	const router = useRouter()
 	const { enqueueSnackbar } = useSnackbar()
-	const { data: session, status } = useSession()
+	const { data: _session, status } = useSession()
 	const hydrated = useHydrated()
 
 	const [email, setEmail] = useState(emailInit)

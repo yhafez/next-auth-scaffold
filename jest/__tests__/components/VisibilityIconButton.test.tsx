@@ -2,7 +2,7 @@
 import { render, findByText, act, screen, waitFor } from '@testing-library/react'
 import { axe } from 'jest-axe'
 
-import VisibilityIconButton from '../../../components/VisibilityIconButton'
+import { VisibilityIconButton } from '../../../components'
 
 describe('VisibilityIconButton', () => {
 	it('Should have no accessibility violations', async () => {

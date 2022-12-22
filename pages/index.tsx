@@ -7,8 +7,7 @@ import { useHydrated } from 'react-hydration-provider'
 
 import { Box, CircularProgress, Typography } from '@mui/material'
 
-import { Layout } from '../components/Layout'
-import DashboardDrawer from '../components/Drawers/DashboardDrawer'
+import { Layout, DashboardDrawer } from '../components'
 
 import { useBoundStore } from '../store'
 
@@ -19,8 +18,8 @@ export interface DashboardProps {
 export default function Dashboard({ hydratedInit = false }: DashboardProps) {
 	const { darkMode, user, setUser } = useBoundStore()
 	const router = useRouter()
-	const { enqueueSnackbar, closeSnackbar } = useSnackbar()
-	const { data: session, status } = useSession()
+	const { enqueueSnackbar } = useSnackbar()
+	const { data: _session, status } = useSession()
 	const hydrated = useHydrated()
 
 	const [loading, setLoading] = useState(false)

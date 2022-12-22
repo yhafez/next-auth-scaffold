@@ -2,7 +2,7 @@
 import { render, findByText, act, screen, waitFor } from '@testing-library/react'
 import { axe } from 'jest-axe'
 
-import Drawer from '../../../components/Drawer'
+import { Drawer } from '../../../components'
 
 jest.mock('@mui/material', () => {
 	const originalModule = jest.requireActual('@mui/material')

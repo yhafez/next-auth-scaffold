@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { Typography, Box, Avatar, Button, List, ListItem } from '@mui/material'
-import { useTheme } from '@mui/material/styles'
 import {
 	ExitToApp,
 	Settings,
@@ -22,12 +21,10 @@ import DashboardSignOutPopover from '../Popovers/DrawerSignOutPopover'
 import { useBoundStore } from '../../store'
 import { getContrastColor, getSecondaryColor } from '../../utils/helpers'
 
-const DashboardDrawer = () => {
+export default function DashboardDrawer() {
 	const { darkMode, customPalette, user, setDarkMode, setCustomPalette } = useBoundStore()
 	const router = useRouter()
-	const theme = useTheme()
 
-	const [anchorElMenu, setAnchorElMenu] = useState<null | HTMLButtonElement>(null)
 	const [anchorElSignOut, setAnchorElSignOut] = useState<null | HTMLButtonElement>(null)
 	const [anchorElColorPicker, setAnchorElColorPicker] = useState<null | HTMLButtonElement>(null)
 
@@ -335,5 +332,3 @@ const DashboardDrawer = () => {
 		</Box>
 	)
 }
-
-export default DashboardDrawer

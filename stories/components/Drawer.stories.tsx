@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { Meta, Story } from '@storybook/react'
 import { Box } from '@mui/material'
 
-import Drawer from '../../components/Drawer'
+import { Drawer } from '../../components'
 import { useBoundStore } from '../../store'
 
 export default {

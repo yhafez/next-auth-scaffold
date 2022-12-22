@@ -2,9 +2,7 @@
 import { useState, useEffect } from 'react'
 import { Story, Meta } from '@storybook/react'
 
-import VisibilityIconButton from '../../components/VisibilityIconButton'
-import Modal from '../../components/Modal'
-
+import { VisibilityIconButton, Modal } from '../../components'
 import { useBoundStore } from '../../store'
 
 export default {

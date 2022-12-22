@@ -2,7 +2,7 @@
 import { render, findByText, act, screen, waitFor } from '@testing-library/react'
 import { axe } from 'jest-axe'
 
-import NavigationButton from '../../../components/NavigationButton'
+import { NavigationButton } from '../../../components'
 
 describe('NavigationButton', () => {
 	let container: HTMLElement

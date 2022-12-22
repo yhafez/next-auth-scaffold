@@ -2,7 +2,7 @@
 import { render, findAllByText, act, screen, waitFor } from '@testing-library/react'
 import { axe } from 'jest-axe'
 
-import ConfirmPasswordInput from '../../../components/ConfirmPasswordInput'
+import { ConfirmPasswordInput } from '../../../components'
 
 describe('ConfirmPasswordInput', () => {
 	let container: HTMLElement
@@ -76,28 +76,28 @@ describe('ConfirmPasswordInput', () => {
 
 	it('Should have a VisibilityIcon or VisibilityOffIcon with id "test-password-input-visibility-on-icon" or "-password-input-visibility-off-icon"', async () => {
 		const test =
-			container.querySelector('#test-password-input-visibility-on-icon') ||
+			container.querySelector('#test-password-input-visibility-on-icon') ??
 			container.querySelector('#test-password-input-visibility-off-icon')
 		expect(test).toBeTruthy()
 	})
 
 	it('Should have a VisibilityIcon or VisibilityOffIcon with id "test-confirm-password-input-visibility-on-icon" or "-confirm-password-input-visibility-off-icon"', async () => {
 		const test =
-			container.querySelector('#test-confirm-password-input-visibility-on-icon') ||
+			container.querySelector('#test-confirm-password-input-visibility-on-icon') ??
 			container.querySelector('#test-confirm-password-input-visibility-off-icon')
 		expect(test).toBeTruthy()
 	})
 
 	it('Should have a Typography element with id "test-password-input-hide-password-text" or "test-password-input-show-password-text"', async () => {
 		const test =
-			container.querySelector('#test-password-input-hide-password-text') ||
+			container.querySelector('#test-password-input-hide-password-text') ??
 			container.querySelector('#test-password-input-show-password-text')
 		expect(test).toBeTruthy()
 	})
 
 	it('Should have a Typography element with id "test-confirm-password-input-hide-password-text" or "test-confirm-password-input-show-password-text"', async () => {
 		const test =
-			container.querySelector('#test-confirm-password-input-hide-password-text') ||
+			container.querySelector('#test-confirm-password-input-hide-password-text') ??
 			container.querySelector('#test-confirm-password-input-show-password-text')
 		expect(test).toBeTruthy()
 	})
