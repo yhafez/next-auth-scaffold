@@ -19,8 +19,8 @@ exports[`Drawer Should match snapshot 1`] = `
           sx="[object Object]"
         >
           <svg
-            aria-aria-labelledby="drawer-close-button-label-text"
             aria-hidden="true"
+            aria-labelledby="drawer-close-button-label-text"
             class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1ha5wk2-MuiSvgIcon-root"
             data-testid="ChevronLeftIcon"
             focusable="false"

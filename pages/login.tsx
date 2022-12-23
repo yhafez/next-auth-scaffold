@@ -1,7 +1,7 @@
 // Path: pages/login.tsx
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, use } from 'react'
 import { useHydrated } from 'react-hydration-provider'
-import { signIn, useSession } from 'next-auth/react'
+import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { useSnackbar } from 'notistack'
 import { Box, Checkbox, Typography } from '@mui/material'
@@ -17,6 +17,7 @@ import {
 	ModalNote,
 } from '../components'
 import { useBoundStore } from '../store'
+import useToken from '../hooks/useToken'
 
 export interface LoginProps {
 	errorInit?: string
@@ -35,11 +36,11 @@ export default function Login({
 	loadingInit = false,
 	hydratedInit = false,
 }: LoginProps) {
-	const { darkMode, customPalette, setUser } = useBoundStore()
+	const { darkMode, customPalette } = useBoundStore()
 	const router = useRouter()
 	const { enqueueSnackbar } = useSnackbar()
-	const { data: _session, status } = useSession()
 	const hydrated = useHydrated()
+	const { loading: tokenLoading, error: tokenError, getToken } = useToken()
 
 	const [email, setEmail] = useState(emailInit)
 	const [password, setPassword] = useState(passwordInit)
@@ -47,34 +48,18 @@ export default function Login({
 	const [loading, setLoading] = useState(loadingInit)
 	const [error, setError] = useState(errorInit)
 
-	const getToken = useCallback(async () => {
-		setError('')
-		setLoading(true)
-		try {
-			const res = await fetch('/api/auth/token')
-			const data = await res.json()
-
-			if (data.error) {
-				setError(data.error)
-				return setLoading(false)
-			}
-			setUser(data.user)
-			enqueueSnackbar('Logged in successfully', { variant: 'success', autoHideDuration: 3000 })
-			setLoading(false)
-			return router.push('/')
-		} catch (e) {
-			setError(`There was an error fetching the token: ${e}`)
-			return setLoading(false)
-		}
-	}, [])
-
 	useEffect(() => {
 		if (localStorage.getItem('email')) setEmail(localStorage.getItem('email') as string)
 	}, [])
 
 	useEffect(() => {
-		if (status === 'authenticated') getToken()
-	}, [status, getToken])
+		if (tokenError) setError(tokenError)
+	}, [tokenError])
+
+	useEffect(() => {
+		if (tokenLoading) setLoading(true)
+		else setLoading(false)
+	}, [tokenLoading])
 
 	const handleLogin = async () => {
 		setError('')
@@ -98,7 +83,14 @@ export default function Login({
 				setError(res.error)
 				return setLoading(false)
 			}
-			getToken()
+			const token = await getToken()
+			if (token) {
+				enqueueSnackbar('Logged in successfully', { variant: 'success', autoHideDuration: 3000 })
+				return router.push('/')
+			}
+
+			setError('There was an error logging in')
+			return setLoading(false)
 		} catch (err) {
 			setError(`There was an error signing in: ${err}`)
 			return setLoading(false)

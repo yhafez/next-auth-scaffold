@@ -15,10 +15,19 @@ describe('Dashboard', () => {
 			container = render(
 				<SessionProvider
 					session={{
-						user: {
-							name: 'Test User',
-							email: 'test@example.com',
-							image: 'https://example.com/image.png',
+						token: {
+							user: {
+								id: '1',
+								email: 'test@example.com',
+								emailVerified: null,
+								image: 'test',
+								isDeactivated: false,
+								name: null,
+								role: 'USER',
+								createdAt: new Date(),
+								updatedAt: new Date(),
+								isNewUser: false,
+							},
 						},
 						expires: '1d',
 					}}

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useSnackbar } from 'notistack'
 import { useHydrated } from 'react-hydration-provider'
+import { useSession, signOut } from 'next-auth/react'
 
 import { Modal, ActionButtonsContainer, Layout, NavigationButton } from '../../../components'
 
@@ -22,6 +23,7 @@ export default function VerifyEmail({
 
 	const { enqueueSnackbar } = useSnackbar()
 	const hydrated = useHydrated()
+	const { data: _session, status } = useSession()
 
 	const [error, setError] = useState(errorInit)
 	const [loading, setLoading] = useState(loadingInit)
@@ -65,6 +67,12 @@ export default function VerifyEmail({
 		if (!id || !token) return setError('Invalid verification link')
 	}, [id, token])
 
+	useEffect(() => {
+		if (status === 'loading') return setLoading(true)
+		if (status === 'authenticated') signOut({ redirect: false })
+		else setLoading(false)
+	}, [status])
+
 	if (!hydrated && !hydratedInit) return null
 
 	return (
@@ -72,7 +80,7 @@ export default function VerifyEmail({
 			<Modal name="verify email" loading={loading} error={error} small>
 				<ActionButtonsContainer name="verify-email">
 					<NavigationButton
-						name="verify-email"
+						name="verify-email-back-to-login"
 						label="Back to Login"
 						handleClick={() => router.push('/login')}
 					/>

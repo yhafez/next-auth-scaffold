@@ -1,5 +1,4 @@
 // Path: ./jest/__tests__/components/Layout.test.tsx
-
 import { render, act, screen, waitFor } from '@testing-library/react'
 import { axe } from 'jest-axe'
 import { SessionProvider } from 'next-auth/react'

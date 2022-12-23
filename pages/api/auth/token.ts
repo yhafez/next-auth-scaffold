@@ -6,7 +6,7 @@ export default async function getAuthToken(req: NextApiRequest, res: NextApiResp
 	if (req.method === 'GET') {
 		const data = await getToken({ req })
 
-		if (data?.token) return res.json({ ...data.token })
+		if (data) return res.json(data)
 		else return res.status(401).json({ error: 'Invalid token' })
 	} else {
 		return res.status(405).json('Invalid request method')

@@ -1,5 +1,5 @@
 // Path: pages/login.tsx
-import { useState, KeyboardEvent, useCallback } from 'react'
+import { useState, useEffect, KeyboardEvent } from 'react'
 import { useRouter } from 'next/router'
 import { signIn } from 'next-auth/react'
 import { useHydrated } from 'react-hydration-provider'
@@ -14,7 +14,7 @@ import {
 	ActionButtonsContainer,
 	ModalNote,
 } from '../components'
-import { useBoundStore } from '../store'
+import useToken from '../hooks/useToken'
 
 export interface SignupProps {
 	errorInit?: string
@@ -35,8 +35,8 @@ export default function Signup({
 }: SignupProps) {
 	const router = useRouter()
 	const hydrated = useHydrated()
-	const { setUser } = useBoundStore()
 	const { enqueueSnackbar } = useSnackbar()
+	const { loading: tokenLoading, error: tokenError, getToken } = useToken()
 
 	const [email, setEmail] = useState(emailInit)
 	const [password, setPassword] = useState(passwordInit)
@@ -44,25 +44,14 @@ export default function Signup({
 	const [loading, setLoading] = useState(loadingInit)
 	const [error, setError] = useState(errorInit)
 
-	const getToken = useCallback(async () => {
-		setError('')
-		setLoading(true)
-		try {
-			const res = await fetch('/api/auth/token')
-			const data = await res.json()
+	useEffect(() => {
+		if (tokenError) setError(tokenError)
+	}, [tokenError])
 
-			if (data.error) {
-				setError(data.error)
-				return setLoading(false)
-			}
-			enqueueSnackbar('Logged in successfully', { variant: 'success', autoHideDuration: 3000 })
-			setLoading(false)
-			return router.push('/')
-		} catch (e) {
-			setError(`There was an error fetching the token: ${e}`)
-			return setLoading(false)
-		}
-	}, [])
+	useEffect(() => {
+		if (tokenLoading) setLoading(true)
+		else setLoading(false)
+	}, [tokenLoading])
 
 	const handleSignup = async () => {
 		setLoading(true)
@@ -83,9 +72,8 @@ export default function Signup({
 
 			if (data.error) {
 				setError(data.error)
+				return setLoading(false)
 			} else {
-				localStorage.setItem('token', data.token)
-				setUser(data.user)
 				try {
 					const res = await signIn('credentials', {
 						redirect: false,
@@ -96,14 +84,21 @@ export default function Signup({
 						setError(res.error)
 						return setLoading(false)
 					}
-					getToken()
+					const token = await getToken()
+					if (token) {
+						enqueueSnackbar('Account created successfully! Welcome!', {
+							variant: 'success',
+							autoHideDuration: 3000,
+						})
+						return router.push('/')
+					}
+					setError('There was an error signing in')
+					return setLoading(false)
 				} catch (err) {
 					setError(`There was an error signing in: ${err}`)
 					return setLoading(false)
 				}
 			}
-
-			setLoading(false)
 		} catch (error) {
 			setError(error.message)
 			setLoading(false)

@@ -80,7 +80,7 @@ export default function DrawerComponent({ open, handleDrawerClose, children }: D
 								id="drawer-close-button-icon"
 								sx={{ fontSize: 40 }}
 								role="img"
-								aria-aria-labelledby="drawer-close-button-label-text"
+								aria-labelledby="drawer-close-button-label-text"
 							/>
 						</IconButton>
 						<label id="drawer-close-button-label" htmlFor="drawer-close-button">

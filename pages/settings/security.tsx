@@ -1,32 +1,33 @@
 // Path: ./pages/settings.tsx
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useSnackbar } from 'notistack'
 import { useRouter } from 'next/router'
-import { useSession } from 'next-auth/react'
 import { Box } from '@mui/material'
 import { useHydrated } from 'react-hydration-provider'
 
 import { Modal, Layout, SettingsDrawer } from '../../components'
+import useToken from '../../hooks/useToken'
 
 export interface SecuritySettingsProps {
 	hydratedInit?: boolean
 }
 
 export default function SecuritySettings({ hydratedInit = false }: SecuritySettingsProps) {
-	const { data: _session, status } = useSession()
 	const { enqueueSnackbar } = useSnackbar()
 	const router = useRouter()
 	const hydrated = useHydrated()
+	const { loading: tokenLoading, error: tokenError } = useToken()
+
+	const [loading, setLoading] = useState(false)
 
 	useEffect(() => {
-		if (status === 'unauthenticated') {
-			enqueueSnackbar('You must be signed in to view this page', {
-				variant: 'error',
-				autoHideDuration: 3000,
-			})
-			router.push('/login')
-		}
-	}, [status])
+		if (tokenError) enqueueSnackbar(tokenError, { variant: 'error' })
+	}, [tokenError])
+
+	useEffect(() => {
+		if (tokenLoading) setLoading(true)
+		else setLoading(false)
+	}, [tokenLoading])
 
 	if (!hydrated && !hydratedInit) return null
 
@@ -45,7 +46,7 @@ export default function SecuritySettings({ hydratedInit = false }: SecuritySetti
 				drawerChildren={<SettingsDrawer />}
 				pageTitle="security settings"
 			>
-				<Modal name="security settings" loading={false} error="">
+				<Modal name="security settings" loading={loading} error="">
 					<Box
 						id="security-settings-content"
 						sx={{

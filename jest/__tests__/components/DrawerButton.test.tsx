@@ -1,5 +1,4 @@
 // Path: ./jest/__tests__/components/DrawerButton.test.tsx
-
 import { render, act, screen, waitFor } from '@testing-library/react'
 import { axe } from 'jest-axe'
 import MenuIcon from '@mui/icons-material/Menu'
