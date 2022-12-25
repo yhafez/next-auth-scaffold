@@ -57,8 +57,15 @@ export const authOptions = {
 		maxAge: 30 * 24 * 60 * 60, // 30 days
 	},
 	callbacks: {
-		async jwt(payload) {
-			return { ...payload }
+		async jwt({ token, user, _account, isNewUser }: any) {
+			if (user) {
+				token = { user }
+				if (isNewUser) token.user.isNewUser = true
+			}
+			return token
+		},
+		async session({ session, token }: any) {
+			return { expires: session.expires, token }
 		},
 	},
 }

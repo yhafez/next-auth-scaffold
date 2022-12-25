@@ -2,7 +2,7 @@
 import { render, findByText, act, screen, waitFor } from '@testing-library/react'
 import { axe } from 'jest-axe'
 
-import ActionButtonsContainer from '../../../components/ActionButtonsContainer'
+import { ActionButtonsContainer } from '../../../components'
 
 describe('ActionButtonsContainer', () => {
 	let container: HTMLElement

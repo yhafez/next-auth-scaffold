@@ -5,8 +5,7 @@ import { SessionProvider } from 'next-auth/react'
 import { ThemeProvider } from '@mui/material/styles'
 
 import Dashboard from '../../../pages'
-import { Layout } from '../../../components/Layout'
-import DashboardDrawer from '../../../components/Drawers/DashboardDrawer'
+import { Layout, DashboardDrawer } from '../../../components'
 import { defaultTheme } from '../../../theme'
 
 describe('Dashboard', () => {
@@ -16,10 +15,19 @@ describe('Dashboard', () => {
 			container = render(
 				<SessionProvider
 					session={{
-						user: {
-							name: 'Test User',
-							email: 'test@example.com',
-							image: 'https://example.com/image.png',
+						token: {
+							user: {
+								id: '1',
+								email: 'test@example.com',
+								emailVerified: null,
+								image: 'test',
+								isDeactivated: false,
+								name: null,
+								role: 'USER',
+								createdAt: new Date(),
+								updatedAt: new Date(),
+								isNewUser: false,
+							},
 						},
 						expires: '1d',
 					}}

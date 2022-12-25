@@ -1,7 +1,8 @@
 // Path: ./components/Drawers/SettingsDrawer.tsx
 import { useState } from 'react'
 import { useRouter } from 'next/router'
-import { Box, Typography, List, ListItem } from '@mui/material'
+import Link from 'next/link'
+import { Box, Link as MuiLink, List, ListItem } from '@mui/material'
 import {
 	Security,
 	Settings,
@@ -11,10 +12,12 @@ import {
 	ExitToApp,
 } from '@mui/icons-material'
 
-import DrawerButton from '../DrawerButton'
-import DrawerSignOutPopover from '../Popovers/DrawerSignOutPopover'
+import { DrawerButton, DrawerSignOutPopover } from '..'
+import { useBoundStore } from '../../store'
+import { bounce } from '../../shared/styles'
 
-const SettingsDrawer = () => {
+export default function SettingsDrawer() {
+	const { darkMode } = useBoundStore()
 	const router = useRouter()
 
 	const [anchorElSignOut, setAnchorElSignOut] = useState<null | HTMLButtonElement>(null)
@@ -27,8 +30,8 @@ const SettingsDrawer = () => {
 			sx={{
 				display: 'flex',
 				flexDirection: 'column',
-				alignItems: 'center',
 				justifyContent: 'space-between',
+				alignItems: 'center',
 				height: '100%',
 				width: '100%',
 			}}
@@ -44,24 +47,43 @@ const SettingsDrawer = () => {
 					borderBottom: '1px solid rgba(255, 255, 255, 0.12)',
 				}}
 			>
-				<Typography
-					variant="h1"
+				<MuiLink
+					id="settings-drawer-header-title"
+					component={Link}
+					href="/settings"
+					title="General Settings"
+					aria-label="General Settings"
 					sx={{
-						marginBottom: '1rem',
+						textDecoration: 'none',
 						color: 'primary.contrastText',
 						fontSize: '3rem',
 						fontWeight: 700,
 						width: '100%',
-						height: '72px',
+						height: '112px',
 						display: 'flex',
 						alignItems: 'center',
 						justifyContent: 'center',
 						borderBottom: '1px solid rgba(255, 255, 255, 0.12)',
 						my: 2,
+
+						'&:hover': {
+							color: darkMode ? 'primary.light' : 'primary.dark',
+							animation: `${bounce} 2s ease-in-out infinite alternate`,
+						},
+
+						'&:active': {
+							color: darkMode ? 'primary.light' : 'primary.dark',
+							animation: `${bounce} 2s ease-in-out infinite alternate`,
+						},
+
+						'&:focus': {
+							color: darkMode ? 'primary.light' : 'primary.dark',
+							animation: `${bounce} 2s ease-in-out infinite alternate`,
+						},
 					}}
 				>
 					Settings
-				</Typography>
+				</MuiLink>
 				<List
 					id="settings-drawer-content"
 					sx={{
@@ -76,7 +98,13 @@ const SettingsDrawer = () => {
 						<DrawerButton
 							name="profile-settings"
 							label="Profile"
-							icon={<Person />}
+							icon={
+								<Person
+									id="settings-drawer-content-profile-settings-icon"
+									role="img"
+									aria-hidden="true"
+								/>
+							}
 							href="/settings/profile"
 						/>
 					</ListItem>
@@ -84,7 +112,13 @@ const SettingsDrawer = () => {
 						<DrawerButton
 							name="account-settings"
 							label="Account"
-							icon={<Settings />}
+							icon={
+								<Settings
+									id="settings-drawer-content-account-settings-icon"
+									role="img"
+									aria-hidden="true"
+								/>
+							}
 							href="/settings/account"
 						/>
 					</ListItem>
@@ -92,7 +126,13 @@ const SettingsDrawer = () => {
 						<DrawerButton
 							name="security-settings"
 							label="Security"
-							icon={<Security />}
+							icon={
+								<Security
+									id="settings-drawer-content-security-settings-icon"
+									role="img"
+									aria-hidden="true"
+								/>
+							}
 							href="/settings/security"
 						/>
 					</ListItem>
@@ -100,7 +140,13 @@ const SettingsDrawer = () => {
 						<DrawerButton
 							name="accessibility-settings"
 							label="Accessibility"
-							icon={<Accessibility />}
+							icon={
+								<Accessibility
+									id="settings-drawer-content-accessibility-settings-icon"
+									role="img"
+									aria-hidden="true"
+								/>
+							}
 							href="/settings/accessibility"
 						/>
 					</ListItem>
@@ -123,7 +169,13 @@ const SettingsDrawer = () => {
 						<DrawerButton
 							name="settings"
 							label="General Settings"
-							icon={<ArrowBack id="settings-drawer-footer-arrow-back-to-settings-icon" />}
+							icon={
+								<ArrowBack
+									id="settings-drawer-footer-arrow-back-to-settings-icon"
+									role="img"
+									aria-hidden="true"
+								/>
+							}
 							href="/settings"
 						/>
 					</ListItem>
@@ -133,7 +185,13 @@ const SettingsDrawer = () => {
 					<DrawerButton
 						name="dashboard"
 						label="Dashboard"
-						icon={<ArrowBack id="settings-drawer-footer-arrow-back-to-dashboard-icon" />}
+						icon={
+							<ArrowBack
+								id="settings-drawer-footer-arrow-back-to-dashboard-icon"
+								role="img"
+								aria-hidden="true"
+							/>
+						}
 						href="/"
 					/>
 				</ListItem>
@@ -147,7 +205,9 @@ const SettingsDrawer = () => {
 					<DrawerButton
 						name="logout"
 						label="Logout"
-						icon={<ExitToApp id="settings-drawer-footer-log-out-icon" />}
+						icon={
+							<ExitToApp id="settings-drawer-footer-log-out-icon" role="img" aria-hidden="true" />
+						}
 						handleClick={e => {
 							setAnchorElSignOut(e.currentTarget)
 						}}
@@ -161,5 +221,3 @@ const SettingsDrawer = () => {
 		</Box>
 	)
 }
-
-export default SettingsDrawer

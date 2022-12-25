@@ -1,8 +1,8 @@
 // Path: ./stories/components/DarkModeSwitch.stories.tsx
 import { useEffect } from 'react'
 import { Meta, Story } from '@storybook/react'
-import DarkModeSwitch from '../../components/DarkModeSwitch'
-import Modal from '../../components/Modal'
+
+import { DarkModeSwitch, Modal } from '../../components'
 
 import { useBoundStore } from '../../store'
 

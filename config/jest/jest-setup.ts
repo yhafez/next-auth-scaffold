@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom'
 import { toHaveNoViolations } from 'jest-axe'
+import 'whatwg-fetch'
 
 window.matchMedia = query => ({
 	matches: false,
@@ -35,6 +36,15 @@ jest.mock('notistack', () => ({
 	useSnackbar() {
 		return {
 			enqueueSnackbar: jest.fn(),
+		}
+	},
+}))
+
+// Mock react-hydrate
+jest.mock('react-hydration-provider', () => ({
+	useHydrated() {
+		return {
+			hydrate: true,
 		}
 	},
 }))

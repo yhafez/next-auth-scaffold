@@ -1,16 +1,27 @@
 // Path: ./stories/pages/index.stories.tsx
 import { useState, useEffect } from 'react'
 import { Meta, Story } from '@storybook/react'
+import { ThemeProvider } from '@mui/material/styles'
+import { SessionProvider } from 'next-auth/react'
 
 import Dashboard from '../../pages'
 
 import { useBoundStore } from '../../store'
 import { defaultTheme } from '../../theme'
-import { ThemeProvider } from '@mui/material'
 
 export default {
 	title: 'Pages/Dashboard',
 	component: Dashboard,
+	args: {
+		hydratedInit: true,
+	},
+	argTypes: {
+		hydratedInit: {
+			table: {
+				disable: true,
+			},
+		},
+	},
 } as Meta
 
 const Template: Story = (args, { globals: { theme } }) => {
@@ -39,9 +50,20 @@ const Template: Story = (args, { globals: { theme } }) => {
 	}, [customPalette])
 
 	return (
-		<ThemeProvider theme={customTheme}>
-			<Dashboard {...args} />
-		</ThemeProvider>
+		<SessionProvider
+			session={{
+				expires: '2021-09-29T18:00:00.000Z',
+				user: {
+					email: 'test@example.com',
+					image: null,
+					name: 'Test User',
+				},
+			}}
+		>
+			<ThemeProvider theme={customTheme}>
+				<Dashboard {...args} />
+			</ThemeProvider>
+		</SessionProvider>
 	)
 }
 

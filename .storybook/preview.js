@@ -1,13 +1,14 @@
-import React, { useMemo, useState, useRef } from 'react'
+import React, { useMemo, useRef } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import Image from 'next/image'
 import Head from 'next/head'
-import { SessionProvider } from 'next-auth/react'
 import { RouterContext } from 'next/dist/shared/lib/router-context'
-import { ThemeProvider, CssBaseline, IconButton, Box } from '@mui/material'
-import { Close } from '@mui/icons-material'
 import { SnackbarProvider } from 'notistack'
+import { CssBaseline, IconButton, Box } from '@mui/material'
+import { ThemeProvider } from '@mui/material/styles'
+import { Close } from '@mui/icons-material'
 
+import { worker } from '../mocks/browser'
 import { defaultTheme, defaultDarkTheme } from '../theme'
 
 import '@fontsource/roboto/300.css'
@@ -15,7 +16,8 @@ import '@fontsource/roboto/400.css'
 import '@fontsource/roboto/500.css'
 import '@fontsource/roboto/700.css'
 import '@fontsource/material-icons'
-import { useEffect } from 'react'
+
+if (typeof global === 'undefined' || typeof global.process === 'undefined') worker.start()
 
 const THEMES = {
 	light: defaultTheme,
@@ -76,12 +78,7 @@ const withMuiTheme = (Story, context) => {
 	const { theme: themeKey } = context.globals
 	const theme = useMemo(() => THEMES[themeKey] || THEMES['light'], [themeKey])
 
-	const [isMounted, setIsMounted] = useState(false)
 	const snackbarRef = useRef(null)
-
-	useEffect(() => {
-		setIsMounted(true)
-	}, [])
 
 	return (
 		<>
@@ -93,70 +90,42 @@ const withMuiTheme = (Story, context) => {
 				/>
 			</Head>
 			<QueryClientProvider client={queryClient}>
-				<SessionProvider
-					session={{
-						expires: '2021-09-29T18:00:00.000Z',
-						user: {
-							email: 'test@example.com',
-							image: null,
-							name: 'Test User',
-						},
-					}}
-				>
-					<ThemeProvider theme={theme}>
-						<CssBaseline />
-						<SnackbarProvider
-							ref={snackbarRef}
-							maxSnack={3}
-							anchorOrigin={{
-								vertical: 'bottom',
-								horizontal: 'right',
+				<ThemeProvider theme={theme}>
+					<CssBaseline />
+					<SnackbarProvider
+						ref={snackbarRef}
+						maxSnack={3}
+						anchorOrigin={{
+							vertical: 'bottom',
+							horizontal: 'right',
+						}}
+						preventDuplicate
+						action={key => (
+							<IconButton
+								id="snackbar-dismiss-button"
+								size="small"
+								aria-label="close snackbar"
+								color="inherit"
+								onClick={() => snackbarRef.current?.closeSnackbar(key)}
+							>
+								<Close fontSize="small" role="img" />
+							</IconButton>
+						)}
+					>
+						<Box
+							sx={{
+								display: 'flex',
+								flexDirection: 'column',
+								justifyContent: 'center',
+								alignItems: 'center',
+								height: '100vh',
+								width: '100vw',
 							}}
-							preventDuplicate
-							action={key => (
-								<IconButton
-									id="snackbar-dismiss-button"
-									size="small"
-									aria-label="close"
-									color="inherit"
-									onClick={() => snackbarRef.current?.closeSnackbar(key)}
-									sx={{
-										fontSize: '1rem',
-										padding: '0.5rem',
-										'&:hover': {
-											backgroundColor: 'rgba(0, 0, 0, 0.04)',
-											transform: 'scale(1.1)',
-										},
-									}}
-								>
-									<Close
-										id="snackbar-dismiss-button-icon"
-										fontSize="small"
-										sx={{
-											fontSize: '1rem',
-											color: 'primary.contrastText',
-										}}
-									/>
-								</IconButton>
-							)}
 						>
-							<main>
-								<Box
-									sx={{
-										display: 'flex',
-										flexDirection: 'column',
-										justifyContent: 'center',
-										alignItems: 'center',
-										minHeight: '100vh',
-										minWidth: '100vw',
-									}}
-								>
-									<Story />
-								</Box>
-							</main>
-						</SnackbarProvider>
-					</ThemeProvider>
-				</SessionProvider>
+							<Story />
+						</Box>
+					</SnackbarProvider>
+				</ThemeProvider>
 			</QueryClientProvider>
 		</>
 	)

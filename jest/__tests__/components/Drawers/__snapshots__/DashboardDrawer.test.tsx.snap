@@ -5,11 +5,11 @@ exports[`DashboardDrawer Should math snapshot 1`] = `
   <main>
     <nav
       aria-label="left-hand drawer dashboard navigation"
-      class="MuiBox-root css-1y7wqgk"
+      class="MuiBox-root css-r0x2ub"
       id="dashboard-drawer"
     >
       <div
-        class="MuiBox-root css-o52woa"
+        class="MuiBox-root css-1hnpd1e"
         id="dashboard-drawer-header"
       >
         <div
@@ -21,13 +21,13 @@ exports[`DashboardDrawer Should math snapshot 1`] = `
             style="width: 100%;"
           >
             <button
-              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-disableElevation MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-disableElevation css-105vx4d-MuiButtonBase-root-MuiButton-root"
+              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-disableElevation MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-disableElevation css-186bged-MuiButtonBase-root-MuiButton-root"
               id="dashboard-drawer-user-avatar"
               tabindex="0"
               type="button"
             >
               <div
-                class="MuiAvatar-root MuiAvatar-circular css-g7f4jy-MuiAvatar-root"
+                class="MuiAvatar-root MuiAvatar-circular css-1oin0wn-MuiAvatar-root"
                 id="dashboard-drawer-user-avatar-image"
               >
                 <img
@@ -37,7 +37,7 @@ exports[`DashboardDrawer Should math snapshot 1`] = `
                 />
               </div>
               <p
-                class="MuiTypography-root MuiTypography-body1 css-1399pl0-MuiTypography-root"
+                class="MuiTypography-root MuiTypography-body1 css-1md76xf-MuiTypography-root"
                 id="dashboard-drawer-user-avatar-name"
               >
                 User
@@ -49,7 +49,7 @@ exports[`DashboardDrawer Should math snapshot 1`] = `
           </label>
         </div>
         <ul
-          class="MuiList-root MuiList-padding css-zcepgu-MuiList-root"
+          class="MuiList-root MuiList-padding css-16p2v77-MuiList-root"
           id="dashboard-drawer-header-actions"
         >
           <li
@@ -57,9 +57,11 @@ exports[`DashboardDrawer Should math snapshot 1`] = `
             id="dashboard-drawer-header-actions-home-list-item"
           >
             <a
+              aria-labelledby="dashboard-home-drawer-button-label"
               class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-hwqx0i-MuiTypography-root-MuiLink-root"
               href="/"
               id="dashboard-home-drawer-link"
+              title="Home"
             >
               <p
                 class="MuiTypography-root MuiTypography-body1 css-b6p50a-MuiTypography-root"
@@ -73,6 +75,7 @@ exports[`DashboardDrawer Should math snapshot 1`] = `
                 data-testid="HomeIcon"
                 focusable="false"
                 id="dashboard-home-drawer-icon"
+                role="img"
                 viewBox="0 0 24 24"
               >
                 <path
@@ -86,9 +89,11 @@ exports[`DashboardDrawer Should math snapshot 1`] = `
             id="dashboard-drawer-header-actions-profile-list-item"
           >
             <a
+              aria-labelledby="dashboard-profile-drawer-button-label"
               class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-hwqx0i-MuiTypography-root-MuiLink-root"
               href="/profile"
               id="dashboard-profile-drawer-link"
+              title="Profile"
             >
               <p
                 class="MuiTypography-root MuiTypography-body1 css-b6p50a-MuiTypography-root"
@@ -102,6 +107,7 @@ exports[`DashboardDrawer Should math snapshot 1`] = `
                 data-testid="AccountCircleIcon"
                 focusable="false"
                 id="dashboard-profile-drawer-icon"
+                role="img"
                 viewBox="0 0 24 24"
               >
                 <path
@@ -115,9 +121,11 @@ exports[`DashboardDrawer Should math snapshot 1`] = `
             id="dashboard-drawer-header-actions-settings-list-item"
           >
             <a
+              aria-labelledby="dashboard-settings-drawer-button-label"
               class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-hwqx0i-MuiTypography-root-MuiLink-root"
               href="/settings"
               id="dashboard-settings-drawer-link"
+              title="Settings"
             >
               <p
                 class="MuiTypography-root MuiTypography-body1 css-b6p50a-MuiTypography-root"
@@ -131,6 +139,7 @@ exports[`DashboardDrawer Should math snapshot 1`] = `
                 data-testid="SettingsIcon"
                 focusable="false"
                 id="dashboard-settings-drawer-icon"
+                role="img"
                 viewBox="0 0 24 24"
               >
                 <path
@@ -142,7 +151,7 @@ exports[`DashboardDrawer Should math snapshot 1`] = `
         </ul>
       </div>
       <ul
-        class="MuiList-root MuiList-padding css-5p9vua-MuiList-root"
+        class="MuiList-root MuiList-padding css-1f4h1di-MuiList-root"
         id="dashboard-drawer-footer"
       >
         <li
@@ -167,6 +176,7 @@ exports[`DashboardDrawer Should math snapshot 1`] = `
               data-testid="PaletteIcon"
               focusable="false"
               id="dashboard-color-picker-drawer-icon"
+              role="img"
               viewBox="0 0 24 24"
             >
               <path
@@ -197,6 +207,7 @@ exports[`DashboardDrawer Should math snapshot 1`] = `
               data-testid="Brightness4Icon"
               focusable="false"
               id="dashboard-dark-mode-drawer-icon"
+              role="img"
               viewBox="0 0 24 24"
             >
               <path
@@ -227,6 +238,7 @@ exports[`DashboardDrawer Should math snapshot 1`] = `
               data-testid="ExitToAppIcon"
               focusable="false"
               id="dashboard-log-out-drawer-icon"
+              role="img"
               viewBox="0 0 24 24"
             >
               <path

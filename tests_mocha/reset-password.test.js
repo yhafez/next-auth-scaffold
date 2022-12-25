@@ -9,7 +9,7 @@ const prisma = new PrismaClient()
 chai.use(chaiHttp)
 chai.use(chaiDateTime)
 const expect = chai.expect
-const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3004/api'
+const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api'
 const request = chai.request(baseUrl)
 
 const user = await prisma.user.findUnique({

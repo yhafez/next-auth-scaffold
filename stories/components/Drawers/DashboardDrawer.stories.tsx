@@ -1,12 +1,10 @@
 // Path: ./stories/components/Drawers/DashboardDrawer.stories.tsx
 import { useCallback, useEffect, useState } from 'react'
 import { Meta, Story } from '@storybook/react'
-import { ThemeProvider } from '@mui/material'
+import { ThemeProvider } from '@mui/material/styles'
 import { darken, lighten } from 'color2k'
 
-import Drawer from '../../../components/Drawer'
-import DashboardDrawer from '../../../components/Drawers/DashboardDrawer'
-
+import { Drawer, DashboardDrawer } from '../../../components'
 import { useBoundStore } from '../../../store'
 import { createCustomTheme } from '../../../theme'
 import { getContrastColor, getSecondaryColor } from '../../../utils/helpers'

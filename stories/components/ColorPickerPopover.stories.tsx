@@ -2,12 +2,10 @@
 
 import { useCallback, useEffect, useState } from 'react'
 import { Meta, Story } from '@storybook/react'
-import { ThemeProvider } from '@mui/material'
+import { ThemeProvider } from '@mui/material/styles'
 import { darken, lighten } from 'color2k'
 
-import Modal from '../../components/Modal'
-import ColorPickerPopover from '../../components/Popovers/ColorPickerPopover'
-
+import { Modal, ColorPickerPopover } from '../../components'
 import { useBoundStore } from '../../store'
 import { createCustomTheme } from '../../theme'
 import { getContrastColor, getSecondaryColor } from '../../utils/helpers'
@@ -173,7 +171,6 @@ export const Default: Story = (args, { globals: { theme } }) => {
 			<Modal name="test" loading={false} error="">
 				<ColorPickerPopover
 					name="test"
-					open={true}
 					anchorEl={null}
 					handleClose={() => {}}
 					anchorOrigin={{

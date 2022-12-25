@@ -1,16 +1,20 @@
 // Path: pages/login.tsx
-
-import { useState, KeyboardEvent } from 'react'
+import { useState, useEffect, KeyboardEvent } from 'react'
 import { useRouter } from 'next/router'
+import { signIn } from 'next-auth/react'
 import { useHydrated } from 'react-hydration-provider'
+import { useSnackbar } from 'notistack'
 
-import Modal from '../components/Modal'
-import SubmitButton from '../components/SubmitButton'
-import EmailInput from '../components/EmailInput'
-import ConfirmPasswordInput from '../components/ConfirmPasswordInput'
-import ActionButtonsContainer from '../components/ActionButtonsContainer'
-import ModalNote from '../components/ModalNote'
-import { Layout } from '../components/Layout'
+import {
+	Modal,
+	Layout,
+	SubmitButton,
+	EmailInput,
+	ConfirmPasswordInput,
+	ActionButtonsContainer,
+	ModalNote,
+} from '../components'
+import useToken from '../hooks/useToken'
 
 export interface SignupProps {
 	errorInit?: string
@@ -18,6 +22,7 @@ export interface SignupProps {
 	passwordInit?: string
 	confirmPasswordInit?: string
 	loadingInit?: boolean
+	hydratedInit?: boolean
 }
 
 export default function Signup({
@@ -26,15 +31,27 @@ export default function Signup({
 	passwordInit = '',
 	confirmPasswordInit = '',
 	loadingInit = false,
+	hydratedInit = false,
 }: SignupProps) {
 	const router = useRouter()
 	const hydrated = useHydrated()
+	const { enqueueSnackbar } = useSnackbar()
+	const { loading: tokenLoading, error: tokenError, getToken } = useToken()
 
 	const [email, setEmail] = useState(emailInit)
 	const [password, setPassword] = useState(passwordInit)
 	const [confirmPassword, setConfirmPassword] = useState(confirmPasswordInit)
 	const [loading, setLoading] = useState(loadingInit)
 	const [error, setError] = useState(errorInit)
+
+	useEffect(() => {
+		if (tokenError) setError(tokenError)
+	}, [tokenError])
+
+	useEffect(() => {
+		if (tokenLoading) setLoading(true)
+		else setLoading(false)
+	}, [tokenLoading])
 
 	const handleSignup = async () => {
 		setLoading(true)
@@ -55,12 +72,33 @@ export default function Signup({
 
 			if (data.error) {
 				setError(data.error)
+				return setLoading(false)
 			} else {
-				localStorage.setItem('token', data.token)
-				router.push('/')
+				try {
+					const res = await signIn('credentials', {
+						redirect: false,
+						username: email,
+						password,
+					})
+					if (res?.error) {
+						setError(res.error)
+						return setLoading(false)
+					}
+					const token = await getToken()
+					if (token) {
+						enqueueSnackbar('Account created successfully! Welcome!', {
+							variant: 'success',
+							autoHideDuration: 3000,
+						})
+						return router.push('/')
+					}
+					setError('There was an error signing in')
+					return setLoading(false)
+				} catch (err) {
+					setError(`There was an error signing in: ${err}`)
+					return setLoading(false)
+				}
 			}
-
-			setLoading(false)
 		} catch (error) {
 			setError(error.message)
 			setLoading(false)
@@ -68,12 +106,10 @@ export default function Signup({
 	}
 
 	const handleEnter = (e: KeyboardEvent) => {
-		if (e.key === 'Enter') {
-			handleSignup()
-		}
+		if (e.key === 'Enter') handleSignup()
 	}
 
-	if (!hydrated) return null
+	if (!hydrated && !hydratedInit) return null
 
 	return (
 		<Layout name="signup" pageTitle="sign up">

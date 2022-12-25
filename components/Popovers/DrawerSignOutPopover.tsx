@@ -10,7 +10,7 @@ export interface DrawerSignOutPopoverProps {
 	handleClose: () => void
 }
 
-const DrawerSignOutPopover = ({ anchorEl, handleClose }: DrawerSignOutPopoverProps) => {
+export default function DrawerSignOutPopover({ anchorEl, handleClose }: DrawerSignOutPopoverProps) {
 	const { darkMode } = useBoundStore()
 	const { enqueueSnackbar } = useSnackbar()
 
@@ -167,5 +167,3 @@ const DrawerSignOutPopover = ({ anchorEl, handleClose }: DrawerSignOutPopoverPro
 		</Popover>
 	)
 }
-
-export default DrawerSignOutPopover

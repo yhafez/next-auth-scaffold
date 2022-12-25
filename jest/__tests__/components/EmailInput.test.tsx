@@ -2,7 +2,7 @@
 import { render, act, screen, waitFor } from '@testing-library/react'
 import { axe } from 'jest-axe'
 
-import EmailInput from '../../../components/EmailInput'
+import { EmailInput } from '../../../components'
 
 describe('EmailInput', () => {
 	it('Should have an enabled TextField element', async () => {

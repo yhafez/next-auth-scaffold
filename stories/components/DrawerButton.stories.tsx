@@ -3,9 +3,7 @@ import { useState, useEffect } from 'react'
 import { Meta, Story } from '@storybook/react'
 import { Menu } from '@mui/icons-material'
 
-import Drawer from '../../components/Drawer'
-import DrawerButton from '../../components/DrawerButton'
-
+import { Drawer, DrawerButton } from '../../components'
 import { useBoundStore } from '../../store'
 
 export default {
@@ -42,7 +40,12 @@ export const Default: Story = (args, { globals: { theme } }) => {
 
 	return (
 		<Drawer {...args} open={open} handleDrawerClose={() => setOpen(false)}>
-			<DrawerButton name="test" label="Test" icon={<Menu />} handleClick={() => {}} />
+			<DrawerButton
+				name="test"
+				label="Test"
+				icon={<Menu id="test-menu-icon" role="img" aria-hidden="true" />}
+				handleClick={() => {}}
+			/>
 		</Drawer>
 	)
 }

@@ -1,10 +1,8 @@
 // Path: ./components/PasswordInput.tsx
-
 import { useState, Dispatch, SetStateAction, KeyboardEvent } from 'react'
 import { TextField } from '@mui/material'
 
-import VisibilityIconButton from './VisibilityIconButton'
-
+import { VisibilityIconButton } from '.'
 import { useBoundStore } from '../store'
 
 export interface PasswordInputProps {

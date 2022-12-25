@@ -2,7 +2,7 @@
 import { render, findByText, act, screen, waitFor } from '@testing-library/react'
 import { axe } from 'jest-axe'
 
-import Modal from '../../../components/Modal'
+import { Modal } from '../../../components'
 
 describe('Modal', () => {
 	it('Should have no accessibility violations', async () => {

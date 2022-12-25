@@ -9,15 +9,17 @@ exports[`VisibilityIconButton Should match snapshot 1`] = `
     type="button"
   >
     <div
-      class="MuiBox-root css-u6v8er"
+      class="MuiBox-root css-erqh4x"
       id="test-password-box"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1hjwbh6-MuiSvgIcon-root"
+        aria-label="show password"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-17slstj-MuiSvgIcon-root"
         data-testid="VisibilityOffIcon"
         focusable="false"
         id="test-password-input-visibility-off-icon"
+        role="button"
         viewBox="0 0 24 24"
       >
         <path

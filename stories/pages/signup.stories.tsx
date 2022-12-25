@@ -1,7 +1,8 @@
 // Path: ./stories/pages/signup.stories.tsx
-import { ThemeProvider } from '@mui/material'
-import { Story, Meta } from '@storybook/react'
 import { useEffect, useState } from 'react'
+import { Story, Meta } from '@storybook/react'
+import { ThemeProvider } from '@mui/material/styles'
+import { SessionProvider } from 'next-auth/react'
 
 import Signup, { SignupProps } from '../../pages/signup'
 
@@ -17,6 +18,7 @@ const SignupStory = {
 		passwordInit: '',
 		confirmPasswordInit: '',
 		loadingInit: false,
+		hydratedInit: true,
 	},
 	argTypes: {
 		errorInit: {
@@ -40,6 +42,11 @@ const SignupStory = {
 			},
 		},
 		loadingInit: {
+			table: {
+				disable: true,
+			},
+		},
+		hydratedInit: {
 			table: {
 				disable: true,
 			},
@@ -83,9 +90,11 @@ const Template: Story<SignupProps> = (args, { globals: { theme } }) => {
 	}, [customPalette])
 
 	return (
-		<ThemeProvider theme={customTheme}>
-			<Signup {...args} />
-		</ThemeProvider>
+		<SessionProvider session={null}>
+			<ThemeProvider theme={customTheme}>
+				<Signup {...args} />
+			</ThemeProvider>
+		</SessionProvider>
 	)
 }
 

@@ -1,7 +1,11 @@
 // Path: ./stories/pages/login.stories.tsx
 import { useEffect, useState } from 'react'
 import { Story, Meta } from '@storybook/react'
-import { ThemeProvider } from '@mui/material'
+import { ThemeProvider } from '@mui/material/styles'
+import { rest } from 'msw'
+import { SessionProvider } from 'next-auth/react'
+
+import { worker } from '../../mocks/browser'
 
 import Login, { LoginProps } from '../../pages/login'
 
@@ -17,6 +21,7 @@ const LoginStory = {
 		passwordInit: '',
 		rememberInit: true,
 		loadingInit: false,
+		hydratedInit: true,
 	},
 	argTypes: {
 		errorInit: {
@@ -44,7 +49,26 @@ const LoginStory = {
 				disable: true,
 			},
 		},
+		hydratedInit: {
+			table: {
+				disable: true,
+			},
+		},
 	},
+	decorators: [
+		Story => {
+			worker.use(
+				rest.get('/api/auth/token', (req, res, ctx) => {
+					return res(
+						ctx.json({
+							error: 'There was an error with your request. Please try again later.',
+						}),
+					)
+				}),
+			)
+			return <Story />
+		},
+	],
 } as Meta
 
 export default LoginStory
@@ -83,9 +107,11 @@ const Template: Story<LoginProps> = (args, { globals: { theme } }) => {
 	}, [customPalette])
 
 	return (
-		<ThemeProvider theme={customTheme}>
-			<Login {...args} />
-		</ThemeProvider>
+		<SessionProvider session={null}>
+			<ThemeProvider theme={customTheme}>
+				<Login {...args} />
+			</ThemeProvider>
+		</SessionProvider>
 	)
 }
 
@@ -123,6 +149,16 @@ WithLoading.args = {
 	...initialProps,
 	loadingInit: true,
 }
+WithLoading.decorators = [
+	Story => {
+		worker.use(
+			rest.get('/api/auth/token', (req, res, ctx) => {
+				return res(ctx.delay('infinite'))
+			}),
+		)
+		return <Story />
+	},
+]
 
 export const WithAll = Template.bind({})
 WithAll.args = {

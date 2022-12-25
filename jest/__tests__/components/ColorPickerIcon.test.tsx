@@ -4,7 +4,7 @@ import { render, act, screen, waitFor } from '@testing-library/react'
 import { axe } from 'jest-axe'
 import React from 'react'
 
-import ColorPickerIcon from '../../../components/ColorPickerIcon'
+import { ColorPickerIcon } from '../../../components'
 
 describe('ColorPickerIcon', () => {
 	let container: HTMLElement

@@ -1,9 +1,9 @@
 // Path: ./components/ColorPickerPopover.tsx
-
 import { useState, useCallback } from 'react'
 import { Popover, PopoverOrigin } from '@mui/material'
-import { useBoundStore } from '../../store'
 import { ChromePicker } from 'react-color'
+
+import { useBoundStore } from '../../store'
 
 export interface ColorPickerPopoverProps {
 	name: string
@@ -14,14 +14,14 @@ export interface ColorPickerPopoverProps {
 	transformOrigin?: PopoverOrigin
 }
 
-const ColorPickerPopover = ({
+export default function ColorPickerPopover({
 	name,
 	anchorEl,
 	handleClose,
 	handleColorChange,
 	anchorOrigin,
 	transformOrigin,
-}: ColorPickerPopoverProps) => {
+}: ColorPickerPopoverProps) {
 	const { customPalette } = useBoundStore()
 
 	const [color, setColor] = useState(customPalette.primary.main)
@@ -55,5 +55,3 @@ const ColorPickerPopover = ({
 		</Popover>
 	)
 }
-
-export default ColorPickerPopover

@@ -13,7 +13,14 @@ export interface DrawerButtonProps {
 	href?: string
 }
 
-const DrawerButton = ({ name, label, icon, handleClick, reverse, href }: DrawerButtonProps) => {
+export default function DrawerButton({
+	name,
+	label,
+	icon,
+	handleClick,
+	reverse,
+	href,
+}: DrawerButtonProps) {
 	const router = useRouter()
 	const isSelected = router.pathname === href ? true : false
 
@@ -24,6 +31,8 @@ const DrawerButton = ({ name, label, icon, handleClick, reverse, href }: DrawerB
 				component={Link}
 				href={href}
 				aria-current={isSelected ? 'page' : undefined}
+				title={label}
+				aria-labelledby={`${name}-drawer-button-label`}
 				sx={{
 					textDecoration: 'none',
 					color: 'primary.contrastText',
@@ -103,5 +112,3 @@ const DrawerButton = ({ name, label, icon, handleClick, reverse, href }: DrawerB
 		</IconButton>
 	)
 }
-
-export default DrawerButton

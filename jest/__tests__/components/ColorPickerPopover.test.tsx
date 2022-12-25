@@ -2,7 +2,7 @@
 import { render, act, screen, waitFor } from '@testing-library/react'
 import { axe } from 'jest-axe'
 
-import ColorPickerPopover from '../../../components/Popovers/ColorPickerPopover'
+import { ColorPickerPopover } from '../../../components'
 
 describe('ColorPickerPopover', () => {
 	let container: HTMLElement

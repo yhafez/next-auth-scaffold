@@ -49,6 +49,8 @@ export default function VisibilityIconButton({
 					flexDirection: 'column',
 					alignItems: 'center',
 					justifyContent: 'center',
+					width: '48px',
+					height: '48px',
 				}}
 			>
 				{showPassword ? (
@@ -56,7 +58,7 @@ export default function VisibilityIconButton({
 						<Visibility
 							id={`${name}${isConfirmPassword ? '-confirm' : ''}-password-input-visibility-on-icon`}
 							sx={{
-								color: darkMode ? '#fff' : '#000',
+								color: 'primary.contrastText',
 								...(disabled && {
 									color: 'lightgrey',
 									WebkitTextFillColor: 'lightgrey',
@@ -74,6 +76,8 @@ export default function VisibilityIconButton({
 									WebkitTextFillColor: 'lightgrey',
 								}),
 							}}
+							aria-label="hide password"
+							role="button"
 						>
 							Hide
 						</Typography>
@@ -85,12 +89,14 @@ export default function VisibilityIconButton({
 								isConfirmPassword ? '-confirm' : ''
 							}-password-input-visibility-off-icon`}
 							sx={{
-								color: darkMode ? '#fff' : '#000',
+								color: 'primary.contrastText',
 								...(disabled && {
 									color: 'lightgrey',
 									WebkitTextFillColor: 'lightgrey',
 								}),
 							}}
+							aria-label="show password"
+							role="button"
 						/>
 						<Typography
 							id={`${name}${isConfirmPassword ? '-confirm' : ''}-password-input-show-password-text`}

@@ -18,10 +18,11 @@ export default function DrawerComponent({ open, handleDrawerClose, children }: D
 		<Drawer
 			id="drawer"
 			sx={{
-				width: '240px',
+				width: '18em',
 				flexShrink: 0,
+				overflowY: 'scroll',
 				'& .MuiDrawer-paper': {
-					width: '240px',
+					width: '18em',
 					boxSizing: 'border-box',
 					backgroundColor: darkMode ? 'primary.dark' : 'primary.light',
 					color: 'primary.contrastText',
@@ -51,7 +52,7 @@ export default function DrawerComponent({ open, handleDrawerClose, children }: D
 							pb: 2,
 							px: 0,
 							width: '100%',
-							height: '48px',
+							height: '2em',
 							cursor: 'pointer',
 							'&:hover': {
 								backgroundColor: 'primary.main',
@@ -75,7 +76,12 @@ export default function DrawerComponent({ open, handleDrawerClose, children }: D
 								},
 							}}
 						>
-							<ChevronLeft id="drawer-close-button-icon" sx={{ fontSize: 40 }} />
+							<ChevronLeft
+								id="drawer-close-button-icon"
+								sx={{ fontSize: 40 }}
+								role="img"
+								aria-labelledby="drawer-close-button-label-text"
+							/>
 						</IconButton>
 						<label id="drawer-close-button-label" htmlFor="drawer-close-button">
 							<Typography

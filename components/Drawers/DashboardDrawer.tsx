@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { Typography, Box, Avatar, Button, List, ListItem } from '@mui/material'
-import { useTheme } from '@mui/material/styles'
 import {
 	ExitToApp,
 	Settings,
@@ -15,19 +14,14 @@ import {
 } from '@mui/icons-material'
 import { darken, lighten } from 'color2k'
 
-import DrawerButton from '../DrawerButton'
-import ColorPickerPopover from '../Popovers/ColorPickerPopover'
-import DashboardSignOutPopover from '../Popovers/DrawerSignOutPopover'
-
+import { DrawerButton, ColorPickerPopover, DrawerSignOutPopover } from '..'
 import { useBoundStore } from '../../store'
 import { getContrastColor, getSecondaryColor } from '../../utils/helpers'
 
-const DashboardDrawer = () => {
+export default function DashboardDrawer() {
 	const { darkMode, customPalette, user, setDarkMode, setCustomPalette } = useBoundStore()
 	const router = useRouter()
-	const theme = useTheme()
 
-	const [anchorElMenu, setAnchorElMenu] = useState<null | HTMLButtonElement>(null)
 	const [anchorElSignOut, setAnchorElSignOut] = useState<null | HTMLButtonElement>(null)
 	const [anchorElColorPicker, setAnchorElColorPicker] = useState<null | HTMLButtonElement>(null)
 
@@ -133,17 +127,12 @@ const DashboardDrawer = () => {
 			component="nav"
 			aria-label="left-hand drawer dashboard navigation"
 			sx={{
-				width: { sm: 240 },
-				flexShrink: { sm: 0 },
-				'& .MuiDrawer-paper': {
-					width: 240,
-					boxSizing: 'border-box',
-					backgroundColor: 'background.default',
-				},
 				display: 'flex',
 				flexDirection: 'column',
 				justifyContent: 'space-between',
+				alignItems: 'center',
 				height: '100%',
+				width: '100%',
 			}}
 		>
 			<Box
@@ -152,8 +141,8 @@ const DashboardDrawer = () => {
 					display: 'flex',
 					flexDirection: 'column',
 					alignItems: 'center',
-					justifyContent: 'flex-end',
-					...theme.mixins.toolbar,
+					justifyContent: 'center',
+					width: '100%',
 				}}
 			>
 				<Box
@@ -176,7 +165,7 @@ const DashboardDrawer = () => {
 								flexDirection: 'column',
 								alignItems: 'center',
 								justifyContent: 'center',
-								height: '180px',
+								height: '18em',
 								width: '100%',
 								borderBottom: '1px solid rgba(255, 255, 255, 0.12)',
 							}}
@@ -185,8 +174,8 @@ const DashboardDrawer = () => {
 							<Avatar
 								id="dashboard-drawer-user-avatar-image"
 								sx={{
-									width: '100px',
-									height: '100px',
+									width: '8em',
+									height: '8em',
 									border: '2px solid',
 									mb: 4,
 									borderColor: 'primary.contrastText',
@@ -212,6 +201,7 @@ const DashboardDrawer = () => {
 									fontSize: '1.2rem',
 									fontWeight: 'bold',
 									color: 'primary.contrastText',
+									wordBreak: 'break-all',
 									'&:hover': {
 										color: darkMode ? 'primary.light' : 'primary.dark',
 										transform: 'scale(1.05)',
@@ -242,7 +232,6 @@ const DashboardDrawer = () => {
 						alignItems: 'center',
 						justifyContent: 'center',
 						width: '100%',
-						padding: 1,
 						borderBottom: '1px solid rgba(255, 255, 255, 0.12)',
 					}}
 				>
@@ -250,7 +239,7 @@ const DashboardDrawer = () => {
 						<DrawerButton
 							name="dashboard-home"
 							label="Home"
-							icon={<Home id="dashboard-home-drawer-icon" />}
+							icon={<Home id="dashboard-home-drawer-icon" role="img" aria-hidden="true" />}
 							href="/"
 						/>
 					</ListItem>
@@ -258,7 +247,9 @@ const DashboardDrawer = () => {
 						<DrawerButton
 							name="dashboard-profile"
 							label="Profile"
-							icon={<AccountCircle id="dashboard-profile-drawer-icon" />}
+							icon={
+								<AccountCircle id="dashboard-profile-drawer-icon" role="img" aria-hidden="true" />
+							}
 							href="/profile"
 						/>
 					</ListItem>
@@ -267,7 +258,7 @@ const DashboardDrawer = () => {
 						<DrawerButton
 							name="dashboard-settings"
 							label="Settings"
-							icon={<Settings id="dashboard-settings-drawer-icon" />}
+							icon={<Settings id="dashboard-settings-drawer-icon" role="img" aria-hidden="true" />}
 							href="/settings"
 						/>
 					</ListItem>
@@ -281,7 +272,6 @@ const DashboardDrawer = () => {
 					alignItems: 'center',
 					justifyContent: 'center',
 					width: '100%',
-					padding: 1,
 					borderTop: '1px solid rgba(255, 255, 255, 0.12)',
 				}}
 			>
@@ -289,7 +279,7 @@ const DashboardDrawer = () => {
 					<DrawerButton
 						name="dashboard-color-picker"
 						label="Theme Color"
-						icon={<Palette id="dashboard-color-picker-drawer-icon" />}
+						icon={<Palette id="dashboard-color-picker-drawer-icon" role="img" aria-hidden="true" />}
 						handleClick={e => setAnchorElColorPicker(e.currentTarget)}
 					/>
 				</ListItem>
@@ -300,9 +290,9 @@ const DashboardDrawer = () => {
 						label={darkMode ? 'Light Mode' : 'Dark Mode'}
 						icon={
 							darkMode ? (
-								<Brightness7 id="dashboard-light-mode-drawer-icon" />
+								<Brightness7 id="dashboard-light-mode-drawer-icon" role="img" aria-hidden="true" />
 							) : (
-								<Brightness4 id="dashboard-dark-mode-drawer-icon" />
+								<Brightness4 id="dashboard-dark-mode-drawer-icon" role="img" aria-hidden="true" />
 							)
 						}
 						handleClick={handleClickDarkMode}
@@ -313,7 +303,7 @@ const DashboardDrawer = () => {
 					<DrawerButton
 						name="dashboard-log-out"
 						label="Logout"
-						icon={<ExitToApp id="dashboard-log-out-drawer-icon" />}
+						icon={<ExitToApp id="dashboard-log-out-drawer-icon" role="img" aria-hidden="true" />}
 						handleClick={handleClickLogout}
 					/>
 				</ListItem>
@@ -332,12 +322,10 @@ const DashboardDrawer = () => {
 					horizontal: 'left',
 				}}
 			/>
-			<DashboardSignOutPopover
+			<DrawerSignOutPopover
 				anchorEl={anchorElSignOut}
 				handleClose={() => setAnchorElSignOut(null)}
 			/>
 		</Box>
 	)
 }
-
-export default DashboardDrawer

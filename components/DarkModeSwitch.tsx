@@ -40,11 +40,10 @@ export default function DarkModeSwitch({ name }: DarkModeSwitchProps) {
 				textAlign: 'center',
 				display: 'flex',
 				flexDirection: 'column',
-				justifyContent: 'space-around',
+				justifyContent: 'center',
 				alignItems: 'center',
 				height: '100%',
 				width: '100%',
-				mt: 1,
 			}}
 		>
 			<Switch
@@ -55,8 +54,10 @@ export default function DarkModeSwitch({ name }: DarkModeSwitchProps) {
 				inputProps={{
 					'aria-checked': darkMode,
 					'aria-labelledby': `${name}-dark-mode-switch-label-${darkMode ? 'dark' : 'light'}`,
+					role: 'switch',
 				}}
 				sx={{
+					fontSize: '1.5rem',
 					color: selected ? (darkMode ? 'primary.light' : 'primary.dark') : 'primary.contrastText',
 					'& .MuiSwitch-switchBase': {
 						color: 'primary.contrastText',
@@ -72,7 +73,10 @@ export default function DarkModeSwitch({ name }: DarkModeSwitchProps) {
 					<Brightness2
 						id={`${name}-dark-mode-switch-icon-checked`}
 						aria-hidden={darkMode ? 'false' : 'true'}
+						aria-labelledby={`${name}-dark-mode-switch-label-dark`}
+						role="img"
 						sx={{
+							fontSize: '1.5rem',
 							color: selected
 								? darkMode
 									? 'primary.light'
@@ -85,7 +89,10 @@ export default function DarkModeSwitch({ name }: DarkModeSwitchProps) {
 					<WbSunny
 						id={`${name}-dark-mode-switch-icon-unchecked`}
 						aria-hidden={darkMode ? 'true' : 'false'}
+						aria-labelledby={`${name}-dark-mode-switch-label-light`}
+						role="img"
 						sx={{
+							fontSize: '1.5rem',
 							color: selected
 								? darkMode
 									? 'primary.light'

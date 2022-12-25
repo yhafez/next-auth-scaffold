@@ -1,7 +1,8 @@
 // Path: ./jest/__tests__/components/ModalNote.test.tsx
 import { render, findByText, act, screen, waitFor } from '@testing-library/react'
 import { axe } from 'jest-axe'
-import ModalNote from '../../../components/ModalNote'
+
+import { ModalNote } from '../../../components'
 
 describe('ModalNote', () => {
 	let container: HTMLElement

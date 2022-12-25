@@ -2,8 +2,7 @@
 import { useEffect } from 'react'
 import { Meta, Story } from '@storybook/react'
 
-import Modal from '../../components/Modal'
-
+import { Modal } from '../../components'
 import { useBoundStore } from '../../store'
 
 export default {

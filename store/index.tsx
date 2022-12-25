@@ -13,7 +13,7 @@ export const useBoundStore = create<UserState & SettingsState>()(
 			...createSettingsSlice(set, get, ...a),
 		}),
 		{
-			name: 'user',
+			name: 'state',
 			getStorage: () => localStorage,
 		},
 	),

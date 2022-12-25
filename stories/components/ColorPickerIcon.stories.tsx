@@ -1,14 +1,13 @@
 // Path: ./stories/components/ColorPickerIcon.stories.tsx
 import { useState, useEffect, useCallback } from 'react'
 import { Meta, Story } from '@storybook/react'
-import ColorPickerIcon from '../../components/ColorPickerIcon'
-import Modal from '../../components/Modal'
-import { ThemeProvider } from '@mui/material'
+import { ThemeProvider } from '@mui/material/styles'
+import { darken, lighten } from 'color2k'
 
+import { ColorPickerIcon, Modal } from '../../components'
 import { useBoundStore } from '../../store'
 import { createCustomTheme } from '../../theme'
 import { getContrastColor, getSecondaryColor } from '../../utils/helpers'
-import { darken, lighten } from 'color2k'
 
 export default {
 	title: 'Components/ColorPickerIcon',

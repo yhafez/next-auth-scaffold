@@ -3,7 +3,7 @@
 import { render, act, screen, waitFor } from '@testing-library/react'
 import { axe } from 'jest-axe'
 
-import DashboardDrawer from '../../../../components/Drawers/DashboardDrawer'
+import { DashboardDrawer } from '../../../../components'
 
 describe('DashboardDrawer', () => {
 	let container: HTMLElement

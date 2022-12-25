@@ -7,7 +7,7 @@ import spies from 'chai-spies'
 chai.use(chaiHttp)
 chai.use(spies)
 const expect = chai.expect
-const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3004/api'
+const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api'
 const request = chai.request(baseUrl)
 
 // mock getSession

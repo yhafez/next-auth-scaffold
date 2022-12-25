@@ -3,7 +3,7 @@
 exports[`Dashboard Should match snapshot 1`] = `
 <div>
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1ga822l-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-14umlvy-MuiButtonBase-root-MuiButton-root"
     id="test-skip-nav-link"
     tabindex="0"
     type="button"
@@ -19,7 +19,7 @@ exports[`Dashboard Should match snapshot 1`] = `
     />
   </button>
   <div
-    class="MuiDrawer-root MuiDrawer-docked css-1b1i1ih-MuiDrawer-docked"
+    class="MuiDrawer-root MuiDrawer-docked css-1v34udj-MuiDrawer-docked"
     id="drawer"
   >
     <div
@@ -27,11 +27,11 @@ exports[`Dashboard Should match snapshot 1`] = `
     >
       <nav
         aria-label="left-hand drawer dashboard navigation"
-        class="MuiBox-root css-1wzjbei"
+        class="MuiBox-root css-r0x2ub"
         id="dashboard-drawer"
       >
         <div
-          class="MuiBox-root css-1h6p0qj"
+          class="MuiBox-root css-1hnpd1e"
           id="dashboard-drawer-header"
         >
           <div
@@ -43,26 +43,26 @@ exports[`Dashboard Should match snapshot 1`] = `
               style="width: 100%;"
             >
               <button
-                class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-disableElevation MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-disableElevation css-1g660y5-MuiButtonBase-root-MuiButton-root"
+                class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-disableElevation MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-disableElevation css-jk7zrd-MuiButtonBase-root-MuiButton-root"
                 id="dashboard-drawer-user-avatar"
                 tabindex="0"
                 type="button"
               >
                 <div
-                  class="MuiAvatar-root MuiAvatar-circular css-1l7qupl-MuiAvatar-root"
+                  class="MuiAvatar-root MuiAvatar-circular css-1lhe9en-MuiAvatar-root"
                   id="dashboard-drawer-user-avatar-image"
                 >
                   <img
-                    alt="User's avatar"
+                    alt="test@example.com's avatar"
                     class="MuiAvatar-img css-1pqm26d-MuiAvatar-img"
-                    src="/default_profile.svg"
+                    src="test"
                   />
                 </div>
                 <p
-                  class="MuiTypography-root MuiTypography-body1 css-tpmwqy-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-body1 css-ea2mzs-MuiTypography-root"
                   id="dashboard-drawer-user-avatar-name"
                 >
-                  User
+                  test@example.com
                 </p>
                 <span
                   class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
@@ -71,7 +71,7 @@ exports[`Dashboard Should match snapshot 1`] = `
             </label>
           </div>
           <ul
-            class="MuiList-root MuiList-padding css-1w0me52-MuiList-root"
+            class="MuiList-root MuiList-padding css-16p2v77-MuiList-root"
             id="dashboard-drawer-header-actions"
           >
             <li
@@ -79,9 +79,11 @@ exports[`Dashboard Should match snapshot 1`] = `
               id="dashboard-drawer-header-actions-home-list-item"
             >
               <a
+                aria-labelledby="dashboard-home-drawer-button-label"
                 class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1ljgqtc-MuiTypography-root-MuiLink-root"
                 href="/"
                 id="dashboard-home-drawer-link"
+                title="Home"
               >
                 <p
                   class="MuiTypography-root MuiTypography-body1 css-zlcmfu-MuiTypography-root"
@@ -95,6 +97,7 @@ exports[`Dashboard Should match snapshot 1`] = `
                   data-testid="HomeIcon"
                   focusable="false"
                   id="dashboard-home-drawer-icon"
+                  role="img"
                   viewBox="0 0 24 24"
                 >
                   <path
@@ -108,9 +111,11 @@ exports[`Dashboard Should match snapshot 1`] = `
               id="dashboard-drawer-header-actions-profile-list-item"
             >
               <a
+                aria-labelledby="dashboard-profile-drawer-button-label"
                 class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1ljgqtc-MuiTypography-root-MuiLink-root"
                 href="/profile"
                 id="dashboard-profile-drawer-link"
+                title="Profile"
               >
                 <p
                   class="MuiTypography-root MuiTypography-body1 css-zlcmfu-MuiTypography-root"
@@ -124,6 +129,7 @@ exports[`Dashboard Should match snapshot 1`] = `
                   data-testid="AccountCircleIcon"
                   focusable="false"
                   id="dashboard-profile-drawer-icon"
+                  role="img"
                   viewBox="0 0 24 24"
                 >
                   <path
@@ -137,9 +143,11 @@ exports[`Dashboard Should match snapshot 1`] = `
               id="dashboard-drawer-header-actions-settings-list-item"
             >
               <a
+                aria-labelledby="dashboard-settings-drawer-button-label"
                 class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1ljgqtc-MuiTypography-root-MuiLink-root"
                 href="/settings"
                 id="dashboard-settings-drawer-link"
+                title="Settings"
               >
                 <p
                   class="MuiTypography-root MuiTypography-body1 css-zlcmfu-MuiTypography-root"
@@ -153,6 +161,7 @@ exports[`Dashboard Should match snapshot 1`] = `
                   data-testid="SettingsIcon"
                   focusable="false"
                   id="dashboard-settings-drawer-icon"
+                  role="img"
                   viewBox="0 0 24 24"
                 >
                   <path
@@ -164,7 +173,7 @@ exports[`Dashboard Should match snapshot 1`] = `
           </ul>
         </div>
         <ul
-          class="MuiList-root MuiList-padding css-1rgovn0-MuiList-root"
+          class="MuiList-root MuiList-padding css-1f4h1di-MuiList-root"
           id="dashboard-drawer-footer"
         >
           <li
@@ -189,6 +198,7 @@ exports[`Dashboard Should match snapshot 1`] = `
                 data-testid="PaletteIcon"
                 focusable="false"
                 id="dashboard-color-picker-drawer-icon"
+                role="img"
                 viewBox="0 0 24 24"
               >
                 <path
@@ -219,6 +229,7 @@ exports[`Dashboard Should match snapshot 1`] = `
                 data-testid="Brightness4Icon"
                 focusable="false"
                 id="dashboard-dark-mode-drawer-icon"
+                role="img"
                 viewBox="0 0 24 24"
               >
                 <path
@@ -249,6 +260,7 @@ exports[`Dashboard Should match snapshot 1`] = `
                 data-testid="ExitToAppIcon"
                 focusable="false"
                 id="dashboard-log-out-drawer-icon"
+                role="img"
                 viewBox="0 0 24 24"
               >
                 <path
@@ -266,12 +278,12 @@ exports[`Dashboard Should match snapshot 1`] = `
     id="test-layout-container"
   >
     <header
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-1y9sg8x-MuiPaper-root-MuiAppBar-root"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-o7zavx-MuiPaper-root-MuiAppBar-root"
       id="test-app-bar"
     >
       <nav
         aria-label="header navigation"
-        class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-1mg7r1q-MuiToolbar-root"
+        class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-1l1du5z-MuiToolbar-root"
         id="test-toolbar"
       >
         <a
@@ -282,74 +294,71 @@ exports[`Dashboard Should match snapshot 1`] = `
           title="Home"
         >
           <h1
-            class="MuiTypography-root MuiTypography-h1 MuiTypography-noWrap css-gev56r-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-h1 MuiTypography-noWrap css-63r4vv-MuiTypography-root"
             id="test-toolbar-title"
           >
             Next Auth Scaffold
           </h1>
         </a>
         <ul
-          class="MuiList-root MuiList-padding css-1s0q78e-MuiList-root"
+          class="MuiList-root MuiList-padding css-166iuh2-MuiList-root"
           id="test-toolbar-icons"
         >
           <li
-            class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-gwp7ny-MuiListItem-root"
+            class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-16ztiij-MuiListItem-root"
             id="test-toolbar-icons-color-picker-item"
           >
             <div
-              class="MuiBox-root css-4v0dfa"
+              class="MuiBox-root css-1lo2k45"
               id="test-toolbar-color-picker-container"
             >
-              <div
-                class="MuiBox-root css-nw3l2a"
-                id="test-toolbar-color-picker-box"
+              <button
+                aria-labelledby="test-toolbar-color-picker-label"
+                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+                id="test-toolbar-color-picker-button"
+                tabindex="0"
+                type="button"
               >
-                <button
+                <svg
+                  aria-hidden="true"
                   aria-labelledby="test-toolbar-color-picker-label"
-                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
-                  id="test-toolbar-color-picker-button"
-                  tabindex="0"
-                  type="button"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1kqeszy-MuiSvgIcon-root"
+                  data-testid="ColorLensIcon"
+                  focusable="false"
+                  id="test-toolbar-color-picker-icon"
+                  role="img"
+                  viewBox="0 0 24 24"
                 >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1kqeszy-MuiSvgIcon-root"
-                    data-testid="ColorLensIcon"
-                    focusable="false"
-                    id="test-toolbar-color-picker-icon"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"
-                    />
-                  </svg>
-                  <span
-                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  <path
+                    d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"
                   />
-                </button>
-                <label
-                  for="test-toolbar-color-picker-button"
+                </svg>
+                <span
+                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                />
+              </button>
+              <label
+                for="test-toolbar-color-picker-button"
+              >
+                <p
+                  class="MuiTypography-root MuiTypography-body2 css-7xs8rl-MuiTypography-root"
+                  id="test-toolbar-color-picker-label"
                 >
-                  <p
-                    class="MuiTypography-root MuiTypography-body2 css-191g3cx-MuiTypography-root"
-                    id="test-toolbar-color-picker-label"
-                  >
-                    Theme Color
-                  </p>
-                </label>
-              </div>
+                  Theme Color
+                </p>
+              </label>
             </div>
           </li>
           <li
-            class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1ak1byq-MuiListItem-root"
+            class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-9gmft3-MuiListItem-root"
             id="test-toolbar-icons-dark-mode-switch-item"
           >
             <div
-              class="MuiBox-root css-a9rhzw"
+              class="MuiBox-root css-f9wnac"
               id="test-toolbar-dark-mode-switch-container"
             >
               <span
-                class="MuiSwitch-root MuiSwitch-sizeMedium css-2cd0ch-MuiSwitch-root"
+                class="MuiSwitch-root MuiSwitch-sizeMedium css-41alfi-MuiSwitch-root"
               >
                 <span
                   class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-28iv8m-MuiButtonBase-root-MuiSwitch-switchBase"
@@ -359,14 +368,17 @@ exports[`Dashboard Should match snapshot 1`] = `
                     aria-labelledby="test-toolbar-dark-mode-switch-label-light"
                     class="PrivateSwitchBase-input MuiSwitch-input css-1m9pwf3"
                     id="test-toolbar-dark-mode-switch"
+                    role="switch"
                     type="checkbox"
                   />
                   <svg
                     aria-hidden="false"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-17slstj-MuiSvgIcon-root"
+                    aria-labelledby="test-toolbar-dark-mode-switch-label-light"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-aq4ggj-MuiSvgIcon-root"
                     data-testid="WbSunnyIcon"
                     focusable="false"
                     id="test-toolbar-dark-mode-switch-icon-unchecked"
+                    role="img"
                     viewBox="0 0 24 24"
                   >
                     <path
@@ -399,10 +411,450 @@ exports[`Dashboard Should match snapshot 1`] = `
       </nav>
     </header>
     <main
-      class="MuiBox-root css-18agqmd"
+      class="MuiBox-root css-1jweowr"
       id="test-layout-content"
       tabindex="-1"
-    />
+    >
+      <div
+        class="MuiBox-root css-3j596c"
+        id="dashboard"
+      >
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-14umlvy-MuiButtonBase-root-MuiButton-root"
+          id="dashboard-skip-nav-link"
+          tabindex="0"
+          type="button"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 css-3so7zb-MuiTypography-root"
+            id="dashboard-skip-nav-link-text"
+          >
+            Skip to main content
+          </p>
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
+        <div
+          class="MuiDrawer-root MuiDrawer-docked css-1v34udj-MuiDrawer-docked"
+          id="drawer"
+        >
+          <div
+            class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiDrawer-paper MuiDrawer-paperAnchorLeft MuiDrawer-paperAnchorDockedLeft css-12i7wg6-MuiPaper-root-MuiDrawer-paper"
+          >
+            <nav
+              aria-label="left-hand drawer dashboard navigation"
+              class="MuiBox-root css-r0x2ub"
+              id="dashboard-drawer"
+            >
+              <div
+                class="MuiBox-root css-1hnpd1e"
+                id="dashboard-drawer-header"
+              >
+                <div
+                  class="MuiBox-root css-1vwnqvu"
+                  id="dashboard-drawer-header-user"
+                >
+                  <label
+                    for="avatar"
+                    style="width: 100%;"
+                  >
+                    <button
+                      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-disableElevation MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-disableElevation css-jk7zrd-MuiButtonBase-root-MuiButton-root"
+                      id="dashboard-drawer-user-avatar"
+                      tabindex="0"
+                      type="button"
+                    >
+                      <div
+                        class="MuiAvatar-root MuiAvatar-circular css-1lhe9en-MuiAvatar-root"
+                        id="dashboard-drawer-user-avatar-image"
+                      >
+                        <img
+                          alt="test@example.com's avatar"
+                          class="MuiAvatar-img css-1pqm26d-MuiAvatar-img"
+                          src="test"
+                        />
+                      </div>
+                      <p
+                        class="MuiTypography-root MuiTypography-body1 css-ea2mzs-MuiTypography-root"
+                        id="dashboard-drawer-user-avatar-name"
+                      >
+                        test@example.com
+                      </p>
+                      <span
+                        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                      />
+                    </button>
+                  </label>
+                </div>
+                <ul
+                  class="MuiList-root MuiList-padding css-16p2v77-MuiList-root"
+                  id="dashboard-drawer-header-actions"
+                >
+                  <li
+                    class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-lgrrfv-MuiListItem-root"
+                    id="dashboard-drawer-header-actions-home-list-item"
+                  >
+                    <a
+                      aria-labelledby="dashboard-home-drawer-button-label"
+                      class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1ljgqtc-MuiTypography-root-MuiLink-root"
+                      href="/"
+                      id="dashboard-home-drawer-link"
+                      title="Home"
+                    >
+                      <p
+                        class="MuiTypography-root MuiTypography-body1 css-zlcmfu-MuiTypography-root"
+                        id="dashboard-home-drawer-button-label"
+                      >
+                        Home
+                      </p>
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                        data-testid="HomeIcon"
+                        focusable="false"
+                        id="dashboard-home-drawer-icon"
+                        role="img"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"
+                        />
+                      </svg>
+                    </a>
+                  </li>
+                  <li
+                    class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-lgrrfv-MuiListItem-root"
+                    id="dashboard-drawer-header-actions-profile-list-item"
+                  >
+                    <a
+                      aria-labelledby="dashboard-profile-drawer-button-label"
+                      class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1ljgqtc-MuiTypography-root-MuiLink-root"
+                      href="/profile"
+                      id="dashboard-profile-drawer-link"
+                      title="Profile"
+                    >
+                      <p
+                        class="MuiTypography-root MuiTypography-body1 css-zlcmfu-MuiTypography-root"
+                        id="dashboard-profile-drawer-button-label"
+                      >
+                        Profile
+                      </p>
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                        data-testid="AccountCircleIcon"
+                        focusable="false"
+                        id="dashboard-profile-drawer-icon"
+                        role="img"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 4c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm0 14c-2.03 0-4.43-.82-6.14-2.88C7.55 15.8 9.68 15 12 15s4.45.8 6.14 2.12C16.43 19.18 14.03 20 12 20z"
+                        />
+                      </svg>
+                    </a>
+                  </li>
+                  <li
+                    class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-lgrrfv-MuiListItem-root"
+                    id="dashboard-drawer-header-actions-settings-list-item"
+                  >
+                    <a
+                      aria-labelledby="dashboard-settings-drawer-button-label"
+                      class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1ljgqtc-MuiTypography-root-MuiLink-root"
+                      href="/settings"
+                      id="dashboard-settings-drawer-link"
+                      title="Settings"
+                    >
+                      <p
+                        class="MuiTypography-root MuiTypography-body1 css-zlcmfu-MuiTypography-root"
+                        id="dashboard-settings-drawer-button-label"
+                      >
+                        Settings
+                      </p>
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                        data-testid="SettingsIcon"
+                        focusable="false"
+                        id="dashboard-settings-drawer-icon"
+                        role="img"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"
+                        />
+                      </svg>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <ul
+                class="MuiList-root MuiList-padding css-1f4h1di-MuiList-root"
+                id="dashboard-drawer-footer"
+              >
+                <li
+                  class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-lgrrfv-MuiListItem-root"
+                  id="dashboard-drawer-footer-color-picker-list-item"
+                >
+                  <button
+                    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-11w9eke-MuiButtonBase-root-MuiIconButton-root"
+                    id="dashboard-color-picker-drawer-button"
+                    tabindex="0"
+                    type="button"
+                  >
+                    <p
+                      class="MuiTypography-root MuiTypography-body1 css-zlcmfu-MuiTypography-root"
+                      id="dashboard-color-picker-drawer-button-label"
+                    >
+                      Theme Color
+                    </p>
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                      data-testid="PaletteIcon"
+                      focusable="false"
+                      id="dashboard-color-picker-drawer-icon"
+                      role="img"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10c1.38 0 2.5-1.12 2.5-2.5 0-.61-.23-1.2-.64-1.67-.08-.1-.13-.21-.13-.33 0-.28.22-.5.5-.5H16c3.31 0 6-2.69 6-6 0-4.96-4.49-9-10-9zm5.5 11c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm-3-4c-.83 0-1.5-.67-1.5-1.5S13.67 6 14.5 6s1.5.67 1.5 1.5S15.33 9 14.5 9zM5 11.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5S7.33 13 6.5 13 5 12.33 5 11.5zm6-4c0 .83-.67 1.5-1.5 1.5S8 8.33 8 7.5 8.67 6 9.5 6s1.5.67 1.5 1.5z"
+                      />
+                    </svg>
+                  </button>
+                </li>
+                <li
+                  class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-lgrrfv-MuiListItem-root"
+                  id="dashboard-drawer-footer-dark-mode-list-item"
+                >
+                  <button
+                    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-11w9eke-MuiButtonBase-root-MuiIconButton-root"
+                    id="dashboard-dark-mode-drawer-button"
+                    tabindex="0"
+                    type="button"
+                  >
+                    <p
+                      class="MuiTypography-root MuiTypography-body1 css-zlcmfu-MuiTypography-root"
+                      id="dashboard-dark-mode-drawer-button-label"
+                    >
+                      Dark Mode
+                    </p>
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                      data-testid="Brightness4Icon"
+                      focusable="false"
+                      id="dashboard-dark-mode-drawer-icon"
+                      role="img"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6z"
+                      />
+                    </svg>
+                  </button>
+                </li>
+                <li
+                  class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-lgrrfv-MuiListItem-root"
+                  id="dashboard-drawer-footer-log-out-list-item"
+                >
+                  <button
+                    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-11w9eke-MuiButtonBase-root-MuiIconButton-root"
+                    id="dashboard-log-out-drawer-button"
+                    tabindex="0"
+                    type="button"
+                  >
+                    <p
+                      class="MuiTypography-root MuiTypography-body1 css-zlcmfu-MuiTypography-root"
+                      id="dashboard-log-out-drawer-button-label"
+                    >
+                      Logout
+                    </p>
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                      data-testid="ExitToAppIcon"
+                      focusable="false"
+                      id="dashboard-log-out-drawer-icon"
+                      role="img"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M10.09 15.59 11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                      />
+                    </svg>
+                  </button>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <div
+          class="MuiBox-root css-114gqq5"
+          id="dashboard-layout-container"
+        >
+          <header
+            class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-o7zavx-MuiPaper-root-MuiAppBar-root"
+            id="dashboard-app-bar"
+          >
+            <nav
+              aria-label="header navigation"
+              class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-1l1du5z-MuiToolbar-root"
+              id="dashboard-toolbar"
+            >
+              <a
+                aria-label="Home"
+                class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1fqdykp-MuiTypography-root-MuiLink-root"
+                href="/"
+                id="dashboard-toolbar-title-link"
+                title="Home"
+              >
+                <h1
+                  class="MuiTypography-root MuiTypography-h1 MuiTypography-noWrap css-63r4vv-MuiTypography-root"
+                  id="dashboard-toolbar-title"
+                >
+                  Next Auth Scaffold
+                </h1>
+              </a>
+              <ul
+                class="MuiList-root MuiList-padding css-166iuh2-MuiList-root"
+                id="dashboard-toolbar-icons"
+              >
+                <li
+                  class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-16ztiij-MuiListItem-root"
+                  id="dashboard-toolbar-icons-color-picker-item"
+                >
+                  <div
+                    class="MuiBox-root css-1lo2k45"
+                    id="dashboard-toolbar-color-picker-container"
+                  >
+                    <button
+                      aria-labelledby="dashboard-toolbar-color-picker-label"
+                      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+                      id="dashboard-toolbar-color-picker-button"
+                      tabindex="0"
+                      type="button"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        aria-labelledby="dashboard-toolbar-color-picker-label"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1kqeszy-MuiSvgIcon-root"
+                        data-testid="ColorLensIcon"
+                        focusable="false"
+                        id="dashboard-toolbar-color-picker-icon"
+                        role="img"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"
+                        />
+                      </svg>
+                      <span
+                        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                      />
+                    </button>
+                    <label
+                      for="dashboard-toolbar-color-picker-button"
+                    >
+                      <p
+                        class="MuiTypography-root MuiTypography-body2 css-7xs8rl-MuiTypography-root"
+                        id="dashboard-toolbar-color-picker-label"
+                      >
+                        Theme Color
+                      </p>
+                    </label>
+                  </div>
+                </li>
+                <li
+                  class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-9gmft3-MuiListItem-root"
+                  id="dashboard-toolbar-icons-dark-mode-switch-item"
+                >
+                  <div
+                    class="MuiBox-root css-f9wnac"
+                    id="dashboard-toolbar-dark-mode-switch-container"
+                  >
+                    <span
+                      class="MuiSwitch-root MuiSwitch-sizeMedium css-41alfi-MuiSwitch-root"
+                    >
+                      <span
+                        class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-28iv8m-MuiButtonBase-root-MuiSwitch-switchBase"
+                      >
+                        <input
+                          aria-checked="false"
+                          aria-labelledby="dashboard-toolbar-dark-mode-switch-label-light"
+                          class="PrivateSwitchBase-input MuiSwitch-input css-1m9pwf3"
+                          id="dashboard-toolbar-dark-mode-switch"
+                          role="switch"
+                          type="checkbox"
+                        />
+                        <svg
+                          aria-hidden="false"
+                          aria-labelledby="dashboard-toolbar-dark-mode-switch-label-light"
+                          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-aq4ggj-MuiSvgIcon-root"
+                          data-testid="WbSunnyIcon"
+                          focusable="false"
+                          id="dashboard-toolbar-dark-mode-switch-icon-unchecked"
+                          role="img"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="m6.76 4.84-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7 1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91 1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z"
+                          />
+                        </svg>
+                        <span
+                          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                        />
+                      </span>
+                      <span
+                        class="MuiSwitch-track css-1yjjitx-MuiSwitch-track"
+                      />
+                    </span>
+                    <label
+                      for="dashboard-toolbar-dark-mode-switch"
+                    >
+                      <p
+                        class="MuiTypography-root MuiTypography-body2 css-191g3cx-MuiTypography-root"
+                        id="dashboard-toolbar-dark-mode-switch-label-light"
+                      >
+                        Light
+                        <br />
+                         Mode
+                      </p>
+                    </label>
+                  </div>
+                </li>
+              </ul>
+            </nav>
+          </header>
+          <main
+            class="MuiBox-root css-1jweowr"
+            id="dashboard-layout-content"
+            tabindex="-1"
+          >
+            <div
+              class="MuiBox-root css-jv7tdc"
+              id="dashboard-content"
+            >
+              <h1
+                class="MuiTypography-root MuiTypography-h1 css-1yml803-MuiTypography-root"
+                id="dashboard-content-title"
+              >
+                Dashboard
+              </h1>
+              <p
+                class="MuiTypography-root MuiTypography-body1 css-mqfe5n-MuiTypography-root"
+                id="dashboard-content-subtitle"
+              >
+                Welcome 
+                test@example.com
+                !
+              </p>
+            </div>
+          </main>
+        </div>
+      </div>
+    </main>
   </div>
 </div>
 `;

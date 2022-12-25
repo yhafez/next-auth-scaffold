@@ -4,69 +4,40 @@ import { useSnackbar } from 'notistack'
 import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/react'
 import { useHydrated } from 'react-hydration-provider'
-
 import { Box, CircularProgress, Typography } from '@mui/material'
 
-import { Layout } from '../components/Layout'
-import DashboardDrawer from '../components/Drawers/DashboardDrawer'
-
+import { Layout, DashboardDrawer } from '../components'
 import { useBoundStore } from '../store'
+import useToken from '../hooks/useToken'
 
-export default function Dashboard() {
-	const { darkMode, user, setUser } = useBoundStore()
+export interface DashboardProps {
+	hydratedInit?: boolean
+}
+
+export default function Dashboard({ hydratedInit = false }: DashboardProps) {
+	const { darkMode, user } = useBoundStore()
 	const router = useRouter()
 	const { enqueueSnackbar } = useSnackbar()
-	const { data: session, status } = useSession()
+	const { data: _session, status } = useSession()
 	const hydrated = useHydrated()
+	const { loading: tokenLoading, error: tokenError } = useToken()
 
 	const [loading, setLoading] = useState(false)
 
-	const textColor = hydrated ? (darkMode ? 'white' : 'black') : 'black'
-	const userName = (hydrated && user?.name) || (hydrated && user?.email) || 'User'
-
-	const getToken = async () => {
-		setLoading(true)
-		try {
-			const res = await fetch('/api/auth/token')
-			const data = await res.json()
-
-			if (data.error) return setLoading(false)
-
-			setUser(data.user)
-			enqueueSnackbar('Logged in successfully', { variant: 'success', autoHideDuration: 3000 })
-			setLoading(false)
-			return router.push('/')
-		} catch (e) {
-			return setLoading(false)
-		}
-	}
+	useEffect(() => {
+		if (user?.role === 'ADMIN') router.push('/admin')
+	}, [user, router])
 
 	useEffect(() => {
-		if (status === 'loading') return setLoading(true)
-		setLoading(true)
-		if (status === 'unauthenticated') {
-			enqueueSnackbar('You are not authorized to access this page', {
-				variant: 'error',
-				autoHideDuration: 3000,
-			})
-			setLoading(false)
-			router.push('/login')
-		}
-		if (user?.role === 'ADMIN') {
-			setLoading(false)
-			router.push('/admin')
-		}
-		setLoading(false)
-	}, [status, user, enqueueSnackbar, router])
+		if (tokenError) enqueueSnackbar(tokenError, { variant: 'error' })
+	}, [tokenError])
 
 	useEffect(() => {
-		if (status === 'authenticated' && !user) {
-			setLoading(true)
-			getToken()
-		}
-	}, [status])
+		if (tokenLoading) setLoading(true)
+		else setLoading(false)
+	}, [tokenLoading])
 
-	if (!hydrated) return null
+	if (!hydrated && !hydratedInit) return null
 
 	return (
 		<Box
@@ -96,6 +67,8 @@ export default function Dashboard() {
 							sx={{
 								color: 'primary.contrastText',
 							}}
+							role="img"
+							aria-label="loading spinner"
 						/>
 					</Box>
 				) : (
@@ -115,7 +88,7 @@ export default function Dashboard() {
 							variant="h1"
 							sx={{
 								mb: 2,
-								color: textColor,
+								color: darkMode ? 'white' : 'black',
 							}}
 						>
 							Dashboard
@@ -124,12 +97,12 @@ export default function Dashboard() {
 							id="dashboard-content-subtitle"
 							variant="body1"
 							sx={{
-								color: textColor,
+								color: darkMode ? 'white' : 'black',
 								fontSize: '1.5rem',
 								mb: 12,
 							}}
 						>
-							Welcome {userName}!
+							Welcome {user?.name ?? user?.email ?? 'User'}!
 						</Typography>
 					</Box>
 				)}

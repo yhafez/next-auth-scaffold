@@ -1,7 +1,7 @@
 // Path: ./components/EditableTextField.tsx
 import { useState } from 'react'
 import { Done, Edit } from '@mui/icons-material'
-import { InputAdornment, TextField } from '@mui/material'
+import { Box, InputAdornment, TextField, Typography } from '@mui/material'
 
 import { useBoundStore } from '../store'
 
@@ -13,13 +13,13 @@ export interface EditableTextFieldProps {
 	isPassword?: boolean
 }
 
-const EditableTextField = ({
+export default function EditableTextField({
 	name,
 	label,
 	value,
 	setValue,
 	isPassword = false,
-}: EditableTextFieldProps) => {
+}: EditableTextFieldProps) {
 	const { darkMode, customPalette } = useBoundStore()
 	const [edit, setEdit] = useState(false)
 
@@ -33,7 +33,7 @@ const EditableTextField = ({
 				width: '100%',
 				maxWidth: '400px',
 				margin: '1rem',
-
+				color: 'primary.contrastText',
 				'& .MuiInputBase-input': {
 					color: 'primary.contrastText',
 					WebkitTextFillColor: darkMode ? 'white' : 'black',
@@ -62,27 +62,67 @@ const EditableTextField = ({
 
 				'& .MuiInputBase-root-MuiInput-root:hover:not(.Mui-disabled):before': {
 					borderBottom: `2px solid ${
-						darkMode ? customPalette?.primary?.light : customPalette?.primary?.dark
+						darkMode ? customPalette.primary.light : customPalette.primary.dark
 					}`,
 				},
 			}}
 			InputProps={{
 				endAdornment: (
-					<InputAdornment
-						id={`${name}-input-adornment`}
-						position="end"
-						onClick={() => setEdit(!edit)}
+					<Box
+						id={`${name}-input-adornment-box`}
 						sx={{
-							cursor: 'pointer',
-							color: 'primary.contrastText',
+							display: 'flex',
+							flexDirection: 'column',
+							alignItems: 'center',
+							justifyContent: 'space-between',
+							height: '2rem',
 						}}
 					>
-						{edit ? (
-							<Done id={`${name}-input-done-icon`} />
-						) : (
-							<Edit id={`${name}-input-edit-icon`} />
-						)}
-					</InputAdornment>
+						<InputAdornment
+							id={`${name}-input-adornment`}
+							position="end"
+							onClick={() => setEdit(!edit)}
+							sx={{
+								cursor: 'pointer',
+								color: 'primary.contrastText',
+								width: '100%',
+							}}
+						>
+							{edit ? (
+								<Done
+									id={`${name}-input-done-icon`}
+									role="img"
+									aria-labelledby={`${name}-input-label`}
+									sx={{
+										color: 'primary.contrastText',
+										fontSize: '1.2rem',
+									}}
+								/>
+							) : (
+								<Edit
+									id={`${name}-input-edit-icon`}
+									role="img"
+									aria-labelledby={`${name}-input-label`}
+									sx={{
+										color: 'primary.contrastText',
+										fontSize: '1.2rem',
+									}}
+								/>
+							)}
+						</InputAdornment>
+						<label htmlFor={`${name}-input`}>
+							<Typography
+								id={`${name}-input-label`}
+								sx={{
+									color: 'primary.contrastText',
+									fontSize: '0.75rem',
+									fontWeight: 'bold',
+								}}
+							>
+								{edit ? 'Done' : 'Edit'}
+							</Typography>
+						</label>
+					</Box>
 				),
 			}}
 			value={value}
@@ -91,5 +131,3 @@ const EditableTextField = ({
 		/>
 	)
 }
-
-export default EditableTextField

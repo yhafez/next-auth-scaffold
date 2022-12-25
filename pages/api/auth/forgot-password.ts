@@ -1,15 +1,18 @@
 // Path: ./pages/api/auth/forgotPassword.ts
 
 import { NextApiRequest, NextApiResponse } from 'next'
-import prisma from '../../../lib/prisma'
 import { sign } from 'jsonwebtoken'
 import nodemailer from 'nodemailer'
 import { google } from 'googleapis'
+import SMTPTransport from 'nodemailer/lib/smtp-transport'
+
+import prisma from '../../../lib/prisma'
 
 const FROM_EMAIL = process.env.FROM_EMAIL
 const CLIENT_ID = process.env.GOOGLE_CLIENT_ID
 const CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET
 const REDIRECT_URI = process.env.GOOGLE_REDIRECT_URI
+const PASSWORD = process.env.GMAIL_APP_PASSWORD
 const REFRESH_TOKEN = process.env.GMAIL_REFRESH_TOKEN
 
 const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI)
@@ -17,18 +20,13 @@ oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN })
 
 const sendForgotPasswordEmailMail = async (toEmail: string, forgotPasswordUrl: string) => {
 	try {
-		const accessToken = await oAuth2Client.getAccessToken()
 		const transport = nodemailer.createTransport({
 			service: 'gmail',
 			auth: {
-				type: 'OAuth2',
 				user: FROM_EMAIL,
-				clientId: CLIENT_ID,
-				clientSecret: CLIENT_SECRET,
-				refreshToken: REFRESH_TOKEN,
-				accessToken: accessToken,
+				pass: PASSWORD,
 			},
-		})
+		} as SMTPTransport.Options)
 
 		const mailOptions = {
 			from: `Next Auth Scaffold <${FROM_EMAIL}>`,
@@ -38,7 +36,7 @@ const sendForgotPasswordEmailMail = async (toEmail: string, forgotPasswordUrl: s
 
 		Click the link below to reset your password:
 
-${forgotPasswordUrl}
+${forgotPasswordUrl} (opens in a new tab)
 
 This link will expire in 1 hour.
 
@@ -49,7 +47,7 @@ Next Auth Scaffold`,
 			html: `
 		<p>Hello,</p>
 		<p>Click the link below to reset your password:</p>
-		<a href="${forgotPasswordUrl}">${forgotPasswordUrl}</a>
+		<p><a href="${forgotPasswordUrl}">${forgotPasswordUrl}</a> (opens in a new tab)</p>
 		<p>This link will expire in 1 hour.</p>
 		<p>If you did not request a password reset, please ignore this email.</p>
 		<p>Thanks,<br>Next Auth Scaffold</p>
@@ -61,9 +59,9 @@ Next Auth Scaffold`,
 			throw new Error('Email was rejected')
 		}
 		return result
-	} catch (error) {
-		console.error(error)
-		throw new Error('There was an error sending the password reset email: ' + error)
+	} catch (e) {
+		console.error(e)
+		throw new Error('There was an error sending the password reset email: ' + e)
 	}
 }
 

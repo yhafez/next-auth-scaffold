@@ -18,10 +18,7 @@ import {
 import { useTheme } from '@mui/material/styles'
 import { ChevronRight } from '@mui/icons-material'
 
-import Drawer from './Drawer'
-import DarkModeSwitch from './DarkModeSwitch'
-import ColorPickerIcon from './ColorPickerIcon'
-
+import { Drawer, DarkModeSwitch, ColorPickerIcon } from '.'
 import { useBoundStore } from '../store'
 import { toTitleCase } from '../utils/helpers'
 import { bounce } from '../shared/styles'
@@ -35,7 +32,7 @@ export interface LayoutProps {
 	drawerChildren?: ReactNode
 }
 
-export function Layout({ pageTitle, name, children, drawerChildren }: LayoutProps) {
+export default function Layout({ pageTitle, name, children, drawerChildren }: LayoutProps) {
 	const { darkMode, customPalette, theme: customTheme } = useBoundStore()
 	const theme = useTheme()
 	const router = useRouter()
@@ -43,7 +40,7 @@ export function Layout({ pageTitle, name, children, drawerChildren }: LayoutProp
 	const isMobile = useMediaQuery(`(max-width:${theme.breakpoints.values.sm}px)`)
 	const isDesktop = useMediaQuery(`(max-width:${theme.breakpoints.values.md}px)`)
 	const isLargeDesktop = useMediaQuery(`(max-width:${theme.breakpoints.values.lg}px)`)
-	const isExtraLargeDesktop = useMediaQuery(`(max-width:${theme.breakpoints.values.xl}px)`)
+	const isExtraLargeDesktop = useMediaQuery(`(min-width:${theme.breakpoints.values.lg}px)`)
 
 	const [drawerOpen, setDrawerOpen] = useState(false)
 	const [selected, setSelected] = useState(false)
@@ -86,8 +83,8 @@ export function Layout({ pageTitle, name, children, drawerChildren }: LayoutProp
 						left: 10,
 						overflow: 'visible',
 						clip: 'auto',
-						height: '40px',
-						width: '10%',
+						height: '6em',
+						width: '8em',
 						margin: '0',
 						whiteSpace: 'normal',
 						backgroundColor: 'primary.main',
@@ -140,10 +137,13 @@ export function Layout({ pageTitle, name, children, drawerChildren }: LayoutProp
 							easing: customTheme.transitions.easing.sharp,
 							duration: customTheme.transitions.duration.leavingScreen,
 						}),
-						width: `${isMobile || !drawerChildren ? '100%' : `calc(100% - 240px)`}`,
-						ml: `${isMobile || !drawerChildren ? 0 : `240px`}`,
-						height: '80px',
+						width: `${isMobile || !drawerChildren ? '100%' : `calc(100% - 18em)`}`,
+						ml: `${isMobile || !drawerChildren ? 0 : `18em`}`,
+						height: '6em',
 						zIndex: 1000,
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'space-between',
 					}}
 				>
 					<Toolbar
@@ -154,6 +154,7 @@ export function Layout({ pageTitle, name, children, drawerChildren }: LayoutProp
 							display: 'flex',
 							justifyContent: 'space-between',
 							alignItems: 'center',
+							height: '100%',
 						}}
 					>
 						{isMobile && drawerChildren && (
@@ -168,6 +169,7 @@ export function Layout({ pageTitle, name, children, drawerChildren }: LayoutProp
 									flexDirection: 'column',
 									justifyContent: 'center',
 									alignItems: 'center',
+									mx: 4,
 								}}
 							>
 								<IconButton
@@ -175,23 +177,26 @@ export function Layout({ pageTitle, name, children, drawerChildren }: LayoutProp
 									color="inherit"
 									aria-labelledby={`${name}-toolbar-collapse-drawer-text`}
 									onClick={() => setDrawerOpen(true)}
-									edge="start"
 									sx={{
+										width: '48px',
+										height: '48px',
 										color: customPalette.primary.contrastText,
 										cursor: 'pointer',
-										mx: 4,
 										...(drawerOpen && { display: 'none' }),
 									}}
 								>
 									<ChevronRight
 										id={`${name}-toolbar-collapse-drawer-icon`}
 										sx={{
+											fontSize: '1.5em',
 											color: selected
 												? darkMode
 													? 'primary.light'
 													: 'primary.dark'
 												: 'primary.contrastText',
 										}}
+										role="img"
+										aria-label="open drawer"
 									/>
 								</IconButton>
 								<Typography
@@ -201,7 +206,8 @@ export function Layout({ pageTitle, name, children, drawerChildren }: LayoutProp
 									htmlFor={`${name}-toolbar-collapse-drawer-icon`}
 									sx={{
 										fontWeight: 500,
-										ml: 1,
+										width: '100%',
+										textAlign: 'center',
 										cursor: 'pointer',
 										color: selected
 											? darkMode
@@ -255,10 +261,10 @@ export function Layout({ pageTitle, name, children, drawerChildren }: LayoutProp
 										: isDesktop
 										? '2rem'
 										: isLargeDesktop
-										? '2.5rem'
-										: isExtraLargeDesktop
 										? '3rem'
-										: '4rem',
+										: isExtraLargeDesktop
+										? '4rem'
+										: '5rem',
 									ml: 4,
 									mt: 2,
 								}}
@@ -273,17 +279,19 @@ export function Layout({ pageTitle, name, children, drawerChildren }: LayoutProp
 								flexDirection: 'row',
 								justifyContent: 'center',
 								alignItems: 'center',
+								height: '100%',
+								p: 0,
 							}}
 						>
 							<ListItem
 								id={`${name}-toolbar-icons-color-picker-item`}
-								sx={{ p: 0, width: '100%', mr: 4 }}
+								sx={{ p: 0, mr: 4, height: '100%' }}
 							>
 								<ColorPickerIcon name={`${name}-toolbar`} />
 							</ListItem>
 							<ListItem
 								id={`${name}-toolbar-icons-dark-mode-switch-item`}
-								sx={{ p: 0, width: '100%' }}
+								sx={{ p: 0, height: '100%' }}
 							>
 								<DarkModeSwitch name={`${name}-toolbar`} />
 							</ListItem>
@@ -307,16 +315,16 @@ export function Layout({ pageTitle, name, children, drawerChildren }: LayoutProp
 							easing: customTheme.transitions.easing.sharp,
 							duration: customTheme.transitions.duration.leavingScreen,
 						}),
-						marginLeft: '240px',
-						width: `${isMobile || !drawerChildren ? '100%' : `calc(100% - 240px)`}`,
-						ml: `${isMobile || !drawerChildren ? '0' : `240px`}`,
-						mt: '80px',
+						marginLeft: '18em',
+						width: `${isMobile || !drawerChildren ? '100%' : `calc(100% - 18em)`}`,
+						ml: `${isMobile || !drawerChildren ? '0' : `18em`}`,
+						mt: '6em',
 						p: 0,
 						display: 'flex',
 						flexDirection: 'column',
 						justifyContent: 'center',
 						alignItems: 'center',
-						height: 'calc(100vh - 80px)',
+						height: 'calc(100vh - 6em)',
 						contain: 'layout',
 						backgroundColor: darkMode ? 'grey.900' : 'grey.100',
 					}}

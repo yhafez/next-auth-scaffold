@@ -1,33 +1,37 @@
 // Path: ./pages/settings.tsx
-
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useSnackbar } from 'notistack'
 import { useRouter } from 'next/router'
-import { useSession } from 'next-auth/react'
 import { Box } from '@mui/material'
 import { useHydrated } from 'react-hydration-provider'
 
-import Modal from '../../components/Modal'
-import { Layout } from '../../components/Layout'
-import SettingsDrawer from '../../components/Drawers/SettingsDrawer'
+import { Modal, Layout, SettingsDrawer } from '../../components'
+import useToken from '../../hooks/useToken'
 
-export default function AccessibilitySettings() {
-	const { data: session, status } = useSession()
+export interface AccessibilitySettingsProps {
+	hydratedInit?: boolean
+}
+
+export default function AccessibilitySettings({
+	hydratedInit = false,
+}: AccessibilitySettingsProps) {
 	const { enqueueSnackbar } = useSnackbar()
 	const router = useRouter()
 	const hydrated = useHydrated()
+	const { loading: tokenLoading, error: tokenError } = useToken()
+
+	const [loading, setLoading] = useState(false)
 
 	useEffect(() => {
-		if (status === 'unauthenticated') {
-			enqueueSnackbar('You must be signed in to view this page', {
-				variant: 'error',
-				autoHideDuration: 3000,
-			})
-			router.push('/login')
-		}
-	}, [status])
+		if (tokenError) enqueueSnackbar(tokenError, { variant: 'error' })
+	}, [tokenError])
 
-	if (!hydrated) return null
+	useEffect(() => {
+		if (tokenLoading) setLoading(true)
+		else setLoading(false)
+	}, [tokenLoading])
+
+	if (!hydrated && !hydratedInit) return null
 
 	return (
 		<Box
@@ -44,7 +48,7 @@ export default function AccessibilitySettings() {
 				drawerChildren={<SettingsDrawer />}
 				pageTitle="accessibility settings"
 			>
-				<Modal name="accessibility settings" loading={false} error="">
+				<Modal name="accessibility settings" loading={loading} error="">
 					<Box
 						id="accessibility-settings-content"
 						sx={{

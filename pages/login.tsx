@@ -1,22 +1,23 @@
 // Path: pages/login.tsx
-
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, use } from 'react'
 import { useHydrated } from 'react-hydration-provider'
-import { signIn, useSession } from 'next-auth/react'
+import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { useSnackbar } from 'notistack'
 import { Box, Checkbox, Typography } from '@mui/material'
 
-import Modal from '../components/Modal'
-import NavigationButton from '../components/NavigationButton'
-import SubmitButton from '../components/SubmitButton'
-import EmailInput from '../components/EmailInput'
-import PasswordInput from '../components/PasswordInput'
-import ActionButtonsContainer from '../components/ActionButtonsContainer'
-import ModalNote from '../components/ModalNote'
-import { Layout } from '../components/Layout'
-
+import {
+	Modal,
+	Layout,
+	NavigationButton,
+	SubmitButton,
+	EmailInput,
+	PasswordInput,
+	ActionButtonsContainer,
+	ModalNote,
+} from '../components'
 import { useBoundStore } from '../store'
+import useToken from '../hooks/useToken'
 
 export interface LoginProps {
 	errorInit?: string
@@ -24,6 +25,7 @@ export interface LoginProps {
 	passwordInit?: string
 	rememberInit?: boolean
 	loadingInit?: boolean
+	hydratedInit?: boolean
 }
 
 export default function Login({
@@ -32,12 +34,13 @@ export default function Login({
 	passwordInit = '',
 	rememberInit = true,
 	loadingInit = false,
+	hydratedInit = false,
 }: LoginProps) {
-	const { darkMode, customPalette, setUser } = useBoundStore()
+	const { darkMode, customPalette } = useBoundStore()
 	const router = useRouter()
 	const { enqueueSnackbar } = useSnackbar()
-	const { data: session, status } = useSession()
 	const hydrated = useHydrated()
+	const { loading: tokenLoading, error: tokenError, getToken } = useToken()
 
 	const [email, setEmail] = useState(emailInit)
 	const [password, setPassword] = useState(passwordInit)
@@ -49,31 +52,14 @@ export default function Login({
 		if (localStorage.getItem('email')) setEmail(localStorage.getItem('email') as string)
 	}, [])
 
-	const getToken = useCallback(async () => {
-		setError('')
-		setLoading(true)
-		try {
-			const res = await fetch('/api/auth/token')
-			const data = await res.json()
-
-			if (data.error) {
-				setError(data.error)
-				return setLoading(false)
-			}
-
-			setUser(data.user)
-			enqueueSnackbar('Logged in successfully', { variant: 'success', autoHideDuration: 3000 })
-			setLoading(false)
-			return router.push('/')
-		} catch (e) {
-			setError(`There was an error fetching the token: ${e}`)
-			return setLoading(false)
-		}
-	}, [enqueueSnackbar, router])
+	useEffect(() => {
+		if (tokenError) setError(tokenError)
+	}, [tokenError])
 
 	useEffect(() => {
-		if (status === 'authenticated') getToken()
-	}, [status, getToken])
+		if (tokenLoading) setLoading(true)
+		else setLoading(false)
+	}, [tokenLoading])
 
 	const handleLogin = async () => {
 		setError('')
@@ -97,14 +83,21 @@ export default function Login({
 				setError(res.error)
 				return setLoading(false)
 			}
-			getToken()
+			const token = await getToken()
+			if (token) {
+				enqueueSnackbar('Logged in successfully', { variant: 'success', autoHideDuration: 3000 })
+				return router.push('/')
+			}
+
+			setError('There was an error logging in')
+			return setLoading(false)
 		} catch (err) {
 			setError(`There was an error signing in: ${err}`)
 			return setLoading(false)
 		}
 	}
 
-	if (!hydrated) return null
+	if (!hydrated && !hydratedInit) return null
 
 	return (
 		<Layout name="login" pageTitle="login">
@@ -189,12 +182,18 @@ export default function Login({
 						</Typography>
 						<Checkbox
 							id="remember-me-checkbox"
+							inputProps={{
+								'aria-checked': remember,
+								role: 'checkbox',
+							}}
 							checked={remember}
 							onChange={() => setRemember(remember => !remember)}
 							onKeyDown={e => {
 								if (e.key === 'Enter') setRemember(remember => !remember)
 							}}
 							sx={{
+								width: '48px',
+								height: '48px',
 								color: 'primary.contrastText',
 								'&.Mui-checked': {
 									color: darkMode ? 'primary.light' : 'primary.dark',

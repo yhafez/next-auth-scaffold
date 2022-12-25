@@ -1,5 +1,4 @@
 // Path: ./components/EmailInput.tsx
-
 import { Dispatch, SetStateAction, KeyboardEvent } from 'react'
 import { TextField } from '@mui/material'
 

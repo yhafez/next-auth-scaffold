@@ -1,7 +1,8 @@
 // Path: ./jest/__tests__/components/SubmitButton.test.tsx
 import { render, findByText, act, screen, waitFor } from '@testing-library/react'
 import { axe } from 'jest-axe'
-import SubmitButton from '../../../components/SubmitButton'
+
+import { SubmitButton } from '../../../components'
 
 describe('SubmitButton', () => {
 	it('Should have no accessibility violations', async () => {

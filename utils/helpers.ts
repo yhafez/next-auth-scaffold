@@ -1,4 +1,4 @@
-import { getContrast } from 'color2k'
+import { getContrast, parseToRgba } from 'color2k'
 
 const minorWords = [
 	'a',
@@ -47,7 +47,9 @@ export const clampAndRound = (value: number, min: number, max: number) => {
 }
 
 export const getContrastColor = (color: string) =>
-	getContrast(color, '#FFF') > 4.5 ? 'white' : 'black'
+	Math.max(getContrast(color, '#000'), getContrast(color, '#FFF')) === getContrast(color, '#000')
+		? 'black'
+		: 'white'
 
 export const getSecondaryColor = (color: string) => {
 	const cc = color.charAt(0) === '#' ? color.substring(1, 7) : color
@@ -66,4 +68,95 @@ export const getSecondaryColor = (color: string) => {
 		: alpha
 		? `rgba(255, 255, 255, ${alpha})`
 		: 'rgba(255, 255, 255, 1)'
+}
+
+export const mixColors = (baseColor: string, overlayColor: string, overlayOpacity: number) => {
+	const baseColorRGB = parseToRgba(baseColor)
+	const [r, g, b] = [baseColorRGB[0], baseColorRGB[1], baseColorRGB[2]]
+	const overlayColorRGB = parseToRgba(overlayColor)
+	const [r2, g2, b2] = [overlayColorRGB[0], overlayColorRGB[1], overlayColorRGB[2]]
+
+	const mixedColor = {
+		r: Math.round(r2 * overlayOpacity + r * (1 - overlayOpacity)),
+		g: Math.round(g2 * overlayOpacity + g * (1 - overlayOpacity)),
+		b: Math.round(b2 * overlayOpacity + b * (1 - overlayOpacity)),
+	}
+
+	return `rgb(${mixedColor.r}, ${mixedColor.g}, ${mixedColor.b})`
+}
+
+export const getTextContrastWithBackgroundPlusOverlay = ({
+	textColor,
+	overlayColor,
+	backgroundColor,
+	overlayOpacity,
+}: {
+	textColor: string
+	overlayColor: string
+	backgroundColor: string
+	overlayOpacity: number
+}) => {
+	const colorOfBackgroundPlusOverlay = mixColors(backgroundColor, overlayColor, overlayOpacity)
+	const contrast = getContrast(textColor, colorOfBackgroundPlusOverlay)
+	return contrast
+}
+
+export const isOverlayNecessary = (
+	baseColor: string,
+	textColor: string,
+	desiredContrast: number,
+) => {
+	const contrastWithoutOverlay = getContrast(baseColor, textColor)
+	return contrastWithoutOverlay > desiredContrast
+}
+
+export const findOptimalOverlayOpacity = (
+	textColor: string,
+	overlayColor: string,
+	worstColor: string,
+	desiredContrast: number,
+) => {
+	const overlayNecessary = isOverlayNecessary(worstColor, textColor, desiredContrast)
+	if (!overlayNecessary) return 0
+
+	const opacityGuessRange = {
+		lowerBound: 0,
+		midpoint: 0.5,
+		upperBound: 1,
+	}
+	let numberOfGuesses = 0
+	const maxGuesses = 8
+	const opacityLimit = 0.99
+
+	while (numberOfGuesses < maxGuesses) {
+		numberOfGuesses++
+
+		const currentGuess = opacityGuessRange.midpoint
+		const contrastOfGuess = getTextContrastWithBackgroundPlusOverlay({
+			textColor,
+			overlayColor,
+			backgroundColor: worstColor,
+			overlayOpacity: currentGuess,
+		})
+
+		const isGuessTooLow = contrastOfGuess < desiredContrast
+		const isGuessTooHigh = contrastOfGuess > desiredContrast
+
+		if (isGuessTooLow) {
+			opacityGuessRange.lowerBound = currentGuess
+		} else if (isGuessTooHigh) {
+			opacityGuessRange.upperBound = currentGuess
+		}
+
+		const newMidpoint =
+			(opacityGuessRange.upperBound - opacityGuessRange.lowerBound) / 2 +
+			opacityGuessRange.lowerBound
+		opacityGuessRange.midpoint = newMidpoint
+	}
+	const optimalOpacity = opacityGuessRange.midpoint
+	const hasNoSolution = optimalOpacity > opacityLimit
+
+	if (hasNoSolution) return opacityLimit
+
+	return optimalOpacity
 }

@@ -1,33 +1,35 @@
 // Path: ./pages/settings.tsx
-
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useSnackbar } from 'notistack'
 import { useRouter } from 'next/router'
-import { useSession } from 'next-auth/react'
 import { Box } from '@mui/material'
 import { useHydrated } from 'react-hydration-provider'
 
-import Modal from '../../components/Modal'
-import { Layout } from '../../components/Layout'
-import SettingsDrawer from '../../components/Drawers/SettingsDrawer'
+import { Modal, Layout, SettingsDrawer } from '../../components'
+import useToken from '../../hooks/useToken'
 
-export default function AccountSettings() {
-	const { data: session, status } = useSession()
+export interface AccountSettingsProps {
+	hydratedInit?: boolean
+}
+
+export default function AccountSettings({ hydratedInit = false }: AccountSettingsProps) {
 	const { enqueueSnackbar } = useSnackbar()
 	const router = useRouter()
 	const hydrated = useHydrated()
+	const { loading: tokenLoading, error: tokenError } = useToken()
+
+	const [loading, setLoading] = useState(false)
 
 	useEffect(() => {
-		if (status === 'unauthenticated') {
-			enqueueSnackbar('You must be signed in to view this page', {
-				variant: 'error',
-				autoHideDuration: 3000,
-			})
-			router.push('/login')
-		}
-	}, [status])
+		if (tokenError) enqueueSnackbar(tokenError, { variant: 'error' })
+	}, [tokenError])
 
-	if (!hydrated) return null
+	useEffect(() => {
+		if (tokenLoading) setLoading(true)
+		else setLoading(false)
+	}, [tokenLoading])
+
+	if (!hydrated && !hydratedInit) return null
 
 	return (
 		<Box
@@ -44,7 +46,7 @@ export default function AccountSettings() {
 				drawerChildren={<SettingsDrawer />}
 				pageTitle="account settings"
 			>
-				<Modal name="account settings" loading={false} error="">
+				<Modal name="account settings" loading={loading} error="">
 					<Box
 						id="account-settings-content"
 						sx={{

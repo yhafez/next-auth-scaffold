@@ -1,32 +1,49 @@
 // Path: ./pages/forgot-password.tsx
-import { useState, KeyboardEvent } from 'react'
+import { useState, useEffect, KeyboardEvent } from 'react'
+import { useRouter } from 'next/router'
 import { useSnackbar } from 'notistack'
 import { useHydrated } from 'react-hydration-provider'
 
-import Modal from '../components/Modal'
-import SubmitButton from '../components/SubmitButton'
-import EmailInput from '../components/EmailInput'
-import ActionButtonsContainer from '../components/ActionButtonsContainer'
-import ModalNote from '../components/ModalNote'
-import { Layout } from '../components/Layout'
+import {
+	Modal,
+	ModalNote,
+	EmailInput,
+	SubmitButton,
+	ActionButtonsContainer,
+	Layout,
+} from '../components'
+import useToken from '../hooks/useToken'
 
 export interface ForgotPasswordProps {
 	errorInit?: string
 	emailInit?: string
 	loadingInit?: boolean
+	hydratedInit?: boolean
 }
 
 export default function ForgotPassword({
 	errorInit = '',
 	emailInit = '',
 	loadingInit = false,
+	hydratedInit = false,
 }: ForgotPasswordProps) {
 	const { enqueueSnackbar } = useSnackbar()
 	const hydrated = useHydrated()
+	const router = useRouter()
+	const { loading: tokenLoading, error: tokenError } = useToken()
 
 	const [email, setEmail] = useState(emailInit)
 	const [loading, setLoading] = useState(loadingInit)
 	const [error, setError] = useState(errorInit)
+
+	useEffect(() => {
+		if (tokenError) setError(tokenError)
+	}, [tokenError])
+
+	useEffect(() => {
+		if (tokenLoading) setLoading(true)
+		else setLoading(false)
+	}, [tokenLoading])
 
 	const handleForgotPassword = () => {
 		if (email === '') {
@@ -50,15 +67,18 @@ export default function ForgotPassword({
 					if (data.error) {
 						setError(data.error)
 						enqueueSnackbar(data.error, { variant: 'error', autoHideDuration: 3000 })
+						return setLoading(false)
 					} else {
 						enqueueSnackbar(data.message, { variant: 'success', autoHideDuration: 2000 })
+						return setLoading(false)
 					}
 				})
+				.catch(e => {
+					setError(e.message)
+					return setLoading(false)
+				})
 		} catch (error) {
-			setError(error?.meesage)
-			enqueueSnackbar(error.message, { variant: 'error' })
-		} finally {
-			setLoading(false)
+			setError(error?.message)
 		}
 	}
 
@@ -68,7 +88,7 @@ export default function ForgotPassword({
 		}
 	}
 
-	if (!hydrated) return null
+	if (!hydrated && !hydratedInit) return null
 
 	return (
 		<Layout name="forgot-password" pageTitle="forgot password">

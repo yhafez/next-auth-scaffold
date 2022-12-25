@@ -2,9 +2,7 @@
 import { useEffect } from 'react'
 import { Meta, Story } from '@storybook/react'
 
-import NavigationButton from '../../components/NavigationButton'
-import Modal from '../../components/Modal'
-
+import { NavigationButton, Modal } from '../../components'
 import { useBoundStore } from '../../store'
 
 export default {

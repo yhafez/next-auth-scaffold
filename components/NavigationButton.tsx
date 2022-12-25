@@ -1,5 +1,4 @@
 // Path: ./components/NavigationButton.tsx
-
 import { Button } from '@mui/material'
 
 import { useBoundStore } from '../store'

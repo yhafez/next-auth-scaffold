@@ -2,7 +2,7 @@
 import { render, act, screen, waitFor } from '@testing-library/react'
 import { axe } from 'jest-axe'
 
-import DarkModeSwitch from '../../../components/DarkModeSwitch'
+import { DarkModeSwitch } from '../../../components'
 
 describe('DarkModeSwitch', () => {
 	let container: HTMLElement

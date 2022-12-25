@@ -2,7 +2,7 @@
 import { render, findByText, act, screen, waitFor } from '@testing-library/react'
 import { axe } from 'jest-axe'
 
-import PasswordInput from '../../../components/PasswordInput'
+import { PasswordInput } from '../../../components'
 
 describe('PasswordInput', () => {
 	it('Should have no accessibility violations', async () => {
@@ -125,7 +125,7 @@ describe('PasswordInput', () => {
 		)
 
 		const test =
-			container.querySelector('#test-password-input-visibility-on-icon') ||
+			container.querySelector('#test-password-input-visibility-on-icon') ??
 			container.querySelector('#test-password-input-visibility-off-icon')
 		expect(test).toBeTruthy()
 	})
@@ -142,7 +142,7 @@ describe('PasswordInput', () => {
 		)
 
 		const test =
-			container.querySelector('#test-password-input-hide-password-text') ||
+			container.querySelector('#test-password-input-hide-password-text') ??
 			container.querySelector('#test-password-input-show-password-text')
 		expect(test).toBeTruthy()
 	})

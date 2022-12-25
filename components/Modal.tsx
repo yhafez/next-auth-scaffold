@@ -1,5 +1,4 @@
 // Path: ./components/Modal.tsx
-
 import { Box, CircularProgress, Typography, useMediaQuery } from '@mui/material'
 import { ErrorOutline } from '@mui/icons-material'
 import { getContrast } from 'color2k'
@@ -16,27 +15,32 @@ export interface ModalProps {
 	small?: boolean
 }
 
-const Modal = ({
+export default function Modal({
 	children,
 	name,
 	onSubmit,
 	loading = false,
 	error = '',
 	small = false,
-}: ModalProps) => {
+}: ModalProps) {
 	const { darkMode, customPalette, theme } = useBoundStore()
 	const isSufficientContrast =
 		getContrast(
 			darkMode ? customPalette.primary.dark : customPalette.primary.light,
 			customPalette.error.light,
-		) >= 4.5
+		) >= 7
 
 	const formattedName = name.replace(/ /g, '-').toLowerCase()
 
 	const isMobile = useMediaQuery(`(max-width:${theme.breakpoints.values.sm}px)`)
 	const isDesktop = useMediaQuery(`(max-width:${theme.breakpoints.values.md}px)`)
 	const isLargeDesktop = useMediaQuery(`(max-width:${theme.breakpoints.values.lg}px)`)
-	const isExtraLargeDesktop = useMediaQuery(`(max-width:${theme.breakpoints.values.xl}px)`)
+	const isExtraLargeDesktop = useMediaQuery(`(min-width:${theme.breakpoints.values.lg}px)`)
+
+	const isSmall = useMediaQuery(`(max-height: 400px)`)
+	const isMedium = useMediaQuery(`(max-height: 500px)`)
+	const isLarge = useMediaQuery(`(max-height: 600px)`)
+	const isExtraLarge = useMediaQuery(`(max-height: 600px)`)
 
 	return (
 		<Box
@@ -44,7 +48,17 @@ const Modal = ({
 			sx={{
 				position: 'absolute',
 				mx: 'auto',
-				top: isMobile ? '0px' : '50%',
+				top: isMobile
+					? '0px'
+					: isSmall
+					? '90%'
+					: isMedium
+					? '80%'
+					: isLarge
+					? '70%'
+					: isExtraLarge
+					? '60%'
+					: '50%',
 				left: '50%',
 				transform: `translate(-50%, ${isMobile ? '0' : '-50%'})`,
 				minHeight: isMobile ? 'calc(100%)' : 'max-content',
@@ -55,19 +69,19 @@ const Modal = ({
 				alignItems: 'center',
 				textAlign: 'center',
 				gap: 2,
-				backgroundColor: darkMode ? 'primary.dark' : 'primary.light',
 				px: 2,
 				py: 8,
+				backgroundColor: darkMode ? 'primary.dark' : 'primary.light',
 				borderRadius: isMobile ? '0' : 2,
 				boxShadow: 1,
 				width: isMobile
 					? '100%'
 					: isDesktop
-					? '80%'
+					? '90%'
 					: isLargeDesktop
-					? '55%'
+					? '65%'
 					: isExtraLargeDesktop
-					? '40%'
+					? '50%'
 					: '100%',
 			}}
 		>
@@ -83,6 +97,7 @@ const Modal = ({
 							fontWeight: 600,
 							fontSize: isMobile ? '4rem' : '5rem',
 							lineHeight: 1,
+							mb: 2,
 						}}
 					>
 						{i === name.split(' ').length - 1 ? `${word}` : `${word} `}
@@ -98,7 +113,7 @@ const Modal = ({
 					gap: 1,
 					width: '100%',
 					height: small ? '15px' : '50px',
-					marginBottom: 1,
+					marginBottom: 2,
 				}}
 			>
 				{loading ? (
@@ -107,6 +122,8 @@ const Modal = ({
 						sx={{
 							color: darkMode ? 'primary.light' : 'primary.dark',
 						}}
+						role="img"
+						aria-label="loading spinner"
 					/>
 				) : (
 					error && (
@@ -117,7 +134,7 @@ const Modal = ({
 								justifyContent: 'center',
 								alignItems: 'center',
 								gap: 2,
-								width: '100%',
+								width: '75%',
 								height: '100%',
 							}}
 						>
@@ -130,6 +147,7 @@ const Modal = ({
 											: customPalette.error.dark
 										: 'primary.contrastText',
 								}}
+								role="img"
 								aria-label="error"
 							/>
 							<Typography
@@ -169,5 +187,3 @@ const Modal = ({
 		</Box>
 	)
 }
-
-export default Modal

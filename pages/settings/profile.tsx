@@ -1,42 +1,41 @@
 // Path: ./pages/settings.tsx
-
 import { useState, useEffect } from 'react'
 import { useSnackbar } from 'notistack'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
-import { useSession } from 'next-auth/react'
 import { Box, Button } from '@mui/material'
 import { useHydrated } from 'react-hydration-provider'
 
-import Modal from '../../components/Modal'
-import { Layout } from '../../components/Layout'
-import SettingsDrawer from '../../components/Drawers/SettingsDrawer'
-import EditableTextField from '../../components/EditableTextField'
-
+import { Modal, Layout, SettingsDrawer, EditableTextField } from '../../components'
 import { useBoundStore } from '../../store'
+import useToken from '../../hooks/useToken'
 
-export default function ProfileSettings() {
+export interface ProfileSettingsProps {
+	hydratedInit?: boolean
+}
+
+export default function ProfileSettings({ hydratedInit = false }: ProfileSettingsProps) {
 	const { user, darkMode } = useBoundStore()
-	const { data: session, status } = useSession()
 	const { enqueueSnackbar } = useSnackbar()
 	const router = useRouter()
 	const hydrated = useHydrated()
+	const { loading: tokenLoading, error: tokenError } = useToken()
 
 	const [name, setName] = useState(user?.name ?? '')
 	const [email, setEmail] = useState(user?.email ?? '')
 	const [password, setPassword] = useState('')
+	const [loading, setLoading] = useState(false)
 
 	useEffect(() => {
-		if (status === 'unauthenticated') {
-			enqueueSnackbar('You must be signed in to view this page', {
-				variant: 'error',
-				autoHideDuration: 3000,
-			})
-			router.push('/login')
-		}
-	}, [status, enqueueSnackbar, router])
+		if (tokenError) enqueueSnackbar(tokenError, { variant: 'error' })
+	}, [tokenError])
 
-	if (!hydrated) return null
+	useEffect(() => {
+		if (tokenLoading) setLoading(true)
+		else setLoading(false)
+	}, [tokenLoading])
+
+	if (!hydrated && !hydratedInit) return null
 
 	return (
 		<Box
@@ -53,7 +52,7 @@ export default function ProfileSettings() {
 				drawerChildren={<SettingsDrawer />}
 				pageTitle="profile settings"
 			>
-				<Modal name="profile settings" loading={false} error="">
+				<Modal name="profile settings" loading={loading} error="">
 					<Box
 						id="profile-settings-content"
 						sx={{
