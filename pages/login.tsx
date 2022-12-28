@@ -110,6 +110,7 @@ export default function Login({
 					handleEnter={e => {
 						if (e.key === 'Enter') handleLogin()
 					}}
+					required
 				/>
 
 				<PasswordInput
@@ -120,6 +121,7 @@ export default function Login({
 					handleEnter={e => {
 						if (e.key === 'Enter') handleLogin()
 					}}
+					required
 				/>
 
 				<ActionButtonsContainer name="login">

@@ -120,6 +120,7 @@ export default function Signup({
 					setValue={setEmail}
 					disabled={loading}
 					handleEnter={handleEnter}
+					required
 				/>
 				<ConfirmPasswordInput
 					name="signup"
@@ -129,6 +130,7 @@ export default function Signup({
 					setConfirmPassword={setConfirmPassword}
 					disabled={loading}
 					handleEnter={handleEnter}
+					isNewPassword
 				/>
 				<ActionButtonsContainer name="signup">
 					<SubmitButton

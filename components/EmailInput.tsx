@@ -10,6 +10,7 @@ export interface EmailInputProps {
 	setValue: Dispatch<SetStateAction<string>>
 	disabled?: boolean
 	handleEnter?: (e: KeyboardEvent) => void
+	required?: boolean
 }
 
 export default function EmailInput({
@@ -18,6 +19,7 @@ export default function EmailInput({
 	setValue,
 	handleEnter,
 	disabled = false,
+	required = false,
 }: EmailInputProps) {
 	const { darkMode } = useBoundStore()
 
@@ -31,6 +33,8 @@ export default function EmailInput({
 			onChange={e => setValue(e.target.value)}
 			onKeyDown={handleEnter}
 			disabled={disabled}
+			required={required}
+			autoComplete="email"
 			sx={{
 				color: 'primary.contrastText',
 				width: '80%',

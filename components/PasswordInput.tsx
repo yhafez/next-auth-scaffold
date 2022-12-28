@@ -12,6 +12,8 @@ export interface PasswordInputProps {
 	disabled: boolean
 	isConfirmPassword?: boolean
 	handleEnter?: (e: KeyboardEvent) => void
+	required?: boolean
+	isNewPassword?: boolean
 }
 
 export default function PasswordInput({
@@ -21,6 +23,8 @@ export default function PasswordInput({
 	disabled,
 	handleEnter,
 	isConfirmPassword = false,
+	required = false,
+	isNewPassword = false,
 }: PasswordInputProps) {
 	const formattedName = name.replace(/ /g, '-').toLowerCase()
 
@@ -37,6 +41,8 @@ export default function PasswordInput({
 			onChange={e => setValue(e.target.value)}
 			onKeyDown={handleEnter}
 			disabled={disabled}
+			required={required}
+			autoComplete={isNewPassword ? 'new-password' : 'current-password'}
 			sx={{
 				color: 'primary.contrastText',
 				width: '80%',
