@@ -18,6 +18,7 @@ exports[`EmailInput Should match snapshot 1`] = `
     >
       <input
         aria-invalid="false"
+        autocomplete="email"
         class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
         id="test-email-input"
         type="email"

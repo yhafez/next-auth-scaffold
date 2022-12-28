@@ -109,18 +109,21 @@ export default function ProfileSettings({ hydratedInit = false }: ProfileSetting
 							label="Name"
 							value={name}
 							setValue={setName}
+							autoComplete="name"
 						/>
 						<EditableTextField
 							name="profile-settings-email"
 							label="Email"
 							value={email}
 							setValue={setEmail}
+							autoComplete="email"
 						/>
 						<EditableTextField
 							name="profile-settings-password"
 							label="Password"
 							value={password}
 							setValue={setPassword}
+							autoComplete="new-password"
 						/>
 					</Box>
 				</Modal>

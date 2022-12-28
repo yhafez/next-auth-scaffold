@@ -137,6 +137,7 @@ export default function ResetPassword({
 						setConfirmPassword={setConfirmPassword}
 						disabled={loading || error !== ''}
 						handleEnter={handleEnter}
+						isNewPassword
 					/>
 				)}
 				<ActionButtonsContainer name="reset-password">

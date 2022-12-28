@@ -99,6 +99,7 @@ export default function ForgotPassword({
 					setValue={setEmail}
 					disabled={loading}
 					handleEnter={handleEnter}
+					required
 				/>
 				<ActionButtonsContainer name="forgot-password">
 					<SubmitButton

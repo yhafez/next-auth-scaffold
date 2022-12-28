@@ -11,6 +11,7 @@ export interface ConfirmPasswordInputProps {
 	setConfirmPassword: Dispatch<SetStateAction<string>>
 	disabled?: boolean
 	handleEnter?: (e: KeyboardEvent) => void
+	isNewPassword?: boolean
 }
 
 export default function ConfirmPasswordInput({
@@ -21,6 +22,7 @@ export default function ConfirmPasswordInput({
 	setConfirmPassword,
 	disabled = false,
 	handleEnter,
+	isNewPassword = false,
 }: ConfirmPasswordInputProps) {
 	return (
 		<>
@@ -30,6 +32,8 @@ export default function ConfirmPasswordInput({
 				setValue={setPassword}
 				disabled={disabled}
 				handleEnter={handleEnter}
+				isNewPassword={isNewPassword}
+				required
 			/>
 			<PasswordInput
 				name={`${name}`}
@@ -38,6 +42,8 @@ export default function ConfirmPasswordInput({
 				disabled={disabled}
 				isConfirmPassword={true}
 				handleEnter={handleEnter}
+				isNewPassword={isNewPassword}
+				required
 			/>
 		</>
 	)
