@@ -44,7 +44,6 @@ export default function VisibilityIconButton({
 		>
 			<Box
 				id={`${name}${isConfirmPassword ? '-confirm' : ''}-password-box`}
-				role="button"
 				sx={{
 					display: 'flex',
 					flexDirection: 'column',

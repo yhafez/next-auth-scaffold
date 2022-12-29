@@ -11,7 +11,6 @@ exports[`VisibilityIconButton Should match snapshot 1`] = `
     <div
       class="MuiBox-root css-erqh4x"
       id="test-password-box"
-      role="button"
     >
       <svg
         aria-hidden="true"
