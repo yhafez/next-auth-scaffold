@@ -422,6 +422,7 @@ exports[`Login Should match snapshot 1`] = `
                     <div
                       class="MuiBox-root css-erqh4x"
                       id="login-password-box"
+                      role="button"
                     >
                       <svg
                         aria-hidden="true"
@@ -430,7 +431,6 @@ exports[`Login Should match snapshot 1`] = `
                         data-testid="VisibilityOffIcon"
                         focusable="false"
                         id="login-password-input-visibility-off-icon"
-                        role="button"
                         viewBox="0 0 24 24"
                       >
                         <path

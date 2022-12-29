@@ -62,7 +62,7 @@ export default function MyApp(props: { Component: React.ElementType; pageProps: 
 										color="inherit"
 										onClick={() => snackbarRef.current?.closeSnackbar(key)}
 									>
-										<Close fontSize="small" id="snackbar-dismiss-icon" role="button" />
+										<Close fontSize="small" id="snackbar-dismiss-icon" role="img" />
 									</IconButton>
 								)}
 							>

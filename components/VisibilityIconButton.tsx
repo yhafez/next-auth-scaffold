@@ -44,6 +44,7 @@ export default function VisibilityIconButton({
 		>
 			<Box
 				id={`${name}${isConfirmPassword ? '-confirm' : ''}-password-box`}
+				role="button"
 				sx={{
 					display: 'flex',
 					flexDirection: 'column',
@@ -77,7 +78,6 @@ export default function VisibilityIconButton({
 								}),
 							}}
 							aria-label="hide password"
-							role="button"
 						>
 							Hide
 						</Typography>
@@ -96,7 +96,6 @@ export default function VisibilityIconButton({
 								}),
 							}}
 							aria-label="show password"
-							role="button"
 						/>
 						<Typography
 							id={`${name}${isConfirmPassword ? '-confirm' : ''}-password-input-show-password-text`}
