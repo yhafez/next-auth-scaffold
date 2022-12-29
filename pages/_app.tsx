@@ -58,16 +58,11 @@ export default function MyApp(props: { Component: React.ElementType; pageProps: 
 									<IconButton
 										id="snackbar-dismiss-button"
 										size="small"
-										aria-label="close snackbar"
+										aria-label="close snackbar button"
 										color="inherit"
 										onClick={() => snackbarRef.current?.closeSnackbar(key)}
 									>
-										<Close
-											fontSize="small"
-											id="snackbar-dismiss-icon"
-											role="button"
-											aria-label="close snackbar"
-										/>
+										<Close fontSize="small" id="snackbar-dismiss-icon" role="button" />
 									</IconButton>
 								)}
 							>

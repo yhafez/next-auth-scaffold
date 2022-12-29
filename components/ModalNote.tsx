@@ -27,7 +27,6 @@ export default function ModalNote({ name, label, href }: ModalNoteProps) {
 			<MuiLink
 				href={href}
 				title={label}
-				aria-label={label}
 				id={`${name}-modal-note-link`}
 				sx={{
 					'&:hover': {
