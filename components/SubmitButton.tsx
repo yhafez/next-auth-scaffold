@@ -52,7 +52,7 @@ export default function SubmitButton({
 						color: 'primary.contrastText',
 					}}
 					role="img"
-					aria-label="loading spinner"
+					aria-label="content loading"
 				/>
 			) : (
 				<Typography

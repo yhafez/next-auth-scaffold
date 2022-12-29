@@ -68,7 +68,7 @@ export default function Dashboard({ hydratedInit = false }: DashboardProps) {
 								color: 'primary.contrastText',
 							}}
 							role="img"
-							aria-label="loading spinner"
+							aria-label="content loading"
 						/>
 					</Box>
 				) : (

@@ -123,7 +123,7 @@ export default function Modal({
 							color: darkMode ? 'primary.light' : 'primary.dark',
 						}}
 						role="img"
-						aria-label="loading spinner"
+						aria-label="content loading"
 					/>
 				) : (
 					error && (
