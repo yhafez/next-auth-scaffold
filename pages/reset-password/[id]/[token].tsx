@@ -5,6 +5,24 @@ import { useRouter } from 'next/router'
 import { useSession, signOut } from 'next-auth/react'
 import { useSnackbar } from 'notistack'
 
+import { ErrorBase, FetchError } from '../../../errors'
+import {
+	passwordContainsNumber,
+	passwordContainsSpecialCharacter,
+	passwordContainsUppercase,
+	passwordContainsLowercase,
+	passwordMeetsMaxLengthRequirements,
+	passwordMeetsMinLengthRequirements,
+} from '../../../utils/helpers'
+
+type FormErrorName =
+	| 'MissingPassword'
+	| 'MissingConfirmPassword'
+	| 'PasswordsDoNotMatch'
+	| 'InvalidPassword'
+
+class FormError extends ErrorBase<FormErrorName> {}
+
 import {
 	Modal,
 	ConfirmPasswordInput,
@@ -22,12 +40,7 @@ export interface ResetPasswordProps {
 	hydratedInit?: boolean
 }
 
-const hideInputsErrorMessages = [
-	'Unauthenticated',
-	'Invalid token',
-	'Missing token or id',
-	'User does not exist',
-]
+const hideInputsErrorMessages = ['Unauthenticated', 'MissingPassword', 'MissingConfirmPassword']
 
 export default function ResetPassword({
 	errorInit = '',
@@ -47,22 +60,68 @@ export default function ResetPassword({
 	const [confirmPassword, setConfirmPassword] = useState(confirmPasswordInit)
 	const [error, setError] = useState(errorInit)
 	const [loading, setLoading] = useState(loadingInit)
+	const [showInputs, setShowInputs] = useState(false)
 
-	const handleResetPassword = () => {
-		if (password === '' || confirmPassword === '') {
-			enqueueSnackbar('Please enter your password', { variant: 'error', autoHideDuration: 3000 })
-			return
-		}
-
-		if (password !== confirmPassword) {
-			enqueueSnackbar('Passwords do not match', { variant: 'error', autoHideDuration: 3000 })
-			return
-		}
-
+	const handleResetPassword = async () => {
 		setLoading(true)
-
 		try {
-			fetch('/api/auth/reset-password', {
+			if (password === '') {
+				throw new FormError({
+					name: 'MissingPassword',
+					message: 'Please enter your password',
+					cause: null,
+				})
+			} else if (confirmPassword === '') {
+				throw new FormError({
+					name: 'MissingConfirmPassword',
+					message: 'Please confirm your password',
+					cause: null,
+				})
+			} else if (password !== confirmPassword) {
+				throw new FormError({
+					name: 'PasswordsDoNotMatch',
+					message: 'Passwords do not match',
+					cause: null,
+				})
+			} else if (!passwordMeetsMinLengthRequirements(password)) {
+				throw new FormError({
+					name: 'InvalidPassword',
+					message: 'Password must be at least 8 characters long',
+					cause: null,
+				})
+			} else if (!passwordMeetsMaxLengthRequirements(password)) {
+				throw new FormError({
+					name: 'InvalidPassword',
+					message: 'Password must be at most 48 characters long',
+					cause: null,
+				})
+			} else if (!passwordContainsNumber(password)) {
+				throw new FormError({
+					name: 'InvalidPassword',
+					message: 'Password must contain at least one number',
+					cause: null,
+				})
+			} else if (!passwordContainsSpecialCharacter(password)) {
+				throw new FormError({
+					name: 'InvalidPassword',
+					message: 'Password must contain at least one special character',
+					cause: null,
+				})
+			} else if (!passwordContainsUppercase(password)) {
+				throw new FormError({
+					name: 'InvalidPassword',
+					message: 'Password must contain at least one uppercase letter',
+					cause: null,
+				})
+			} else if (!passwordContainsLowercase(password)) {
+				throw new FormError({
+					name: 'InvalidPassword',
+					message: 'Password must contain at least one lowercase letter',
+					cause: null,
+				})
+			}
+
+			const res = await fetch('/api/auth/reset-password', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -72,29 +131,36 @@ export default function ResetPassword({
 					id,
 				}),
 			})
-				.then(res => res.json())
-				.then(data => {
-					if (data.error) {
-						enqueueSnackbar(data.error, { variant: 'error', autoHideDuration: 3000 })
-						setLoading(false)
-					} else {
-						enqueueSnackbar(data.message, { variant: 'success', autoHideDuration: 2000 })
-						setLoading(false)
-						router.push('/login')
-					}
+
+			const data = await res.json()
+			if (data.error) {
+				throw new FetchError({
+					name: 'FetchError',
+					message: 'An API error occurred while resetting your password',
+					cause: data.error,
 				})
-				.catch(e => {
-					throw new Error(e)
-				})
+			} else {
+				enqueueSnackbar(data.message, { variant: 'success', autoHideDuration: 2000 })
+				setLoading(false)
+				router.push('/login')
+			}
 		} catch (error) {
-			enqueueSnackbar(error.message, { variant: 'error', autoHideDuration: 3000 })
+			if (error instanceof FormError || error instanceof FetchError) {
+				setError(error.message)
+			} else {
+				setError('An unexpected error occurred while resetting your password')
+				console.error(error)
+			}
 			setLoading(false)
 		}
 	}
 
 	useEffect(() => {
-		if (!id || !token) setError('Unauthenticated')
-		else {
+		if (!id || !token) {
+			setError('Unauthenticated')
+			setShowInputs(false)
+		} else {
+			setLoading(true)
 			fetch('/api/auth/verify-token', {
 				method: 'POST',
 				headers: {
@@ -107,8 +173,27 @@ export default function ResetPassword({
 			})
 				.then(res => res.json())
 				.then(data => {
-					if (data.error) setError(data.error)
-					else setError('')
+					if (data.error) {
+						throw new FetchError({
+							name: 'FetchError',
+							message: 'An API error occurred while verifying your token',
+							cause: data.error,
+						})
+					} else {
+						setError('')
+						setLoading(false)
+						setShowInputs(true)
+					}
+				})
+				.catch(error => {
+					if (error instanceof FetchError) {
+						setError(error.message)
+					} else {
+						console.error(error)
+						setError('An unexpected error occurred while verifying your token')
+					}
+					setShowInputs(false)
+					setLoading(false)
 				})
 		}
 	}, [id, token])
@@ -128,7 +213,7 @@ export default function ResetPassword({
 	return (
 		<Layout name="reset-password" pageTitle="reset password">
 			<Modal name="reset password" onSubmit={handleResetPassword} loading={loading} error={error}>
-				{hideInputsErrorMessages.includes(error) ? null : (
+				{showInputs && (
 					<ConfirmPasswordInput
 						name="reset-password"
 						password={password}
@@ -146,7 +231,7 @@ export default function ResetPassword({
 						label="Back to Login"
 						handleClick={() => router.push('/login')}
 					/>
-					{hideInputsErrorMessages.includes(error) ? null : (
+					{showInputs && (
 						<SubmitButton
 							name="reset-password"
 							handleSubmit={handleResetPassword}

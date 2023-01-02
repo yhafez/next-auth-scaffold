@@ -5,7 +5,9 @@ import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { useSnackbar } from 'notistack'
 import { Box, Checkbox, Typography } from '@mui/material'
+
 import { ErrorBase, handleSignInError, SignInError, TokenError } from '../errors'
+import { isValidEmail } from '../utils/helpers'
 
 type FormErrorName =
 	| 'EmailRequired'
@@ -60,6 +62,14 @@ export default function Login({
 	const [remember, setRemember] = useState(rememberInit)
 	const [loading, setLoading] = useState(loadingInit)
 	const [error, setError] = useState(errorInit)
+	const [emailError, setEmailError] = useState('')
+
+	const handleEmailBlur = useCallback(() => {
+		if (email === '') setEmailError('')
+		else if (!email.includes('@') || !email.includes('.') || !isValidEmail(email))
+			setEmailError('Please enter a valid email')
+		else setEmailError('')
+	}, [email])
 
 	useEffect(() => {
 		if (localStorage.getItem('email')) setEmail(localStorage.getItem('email') as string)
@@ -141,9 +151,18 @@ export default function Login({
 					setValue={setEmail}
 					disabled={loading}
 					handleEnter={e => {
-						if (e.key === 'Enter') handleLogin()
+						if (
+							e.key === 'Enter' &&
+							!loading &&
+							emailError === '' &&
+							email !== '' &&
+							password !== ''
+						)
+							handleLogin()
 					}}
 					required
+					error={emailError}
+					handleBlur={handleEmailBlur}
 				/>
 
 				<PasswordInput
@@ -152,7 +171,14 @@ export default function Login({
 					setValue={setPassword}
 					disabled={loading}
 					handleEnter={e => {
-						if (e.key === 'Enter') handleLogin()
+						if (
+							e.key === 'Enter' &&
+							!loading &&
+							emailError === '' &&
+							email !== '' &&
+							password !== ''
+						)
+							handleLogin()
 					}}
 					required
 				/>
@@ -164,7 +190,13 @@ export default function Login({
 						handleClick={() => router.push('/signup')}
 					/>
 
-					<SubmitButton name="login" label="Log in" loading={loading} handleSubmit={handleLogin} />
+					<SubmitButton
+						name="login"
+						label="Log in"
+						loading={loading}
+						handleSubmit={handleLogin}
+						disabled={loading || emailError !== '' || email === '' || password === ''}
+					/>
 				</ActionButtonsContainer>
 				<Box
 					id="login-forgot-password-container"
