@@ -1,5 +1,13 @@
 // Path: ./components/ConfirmPasswordInput.tsx
-import { Dispatch, SetStateAction, KeyboardEvent } from 'react'
+import { Dispatch, SetStateAction, KeyboardEvent, useState } from 'react'
+import {
+	passwordContainsLowercase,
+	passwordContainsNumber,
+	passwordContainsSpecialCharacter,
+	passwordContainsUppercase,
+	passwordMeetsMaxLengthRequirements,
+	passwordMeetsMinLengthRequirements,
+} from '../utils/helpers'
 
 import PasswordInput from './PasswordInput'
 
@@ -12,6 +20,10 @@ export interface ConfirmPasswordInputProps {
 	disabled?: boolean
 	handleEnter?: (e: KeyboardEvent) => void
 	isNewPassword?: boolean
+	passwordError?: string
+	confirmPasswordError?: string
+	handlePasswordBlur?: () => void
+	handleConfirmPasswordBlur?: () => void
 }
 
 export default function ConfirmPasswordInput({
@@ -21,8 +33,12 @@ export default function ConfirmPasswordInput({
 	confirmPassword,
 	setConfirmPassword,
 	disabled = false,
-	handleEnter,
+	handleEnter = () => {},
 	isNewPassword = false,
+	passwordError = '',
+	confirmPasswordError = '',
+	handlePasswordBlur = () => {},
+	handleConfirmPasswordBlur = () => {},
 }: ConfirmPasswordInputProps) {
 	return (
 		<>
@@ -33,6 +49,9 @@ export default function ConfirmPasswordInput({
 				disabled={disabled}
 				handleEnter={handleEnter}
 				isNewPassword={isNewPassword}
+				error={!!passwordError}
+				helperText={passwordError}
+				handleBlur={handlePasswordBlur}
 				required
 			/>
 			<PasswordInput
@@ -43,6 +62,9 @@ export default function ConfirmPasswordInput({
 				isConfirmPassword={true}
 				handleEnter={handleEnter}
 				isNewPassword={isNewPassword}
+				error={!!confirmPasswordError}
+				helperText={confirmPasswordError}
+				handleBlur={handleConfirmPasswordBlur}
 				required
 			/>
 		</>

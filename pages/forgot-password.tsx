@@ -1,8 +1,12 @@
 // Path: ./pages/forgot-password.tsx
 import { useState, useEffect, KeyboardEvent } from 'react'
-import { useRouter } from 'next/router'
 import { useSnackbar } from 'notistack'
 import { useHydrated } from 'react-hydration-provider'
+import { ErrorBase, FetchError } from '../errors'
+
+type FormErrorName = 'EmailRequired' | 'EmailInvalid' | 'UnknownError'
+
+class FormError extends ErrorBase<FormErrorName> {}
 
 import {
 	Modal,
@@ -29,7 +33,6 @@ export default function ForgotPassword({
 }: ForgotPasswordProps) {
 	const { enqueueSnackbar } = useSnackbar()
 	const hydrated = useHydrated()
-	const router = useRouter()
 	const { loading: tokenLoading, error: tokenError } = useToken()
 
 	const [email, setEmail] = useState(emailInit)
@@ -46,13 +49,16 @@ export default function ForgotPassword({
 	}, [tokenLoading])
 
 	const handleForgotPassword = () => {
-		if (email === '') {
-			enqueueSnackbar('Please enter your email', { variant: 'error', autoHideDuration: 3000 })
-			return
-		}
-
 		setLoading(true)
 		try {
+			if (email === '') {
+				throw new FormError({
+					name: 'EmailRequired',
+					message: 'Please enter your email',
+					cause: null,
+				})
+			}
+
 			fetch('/api/auth/forgot-password', {
 				method: 'POST',
 				headers: {
@@ -65,20 +71,33 @@ export default function ForgotPassword({
 				.then(res => res.json())
 				.then(data => {
 					if (data.error) {
-						setError(data.error)
-						enqueueSnackbar(data.error, { variant: 'error', autoHideDuration: 3000 })
-						return setLoading(false)
+						throw new FetchError({
+							name: 'FetchError',
+							message: 'There was an API error while trying to reset your password',
+							cause: data.error,
+						})
 					} else {
 						enqueueSnackbar(data.message, { variant: 'success', autoHideDuration: 2000 })
 						return setLoading(false)
 					}
 				})
 				.catch(e => {
-					setError(e.message)
-					return setLoading(false)
+					throw new FetchError({
+						name: 'ServerError',
+						message: 'There was an API error while trying to reset your password',
+						cause: e.message,
+					})
 				})
 		} catch (error) {
-			setError(error?.message)
+			if (error instanceof FormError || error instanceof FetchError) {
+				enqueueSnackbar(error.message, { variant: 'error', autoHideDuration: 3000 })
+				setError(error.message)
+			} else {
+				enqueueSnackbar('An unknown error occurred', { variant: 'error', autoHideDuration: 3000 })
+				setError('An unknown error occurred')
+				console.error(error)
+			}
+			return setLoading(false)
 		}
 	}
 

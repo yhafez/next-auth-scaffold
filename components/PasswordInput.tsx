@@ -1,6 +1,7 @@
 // Path: ./components/PasswordInput.tsx
 import { useState, Dispatch, SetStateAction, KeyboardEvent } from 'react'
-import { TextField } from '@mui/material'
+import { Box, TextField, Typography } from '@mui/material'
+import { ErrorOutline } from '@mui/icons-material'
 
 import { VisibilityIconButton } from '.'
 import { useBoundStore } from '../store'
@@ -10,10 +11,13 @@ export interface PasswordInputProps {
 	value: string
 	setValue: Dispatch<SetStateAction<string>>
 	disabled: boolean
+	error?: boolean
+	helperText?: string
 	isConfirmPassword?: boolean
 	handleEnter?: (e: KeyboardEvent) => void
 	required?: boolean
 	isNewPassword?: boolean
+	handleBlur?: () => void
 }
 
 export default function PasswordInput({
@@ -22,9 +26,12 @@ export default function PasswordInput({
 	setValue,
 	disabled,
 	handleEnter,
+	error = false,
+	helperText = '',
 	isConfirmPassword = false,
 	required = false,
 	isNewPassword = false,
+	handleBlur = () => {},
 }: PasswordInputProps) {
 	const formattedName = name.replace(/ /g, '-').toLowerCase()
 
@@ -35,6 +42,21 @@ export default function PasswordInput({
 		<TextField
 			id={`${formattedName}${isConfirmPassword ? '-confirm' : ''}-password-input`}
 			label={isConfirmPassword ? 'Confirm Password' : 'Password'}
+			aria-label={
+				isConfirmPassword
+					? required
+						? 'Confirm Password (required)'
+						: 'Confirm Password'
+					: required
+					? 'Password (required)'
+					: 'Password'
+			}
+			aria-describedby={
+				error
+					? `${formattedName}${isConfirmPassword ? '-confirm' : ''}-password-helper-text`
+					: undefined
+			}
+			autoComplete={isNewPassword ? 'new-password' : 'current-password'}
 			variant="outlined"
 			type={showPassword ? 'text' : 'password'}
 			value={value}
@@ -42,27 +64,75 @@ export default function PasswordInput({
 			onKeyDown={handleEnter}
 			disabled={disabled}
 			required={required}
-			autoComplete={isNewPassword ? 'new-password' : 'current-password'}
+			error={error}
+			onBlur={handleBlur}
+			helperText={!!error && `Error: ${helperText}`}
+			FormHelperTextProps={{
+				id: `${formattedName}${isConfirmPassword ? '-confirm' : ''}-password-helper-text`,
+				style: { marginLeft: 0 },
+			}}
 			sx={{
 				color: 'primary.contrastText',
 				width: '80%',
 				marginBottom: 1,
 				cursor: disabled ? 'not-allowed' : 'text',
 				'& .MuiOutlinedInput-root': {
+					'&.Mui-error': {
+						borderColor: darkMode ? 'error.dark' : 'error.light',
+					},
+					'&.Mui-disabled': {
+						borderColor: 'lightGray',
+					},
+					'&.Mui-focused': {
+						borderColor: 'primary.contrastText',
+					},
+					'&:hover': {
+						borderColor: 'primary.contrastText',
+					},
 					'& fieldset': {
 						borderColor: 'primary.contrastText',
+
+						'&.Mui-error': {
+							borderColor: darkMode ? 'error.dark' : 'error.light',
+						},
+
+						'&.Mui-disabled': {
+							borderColor: 'lightGray',
+						},
+
+						'&.Mui-focused': {
+							borderColor: 'primary.contrastText',
+						},
+
+						'&:hover': {
+							borderColor: 'primary.contrastText',
+						},
 					},
 				},
 				'& .MuiFormLabel-root': {
-					color: 'primary.contrastText',
+					color: error ? (darkMode ? 'error.dark' : 'error.light') : 'primary.contrastText',
+
+					'&.Mui-focused': {
+						color: error ? (darkMode ? 'error.dark' : 'error.light') : 'primary.contrastText',
+					},
+
+					'&.Mui-error': {
+						color: darkMode ? 'error.dark' : 'error.light',
+					},
+
+					'&.Mui-disabled': {
+						color: 'lightGray',
+					},
 				},
 				'& .MuiInputBase-input': {
 					color: 'primary.contrastText',
 				},
 				'&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+					border: '2px solid',
 					borderColor: 'primary.contrastText',
 				},
 				'&.Mui-focused .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+					border: '2px solid',
 					borderColor: 'primary.contrastText',
 				},
 				'& .Mui-disabled': {
@@ -74,6 +144,26 @@ export default function PasswordInput({
 					'&:hover .MuiOutlinedInput-notchedOutline': {
 						borderColor: darkMode ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 0, 0, 0.5)',
 					},
+				},
+
+				'& .MuiOutlinedInput-root.Mui-error .MuiOutlinedInput-notchedOutline': {
+					borderColor: darkMode ? 'error.dark' : 'error.light',
+				},
+
+				'&:hover .MuiOutlinedInput-root.Mui-error .MuiOutlinedInput-notchedOutline': {
+					borderColor: darkMode ? 'error.dark' : 'error.light',
+				},
+
+				'& .MuiOutlinedInput-root.Mui-error.Mui-focused .MuiOutlinedInput-notchedOutline': {
+					borderColor: darkMode ? 'error.dark' : 'error.light',
+				},
+
+				'& .MuiFormHelperText-root': {
+					color: error ? (darkMode ? 'error.dark' : 'error.light') : 'primary.contrastText',
+				},
+
+				'& .MuiOutlinedInput-root.Mui-disabled .MuiOutlinedInput-notchedOutline': {
+					borderColor: darkMode ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 0, 0, 0.5)',
 				},
 			}}
 			InputProps={{

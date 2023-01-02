@@ -5,6 +5,19 @@ import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { useSnackbar } from 'notistack'
 import { Box, Checkbox, Typography } from '@mui/material'
+import { ErrorBase, handleSignInError, SignInError, TokenError } from '../errors'
+
+type FormErrorName =
+	| 'EmailRequired'
+	| 'PasswordRequired'
+	| 'EmailAndPasswordRequired'
+	| 'EmailInvalid'
+	| 'PasswordInvalid'
+	| 'EmailNotFound'
+	| 'PasswordIncorrect'
+	| 'Unknown'
+
+class FormError extends ErrorBase<FormErrorName> {}
 
 import {
 	Modal,
@@ -65,34 +78,54 @@ export default function Login({
 		setError('')
 		setLoading(true)
 
-		if (email === '' || password === '') {
-			setError('Please fill in all fields')
-			return setLoading(false)
-		}
-
 		if (remember) localStorage.setItem('email', email)
 		else localStorage.removeItem('email')
 
 		try {
+			if (email === '' && password === '') {
+				throw new FormError({
+					name: 'EmailAndPasswordRequired',
+					message: 'Please fill in email and password fields',
+					cause: null,
+				})
+			} else if (email === '') {
+				throw new FormError({
+					name: 'EmailRequired',
+					message: 'Please fill in email field',
+					cause: null,
+				})
+			} else if (password === '') {
+				throw new FormError({
+					name: 'PasswordRequired',
+					message: 'Please fill in password field',
+					cause: null,
+				})
+			}
+
 			const res = await signIn('credentials', {
 				redirect: false,
 				username: email,
 				password,
 			})
-			if (res?.error) {
-				setError(res.error)
-				return setLoading(false)
-			}
+			if (res?.error) handleSignInError(res.error)
+
 			const token = await getToken()
 			if (token) {
 				enqueueSnackbar('Logged in successfully', { variant: 'success', autoHideDuration: 3000 })
 				return router.push('/')
 			}
-
-			setError('There was an error logging in')
-			return setLoading(false)
-		} catch (err) {
-			setError(`There was an error signing in: ${err}`)
+			throw new TokenError({
+				name: 'TokenError',
+				message: 'There was an error getting your token',
+				cause: null,
+			})
+		} catch (error) {
+			if (error instanceof FormError || error instanceof SignInError) {
+				setError(error.message)
+			} else {
+				setError('There was an unknown error logging in. Please try again later.')
+				console.error(error)
+			}
 			return setLoading(false)
 		}
 	}

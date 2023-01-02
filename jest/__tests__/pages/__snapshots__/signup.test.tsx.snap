@@ -338,7 +338,9 @@ exports[`Signup Should match snapshot 1`] = `
               role="form"
             >
               <div
-                class="MuiFormControl-root MuiTextField-root css-8v3hey-MuiFormControl-root-MuiTextField-root"
+                aria-describedby="signup-email-helper-text"
+                aria-label="Email (required)"
+                class="MuiFormControl-root MuiTextField-root css-1488pbk-MuiFormControl-root-MuiTextField-root"
               >
                 <label
                   class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary Mui-required MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-7yavjh-MuiFormLabel-root-MuiInputLabel-root"
@@ -384,7 +386,8 @@ exports[`Signup Should match snapshot 1`] = `
                 </div>
               </div>
               <div
-                class="MuiFormControl-root MuiTextField-root css-8v3hey-MuiFormControl-root-MuiTextField-root"
+                aria-label="Password (required)"
+                class="MuiFormControl-root MuiTextField-root css-1488pbk-MuiFormControl-root-MuiTextField-root"
               >
                 <label
                   class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary Mui-required MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-7yavjh-MuiFormLabel-root-MuiInputLabel-root"
@@ -464,7 +467,8 @@ exports[`Signup Should match snapshot 1`] = `
                 </div>
               </div>
               <div
-                class="MuiFormControl-root MuiTextField-root css-8v3hey-MuiFormControl-root-MuiTextField-root"
+                aria-label="Confirm Password (required)"
+                class="MuiFormControl-root MuiTextField-root css-1488pbk-MuiFormControl-root-MuiTextField-root"
               >
                 <label
                   class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary Mui-required MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-7yavjh-MuiFormLabel-root-MuiInputLabel-root"
@@ -548,20 +552,18 @@ exports[`Signup Should match snapshot 1`] = `
                 id="signup-buttons-container"
               >
                 <button
-                  class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1bu79mp-MuiButtonBase-root-MuiButton-root"
+                  class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium Mui-disabled MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1bu79mp-MuiButtonBase-root-MuiButton-root"
+                  disabled=""
                   id="signup-submit-button"
-                  tabindex="0"
+                  tabindex="-1"
                   type="button"
                 >
                   <span
-                    class="MuiTypography-root MuiTypography-button css-11gc47n-MuiTypography-root"
+                    class="MuiTypography-root MuiTypography-button css-1rchnju-MuiTypography-root"
                     id="signup-submit-button-text"
                   >
                     Sign Up
                   </span>
-                  <span
-                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                  />
                 </button>
               </div>
               <div
