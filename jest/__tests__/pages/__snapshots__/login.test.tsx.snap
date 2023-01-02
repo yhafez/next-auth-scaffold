@@ -547,7 +547,7 @@ exports[`Login Should match snapshot 1`] = `
                 id="login-forgot-password-modal-note-container"
               >
                 <a
-                  class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1ptl0h6-MuiTypography-root-MuiLink-root"
+                  class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-lulsom-MuiTypography-root-MuiLink-root"
                   href="/forgot-password"
                   id="login-forgot-password-modal-note-link"
                   title="Forgot password?"

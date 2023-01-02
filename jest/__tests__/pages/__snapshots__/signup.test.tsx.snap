@@ -571,7 +571,7 @@ exports[`Signup Should match snapshot 1`] = `
                 id="signup-login-modal-note-container"
               >
                 <a
-                  class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1ptl0h6-MuiTypography-root-MuiLink-root"
+                  class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-lulsom-MuiTypography-root-MuiLink-root"
                   href="/login"
                   id="signup-login-modal-note-link"
                   title="Already have an account? Log in"
