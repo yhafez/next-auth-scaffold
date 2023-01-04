@@ -1,5 +1,5 @@
 // Path: pages/login.tsx
-import { useEffect, useState, useCallback, use } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { useHydrated } from 'react-hydration-provider'
 import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/router'
@@ -72,7 +72,7 @@ export default function Login({
 	}, [email])
 
 	useEffect(() => {
-		if (localStorage.getItem('email')) setEmail(localStorage.getItem('email') as string)
+		if (localStorage.getItem('email')) setEmail(localStorage.getItem('email')!)
 	}, [])
 
 	useEffect(() => {

@@ -18,7 +18,7 @@ export default function Dashboard({ hydratedInit = false }: DashboardProps) {
 	const { darkMode, user } = useBoundStore()
 	const router = useRouter()
 	const { enqueueSnackbar } = useSnackbar()
-	const { data: _session, status } = useSession()
+	const { data: _session } = useSession()
 	const hydrated = useHydrated()
 	const { loading: tokenLoading, error: tokenError } = useToken()
 

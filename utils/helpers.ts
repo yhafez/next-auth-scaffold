@@ -52,7 +52,7 @@ export const getContrastColor = (color: string) =>
 		: 'white'
 
 export const getSecondaryColor = (color: string) => {
-	const cc = color.charAt(0) === '#' ? color.substring(1, 7) : color
+	const cc = color.startsWith('#') ? color.substring(1, 7) : color
 	const c = parseInt(cc, 16)
 	const r = c >> 16
 	const b = (c >> 8) & 0x00ff

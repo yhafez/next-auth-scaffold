@@ -100,17 +100,7 @@ const withMuiTheme = (Story, context) => {
 							horizontal: 'right',
 						}}
 						preventDuplicate
-						action={key => (
-							<IconButton
-								id="snackbar-dismiss-button"
-								size="small"
-								aria-label="close snackbar"
-								color="inherit"
-								onClick={() => snackbarRef.current?.closeSnackbar(key)}
-							>
-								<Close fontSize="small" role="img" />
-							</IconButton>
-						)}
+						autoHideDuration={3000}
 					>
 						<Box
 							sx={{

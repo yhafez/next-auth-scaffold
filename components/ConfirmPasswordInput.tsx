@@ -1,13 +1,5 @@
 // Path: ./components/ConfirmPasswordInput.tsx
-import { Dispatch, SetStateAction, KeyboardEvent, useState } from 'react'
-import {
-	passwordContainsLowercase,
-	passwordContainsNumber,
-	passwordContainsSpecialCharacter,
-	passwordContainsUppercase,
-	passwordMeetsMaxLengthRequirements,
-	passwordMeetsMinLengthRequirements,
-} from '../utils/helpers'
+import { Dispatch, SetStateAction, KeyboardEvent } from 'react'
 
 import PasswordInput from './PasswordInput'
 
@@ -49,8 +41,8 @@ export default function ConfirmPasswordInput({
 				disabled={disabled}
 				handleEnter={handleEnter}
 				isNewPassword={isNewPassword}
-				error={!!passwordError}
-				helperText={passwordError}
+				error={disabled ? false : !!passwordError}
+				helperText={disabled ? '' : passwordError}
 				handleBlur={handlePasswordBlur}
 				required
 			/>
@@ -62,8 +54,8 @@ export default function ConfirmPasswordInput({
 				isConfirmPassword={true}
 				handleEnter={handleEnter}
 				isNewPassword={isNewPassword}
-				error={!!confirmPasswordError}
-				helperText={confirmPasswordError}
+				error={disabled ? false : !!confirmPasswordError}
+				helperText={disabled ? '' : confirmPasswordError}
 				handleBlur={handleConfirmPasswordBlur}
 				required
 			/>

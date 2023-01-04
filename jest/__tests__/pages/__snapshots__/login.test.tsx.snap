@@ -335,12 +335,9 @@ exports[`Login Should match snapshot 1`] = `
             <form
               class="MuiBox-root css-xo10vp"
               id="login-modal-form"
-              role="form"
             >
               <div
-                aria-describedby="login-email-helper-text"
-                aria-label="Email (required)"
-                class="MuiFormControl-root MuiTextField-root css-1488pbk-MuiFormControl-root-MuiTextField-root"
+                class="MuiFormControl-root MuiTextField-root css-59h08t-MuiFormControl-root-MuiTextField-root"
               >
                 <label
                   class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary Mui-required MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-7yavjh-MuiFormLabel-root-MuiInputLabel-root"
@@ -386,8 +383,7 @@ exports[`Login Should match snapshot 1`] = `
                 </div>
               </div>
               <div
-                aria-label="Password (required)"
-                class="MuiFormControl-root MuiTextField-root css-1488pbk-MuiFormControl-root-MuiTextField-root"
+                class="MuiFormControl-root MuiTextField-root css-59h08t-MuiFormControl-root-MuiTextField-root"
               >
                 <label
                   class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary Mui-required MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-7yavjh-MuiFormLabel-root-MuiInputLabel-root"

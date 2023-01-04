@@ -33,7 +33,7 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
 		const hash = crypto
 			.pbkdf2Sync(password, user.salt as BinaryLike, 1000, 64, 'sha512')
 			.toString('hex')
-		if (hash !== user?.password) {
+		if (hash !== user.password) {
 			return res.json({
 				error: 'Incorrect password',
 			})

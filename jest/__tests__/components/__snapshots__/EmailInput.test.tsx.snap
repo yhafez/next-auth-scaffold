@@ -3,9 +3,7 @@
 exports[`EmailInput Should match snapshot 1`] = `
 <div>
   <div
-    aria-describedby="test-email-helper-text"
-    aria-label="Email (required)"
-    class="MuiFormControl-root MuiTextField-root css-1s8pmse-MuiFormControl-root-MuiTextField-root"
+    class="MuiFormControl-root MuiTextField-root css-my3kt1-MuiFormControl-root-MuiTextField-root"
   >
     <label
       class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined css-1sumxir-MuiFormLabel-root-MuiInputLabel-root"

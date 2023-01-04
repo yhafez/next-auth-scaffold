@@ -41,6 +41,11 @@ export default {
 				disable: true,
 			},
 		},
+		handleBlur: {
+			table: {
+				disable: true,
+			},
+		},
 	},
 	decorators: [
 		Story => (

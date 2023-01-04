@@ -1,7 +1,6 @@
 // Path: ./pages/settings.tsx
 import { useState, useEffect } from 'react'
 import { useSnackbar } from 'notistack'
-import { useRouter } from 'next/router'
 import { Box } from '@mui/material'
 import { useHydrated } from 'react-hydration-provider'
 
@@ -16,7 +15,6 @@ export default function AccessibilitySettings({
 	hydratedInit = false,
 }: AccessibilitySettingsProps) {
 	const { enqueueSnackbar } = useSnackbar()
-	const router = useRouter()
 	const hydrated = useHydrated()
 	const { loading: tokenLoading, error: tokenError } = useToken()
 

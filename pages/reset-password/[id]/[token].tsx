@@ -40,8 +40,6 @@ export interface ResetPasswordProps {
 	hydratedInit?: boolean
 }
 
-const hideInputsErrorMessages = ['Unauthenticated', 'MissingPassword', 'MissingConfirmPassword']
-
 export default function ResetPassword({
 	errorInit = '',
 	passwordInit = '',

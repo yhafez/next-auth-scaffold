@@ -34,8 +34,8 @@ export default function useToken(errorInit?: string, loadingInit?: boolean) {
 					})
 				}
 				throw new TokenError({
-					name: 'Token',
-					message: 'There was an error getting the token from the token',
+					name: 'TokenError',
+					message: 'There was an API error getting the token',
 					cause: null,
 				})
 			}
@@ -60,16 +60,8 @@ export default function useToken(errorInit?: string, loadingInit?: boolean) {
 
 	useEffect(() => {
 		if (status === 'authenticated') {
-			if (session?.token && session.token?.user) {
-				setUser(session.token.user)
-				if (dashboardRedirectRoutes.includes(router.pathname)) router.push('/')
-			} else {
-				getToken().then(data => {
-					if (data) {
-						if (dashboardRedirectRoutes.includes(router.pathname)) router.push('/')
-					}
-				})
-			}
+			setUser(session.token.user)
+			if (dashboardRedirectRoutes.includes(router.pathname)) router.push('/')
 		}
 	}, [status, session, getToken])
 

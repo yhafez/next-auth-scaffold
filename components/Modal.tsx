@@ -172,7 +172,6 @@ export default function Modal({
 				id={`${formattedName}-modal-form`}
 				component={onSubmit ? 'form' : 'div'}
 				onSubmit={onSubmit ? onSubmit : undefined}
-				role={onSubmit ? 'form' : undefined}
 				sx={{
 					display: 'flex',
 					flexDirection: 'column',

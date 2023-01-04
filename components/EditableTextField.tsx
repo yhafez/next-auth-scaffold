@@ -41,11 +41,11 @@ export default function EditableTextField({
 				'& .MuiInputBase-input': {
 					color: 'primary.contrastText',
 					WebkitTextFillColor: darkMode ? 'white' : 'black',
-				},
 
-				'& .MuiInputBase-input:disabled': {
-					color: darkMode ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 0, 0, 0.5)',
-					WebkitTextFillColor: darkMode ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 0, 0, 0.5)',
+					'&:disabled': {
+						color: darkMode ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.7)',
+						WebkitTextFillColor: darkMode ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.7)',
+					},
 				},
 
 				'& .MuiFormLabel-root': {

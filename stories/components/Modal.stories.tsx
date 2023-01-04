@@ -41,6 +41,11 @@ export default {
 				type: 'boolean',
 			},
 		},
+		onSubmit: {
+			table: {
+				disable: true,
+			},
+		},
 	},
 } as Meta
 

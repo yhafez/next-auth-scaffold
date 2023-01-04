@@ -31,13 +31,13 @@ export const authOptions = {
 							message: 'Missing username and password',
 							cause: null,
 						})
-					} else if (!credentials?.username) {
+					} else if (!credentials.username) {
 						throw new AuthorizationError({
 							name: 'MissingEmailError',
 							message: 'Missing email',
 							cause: null,
 						})
-					} else if (!credentials?.password) {
+					} else if (!credentials.password) {
 						throw new AuthorizationError({
 							name: 'MissingPasswordError',
 							message: 'Missing password',

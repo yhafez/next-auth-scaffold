@@ -1,7 +1,6 @@
 // Path: ./components/PasswordInput.tsx
 import { useState, Dispatch, SetStateAction, KeyboardEvent } from 'react'
-import { Box, TextField, Typography } from '@mui/material'
-import { ErrorOutline } from '@mui/icons-material'
+import { TextField } from '@mui/material'
 
 import { VisibilityIconButton } from '.'
 import { useBoundStore } from '../store'
@@ -42,15 +41,6 @@ export default function PasswordInput({
 		<TextField
 			id={`${formattedName}${isConfirmPassword ? '-confirm' : ''}-password-input`}
 			label={isConfirmPassword ? 'Confirm Password' : 'Password'}
-			aria-label={
-				isConfirmPassword
-					? required
-						? 'Confirm Password (required)'
-						: 'Confirm Password'
-					: required
-					? 'Password (required)'
-					: 'Password'
-			}
 			aria-describedby={
 				error
 					? `${formattedName}${isConfirmPassword ? '-confirm' : ''}-password-helper-text`
@@ -64,9 +54,9 @@ export default function PasswordInput({
 			onKeyDown={handleEnter}
 			disabled={disabled}
 			required={required}
-			error={error}
+			error={disabled ? false : error}
 			onBlur={handleBlur}
-			helperText={!!error && `Error: ${helperText}`}
+			helperText={disabled ? '' : !!error && `Error: ${helperText}`}
 			FormHelperTextProps={{
 				id: `${formattedName}${isConfirmPassword ? '-confirm' : ''}-password-helper-text`,
 				style: { marginLeft: 0 },
@@ -83,10 +73,7 @@ export default function PasswordInput({
 					'&.Mui-disabled': {
 						borderColor: 'lightGray',
 					},
-					'&.Mui-focused': {
-						borderColor: 'primary.contrastText',
-					},
-					'&:hover': {
+					'&.Mui-focused &:hover &:selected &:active': {
 						borderColor: 'primary.contrastText',
 					},
 					'& fieldset': {
@@ -100,11 +87,7 @@ export default function PasswordInput({
 							borderColor: 'lightGray',
 						},
 
-						'&.Mui-focused': {
-							borderColor: 'primary.contrastText',
-						},
-
-						'&:hover': {
+						'&.Mui-focused &:hover &:selected &:active': {
 							borderColor: 'primary.contrastText',
 						},
 					},
@@ -142,6 +125,7 @@ export default function PasswordInput({
 						borderColor: darkMode ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 0, 0, 0.5)',
 					},
 					'&:hover .MuiOutlinedInput-notchedOutline': {
+						border: '1px solid',
 						borderColor: darkMode ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 0, 0, 0.5)',
 					},
 				},
@@ -151,10 +135,6 @@ export default function PasswordInput({
 				},
 
 				'&:hover .MuiOutlinedInput-root.Mui-error .MuiOutlinedInput-notchedOutline': {
-					borderColor: darkMode ? 'error.dark' : 'error.light',
-				},
-
-				'& .MuiOutlinedInput-root.Mui-error.Mui-focused .MuiOutlinedInput-notchedOutline': {
 					borderColor: darkMode ? 'error.dark' : 'error.light',
 				},
 

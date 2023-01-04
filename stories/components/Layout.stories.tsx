@@ -21,6 +21,11 @@ const LayoutStory = {
 				disable: true,
 			},
 		},
+		pageTitle: {
+			table: {
+				disable: true,
+			},
+		},
 		drawerChildren: {
 			table: {
 				disable: true,

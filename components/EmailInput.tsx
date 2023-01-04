@@ -1,10 +1,7 @@
 // Path: ./components/EmailInput.tsx
-import { Dispatch, SetStateAction, KeyboardEvent, useState, useEffect } from 'react'
-import { Box, TextField, Typography } from '@mui/material'
-import { ErrorOutline } from '@mui/icons-material'
-import { getContrast } from 'color2k'
+import { Dispatch, SetStateAction, KeyboardEvent } from 'react'
+import { TextField } from '@mui/material'
 
-import { isValidEmail, isMinEmailLength, isMaxEmailLength } from '../utils/helpers'
 import { useBoundStore } from '../store'
 import { ErrorBase } from '../errors'
 
@@ -38,14 +35,13 @@ export default function EmailInput({
 	error = '',
 	handleBlur = () => {},
 }: EmailInputProps) {
-	const { darkMode, theme } = useBoundStore()
+	const { darkMode } = useBoundStore()
 
 	return (
 		<TextField
 			id={`${name}-email-input`}
 			label="Email"
-			aria-label="Email (required)"
-			aria-describedby={`${name}-email-helper-text`}
+			aria-describedby={error ? `${name}-email-helper-text` : undefined}
 			autoComplete="email"
 			variant="outlined"
 			type="email"
@@ -73,10 +69,7 @@ export default function EmailInput({
 					'&.Mui-disabled': {
 						borderColor: 'lightGray',
 					},
-					'&.Mui-focused': {
-						borderColor: 'primary.contrastText',
-					},
-					'&:hover': {
+					'&.Mui-focused &:hover &:selected &:active': {
 						borderColor: 'primary.contrastText',
 					},
 					'& fieldset': {
@@ -90,11 +83,7 @@ export default function EmailInput({
 							borderColor: 'lightGray',
 						},
 
-						'&.Mui-focused': {
-							borderColor: 'primary.contrastText',
-						},
-
-						'&:hover': {
+						'&.Mui-focused &:hover &:selected &:active': {
 							borderColor: 'primary.contrastText',
 						},
 					},
@@ -132,6 +121,7 @@ export default function EmailInput({
 						borderColor: darkMode ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 0, 0, 0.5)',
 					},
 					'&:hover .MuiOutlinedInput-notchedOutline': {
+						border: '1px solid',
 						borderColor: darkMode ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 0, 0, 0.5)',
 					},
 				},
@@ -141,10 +131,6 @@ export default function EmailInput({
 				},
 
 				'&:hover .MuiOutlinedInput-root.Mui-error .MuiOutlinedInput-notchedOutline': {
-					borderColor: darkMode ? 'error.dark' : 'error.light',
-				},
-
-				'& .MuiOutlinedInput-root.Mui-error.Mui-focused .MuiOutlinedInput-notchedOutline': {
 					borderColor: darkMode ? 'error.dark' : 'error.light',
 				},
 

@@ -1,4 +1,4 @@
-// Path: ./stories/pages/[...token].stories.tsx
+// Path: ./stories/pages/reset-password.stories.tsx
 import { useState, useEffect } from 'react'
 import { Meta, Story } from '@storybook/react'
 import { ThemeProvider } from '@mui/material/styles'
