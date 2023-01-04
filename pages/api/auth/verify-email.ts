@@ -1,6 +1,5 @@
 // Path: ./pages/api/auth/verify-email.ts
 import { NextApiRequest, NextApiResponse } from 'next'
-import { getSession } from 'next-auth/react'
 import prisma from '../../../lib/prisma'
 import { verify } from 'jsonwebtoken'
 
@@ -17,10 +16,10 @@ export default async function verifyEmail(req: NextApiRequest, res: NextApiRespo
 				},
 			})
 
-			if (!user?.id || !user?.email) return res.status(404).json({ error: 'User does not exist' })
-			if (user?.emailVerified) return res.status(400).json({ error: 'Email already verified' })
+			if (!user?.id || !user.email) return res.status(404).json({ error: 'User does not exist' })
+			if (user.emailVerified) return res.status(400).json({ error: 'Email already verified' })
 
-			const secret = process.env.JWT_SECRET! + user?.password + user?.salt
+			const secret = process.env.JWT_SECRET! + user.password + user.salt
 
 			try {
 				const payload = verify(token, secret)

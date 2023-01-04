@@ -1,7 +1,6 @@
 // Path: ./pages/settings.tsx
 import { useState, useEffect } from 'react'
 import { useSnackbar } from 'notistack'
-import { useRouter } from 'next/router'
 import Image from 'next/image'
 import { Box, Button } from '@mui/material'
 import { useHydrated } from 'react-hydration-provider'
@@ -17,7 +16,6 @@ export interface ProfileSettingsProps {
 export default function ProfileSettings({ hydratedInit = false }: ProfileSettingsProps) {
 	const { user, darkMode } = useBoundStore()
 	const { enqueueSnackbar } = useSnackbar()
-	const router = useRouter()
 	const hydrated = useHydrated()
 	const { loading: tokenLoading, error: tokenError } = useToken()
 
@@ -109,18 +107,21 @@ export default function ProfileSettings({ hydratedInit = false }: ProfileSetting
 							label="Name"
 							value={name}
 							setValue={setName}
+							autoComplete="name"
 						/>
 						<EditableTextField
 							name="profile-settings-email"
 							label="Email"
 							value={email}
 							setValue={setEmail}
+							autoComplete="email"
 						/>
 						<EditableTextField
 							name="profile-settings-password"
 							label="Password"
 							value={password}
 							setValue={setPassword}
+							autoComplete="new-password"
 						/>
 					</Box>
 				</Modal>

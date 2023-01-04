@@ -1,5 +1,4 @@
 // Path: ./pages/api/auth/signup.ts
-
 import { NextApiRequest, NextApiResponse } from 'next'
 import crypto from 'crypto'
 import { sign } from 'jsonwebtoken'
@@ -94,23 +93,12 @@ export default async function signup(req: NextApiRequest, res: NextApiResponse) 
 							name: name || null,
 						},
 					})
-					if (!newUser) {
-						return res.status(500).json({
-							error: 'There was an error creating the user in the database',
-						})
-					}
 
-					const secret = process.env.JWT_SECRET! + newUser?.password + newUser?.salt
-					const token = sign({ email: newUser?.email }, secret, { expiresIn: '1d' })
+					const secret = process.env.JWT_SECRET! + newUser.password + newUser.salt
+					const token = sign({ email: newUser.email }, secret, { expiresIn: '1d' })
 					const verifyUrl = `${process.env.NEXTAUTH_URL}/verify-email/${newUser.id}/${token}`
 					try {
-						const response = await sendVerifyEmailMessage(email, verifyUrl)
-
-						if (!response) {
-							return res.status(500).json({
-								error: 'There was an error sending the verification email',
-							})
-						}
+						await sendVerifyEmailMessage(email, verifyUrl)
 
 						return res.status(201).json({
 							token: token,

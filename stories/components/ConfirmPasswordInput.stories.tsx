@@ -54,6 +54,31 @@ export default {
 				disable: true,
 			},
 		},
+		isNewPassword: {
+			control: {
+				type: 'boolean',
+			},
+		},
+		passwordError: {
+			control: {
+				type: 'text',
+			},
+		},
+		confirmPasswordError: {
+			control: {
+				type: 'text',
+			},
+		},
+		handlePasswordBlur: {
+			table: {
+				disable: true,
+			},
+		},
+		handleConfirmPasswordBlur: {
+			table: {
+				disable: true,
+			},
+		},
 	},
 	decorators: [
 		Story => (

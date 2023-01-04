@@ -27,8 +27,6 @@ const user2 = {
 }
 
 async function main() {
-	const salt = crypto.randomBytes(16).toString('hex')
-
 	try {
 		const users = await prisma.user.findMany({
 			where: {
@@ -53,7 +51,7 @@ async function main() {
 			})
 
 			// Create all users
-			const users = await prisma.user.createMany({
+			await prisma.user.createMany({
 				data: [user, user1, user2],
 			})
 

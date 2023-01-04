@@ -30,7 +30,7 @@ export default function MyDocument() {
 
 				<meta
 					name="theme-color"
-					content={darkMode ? customPalette?.primary?.dark : customPalette?.primary?.light}
+					content={darkMode ? customPalette.primary.dark : customPalette.primary.light}
 				/>
 
 				<link rel="preconnect" href="https://fonts.googleapis.com" />

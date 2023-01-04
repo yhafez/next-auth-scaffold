@@ -52,7 +52,7 @@ export const getContrastColor = (color: string) =>
 		: 'white'
 
 export const getSecondaryColor = (color: string) => {
-	const cc = color.charAt(0) === '#' ? color.substring(1, 7) : color
+	const cc = color.startsWith('#') ? color.substring(1, 7) : color
 	const c = parseInt(cc, 16)
 	const r = c >> 16
 	const b = (c >> 8) & 0x00ff
@@ -159,4 +159,58 @@ export const findOptimalOverlayOpacity = (
 	if (hasNoSolution) return opacityLimit
 
 	return optimalOpacity
+}
+
+export const isValidEmail = (email: string) => {
+	const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
+	return emailRegex.test(email)
+}
+
+export const isMinEmailLength = (email: string) => {
+	return email.length >= 5
+}
+
+export const isMaxEmailLength = (email: string) => {
+	return email.length <= 254
+}
+
+export const passwordContainsNumber = (password: string) => {
+	const numberRegex = /\d/
+	return numberRegex.test(password)
+}
+
+export const passwordContainsSpecialCharacter = (password: string) => {
+	const specialCharacterRegex = /[!@#$%^&*(),.?":{}|<>]/g
+	return specialCharacterRegex.test(password)
+}
+
+export const passwordContainsUppercase = (password: string) => {
+	const uppercaseRegex = /[A-Z]/
+	return uppercaseRegex.test(password)
+}
+
+export const passwordContainsLowercase = (password: string) => {
+	const lowercaseRegex = /[a-z]/
+	return lowercaseRegex.test(password)
+}
+
+export const passwordMeetsMinLengthRequirements = (password: string) => {
+	return password.length >= 8
+}
+
+export const passwordMeetsMaxLengthRequirements = (password: string) => {
+	return password.length <= 48
+}
+
+export const getErrorMessageForPassword = (password: string) => {
+	if (!passwordMeetsMinLengthRequirements(password)) return 'Password must be at least 8 characters'
+	if (!passwordMeetsMaxLengthRequirements(password)) return 'Password must be at most 48 characters'
+	if (!passwordContainsNumber(password)) return 'Password must contain at least one number'
+	if (!passwordContainsSpecialCharacter(password))
+		return 'Password must contain at least one special character'
+	if (!passwordContainsUppercase(password))
+		return 'Password must contain at least one uppercase letter'
+	if (!passwordContainsLowercase(password))
+		return 'Password must contain at least one lowercase letter'
+	return ''
 }

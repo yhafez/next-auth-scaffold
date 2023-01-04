@@ -19,7 +19,6 @@ exports[`VisibilityIconButton Should match snapshot 1`] = `
         data-testid="VisibilityOffIcon"
         focusable="false"
         id="test-password-input-visibility-off-icon"
-        role="button"
         viewBox="0 0 24 24"
       >
         <path

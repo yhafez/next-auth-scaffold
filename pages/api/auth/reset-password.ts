@@ -40,7 +40,7 @@ export default async function resetPassword(req: NextApiRequest, res: NextApiRes
 					},
 				})
 
-				const newToken = sign({ email: user?.email }, process.env.JWT_SECRET!, { expiresIn: '1d' })
+				const newToken = sign({ email: user.email }, process.env.JWT_SECRET!, { expiresIn: '1d' })
 				return res.json({
 					token: newToken,
 					message: 'Password reset',

@@ -1,24 +1,30 @@
-// Path: ./stories/components/PasswordInput.stories.tsx
+// Path: ./stories/components/EditableTextField.stories.tsx
 import { useState, useEffect } from 'react'
 import { Story, Meta } from '@storybook/react'
 
-import { PasswordInput, Modal } from '../../components'
+import { EditableTextField, Modal } from '../../components'
 import { useBoundStore } from '../../store'
 
 export default {
-	title: 'Components/PasswordInput',
-	component: PasswordInput,
+	title: 'Components/EditableTextField',
+	component: EditableTextField,
 	args: {
-		name: 'password-input',
+		name: '',
+		label: '',
 		value: '',
 		setValue: () => {},
-		disabled: false,
-		handleEnter: () => {},
+		isPassword: false,
+		autoComplete: 'off',
 	},
 	argTypes: {
 		name: {
 			table: {
 				disable: true,
+			},
+		},
+		label: {
+			control: {
+				type: 'text',
 			},
 		},
 		value: {
@@ -31,17 +37,12 @@ export default {
 				disable: true,
 			},
 		},
-		disabled: {
+		isPassword: {
 			control: {
 				type: 'boolean',
 			},
 		},
-		handleEnter: {
-			table: {
-				disable: true,
-			},
-		},
-		handleBlur: {
+		autoComplete: {
 			table: {
 				disable: true,
 			},
@@ -49,7 +50,7 @@ export default {
 	},
 	decorators: [
 		Story => (
-			<Modal name="password-input-modal" loading={false} error="">
+			<Modal name="editable-text-field-modal" loading={false} error="">
 				<Story />
 			</Modal>
 		),
@@ -59,23 +60,15 @@ export default {
 export const Default: Story = (args, { globals: { theme } }) => {
 	const [value, setValue] = useState('')
 
-	const { setDarkMode } = useBoundStore()
-
-	useEffect(() => {
-		setDarkMode(theme === 'dark' ? true : false)
-	}, [theme])
-
-	useEffect(() => {
-		setValue(args.value)
-	}, [args.value])
-
 	return (
-		<PasswordInput
-			name="password-input"
-			disabled={false}
+		<EditableTextField
+			label="Editable Text Field"
+			name="editable-text-field"
 			{...args}
 			value={value}
 			setValue={setValue}
+			isPassword={false}
+			autoComplete="off"
 		/>
 	)
 }

@@ -77,7 +77,6 @@ export default function VisibilityIconButton({
 								}),
 							}}
 							aria-label="hide password"
-							role="button"
 						>
 							Hide
 						</Typography>
@@ -96,7 +95,6 @@ export default function VisibilityIconButton({
 								}),
 							}}
 							aria-label="show password"
-							role="button"
 						/>
 						<Typography
 							id={`${name}${isConfirmPassword ? '-confirm' : ''}-password-input-show-password-text`}

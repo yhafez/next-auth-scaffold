@@ -22,14 +22,14 @@ export default async function verifyToken(req: NextApiRequest, res: NextApiRespo
 				},
 			})
 
-			if (!user?.id || !user?.email) {
+			if (!user?.id || !user.email) {
 				res.status(404).json({
 					error: 'User does not exist',
 				})
 				return
 			}
 
-			const secret = process.env.JWT_SECRET! + user?.password + user?.salt
+			const secret = process.env.JWT_SECRET! + user.password + user.salt
 
 			try {
 				const payload = verify(token, secret)

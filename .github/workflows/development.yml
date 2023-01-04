@@ -31,7 +31,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: '🔍 run tests'
-        run: pnpm test
+        run: pnpm test:client
 
   lint:
     name: Code standards

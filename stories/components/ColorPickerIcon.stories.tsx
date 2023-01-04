@@ -18,6 +18,12 @@ export default {
 				type: 'boolean',
 			},
 		},
+
+		name: {
+			table: {
+				disable: true,
+			},
+		},
 	},
 
 	args: {

@@ -11,6 +11,7 @@ export interface EditableTextFieldProps {
 	value: string
 	setValue: (value: string) => void
 	isPassword?: boolean
+	autoComplete?: string
 }
 
 export default function EditableTextField({
@@ -19,6 +20,7 @@ export default function EditableTextField({
 	value,
 	setValue,
 	isPassword = false,
+	autoComplete = 'off',
 }: EditableTextFieldProps) {
 	const { darkMode, customPalette } = useBoundStore()
 	const [edit, setEdit] = useState(false)
@@ -29,6 +31,8 @@ export default function EditableTextField({
 			label={label}
 			variant="standard"
 			type={isPassword ? 'password' : 'text'}
+			required={edit}
+			autoComplete={autoComplete}
 			sx={{
 				width: '100%',
 				maxWidth: '400px',
@@ -37,11 +41,11 @@ export default function EditableTextField({
 				'& .MuiInputBase-input': {
 					color: 'primary.contrastText',
 					WebkitTextFillColor: darkMode ? 'white' : 'black',
-				},
 
-				'& .MuiInputBase-input:disabled': {
-					color: darkMode ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 0, 0, 0.5)',
-					WebkitTextFillColor: darkMode ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 0, 0, 0.5)',
+					'&:disabled': {
+						color: darkMode ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.7)',
+						WebkitTextFillColor: darkMode ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.7)',
+					},
 				},
 
 				'& .MuiFormLabel-root': {

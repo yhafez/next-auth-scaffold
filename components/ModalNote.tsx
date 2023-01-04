@@ -27,25 +27,24 @@ export default function ModalNote({ name, label, href }: ModalNoteProps) {
 			<MuiLink
 				href={href}
 				title={label}
-				aria-label={label}
 				id={`${name}-modal-note-link`}
 				sx={{
 					'&:hover': {
-						color: 'primary.main',
+						color: darkMode ? 'primary.light' : 'primary.dark',
 						transform: 'scale(1.05)',
 					},
 
 					'&:active': {
-						color: 'primary.main',
+						color: darkMode ? 'primary.light' : 'primary.dark',
 						transform: 'scale(1.05)',
 					},
 
 					'&:focus': {
-						color: 'primary.main',
+						color: darkMode ? 'primary.light' : 'primary.dark',
 						transform: 'scale(1.05)',
 					},
-					color: darkMode ? 'primary.light' : 'primary.dark',
-					textDecorationColor: darkMode ? 'primary.light' : 'primary.dark',
+					color: 'primary.contrastText',
+					textDecorationColor: 'primary.contrastText',
 				}}
 				component={Link}
 			>

@@ -78,18 +78,18 @@ export default async function forgotPassword(req: NextApiRequest, res: NextApiRe
 				},
 			})
 
-			if (!user?.id || !user?.email) {
+			if (!user?.id || !user.email) {
 				return res.status(404).json({
 					error: 'User does not exist',
 				})
 			}
 
-			const secret = process.env.JWT_SECRET! + user?.password + user?.salt
-			const token = sign({ email: user?.email }, secret, { expiresIn: '1d' })
+			const secret = process.env.JWT_SECRET! + user.password + user.salt
+			const token = sign({ email: user.email }, secret, { expiresIn: '1d' })
 			const link = `${process.env.NEXTAUTH_URL}/reset-password/${user.id}/${token}`
 
 			try {
-				const result = await sendForgotPasswordEmailMail(user?.email, link)
+				const result = await sendForgotPasswordEmailMail(user.email, link)
 
 				if (result.rejected.length > 0) {
 					return res.status(400).json({

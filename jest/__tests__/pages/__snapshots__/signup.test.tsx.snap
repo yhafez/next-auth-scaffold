@@ -335,26 +335,34 @@ exports[`Signup Should match snapshot 1`] = `
             <form
               class="MuiBox-root css-xo10vp"
               id="signup-modal-form"
-              role="form"
             >
               <div
-                class="MuiFormControl-root MuiTextField-root css-8v3hey-MuiFormControl-root-MuiTextField-root"
+                class="MuiFormControl-root MuiTextField-root css-59h08t-MuiFormControl-root-MuiTextField-root"
               >
                 <label
-                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-7yavjh-MuiFormLabel-root-MuiInputLabel-root"
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary Mui-required MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-7yavjh-MuiFormLabel-root-MuiInputLabel-root"
                   data-shrink="false"
                   for="signup-email-input"
                   id="signup-email-input-label"
                 >
                   Email
+                  <span
+                    aria-hidden="true"
+                    class="MuiFormLabel-asterisk MuiInputLabel-asterisk css-125iqkp-MuiFormLabel-asterisk"
+                  >
+                     
+                    *
+                  </span>
                 </label>
                 <div
                   class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl css-8r7mze-MuiInputBase-root-MuiOutlinedInput-root"
                 >
                   <input
                     aria-invalid="false"
+                    autocomplete="email"
                     class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
                     id="signup-email-input"
+                    required=""
                     type="email"
                     value=""
                   />
@@ -367,29 +375,40 @@ exports[`Signup Should match snapshot 1`] = `
                     >
                       <span>
                         Email
+                         
+                        *
                       </span>
                     </legend>
                   </fieldset>
                 </div>
               </div>
               <div
-                class="MuiFormControl-root MuiTextField-root css-8v3hey-MuiFormControl-root-MuiTextField-root"
+                class="MuiFormControl-root MuiTextField-root css-59h08t-MuiFormControl-root-MuiTextField-root"
               >
                 <label
-                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-7yavjh-MuiFormLabel-root-MuiInputLabel-root"
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary Mui-required MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-7yavjh-MuiFormLabel-root-MuiInputLabel-root"
                   data-shrink="false"
                   for="signup-password-input"
                   id="signup-password-input-label"
                 >
                   Password
+                  <span
+                    aria-hidden="true"
+                    class="MuiFormLabel-asterisk MuiInputLabel-asterisk css-125iqkp-MuiFormLabel-asterisk"
+                  >
+                     
+                    *
+                  </span>
                 </label>
                 <div
                   class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedEnd css-7kjzy7-MuiInputBase-root-MuiOutlinedInput-root"
                 >
                   <input
                     aria-invalid="false"
+                    autocomplete="new-password"
                     class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd css-nxo287-MuiInputBase-input-MuiOutlinedInput-input"
                     id="signup-password-input"
+                    required=""
                     type="password"
                     value=""
                   />
@@ -410,7 +429,6 @@ exports[`Signup Should match snapshot 1`] = `
                         data-testid="VisibilityOffIcon"
                         focusable="false"
                         id="signup-password-input-visibility-off-icon"
-                        role="button"
                         viewBox="0 0 24 24"
                       >
                         <path
@@ -437,29 +455,40 @@ exports[`Signup Should match snapshot 1`] = `
                     >
                       <span>
                         Password
+                         
+                        *
                       </span>
                     </legend>
                   </fieldset>
                 </div>
               </div>
               <div
-                class="MuiFormControl-root MuiTextField-root css-8v3hey-MuiFormControl-root-MuiTextField-root"
+                class="MuiFormControl-root MuiTextField-root css-59h08t-MuiFormControl-root-MuiTextField-root"
               >
                 <label
-                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-7yavjh-MuiFormLabel-root-MuiInputLabel-root"
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary Mui-required MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-7yavjh-MuiFormLabel-root-MuiInputLabel-root"
                   data-shrink="false"
                   for="signup-confirm-password-input"
                   id="signup-confirm-password-input-label"
                 >
                   Confirm Password
+                  <span
+                    aria-hidden="true"
+                    class="MuiFormLabel-asterisk MuiInputLabel-asterisk css-125iqkp-MuiFormLabel-asterisk"
+                  >
+                     
+                    *
+                  </span>
                 </label>
                 <div
                   class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedEnd css-7kjzy7-MuiInputBase-root-MuiOutlinedInput-root"
                 >
                   <input
                     aria-invalid="false"
+                    autocomplete="new-password"
                     class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd css-nxo287-MuiInputBase-input-MuiOutlinedInput-input"
                     id="signup-confirm-password-input"
+                    required=""
                     type="password"
                     value=""
                   />
@@ -480,7 +509,6 @@ exports[`Signup Should match snapshot 1`] = `
                         data-testid="VisibilityOffIcon"
                         focusable="false"
                         id="signup-confirm-password-input-visibility-off-icon"
-                        role="button"
                         viewBox="0 0 24 24"
                       >
                         <path
@@ -507,6 +535,8 @@ exports[`Signup Should match snapshot 1`] = `
                     >
                       <span>
                         Confirm Password
+                         
+                        *
                       </span>
                     </legend>
                   </fieldset>
@@ -517,20 +547,18 @@ exports[`Signup Should match snapshot 1`] = `
                 id="signup-buttons-container"
               >
                 <button
-                  class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1bu79mp-MuiButtonBase-root-MuiButton-root"
+                  class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium Mui-disabled MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1bu79mp-MuiButtonBase-root-MuiButton-root"
+                  disabled=""
                   id="signup-submit-button"
-                  tabindex="0"
+                  tabindex="-1"
                   type="button"
                 >
                   <span
-                    class="MuiTypography-root MuiTypography-button css-11gc47n-MuiTypography-root"
+                    class="MuiTypography-root MuiTypography-button css-1rchnju-MuiTypography-root"
                     id="signup-submit-button-text"
                   >
                     Sign Up
                   </span>
-                  <span
-                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                  />
                 </button>
               </div>
               <div
@@ -538,8 +566,7 @@ exports[`Signup Should match snapshot 1`] = `
                 id="signup-login-modal-note-container"
               >
                 <a
-                  aria-label="Already have an account? Log in"
-                  class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1ptl0h6-MuiTypography-root-MuiLink-root"
+                  class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-lulsom-MuiTypography-root-MuiLink-root"
                   href="/login"
                   id="signup-login-modal-note-link"
                   title="Already have an account? Log in"

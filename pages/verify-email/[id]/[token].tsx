@@ -6,6 +6,7 @@ import { useHydrated } from 'react-hydration-provider'
 import { useSession, signOut } from 'next-auth/react'
 
 import { Modal, ActionButtonsContainer, Layout, NavigationButton } from '../../../components'
+import { FetchError } from '../../../errors'
 
 export interface VerifyEmailProps {
 	errorInit?: string
@@ -45,7 +46,11 @@ export default function VerifyEmail({
 				.then(res => res.json())
 				.then(data => {
 					if (data.error) {
-						setError(data.error)
+						throw new FetchError({
+							name: 'FetchError',
+							message: 'There was an API error while verifying your email',
+							cause: data.error,
+						})
 					} else {
 						enqueueSnackbar('Email verified successfully', {
 							variant: 'success',
@@ -54,8 +59,12 @@ export default function VerifyEmail({
 						router.push('/login')
 					}
 				})
-				.catch(err => {
-					setError(err.message)
+				.catch(error => {
+					if (error instanceof FetchError) {
+						setError(error.message)
+					} else {
+						setError('There was an unexpected API error while verifying your email')
+					}
 				})
 				.finally(() => {
 					setLoading(false)

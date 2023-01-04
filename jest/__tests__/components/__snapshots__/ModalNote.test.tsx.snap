@@ -8,8 +8,7 @@ exports[`ModalNote Should match snapshot 1`] = `
       id="test-modal-note-container"
     >
       <a
-        aria-label="test"
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1supet1-MuiTypography-root-MuiLink-root"
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-159ewd1-MuiTypography-root-MuiLink-root"
         href="/test"
         id="test-modal-note-link"
         title="test"
